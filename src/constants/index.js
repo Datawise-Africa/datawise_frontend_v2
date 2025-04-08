@@ -19,12 +19,18 @@ export const navigation = [
   },
   {
     id: "3",
+    title: "Tools",
+    url: "/tools",
+    dropdownItems: [],
+  },
+  {
+    id: "4",
     title: "Datalab",
     url: "/datalab",
     dropdownItems: [],
   },
   {
-    id: "4",
+    id: "5",
     title: "Contact Us",
     url: "/contact-us",
     dropdownItems: [],
