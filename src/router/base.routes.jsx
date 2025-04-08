@@ -6,6 +6,7 @@ import ContactUs from "../pages/contact-us/ContactUs";
 import Jobs from "../pages/jobs/Jobs";
 import Partners from "../pages/partners/Partners";
 import PartnerForm from "../pages/partners/partnersform";
+import GPTInterface from "../pages/tools/GPTinterface";
 
 
 const baseRoutes = [
@@ -16,6 +17,10 @@ const baseRoutes = [
     {
         path: "/projects",
         element: <Projects />,
+    },
+    {
+        path: "/tools",
+        element: <GPTInterface/>,
     },
     {
         path: "/datalab",
