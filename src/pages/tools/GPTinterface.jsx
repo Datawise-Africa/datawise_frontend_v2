@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineSend, AiOutlineClose, AiOutlineDelete, AiOutlineMessage } from "react-icons/ai";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
