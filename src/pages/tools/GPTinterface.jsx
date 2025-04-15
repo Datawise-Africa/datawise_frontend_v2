@@ -9,6 +9,7 @@ const ChatInterface = () => {
     { role: "user", content: "Tell me a fun fact." },
     { role: "ai", content: "Did you know octopuses have three hearts?" },
   ]);
+
   const [input, setInput] = useState("");
   const [searchHistory, setSearchHistory] = useState([
     "What is the weather today?",
@@ -16,6 +17,7 @@ const ChatInterface = () => {
     "Tell me a joke!",
   ]);
   const [sidebarVisible, setSidebarVisible] = useState(true); // To control sidebar visibility
+
 
   const messagesEndRef = useRef(null);
 
@@ -91,6 +93,7 @@ const ChatInterface = () => {
         >
           <AiOutlineMessage />
         </button>
+
       </div>
 
       {/* Main Content */}
