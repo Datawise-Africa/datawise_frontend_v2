@@ -70,6 +70,7 @@ const ChatInterface = () => {
         }
       }, 100);
     } catch (error) {
+      console.error("Error fetching AI response:", error);
       const errorMessage = {
         role: "ai",
         content: "Sorry, there was an error contacting the AI service.",
@@ -173,9 +174,6 @@ const ChatInterface = () => {
             <div className="w-full max-w-3xl mx-auto space-y-2">
               {messages.map((msg, index) => {
                 const isUser = msg.role === "user";
-                const alignment = isUser
-                  ? "ml-auto bg-[#26A37E] text-white text-right"
-                  : "mr-auto bg-gray-200 text-left text-gray-800";
 
                 return (
                   <div key={index} className="flex flex-col -mt-1">
