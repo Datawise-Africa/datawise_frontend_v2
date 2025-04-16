@@ -187,7 +187,7 @@ const ChatInterface = () => {
                       </span>
                     )}
                     <div
-                      className={`px-4 py-2 rounded-2xl shadow-md  max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${isUser ? "ml-auto bg-blue-500 text-white rounded-br-none" : "mr-auto bg-gray-200 text-gray-800 rounded-bl-none"}`}
+                      className={`px-4 py-2 rounded-2xl shadow-md  max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${isUser ? "ml-auto bg-[#26A37E] text-white rounded-br-none" : "mr-auto bg-gray-200 text-gray-800 rounded-bl-none"}`}
                     >
                       <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
