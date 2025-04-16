@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineSend, AiOutlineClose, AiOutlineDelete, AiOutlineMessage } from "react-icons/ai";
-// import { motion } from "framer-motion";
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
@@ -16,24 +15,19 @@ const ChatInterface = () => {
     "How many hearts does an octopus have?",
     "Tell me a joke!",
   ]);
-  const [sidebarVisible, setSidebarVisible] = useState(true); // To control sidebar visibility
+  const [sidebarVisible, setSidebarVisible] = useState(true);
 
-
-  const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const chatContainerRef = useRef(null);
 
   useEffect(() => {
-    scrollToBottom();
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages]);
 
   const sendMessage = () => {
     if (!input.trim()) return;
-
+  
     const userMessage = {
       role: "user",
       content: input,
@@ -42,18 +36,24 @@ const ChatInterface = () => {
     setMessages((prev) => [...prev, userMessage]);
     setSearchHistory((prev) => [...prev, input]);
     setInput("");
-
+  
+    // Scroll to bottom right after sending
+    setTimeout(() => {
+      if (chatContainerRef.current) {
+        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      }
+    }, 100); // small delay allows message to render
+  
     setTimeout(() => {
       const fakeReply = {
         role: "ai",
-        content:
-          "Thank you for your message. We're currently working on ensuring a more intelligent and customer-friendly experience. Stay tuned as we continue to improve your AI assistant!",
+        content: "Thanks! Stay tuned as we improve your AI assistant!",
         timestamp: new Date().toISOString(),
       };
       setMessages((prev) => [...prev, fakeReply]);
     }, 1000);
   };
-
+  
   const formatTime = (isoString) => {
     const date = new Date(isoString);
     return `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
@@ -64,48 +64,37 @@ const ChatInterface = () => {
   };
 
   const closeSidebar = () => {
-    setSidebarVisible(false); // Hide the sidebar
+    setSidebarVisible(false);
   };
 
   const newChat = () => {
-    // Reset chat to the default state
     setMessages([
       { role: "user", content: "Hey there!" },
       { role: "ai", content: "Hello! How can I assist you today?" },
     ]);
-    setInput(""); // Reset the input field
+    setInput("");
   };
 
   return (
-    <div className="flex flex-col h-screen mt-24 text-sm md:text-base">
+    <div className="flex flex-col mt-32 text-sm md:text-base" style={{ height: "calc(100vh - 8rem)" }}>
       {/* Header */}
-      <div className="bg-white px-4 py-4 border-b shadow-sm sticky top-0 z-20 flex items-center justify-between">
+      <div className="bg-white px-4 py-2 border-b shadow-sm flex items-center justify-between">
         <div className="flex-1 text-center">
-          <h1 className="text-xl font-bold text-[#1e293b]">AI Chat Assistant</h1>
-          <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto leading-snug">
+          <h1 className="text-lg md:text-xl font-bold text-[#1e293b]">AI Chat Assistant</h1>
+          <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-snug">
             We’re working on ensuring a smarter, more customer-friendly AI assistant. Ask anything or get help below!
           </p>
         </div>
-        {/* New Chat Button */}
-        <button
-          onClick={newChat}
-          className="text-blue-500 text-xl"
-        >
+        <button onClick={newChat} className="text-blue-500 text-xl ml-4">
           <AiOutlineMessage />
         </button>
-
       </div>
 
       {/* Main Content */}
       <div className="flex flex-1 overflow-hidden bg-gray-50">
-        {/* Sidebar (Always Visible) */}
+        {/* Sidebar */}
         {sidebarVisible && (
-          <motion.aside
-            className="bg-white w-64 z-30 h-full flex-shrink-0 flex flex-col"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
+          <aside className="bg-white w-56 sm:w-64 h-full flex-shrink-0 flex flex-col border-r hidden lg:flex">
             <div className="px-3 py-2 border-b font-semibold flex justify-between items-center">
               <span>Search History</span>
               <button
@@ -114,11 +103,7 @@ const ChatInterface = () => {
               >
                 Clear All
               </button>
-              {/* Close Sidebar Button */}
-              <button
-                onClick={closeSidebar}
-                className="text-red-500 text-xl"
-              >
+              <button onClick={closeSidebar} className="text-red-500 text-xl">
                 <AiOutlineClose />
               </button>
             </div>
@@ -142,14 +127,17 @@ const ChatInterface = () => {
                 ))
               )}
             </div>
-          </motion.aside>
+          </aside>
         )}
 
         {/* Chat Section */}
-        <div className="flex flex-col border-l-4 border-[#26A37E] flex-1 overflow-hidden">
-          {/* Chat messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-2 flex justify-center">
-            <div className="w-full max-w-3xl space-y-1">
+        <div className="flex flex-col flex-1 relative">
+          {/* Messages */}
+          <div
+            ref={chatContainerRef}
+            className="flex-1 overflow-y-auto px-4 pt-4 pb-2"
+          >
+            <div className="w-full max-w-3xl mx-auto space-y-2">
               {messages.map((msg, index) => {
                 const isUser = msg.role === "user";
                 const alignment = isUser
@@ -157,13 +145,7 @@ const ChatInterface = () => {
                   : "mr-auto bg-gray-200 text-left text-gray-800";
 
                 return (
-                  <motion.div
-                    key={index}
-                    className="flex flex-col -mt-1"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                  <div key={index} className="flex flex-col -mt-1">
                     {msg.timestamp && (
                       <span
                         className={`text-xs text-gray-500 mb-[2px] ${
@@ -178,15 +160,14 @@ const ChatInterface = () => {
                     >
                       {msg.content}
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
-              <div ref={messagesEndRef} />
             </div>
           </div>
 
-          {/* Input Section */}
-          <div className="px-4 py-2 border-t bg-white">
+          {/* Input */}
+          <div className="w-full bg-white px-4 py-2 border-t flex-shrink-0">
             <div className="max-w-3xl mx-auto flex gap-2">
               <input
                 type="text"
@@ -195,7 +176,9 @@ const ChatInterface = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") sendMessage();
+                  if (e.key === "Enter") {
+                    sendMessage();
+                  }
                 }}
               />
               <button
@@ -207,6 +190,7 @@ const ChatInterface = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
