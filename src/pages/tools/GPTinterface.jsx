@@ -11,12 +11,17 @@ import {
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
-    { role: "ai", content: "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?" },
+    {
+      role: "ai",
+      content:
+        "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+    },
   ]);
 
   const [input, setInput] = useState("");
   const [searchHistory, setSearchHistory] = useState([]);
   const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const chatContainerRef = useRef(null);
 
@@ -28,6 +33,7 @@ const ChatInterface = () => {
   }, [messages]);
 
   const sendMessage = async () => {
+    setLoading(true);
     if (!input.trim()) return;
 
     const userMessage = {
@@ -61,7 +67,7 @@ const ChatInterface = () => {
       };
 
       setMessages((prev) => [...prev, aiMessage]);
-
+      setLoading(false);
       // Scroll to bottom after response
       setTimeout(() => {
         if (chatContainerRef.current) {
@@ -70,6 +76,7 @@ const ChatInterface = () => {
         }
       }, 100);
     } catch (error) {
+      setLoading(false);
       console.error("Error fetching AI response:", error);
       const errorMessage = {
         role: "ai",
@@ -97,7 +104,8 @@ const ChatInterface = () => {
     setMessages([
       {
         role: "ai",
-        content: "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+        content:
+          "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
         timestamp: new Date().toISOString(),
       },
     ]);
@@ -116,7 +124,9 @@ const ChatInterface = () => {
             Datawise LLM
           </h1>
           <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-snug">
-          Ask questions about Kenyan news and local journalism from 2021 to 2024. This assistant is trained on verified articles from trusted Kenyan sources.
+            Ask questions about Kenyan news and local journalism from 2021 to
+            2024. This assistant is trained on verified articles from trusted
+            Kenyan sources.
           </p>
         </div>
         <button onClick={newChat} className="text-blue-500 text-xl ml-4">
@@ -187,13 +197,31 @@ const ChatInterface = () => {
                       </span>
                     )}
                     <div
-                      className={`px-4 py-2 rounded-2xl shadow-md  max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${isUser ? "ml-auto bg-[#26A37E] text-white rounded-br-none" : "mr-auto bg-gray-200 text-gray-800 rounded-bl-none"}`}
+                      className={`px-4 py-2 rounded-2xl shadow-md  max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${
+                        isUser
+                          ? "ml-auto bg-[#26A37E] text-white rounded-br-none"
+                          : "mr-auto bg-gray-200 text-gray-800 rounded-bl-none"
+                      }`}
                     >
                       <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
                   </div>
                 );
               })}
+              {loading && (
+                <div className="flex flex-col -mt-1">
+                  <span className="text-xs text-gray-500 mb-[2px] text-left ml-2">
+                    AI • typing...
+                  </span>
+                  <div className="px-4 py-2 rounded-2xl shadow-md max-w-[50%] text-[#26A37E] text-left rounded-bl-none">
+                    <div className="flex space-x-1 items-center justify-start">
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce [animation-delay:0.2s]"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce [animation-delay:0.4s]"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
