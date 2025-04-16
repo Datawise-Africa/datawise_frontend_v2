@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AiOutlineSend, AiOutlineClose, AiOutlineDelete, AiOutlineMessage } from "react-icons/ai";
 
+
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
     { role: "user", content: "Hey there!" },
@@ -17,6 +18,7 @@ const ChatInterface = () => {
   ]);
   const [sidebarVisible, setSidebarVisible] = useState(true);
 
+
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
@@ -27,7 +29,7 @@ const ChatInterface = () => {
 
   const sendMessage = () => {
     if (!input.trim()) return;
-  
+
     const userMessage = {
       role: "user",
       content: input,
@@ -48,6 +50,7 @@ const ChatInterface = () => {
       const fakeReply = {
         role: "ai",
         content: "Thanks! Stay tuned as we improve your AI assistant!",
+
         timestamp: new Date().toISOString(),
       };
       setMessages((prev) => [...prev, fakeReply]);
@@ -75,6 +78,28 @@ const ChatInterface = () => {
     setInput("");
   };
 
+  const formatTime = (isoString) => {
+    const date = new Date(isoString);
+    return `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
+  };
+
+  const deleteHistoryItem = (index) => {
+    setSearchHistory((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const closeSidebar = () => {
+    setSidebarVisible(false); // Hide the sidebar
+  };
+
+  const newChat = () => {
+    // Reset chat to the default state
+    setMessages([
+      { role: "user", content: "Hey there!" },
+      { role: "ai", content: "Hello! How can I assist you today?" },
+    ]);
+    setInput(""); // Reset the input field
+  };
+
   return (
     <div className="flex flex-col mt-32 text-sm md:text-base" style={{ height: "calc(100vh - 8rem)" }}>
       {/* Header */}
@@ -88,6 +113,7 @@ const ChatInterface = () => {
         <button onClick={newChat} className="text-blue-500 text-xl ml-4">
           <AiOutlineMessage />
         </button>
+
       </div>
 
       {/* Main Content */}
@@ -138,6 +164,7 @@ const ChatInterface = () => {
             className="flex-1 overflow-y-auto px-4 pt-4 pb-2"
           >
             <div className="w-full max-w-3xl mx-auto space-y-2">
+
               {messages.map((msg, index) => {
                 const isUser = msg.role === "user";
                 const alignment = isUser
@@ -146,6 +173,7 @@ const ChatInterface = () => {
 
                 return (
                   <div key={index} className="flex flex-col -mt-1">
+
                     {msg.timestamp && (
                       <span
                         className={`text-xs text-gray-500 mb-[2px] ${
@@ -168,6 +196,7 @@ const ChatInterface = () => {
 
           {/* Input */}
           <div className="w-full bg-white px-4 py-2 border-t flex-shrink-0">
+
             <div className="max-w-3xl mx-auto flex gap-2">
               <input
                 type="text"
@@ -176,9 +205,11 @@ const ChatInterface = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => {
+<<<<<< LLM
                   if (e.key === "Enter") {
                     sendMessage();
                   }
+
                 }}
               />
               <button
