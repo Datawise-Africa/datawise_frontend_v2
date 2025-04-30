@@ -21,7 +21,9 @@ export const navigation = [
     id: "3",
     title: "Tools",
     url: "/tools",
-    dropdownItems: [],
+    dropdownItems: [
+      {title: "GPT", url:"/tools/GPT"}
+    ],
   },
   {
     id: "4",
