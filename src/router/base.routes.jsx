@@ -19,7 +19,7 @@ const baseRoutes = [
         element: <Projects />,
     },
     {
-        path: "/tools",
+        path: "/tools/GPT",
         element: <GPTInterface/>,
     },
     {

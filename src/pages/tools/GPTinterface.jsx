@@ -1,31 +1,39 @@
 import { useEffect, useRef, useState } from "react";
-import { AiOutlineSend, AiOutlineClose, AiOutlineDelete, AiOutlineMessage } from "react-icons/ai";
+import ReactMarkdown from "react-markdown";
+import apiService from "../../services/apiService";
+
+import {
+  AiOutlineSend,
+  AiOutlineClose,
+  AiOutlineDelete,
+  AiOutlineMessage,
+} from "react-icons/ai";
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
-    { role: "user", content: "Hey there!" },
-    { role: "ai", content: "Hello! How can I assist you today?" },
-    { role: "user", content: "Tell me a fun fact." },
-    { role: "ai", content: "Did you know octopuses have three hearts?" },
+    {
+      role: "ai",
+      content:
+        "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+    },
   ]);
 
   const [input, setInput] = useState("");
-  const [searchHistory, setSearchHistory] = useState([
-    "What is the weather today?",
-    "How many hearts does an octopus have?",
-    "Tell me a joke!",
-  ]);
+  const [searchHistory, setSearchHistory] = useState([]);
   const [sidebarVisible, setSidebarVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
+    setLoading(true);
     if (!input.trim()) return;
   
     const userMessage = {
@@ -33,25 +41,50 @@ const ChatInterface = () => {
       content: input,
       timestamp: new Date().toISOString(),
     };
+
+    // Add user message to state
     setMessages((prev) => [...prev, userMessage]);
     setSearchHistory((prev) => [...prev, input]);
     setInput("");
-  
-    // Scroll to bottom right after sending
+
+    // Auto-scroll after user message
     setTimeout(() => {
       if (chatContainerRef.current) {
-        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        chatContainerRef.current.scrollTop =
+          chatContainerRef.current.scrollHeight;
       }
-    }, 100); // small delay allows message to render
-  
-    setTimeout(() => {
-      const fakeReply = {
+    }, 100);
+
+    try {
+      const response = await apiService.post("/llm/llama3/", {
+        query: userMessage.content,
+      });
+
+      const aiMessage = {
         role: "ai",
-        content: "Thanks! Stay tuned as we improve your AI assistant!",
+        content: response.response || "No response from server.",
         timestamp: new Date().toISOString(),
       };
-      setMessages((prev) => [...prev, fakeReply]);
-    }, 1000);
+
+      setMessages((prev) => [...prev, aiMessage]);
+      setLoading(false);
+      // Scroll to bottom after response
+      setTimeout(() => {
+        if (chatContainerRef.current) {
+          chatContainerRef.current.scrollTop =
+            chatContainerRef.current.scrollHeight;
+        }
+      }, 100);
+    } catch (error) {
+      setLoading(false);
+      console.error("Error fetching AI response:", error);
+      const errorMessage = {
+        role: "ai",
+        content: "Sorry, there was an error contacting the AI service.",
+        timestamp: new Date().toISOString(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    }
   };
   
   const formatTime = (isoString) => {
@@ -69,20 +102,31 @@ const ChatInterface = () => {
 
   const newChat = () => {
     setMessages([
-      { role: "user", content: "Hey there!" },
-      { role: "ai", content: "Hello! How can I assist you today?" },
+      {
+        role: "ai",
+        content:
+          "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+        timestamp: new Date().toISOString(),
+      },
     ]);
     setInput("");
   };
 
   return (
-    <div className="flex flex-col mt-32 text-sm md:text-base" style={{ height: "calc(100vh - 8rem)" }}>
+    <div
+      className="flex flex-col mt-32 text-sm md:text-base"
+      style={{ height: "calc(100vh - 8rem)" }}
+    >
       {/* Header */}
       <div className="bg-white px-4 py-2 border-b shadow-sm flex items-center justify-between">
         <div className="flex-1 text-center">
-          <h1 className="text-lg md:text-xl font-bold text-[#1e293b]">AI Chat Assistant</h1>
+          <h1 className="text-lg md:text-xl font-bold text-[#1e293b]">
+            Datawise LLM
+          </h1>
           <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-snug">
-            We’re working on ensuring a smarter, more customer-friendly AI assistant. Ask anything or get help below!
+            Ask questions about Kenyan news and local journalism from 2021 to
+            2024. This assistant is trained on verified articles from trusted
+            Kenyan sources.
           </p>
         </div>
         <button onClick={newChat} className="text-blue-500 text-xl ml-4">
@@ -140,9 +184,6 @@ const ChatInterface = () => {
             <div className="w-full max-w-3xl mx-auto space-y-2">
               {messages.map((msg, index) => {
                 const isUser = msg.role === "user";
-                const alignment = isUser
-                  ? "ml-auto bg-[#26A37E] text-white text-right"
-                  : "mr-auto bg-gray-200 text-left text-gray-800";
 
                 return (
                   <div key={index} className="flex flex-col -mt-1">
@@ -156,23 +197,41 @@ const ChatInterface = () => {
                       </span>
                     )}
                     <div
-                      className={`px-3 py-2 rounded-md w-fit break-words max-w-[85%] sm:max-w-md md:max-w-lg leading-snug ${alignment}`}
+                      className={`px-4 py-2 rounded-2xl shadow-md  max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${
+                        isUser
+                          ? "ml-auto bg-[#26A37E] text-white rounded-br-none"
+                          : "mr-auto bg-gray-200 text-gray-800 rounded-bl-none"
+                      }`}
                     >
-                      {msg.content}
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
                   </div>
                 );
               })}
+              {loading && (
+                <div className="flex flex-col -mt-1">
+                  <span className="text-xs text-gray-500 mb-[2px] text-left ml-2">
+                    AI • typing...
+                  </span>
+                  <div className="px-4 py-2 rounded-2xl shadow-md max-w-[50%] text-[#26A37E] text-left rounded-bl-none">
+                    <div className="flex space-x-1 items-center justify-start">
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce [animation-delay:0.2s]"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce [animation-delay:0.4s]"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Input */}
-          <div className="w-full bg-white px-4 py-2 border-t flex-shrink-0">
-            <div className="max-w-3xl mx-auto flex gap-2">
+          <div className="w-full bg-white px-4 py-2 flex-shrink-0">
+            <div className="max-w-3xl mx-auto flex items-center gap-2 bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-blue-400">
               <input
                 type="text"
-                className="flex-1 bg-white border rounded px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-1 focus:ring-blue-500"
-                placeholder="Type a message..."
+                className="flex-1 bg-transparent outline-none px-2 text-sm md:text-base"
+                placeholder="Type your question..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => {
@@ -183,7 +242,7 @@ const ChatInterface = () => {
               />
               <button
                 onClick={sendMessage}
-                className="bg-[#26A37E] text-white px-4 py-2 rounded text-sm md:text-base hover:bg-white hover:text-black border transition"
+                className="text-white bg-[#26A37E] hover:bg-[#1e8d6c] p-2 rounded-full transition"
               >
                 <AiOutlineSend size={20} />
               </button>
