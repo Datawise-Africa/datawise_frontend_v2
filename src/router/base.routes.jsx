@@ -7,7 +7,7 @@ import Jobs from "../pages/jobs/Jobs";
 import Partners from "../pages/partners/Partners";
 import PartnerForm from "../pages/partners/partnersform";
 import GPTInterface from "../pages/tools/GPTinterface";
-
+import PrivacyPolicy from "../pages/Docs/Privacypolicy";
 
 const baseRoutes = [
     {
@@ -41,6 +41,10 @@ const baseRoutes = [
     {
         path: "/become-a-partner",
         element: <PartnerForm/>
+    },
+    {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy/>
     },
     {
         path: "/partners",
