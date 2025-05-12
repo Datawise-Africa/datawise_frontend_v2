@@ -3,8 +3,7 @@ import React from "react";
 const PrivacyPolicy = () => {
   return (
     <div className="bg-white text-gray-800 px-6 md:px-20 py-12 max-w-5xl mx-auto">
-      <h1 className="text-4xl font-bold text-blue-800 mb-4">Datawise Africa Privacy Policy</h1>
-      <p className="text-sm text-gray-500 mb-6">Effective Date: May 9, 2025</p>
+      <p className="text-sm mt-12 text-gray-500 mb-6">Effective Date: May 9, 2025</p>
       <p className="mb-4">
         Welcome, and thank you for your interest in <strong>Datawise Africa</strong> (“Datawise”, “we”, or “us”), and our website(s), products, services, and applications (collectively, the “Services”).
         This Privacy Policy is meant to help you understand what information we collect, why we collect it, and how you can update, manage, export, and delete your information.
