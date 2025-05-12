@@ -96,9 +96,9 @@ const Footer = () => {
               </div>
               <div className="flex flex-col space-y-2">
                 <Link to="/jobs" className="hover:text-white transition-colors">Jobs</Link>
-                <Link to="#" className="hover:text-white transition-colors">Blogs</Link>
-                <Link to="#" className="hover:text-white transition-colors">Contact Us</Link>
-                <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <Link to="https://medium.com/@datawiseafrica" className="hover:text-white transition-colors">Blogs</Link>
+                <Link to="/contact-us" className="hover:text-white transition-colors">Contact Us</Link>
+                <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               </div>
             </div>
           </div>

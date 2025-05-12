@@ -51,6 +51,7 @@ const Header = () => {
   return (
     <div className="bg-[#0F2542] text-[#E5E7EB]">
       <div
+      id="navbar"
         className={`fixed top-0 left-0 w-full z-50 lg:backdrop-blur-sm ${
           openNavigation ? "bg-[#0F2542]" : "bg-[#0F2542]/90 backdrop-blur-sm"
         }`}
