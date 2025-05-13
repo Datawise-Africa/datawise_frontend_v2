@@ -33,8 +33,7 @@ const WhatWeDo = () => {
           <div className="flex-1 text-center lg:text-left px-2">
             <h4 className="text-xl text-[#DD8823] font-semiboldmb-2 ">Data</h4>
             <p className="text-base mt-1">
-              We’re building Africa’s largest ethical dataset repository. From languages to agriculture and healthcare, our data powers solutions for real-world challenges.
-            </p>
+            We collect, clean, and structure data that reflects African realities—languages, farms, clinics, courts, classrooms. Our mission is simple: to make African data accessible, ethical, and useful for the communities that need it most. We’re building Africa’s largest ethical dataset repository and helping clients create custom datasets that power real-world solutions across sectors like agriculture, education, justice, and healthcare.            </p>
           </div>
         </div>
 
