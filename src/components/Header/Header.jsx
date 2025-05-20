@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import datawise_logo from "/assets/datawise-logo-dark.png";
-// import dwise_logo from "/assets/datawise-logo-icon-dark.svg";
 import { navigation } from "../../constants";
 
 const Header = () => {
@@ -22,7 +21,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef]);
+  }, []);
 
   const toggleNavigation = () => {
     setOpenNavigation(!openNavigation);
@@ -31,8 +30,8 @@ const Header = () => {
   const handleNavItemClick = (e, item) => {
     e.preventDefault();
 
-    if (item.hasDropdown) {
-      setIsNavItemDropdown(!isNavItemDropdown);
+    if (item.dropdownItems?.length > 0) {
+      setIsNavItemDropdown((prev) => !prev);
     } else {
       navigate(item.url);
       if (openNavigation) {
@@ -49,11 +48,10 @@ const Header = () => {
     );
   };
 
-  // max-w-7xl mx-auto
-
   return (
     <div className="bg-[#0F2542] text-[#E5E7EB]">
       <div
+      id="navbar"
         className={`fixed top-0 left-0 w-full z-50 lg:backdrop-blur-sm ${
           openNavigation ? "bg-[#0F2542]" : "bg-[#0F2542]/90 backdrop-blur-sm"
         }`}
@@ -109,14 +107,15 @@ const Header = () => {
           </button>
 
           {/* Navigation and button container */}
-          <div className={`
-            ${openNavigation ? "flex" : "hidden"} 
-            lg:flex lg:items-center lg:justify-between lg:flex-1
-            fixed lg:static top-[4rem] left-0 right-0 bottom-0 
-            bg-[#0F2542] lg:bg-transparent
-            flex-col lg:flex-row
-            pt-8 lg:pt-0
-          `}>
+          <div
+            className={`${
+              openNavigation ? "flex" : "hidden"
+            } lg:flex lg:items-center lg:justify-between lg:flex-1
+              fixed lg:static top-[4rem] left-0 right-0 bottom-0 
+              bg-[#0F2542] lg:bg-transparent
+              flex-col lg:flex-row
+              pt-8 lg:pt-0`}
+          >
             <nav className="flex flex-col lg:flex-row items-center lg:mx-auto">
               <div
                 className="relative z-2 flex flex-col items-center lg:flex-row"
@@ -124,17 +123,49 @@ const Header = () => {
               >
                 {navigation.map((item) => (
                   <div key={item.id} className="relative group mb-4 lg:mb-0">
-                    <Link
-                      to={item.url}
-                      className={`text-white px-4 py-2 ${
+                    <button
+                      onClick={(e) => handleNavItemClick(e, item)}
+                      className={`flex items-center gap-1 text-white px-4 py-2 transition-colors duration-200 ${
                         item.url === pathname
                           ? "text-white"
                           : "text-gray-400 hover:text-gray-300"
-                      } group-hover:text-gray-300`}
-                      onClick={(e) => handleNavItemClick(e, item)}
+                      }`}
                     >
                       {item.title}
-                    </Link>
+                      {item.dropdownItems?.length > 0 && (
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            isNavItemDropdown ? "rotate-180" : "rotate-0"
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      )}
+                    </button>
+
+                    {item.dropdownItems?.length > 0 &&
+                      isNavItemDropdown &&
+                      item.title === "Tools" && (
+                        <div className="absolute left-0 mt-2 min-w-[8rem]  bg-[#1E3A5F] rounded-lg shadow-lg z-50">
+                          {item.dropdownItems.map((subItem, idx) => (
+                            <Link
+                              key={idx}
+                              to={subItem.url}
+                              className="block px-4 py-2 text-sm text-white hover:bg-[#2D4B6A] transition-colors duration-150"
+                            >
+                              {subItem.title}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
                   </div>
                 ))}
               </div>

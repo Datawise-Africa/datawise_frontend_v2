@@ -1,13 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { AiOutlineSend } from "react-icons/ai";
 import ReactMarkdown from "react-markdown";
+import collapseIcon from "/assets/collapseicon.jpg";
+import chaticon from "/assets/chatbubble.png";
 import apiService from "../../services/apiService";
-
-import {
-  AiOutlineSend,
-  AiOutlineClose,
-  AiOutlineDelete,
-  AiOutlineMessage,
-} from "react-icons/ai";
 
 const ChatInterface = () => {
   const [messages, setMessages] = useState([
@@ -15,26 +11,46 @@ const ChatInterface = () => {
       role: "ai",
       content:
         "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+      timestamp: new Date().toISOString(),
     },
   ]);
-
   const [input, setInput] = useState("");
   const [searchHistory, setSearchHistory] = useState([]);
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [loading, setLoading] = useState(false);
-
   const chatContainerRef = useRef(null);
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  useEffect(() => {
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      setNavbarHeight(navbar.offsetHeight);
+    }
+  }, []);
+  useEffect(() => {
+    const savedHistory = localStorage.getItem("searchHistory");
+    if (savedHistory) {
+      setSearchHistory(JSON.parse(savedHistory));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
 
   useEffect(() => {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages]);
 
+  const formatTime = (isoString) => {
+    const date = new Date(isoString);
+    return `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
+  };
+
   const sendMessage = async () => {
-    setLoading(true);
     if (!input.trim()) return;
+    setLoading(true);
 
     const userMessage = {
       role: "user",
@@ -42,18 +58,9 @@ const ChatInterface = () => {
       timestamp: new Date().toISOString(),
     };
 
-    // Add user message to state
     setMessages((prev) => [...prev, userMessage]);
     setSearchHistory((prev) => [...prev, input]);
     setInput("");
-
-    // Auto-scroll after user message
-    setTimeout(() => {
-      if (chatContainerRef.current) {
-        chatContainerRef.current.scrollTop =
-          chatContainerRef.current.scrollHeight;
-      }
-    }, 100);
 
     try {
       const response = await apiService.post("/llm/llama3/", {
@@ -67,16 +74,7 @@ const ChatInterface = () => {
       };
 
       setMessages((prev) => [...prev, aiMessage]);
-      setLoading(false);
-      // Scroll to bottom after response
-      setTimeout(() => {
-        if (chatContainerRef.current) {
-          chatContainerRef.current.scrollTop =
-            chatContainerRef.current.scrollHeight;
-        }
-      }, 100);
     } catch (error) {
-      setLoading(false);
       console.error("Error fetching AI response:", error);
       const errorMessage = {
         role: "ai",
@@ -84,20 +82,18 @@ const ChatInterface = () => {
         timestamp: new Date().toISOString(),
       };
       setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const formatTime = (isoString) => {
-    const date = new Date(isoString);
-    return `${date.getHours()}:${String(date.getMinutes()).padStart(2, "0")}`;
-  };
-
   const deleteHistoryItem = (index) => {
-    setSearchHistory((prev) => prev.filter((_, i) => i !== index));
+    const updated = searchHistory.filter((_, i) => i !== index);
+    setSearchHistory(updated);
   };
 
-  const closeSidebar = () => {
-    setSidebarVisible(false);
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
   };
 
   const newChat = () => {
@@ -113,91 +109,85 @@ const ChatInterface = () => {
   };
 
   return (
+    
     <div
-      className="flex flex-col mt-32 text-sm md:text-base"
-      style={{ height: "calc(100vh - 8rem)" }}
+      className="flex h-screen overflow-hidden"
+      style={{
+        marginTop: `${navbarHeight}px`,
+        height: `calc(100vh - ${navbarHeight}px)`,
+      }}
     >
-      {/* Header */}
-      <div className="bg-white px-4 py-2 border-b shadow-sm flex items-center justify-between">
-        <div className="flex-1 text-center">
-          <h1 className="text-lg md:text-xl font-bold text-[#1e293b]">
-            Datawise LLM
-          </h1>
-          <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-snug">
-            Ask questions about Kenyan news and local journalism from 2021 to
-            2024. This assistant is trained on verified articles from trusted
-            Kenyan sources.
-          </p>
-        </div>
-        <button onClick={newChat} className="text-blue-500 text-xl ml-4">
-          <AiOutlineMessage />
-        </button>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex flex-1 overflow-hidden bg-gray-50">
-        {/* Sidebar */}
-        {sidebarVisible && (
-          <aside className="bg-white w-56 sm:w-64 h-full flex-shrink-0 flex flex-col border-r hidden lg:flex">
-            <div className="px-3 py-2 border-b font-semibold flex justify-between items-center">
-              <span>Search History</span>
-              <button
-                className="text-xs text-blue-500"
-                onClick={() => setSearchHistory([])}
+      {/* Sidebar */}
+      <div className={`w-64 mt-12 bg-white text-black ${sidebarVisible ? "block" : "hidden"}`}>
+      <div className="flex flex-col h-full">
+          <div className="flex justify-between items-center p-4">
+            <img
+              src={collapseIcon}
+              alt="Toggle Sidebar"
+              className="cursor-pointer w-6 h-6"
+              onClick={toggleSidebar}
+            />
+            <h3>Recent Searches</h3>
+            <img
+              src={chaticon}
+              alt="New Chat"
+              className="cursor-pointer w-6 h-6"
+              onClick={newChat}
+            />
+          </div>
+          <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-2">
+            {searchHistory.map((query, index) => (
+              <div
+                key={index}
+                className="flex justify-between items-center bg-gray-100 px-3 py-1 rounded-md text-sm"
               >
-                Clear All
-              </button>
-              <button onClick={closeSidebar} className="text-red-500 text-xl">
-                <AiOutlineClose />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1">
-              {searchHistory.length === 0 ? (
-                <p className="text-gray-400 text-sm">No searches yet.</p>
-              ) : (
-                searchHistory.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center text-sm bg-gray-100 rounded px-2 py-1 break-words"
-                  >
-                    {item}
-                    <button
-                      onClick={() => deleteHistoryItem(index)}
-                      className="text-red-500 text-xs"
-                    >
-                      <AiOutlineDelete />
-                    </button>
-                  </div>
-                ))
-              )}
-            </div>
-          </aside>
-        )}
-
-        {/* Chat Section */}
-        <div className="flex flex-col flex-1 relative">
-          {/* Messages */}
+                <span className="truncate max-w-[80%]">{query}</span>
+                <button
+                  onClick={() => deleteHistoryItem(index)}
+                  className="text-red-500 font-bold ml-2"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+  
+      {/* Main Chat Area */}
+      <div className="flex-1 flex flex-col h-full">
+        {/* Header */}
+        <div className="bg-white mt-12 shadow px-4 py-6">
+          <div className="text-center">
+            <h1 className="text-xl sm:text-2xl font-bold text-[#1e293b]">Datawise LLM</h1>
+            <p className="text-gray-600 text-sm max-w-2xl mx-auto leading-snug">
+              Ask about Kenyan news and journalism from 2021 to 2024. This assistant is trained on
+              verified local news sources.
+            </p>
+          </div>
+        </div>
+  
+        {/* Chat area with sticky input */}
+        <div className="flex-1 flex flex-col relative bg-gray-50 overflow-hidden">
+          {/* Scrollable chat area */}
           <div
             ref={chatContainerRef}
-            className="flex-1 overflow-y-auto px-4 pt-4 pb-2"
+            className="flex-1 overflow-y-auto px-4 pt-4 pb-24 "
           >
             <div className="w-full max-w-3xl mx-auto space-y-2">
               {messages.map((msg, index) => {
                 const isUser = msg.role === "user";
-
                 return (
-                  <div key={index} className="flex flex-col -mt-1">
-                    {msg.timestamp && (
-                      <span
-                        className={`text-xs text-gray-500 mb-[2px] ${
-                          isUser ? "text-right mr-2" : "text-left ml-2"
-                        }`}
-                      >
-                        {isUser ? "You" : "AI"} • {formatTime(msg.timestamp)}
-                      </span>
-                    )}
+                  <div key={index} className="flex flex-col">
+                    <span
+                      className={`text-xs text-gray-500 mb-[2px] ${
+                        isUser ? "text-right mr-2" : "text-left ml-2"
+                      }`}
+                    >
+                      {isUser ? "You" : "AI"} • {formatTime(msg.timestamp)}
+                    </span>
                     <div
-                      className={`px-4 py-2 rounded-2xl shadow-md  max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${
+                      className={`px-4 py-2 rounded-2xl shadow-md max-w-[75%] sm:max-w-md md:max-w-lg break-words leading-snug ${
                         isUser
                           ? "ml-auto bg-[#26A37E] text-white rounded-br-none"
                           : "mr-auto bg-gray-200 text-gray-800 rounded-bl-none"
@@ -209,24 +199,24 @@ const ChatInterface = () => {
                 );
               })}
               {loading && (
-                <div className="flex flex-col -mt-1">
+                <div className="flex flex-col">
                   <span className="text-xs text-gray-500 mb-[2px] text-left ml-2">
                     AI • typing...
                   </span>
                   <div className="px-4 py-2 rounded-2xl shadow-md max-w-[50%] text-[#26A37E] text-left rounded-bl-none">
                     <div className="flex space-x-1 items-center justify-start">
                       <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce"></div>
-                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce [animation-delay:0.2s]"></div>
-                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce [animation-delay:0.4s]"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce delay-150"></div>
+                      <div className="w-2 h-2 rounded-full bg-[#26A37E] animate-bounce delay-300"></div>
                     </div>
                   </div>
                 </div>
               )}
             </div>
           </div>
-
-          {/* Input */}
-          <div className="w-full bg-white px-4 py-2 flex-shrink-0">
+  
+          {/* Fixed Input Field */}
+          <div className="sticky bottom-0 w-full bg-white px-4 py-2 border-t border-gray-300 z-10">
             <div className="max-w-3xl mx-auto flex items-center gap-2 bg-white border border-gray-300 rounded-full px-3 py-2 shadow-sm focus-within:ring-2 focus-within:ring-blue-400">
               <input
                 type="text"
@@ -235,9 +225,7 @@ const ChatInterface = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    sendMessage();
-                  }
+                  if (e.key === "Enter") sendMessage();
                 }}
               />
               <button
@@ -250,8 +238,11 @@ const ChatInterface = () => {
           </div>
         </div>
       </div>
+      
     </div>
+    
   );
+  
 };
 
 export default ChatInterface;
