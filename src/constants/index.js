@@ -7,18 +7,12 @@ export const navigation = [
   },
   {
     id: "1",
-    title: "About Us",
-    url: "/about-us",
-    dropdownItems: [],
-  },
-  {
-    id: "2",
     title: "Projects",
     url: "/projects",
     dropdownItems: [],
   },
   {
-    id: "3",
+    id: "2",
     title: "Tools",
     url: "/tools",
     dropdownItems: [
@@ -26,9 +20,15 @@ export const navigation = [
     ],
   },
   {
-    id: "4",
+    id: "3",
     title: "Datalab",
     url: "/datalab",
+    dropdownItems: [],
+  },
+  {
+    id: "4",
+    title: "About Us",
+    url: "/about-us",
     dropdownItems: [],
   },
   {
