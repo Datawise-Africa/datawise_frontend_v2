@@ -92,16 +92,6 @@ export const teamMembers = [
   },
   {
     id: "3",
-    name: "Virginia Wanjiru",
-    title: "Software Engineer",
-    image: "/assets/teamMembers/virginia.jpg",
-    description: "",
-    linkedin_url: "https://www.linkedin.com/in/virginia-wanjiru-0852641b0/",
-    twitter_url: "",
-    email: "virginia@datawise.africa"
-  },
-  {
-    id: "4",
     name: "Winny C. Sigilai",
     title: "Software Engineer",
     image: "/assets/teamMembers/winny.jpg",
