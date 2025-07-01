@@ -100,6 +100,16 @@ export const teamMembers = [
     twitter_url: "",
     email: "winny@datawise.africa"
   },
+  {
+    id: "4",
+    name: "Felix Orinda",
+    title: "Software Engineer",
+    image: "/assets/teamMembers/forinda.jpg",
+    description: "",
+    linkedin_url: "https://www.linkedin.com/in/felixorinda/",
+    twitter_url: "",
+    email: "felix@datawise.africa"
+  },
 ];
 
 // export const REACT_PUBLIC_API_HOST = "http://localhost:8000"
