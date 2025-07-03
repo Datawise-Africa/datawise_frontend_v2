@@ -79,7 +79,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                Magharibi Place, GA11 Nairobi West, Kenya
+                Highway Heights, Marcus Garvey Rd, Kilimani, Nairobi, Kenya
               </p>
             </div>
           </div>

@@ -60,7 +60,7 @@ const ContactUs = () => {
               <div className="ml-4">
                 <p className="text-lg font-semibold text-gray-900">Office Location:</p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  Magharibi Place, GAI1 Nairobi West, Kenya
+                  Highway Heights, Marcus Garvey Rd, Kilimani, Nairobi, Kenya
                 </p>
               </div>
             </div>
