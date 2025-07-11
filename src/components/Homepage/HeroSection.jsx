@@ -1,9 +1,10 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-[90vh] bg-cover bg-center bg-no-repeat"
+      className="relative flex items-center justify-center overflow-hidden pt-24 md:pt-0 min-h-[90vh] bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage:
           "url('/115d86f6c670c9128d8eb6151d1221f54e24603a-dwise-2.jpg?w=1920&h=1080&fit=crop&crop=center')",
@@ -28,10 +29,10 @@ const Hero = () => {
               Applied Data and AI research for Africa, building tools,
               infrastructure, and local research leadership.
             </p>
-            <button className="bg-emerald-600 hover:bg-emerald-700  text-white font-semibold px-8 py-4 rounded-lg flex items-center transition-colors duration-200 text-lg shadow-lg">
+            <Link to={'/about-us'} className="w-fit bg-emerald-600 hover:bg-emerald-700  text-white font-semibold px-8 py-4 rounded-lg flex items-center transition-colors duration-200 text-lg shadow-lg">
               Learn More
               <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
+            </Link>
           </div>
 
           {/* Isometric Illustration - Hidden on mobile */}

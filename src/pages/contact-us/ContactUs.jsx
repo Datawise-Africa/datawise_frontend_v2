@@ -75,7 +75,7 @@ const ContactUs = () => {
   });
 
   return (
-    <div className="container mx-auto mt-10 lg:mt-0 px-6 py-12 space-y-12">
+    <div className="container mx-auto pt-24 md:pt-0 lg:mt-0 px-6 py-12 space-y-12">
       {/* Hero Section */}
       <section className="mt-10 lg:mt-0 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left">
