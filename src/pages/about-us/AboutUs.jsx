@@ -6,7 +6,7 @@ import ourvalues3 from "/assets/jobs/Innovation.png";
 
 const AboutUs = () => {
   return (
-    <div className="container mx-auto w-full flex flex-col items-center p-6 space-y-8">
+    <div className="container mx-auto w-full flex flex-col items-center p-6 pt-24 md:pt-0 space-y-8">
       
       {/* Hero Section */}
       <section className="pt-16 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">

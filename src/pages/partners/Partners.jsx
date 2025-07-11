@@ -27,7 +27,7 @@ const PartnersPage = () => {
   }
 
   return (
-    <div className="container mx-auto w-full flex flex-col items-center p-6 mt-12 space-y-16">
+    <div className="container mx-auto pt-24 md:pt-0 w-full flex flex-col items-center p-6 mt-12 space-y-16">
       {/* Hero Section */}
       <section className="w-full flex flex-col md:flex-row items-center justify-between bg-[#FFFFFF] px-4 sm:px-6 md:px-16 py-10 rounded-2xl gap-6 md:gap-12 lg:gap-16">
         <div className="md:w-1/2 space-y-4 text-center md:text-left">

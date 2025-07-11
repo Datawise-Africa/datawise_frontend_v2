@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 const Hero = () => {
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-[90vh] bg-cover bg-center bg-no-repeat"
+      className="relative flex items-center justify-center overflow-hidden pt-24 md:pt-0 min-h-[90vh] bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage:
           "url('/115d86f6c670c9128d8eb6151d1221f54e24603a-dwise-2.jpg?w=1920&h=1080&fit=crop&crop=center')",
