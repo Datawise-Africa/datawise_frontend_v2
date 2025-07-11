@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -28,10 +29,10 @@ const Hero = () => {
               Applied Data and AI research for Africa, building tools,
               infrastructure, and local research leadership.
             </p>
-            <button className="bg-emerald-600 hover:bg-emerald-700  text-white font-semibold px-8 py-4 rounded-lg flex items-center transition-colors duration-200 text-lg shadow-lg">
+            <Link to={'/about-us'} className="w-fit bg-emerald-600 hover:bg-emerald-700  text-white font-semibold px-8 py-4 rounded-lg flex items-center transition-colors duration-200 text-lg shadow-lg">
               Learn More
               <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
+            </Link>
           </div>
 
           {/* Isometric Illustration - Hidden on mobile */}
