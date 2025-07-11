@@ -9,7 +9,7 @@ const Projects = () => {
   // const navigate = useNavigate();
 
   return (
-    <div className="container mx-auto mt-10 md:mt-5 px-4 sm:px-6 py-8 sm:py-12 space-y-12">
+    <div className="container mx-auto pt-24 md:pt-0 mt-10 md:mt-5 px-4 sm:px-6 py-8 sm:py-12 space-y-12">
       {/* Hero Section */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="mt-10 lg:mt-0 text-center md:text-left">
