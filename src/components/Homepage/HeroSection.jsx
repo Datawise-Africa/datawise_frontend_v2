@@ -1,181 +1,52 @@
-import { useState, useEffect } from "react"
-/* eslint-disable no-unused-vars */
-import { motion, AnimatePresence } from "framer-motion"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-const slides = [
-  {
-    title: "We are",
-    highlight: "Data-Informed",
-    description:
-      "High-quality, ethical data is the foundation of progress. We collect, curate, and analyze datasets that empower decision-makers across Africa.",
-    image: "/assets/homepage/greenrafiki.svg",
-    highlightColor: "text-[#26A37E]",
-  },
-  {
-    title: "We are",
-    highlight: "Building the Future",
-    description:
-      "From Infrastructure to AI, we are pioneering the digital backbone of an Africa that leads in data and innovation.",
-    image: "/assets/homepage/pana.svg",
-    highlightColor: "text-[#DD8823]",
-  },
-  {
-    title: "We are",
-    highlight: "Community-Centric",
-    description:
-      "Our work is driven by the needs of African communities, ensuring that our research and innovations serve real people in meaningful ways.",
-    image: "/assets/homepage/pinkrafiki.svg",
-    highlightColor: "text-[#EE3481]",
-  },
-  {
-    title: "We are",
-    highlight: "AI-Powered",
-    description:
-      "AI has the potential to reshape Africa's future. We develop ethical, community-focused AI solutions tailored to local needs.",
-    image: "/assets/homepage/bluerafiki.svg",
-    highlightColor: "text-[#1FB5DD]",
-  },
-]
-
-const variants = {
-  enter: (direction) => {
-    return {
-      x: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    }
-  },
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction) => {
-    return {
-      x: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    }
-  },
-}
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
-
-  // Move to the previous slide
-  const prevSlide = () => {
-    setDirection(-1)
-    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
-  }
-
-  // Move to the next slide
-  const nextSlide = () => {
-    setDirection(1)
-    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-  }
-
-  // Go to a specific slide
-  const goToSlide = (index) => {
-    setDirection(index > currentIndex ? 1 : -1)
-    setCurrentIndex(index)
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide()
-    }, 10000)
-
-    return () => clearInterval(interval)
-  }, [currentIndex])
-
   return (
-    <div className="relative w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[600px] overflow-hidden">
-      <AnimatePresence initial={false} custom={direction} mode="wait">
-        <motion.div
-          key={currentIndex}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
-            opacity: { duration: 0.2 },
-          }}
-          className="absolute inset-0 w-full h-full"
-        >
-          <div className="container mx-auto h-full px-4 sm:px-6 md:px-8 lg:px-16 py-10">
-            <div className="flex flex-col lg:flex-row items-center justify-between h-full gap-8 lg:gap-12">
-              {/* Text Section */}
-              <div className="w-full lg:w-1/2 text-center lg:text-left">
-                <h1 className="text-5xl lora-font text-gray-900">
-                  {slides[currentIndex].title}
-                </h1>
-                <span
-                  className={`block text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2 lora-font ${slides[currentIndex].highlightColor}`}
+    <section
+      className="relative flex items-center justify-center overflow-hidden min-h-[60vh] lg:min-h-[90vh] bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('/115d86f6c670c9128d8eb6151d1221f54e24603a-dwise-2.jpg?w=1920&h=1080&fit=crop&crop=center')",
+      }}
+    >
+      {/* Gradient Overlay from top-left to bottom-right */}
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-900 via-teal-800/80 to-blue-500/30"></div>
 
-                >
-                  {slides[currentIndex].highlight}
-                </span>
-                <p className="mt-4 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-xl mx-auto lg:mx-0">
-                  {slides[currentIndex].description}
-                </p>
-              </div>
-
-              {/* Image Section */}
-              <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                <motion.img
-                  src={slides[currentIndex].image}
-                  alt={slides[currentIndex].highlight}
-                  className="w-[70%] sm:w-[60%] md:w-[50%] lg:w-[80%] h-auto object-contain"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                />
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-2 sm:left-4 md:left-6 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 sm:p-3 md:p-4 shadow-md z-10 transition-all duration-200"
-        aria-label="Previous slide"
-      >
-        <FaChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-gray-700" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-2 sm:right-4 md:right-6 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 sm:p-3 md:p-4 shadow-md z-10 transition-all duration-200"
-        aria-label="Next slide"
-      >
-        <FaChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-gray-700" />
-      </button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-10">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className="focus:outline-none"
-            aria-label={`Go to slide ${index + 1}`}
-          >
-            <motion.div
-              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full ${
-                index === currentIndex ? "bg-gray-800" : "bg-gray-400 hover:bg-gray-600"
-              }`}
-              initial={false}
-              animate={index === currentIndex ? { scale: 1.2, opacity: 1 } : { scale: 1, opacity: 0.7 }}
-              transition={{ duration: 0.2 }}
-            />
-          </button>
-        ))}
+      {/* Background Pattern Overlay */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=60 height=60 viewBox=0 0 60 60 xmlns=http://www.w3.org/2000/svg%3E%3Cg fill=none fillRule=evenodd%3E%3Cg fill=%23ffffff fillOpacity=0.1%3E%3Ccircle cx=7 cy=7 r=1/%3E%3Ccircle cx=27 cy=7 r=1/%3E%3Ccircle cx=47 cy=7 r=1/%3E%3Ccircle cx=7 cy=27 r=1/%3E%3Ccircle cx=27 cy=27 r=1/%3E%3Ccircle cx=47 cy=27 r=1/%3E%3Ccircle cx=7 cy=47 r=1/%3E%3Ccircle cx=27 cy=47 r=1/%3E%3Ccircle cx=47 cy=47 r=1/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
       </div>
-    </div>
-  )
-}
 
-export default Hero
+      {/* Content */}
+      <div className="container z-10 mx-auto px-4 lg:px-8 py-12 lg:py-24 h-full">
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+          <div className="space-y-6 lg:space-y-8">
+            <h1 className="text-4xl font-bold font-lora leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white drop-shadow-lg">
+              Driving Africa's Data and AI Revolution
+            </h1>
+            <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
+              Applied Data and AI research for Africa, building tools,
+              infrastructure, and local research leadership.
+            </p>
+            <button className="bg-emerald-600 hover:bg-emerald-700  text-white font-semibold px-8 py-4 rounded-lg flex items-center transition-colors duration-200 text-lg shadow-lg">
+              Learn More
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </button>
+          </div>
 
+          {/* Isometric Illustration - Hidden on mobile */}
+          <div className="hidden lg:flex justify-center items-center">
+            {/* <img
+              src="/hero-svg-illustration.svg?w=600&h=500&fit=crop&crop=center"
+              alt="Data and AI illustration"
+              className="w-full h-auto max-w-lg xl:max-w-xl rounded-lg shadow-2xl"
+              priority
+            /> */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

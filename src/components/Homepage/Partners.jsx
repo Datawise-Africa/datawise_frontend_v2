@@ -21,7 +21,7 @@ const Partners = () => {
         <h1 className="text-2xl sm:text-3xl font-serif text-gray-900 text-center mt-2">
           Collaborating for a Smarter Africa
         </h1>
-        <div className="flex justify-center items-center flex-wrap gap-8 sm:gap-12 mt-8">
+        <div className="justify-center items-center grid grid-cols-2 place-items-center md:grid-cols-4 sm:gap-12 mt-8">
           {partners.map((partner, index) => (
             <img
               key={index}
