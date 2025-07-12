@@ -73,7 +73,7 @@ export const teamMembers = [
     id: "1",
     name: "Brian Odhiambo",
     title: "Engineering Lead",
-    image: "/assets/teamMembers/brian.jpg",
+    image: "/assets/teamMembers/brianp.jpg",
     description:
       "Brian is a data scientist at Datawise. He has a BSc in Information Technology from Zetech University (Nairobi, Kenya). Having keen interest in machine learning, Brian has participated in building models for different use cases including but not limited to recommendation systems, computer vision projects and NLP. Brian is also well-versed in software engineering majorly focusing on backend engineering.",
     linkedin_url: "https://www.linkedin.com/in/brian-odhiambo-6b036b181",
