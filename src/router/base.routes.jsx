@@ -8,6 +8,7 @@ import Partners from "../pages/partners/Partners";
 import PartnerForm from "../pages/partners/partnersform";
 import GPTInterface from "../pages/tools/GPTinterface";
 import PrivacyPolicy from "../pages/Docs/Privacypolicy";
+import SheriaAI from "../pages/tools/SheriaAI";
 
 const baseRoutes = [
     {
@@ -21,6 +22,10 @@ const baseRoutes = [
     {
         path: "/tools/GPT",
         element: <GPTInterface/>,
+    },
+    {
+        path: "/tools/sheria-ai",
+        element: <SheriaAI/>,
     },
     {
         path: "/datalab",
