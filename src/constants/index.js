@@ -16,7 +16,8 @@ export const navigation = [
     title: "Tools",
     url: "/tools",
     dropdownItems: [
-      {title: "GPT", url:"/tools/GPT"}
+      {title: "JOURN-GPT", url:"/tools/GPT"},
+      {title: "SHERIA-AI", url:"/tools/sheria-ai"}
     ],
   },
   {
