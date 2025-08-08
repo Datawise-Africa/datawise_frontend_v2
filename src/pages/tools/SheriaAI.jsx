@@ -5,12 +5,12 @@ import collapseIcon from "/assets/collapseicon.jpg";
 import chaticon from "/assets/chatbubble.png";
 import apiService from "../../services/apiService";
 
-const ChatInterface = () => {
+const SheriaInterface = () => {
   const [messages, setMessages] = useState([
     {
       role: "ai",
       content:
-        "Hi there I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+        "Hello!Ask Sheria AI anything about Kenyan law,search acts, explore cases, or get simple explanations",
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -63,7 +63,7 @@ const ChatInterface = () => {
     setInput("");
 
     try {
-      const response = await apiService.post("/gpt/local-journ/", {
+      const response = await apiService.post("/gpt/sheria-ai/", {
         query: userMessage.content,
       });
 
@@ -101,7 +101,7 @@ const ChatInterface = () => {
       {
         role: "ai",
         content:
-          "Hi there! I can help you explore news and journalism in Kenya between 2021 and 2024. What would you like to know?",
+       " Hello! Ask Sheria AI anything about Kenyan law, search acts, explore cases, or get simple explanations",
         timestamp: new Date().toISOString(),
       },
     ]);
@@ -159,10 +159,9 @@ const ChatInterface = () => {
         {/* Header */}
         <div className="bg-white mt-12 shadow px-4 py-6">
           <div className="text-center">
-            <h1 className="text-xl sm:text-2xl font-bold text-[#1e293b]">JOURN-GPT </h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-[#1e293b]">SHERIA AI - Your Legal Assistant</h1>
             <p className="text-gray-600 text-sm max-w-2xl mx-auto leading-snug">
-              Ask about Kenyan news and journalism from 2021 to 2024. This assistant is trained on
-              verified local news sources.
+            Your smart legal companion for searching Kenyan laws, getting case insights, and understanding legal information with ease
             </p>
           </div>
         </div>
@@ -245,4 +244,4 @@ const ChatInterface = () => {
   
 };
 
-export default ChatInterface;
+export default SheriaInterface;

@@ -16,7 +16,8 @@ export const navigation = [
     title: "Tools",
     url: "/tools",
     dropdownItems: [
-      {title: "GPT", url:"/tools/GPT"}
+      {title: "JOURN-GPT", url:"/tools/GPT"},
+      {title: "SHERIA-AI", url:"/tools/sheria-ai"}
     ],
   },
   {
@@ -113,7 +114,7 @@ export const teamMembers = [
 ];
 
 // export const REACT_PUBLIC_API_HOST = "http://localhost:8000"
-export const REACT_PUBLIC_API_HOST = "https://backend.datawiseafrica.com"
+export const REACT_PUBLIC_API_HOST = "https://gpt.datawiseafrica.com"
 
 // const baseRoutes = [
 //   { path: "/" },
