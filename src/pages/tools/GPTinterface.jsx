@@ -63,7 +63,7 @@ const ChatInterface = () => {
     setInput("");
 
     try {
-      const response = await apiService.post("/llm/llama3/", {
+      const response = await apiService.post("/gpt/local-journ/", {
         query: userMessage.content,
       });
 
