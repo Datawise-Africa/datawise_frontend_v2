@@ -111,6 +111,16 @@ export const teamMembers = [
     twitter_url: "",
     email: "felix@datawise.africa"
   },
+    {
+    id: "5",
+    name: "Brandon Ruoro",
+    title: "Design Consultant",
+    image: "https://ca.slack-edge.com/T06ASTVPVMH-U096PGHF69Y-12f77e3a3e5c-512",
+    description: "",
+    linkedin_url: "https://www.linkedin.com/in/ruorobee/",
+    twitter_url: "",
+    email: "__"
+  },
 ];
 
 // export const REACT_PUBLIC_API_HOST = "http://localhost:8000"
