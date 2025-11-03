@@ -45,7 +45,7 @@ const baseRoutes = [
         element: <Jobs />,
     },
     {
-        path: "/job-description",
+        path: "/job-description/:slug",
         element: <JobDescription  />,
     },
     {

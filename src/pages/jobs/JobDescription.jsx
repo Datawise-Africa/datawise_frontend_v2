@@ -1,18 +1,41 @@
 // src/pages/JobDescription.jsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { PositionContext } from "@/context/PositionContext";
+import { slugify } from "@/utils/slugify";
 
-import list_circle_icon from "/assets/list-circle.svg";
+import { available_positions } from "@/constants";
+import list_circle_icon from "/assets/list-circle.svg"; // <-- fix path
 
 const JobDescription = () => {
-  const {
-    state: { selectedPosition: pos },
-  } = useContext(PositionContext);
+  const { slug } = useParams(); // e.g., "research-analyst-intern"
+  const navigate = useNavigate();
+  const { state, dispatch } = useContext(PositionContext);
+
+  // Load job from slug on mount
+  useEffect(() => {
+    if (!slug) {
+      navigate("/jobs", { replace: true });
+      return;
+    }
+
+    const job = available_positions.find(
+      (pos) => slugify(pos.title) === slug
+    );
+
+    if (job) {
+      dispatch({ type: "SET_POSITION", payload: job });
+    } else {
+      navigate("/jobs", { replace: true });
+    }
+  }, [slug, dispatch, navigate]);
+
+  const pos = state.selectedPosition;
 
   if (!pos) {
     return (
       <div className="container mx-auto py-20 text-center">
-        <p>No job selected.</p>
+        <p>Loading job details...</p>
       </div>
     );
   }
@@ -20,9 +43,8 @@ const JobDescription = () => {
   const applyUrl = "https://airtable.com/appQCD9An8BnqG6J6/pagUSgqnzVrNeORKY/form";
 
   return (
-    <div className="container mx-auto pt-20 px-5 lg:px-15 xl:px-20">
+    <div className="container mx-auto pt-20 px-5 lg:px-16 xl:px-20">
       <section className="max-w-4xl mx-auto">
-        {/* Title */}
         <h1 className="lora-font font-bold text-[40px] leading-[110%] tracking-[-0.02em] text-center mb-8">
           {pos.title}
         </h1>

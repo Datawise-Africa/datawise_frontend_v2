@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { PositionContext } from "@/context/PositionContext";
+import { slugify } from "@/utils/slugify";
 
 import whyus1 from "/assets/jobs/lucide_goal.png";
 import whyus2 from "/assets/jobs/hugeicons_ai-magic.png";
@@ -15,8 +16,9 @@ const Jobs = () => {
   const { dispatch } = useContext(PositionContext);
 
   const handleViewDetails = (position) => {
+    const slug = slugify(position.title); // <-- generate slug
     dispatch({ type: "SET_POSITION", payload: position });
-    navigate("/job-description");
+    navigate(`/job-description/${slug}`); // <-- navigate with slug
   };
 
   return (
@@ -33,7 +35,11 @@ const Jobs = () => {
             decisions in health, education, and governance.
           </p>
           <button
-            onClick={() => document.getElementById("open-positions")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() =>
+              document
+                .getElementById("open-positions")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
             className="flex items-center justify-center gap-2 bg-[#26A37E] text-white font-medium py-2 px-3 rounded-md hover:bg-[#1e8c68] transition duration-300"
           >
             View Open Positions
@@ -45,13 +51,21 @@ const Jobs = () => {
               stroke="currentColor"
               className="size-6"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+              />
             </svg>
           </button>
         </div>
 
         <div className="md:pt-20 lg:pt-0">
-          <img className="w-full max-w-[845px] lg:h-[400.69px]" src={jobs_hero} alt="jobs hero" />
+          <img
+            className="w-full max-w-[845px] lg:h-[400.69px]"
+            src={jobs_hero}
+            alt="jobs hero"
+          />
         </div>
       </section>
 
@@ -64,16 +78,33 @@ const Jobs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 pt-5 gap-5">
             {[
-              { img: whyus1, title: "Impact-Driven Projects", text: "We focus on transformative data solutions…" },
-              { img: whyus2, title: "Commitment to Innovation", text: "We value creativity and innovation…" },
-              { img: whyus3, title: "Collaborative Growth", text: "We foster a collaborative environment…" },
+              {
+                img: whyus1,
+                title: "Impact-Driven Projects",
+                text: "We focus on transformative data solutions…",
+              },
+              {
+                img: whyus2,
+                title: "Commitment to Innovation",
+                text: "We value creativity and innovation…",
+              },
+              {
+                img: whyus3,
+                title: "Collaborative Growth",
+                text: "We foster a collaborative environment…",
+              },
             ].map((c, i) => (
-              <div key={i} className="border border-[#B1E9D1] rounded-md bg-white p-3">
+              <div
+                key={i}
+                className="border border-[#B1E9D1] rounded-md bg-white p-3"
+              >
                 <img src={c.img} alt="" width={40} height={40} />
                 <h3 className="lora-font font-bold text-[22px] leading-[100%] tracking-[-0.02em] pt-2 text-[#26A37E]">
                   {c.title}
                 </h3>
-                <p className="sora-font text-[#0F2542] pt-2 text-left">{c.text}</p>
+                <p className="sora-font text-[#0F2542] pt-2 text-left">
+                  {c.text}
+                </p>
               </div>
             ))}
           </div>
@@ -117,49 +148,59 @@ const Jobs = () => {
           </h2>
 
           {available_positions.length === 0 ? (
-            <p className="pt-4 text-center">No open positions yet</p>
+            <p className="pt-8 text-center text-[#0F2542] text-lg">
+              No open positions yet
+            </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              {available_positions.map((pos) => (
-                <div
-                  key={pos.id}
-                  className="border border-[#B1E9D1] bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition"
-                >
-                  <h3 className="lora-font font-semibold text-[22px] text-[#0F2542]">
-                    {pos.title}
-                  </h3>
-
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="bg-[#E6F4F1] text-[#26A37E] text-xs px-2 py-1 rounded">
-                      {pos.work_period}
-                    </span>
-                    <span className="bg-[#E6F4F1] text-[#26A37E] text-xs px-2 py-1 rounded">
-                      {pos.position}
-                    </span>
-                    <span className="bg-[#E6F4F1] text-[#26A37E] text-xs px-2 py-1 rounded">
-                      {pos.workmode}
-                    </span>
-                  </div>
-
-                  <p className="mt-3 text-[#0F2542] line-clamp-3">{pos.overview}</p>
-
-                  <button
-                    onClick={() => handleViewDetails(pos)}
-                    className="mt-4 flex items-center gap-1 text-[#26A37E] font-medium underline hover:no-underline"
+              {available_positions.map((pos) => {
+                return (
+                  <div
+                    key={pos.id}
+                    className="border border-[#B1E9D1] bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition"
                   >
-                    View Details
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      className="w-4 h-4"
+                    <h3 className="lora-font font-semibold text-[22px] text-[#0F2542]">
+                      {pos.title}
+                    </h3>
+
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      <span className="bg-[#E6F4F1] text-[#26A37E] text-xs px-2 py-1 rounded">
+                        {pos.work_period}
+                      </span>
+                      <span className="bg-[#E6F4F1] text-[#26A37E] text-xs px-2 py-1 rounded">
+                        {pos.position}
+                      </span>
+                      <span className="bg-[#E6F4F1] text-[#26A37E] text-xs px-2 py-1 rounded">
+                        {pos.workmode}
+                      </span>
+                    </div>
+
+                    <p className="mt-3 text-[#0F2542] line-clamp-3">
+                      {pos.overview}
+                    </p>
+
+                    <button
+                      onClick={() => handleViewDetails(pos)}
+                      className="mt-4 flex items-center gap-1 text-[#26A37E] font-medium underline hover:no-underline"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              ))}
+                      View Details
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
