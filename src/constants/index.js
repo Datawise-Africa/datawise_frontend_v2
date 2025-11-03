@@ -140,7 +140,6 @@ export const bonus_qualifications = [
 export const what_we_offer = [
   "A chance to turn data into ideas that shape Africa's digital future.",
   "Work alongside brilliant engineers, researchers,and storytellers.",
-  "Direct collaboration with the Founder and Head of Research.",
   "Freedom to explore, learn, and publish your work.",
   "Competitive compensation based on experience and potential.",
   "A culture that values curiosity, integrity, and big thinking."
@@ -150,7 +149,7 @@ export const available_positions = [
   {
     id: "0",
     title: "Research Analyst Intern",
-    overview: "We are looking for a sharp, curious, and analytical Research Associate (Data & Policy) to help us transform complex data into stories that matter. You will work at the intersection of data, research and policy - analysing datasets, uncovering insights, and crafting reports and publications that make sense of Africa's digital transformation. From dataset analysis to policy briefs, your work will help governments, researchers, and innovators see the bigger picture behind numbers.",
+    overview: "We are looking for a sharp, curious, and analytical Research Analyst (Data & Policy) to help us transform complex data into stories that matter. You will work at the intersection of data, research and policy - analysing datasets, uncovering insights, and crafting reports and publications that make sense of Africa's digital transformation. From dataset analysis to policy briefs, your work will help governments, researchers, and innovators see the bigger picture behind numbers.",
     responsibilities: what_you_will_do,
     qualifications: qualifications,
     bonus_qualifications: bonus_qualifications,
