@@ -154,7 +154,6 @@ const Jobs = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {available_positions.map((pos) => {
-                const slug = slugify(pos.title);
                 return (
                   <div
                     key={pos.id}
