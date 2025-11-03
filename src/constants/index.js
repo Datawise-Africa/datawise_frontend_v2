@@ -113,6 +113,54 @@ export const teamMembers = [
   },
 ];
 
+export const what_you_will_do = [
+  "Analyse datasets produced by Datawise and partners to uncover patterns, insights, and stories.",
+  "Conduct desk and field research to contextualise data within Africa's policy and innovation landscape.",
+  "Write analytical reports, white papers, and policy briefs that communicate findings clearly and powerfully.",
+  "Contribute to thought leadership pieces, blogs, commentaries that shape public discourse on AI and data.",
+  "Collaborate with engineers, data scientists, and communications specialists to ensure our research is rigorous, relevant, and accessible.",
+  "Support proposal development and reporting for ongoing research and partnerships."
+]
+
+export const qualifications = [
+  "You have a background in Economics, Data Science, Public Policy, Development Studies, or related fields.",
+  "You can work comfortably with structured data (Excel, Google Sheets, or basic Python/R)",
+  "You're a strong writer - able to turn data into insights and insight into narrative.",
+  "You think critically, ask the right questions, and back your answers with evidence.",
+  "You are organised, self-driven, and can manage multiple projects in a dynamic environment.",
+  "You are passionate about Africa's future - and you believe in the power of data to shape it."
+]
+
+export const bonus_qualifications = [
+  "Have published articles, reports or blogs.",
+  "Understand data governance, AI ethics, or digital policy in Africa.",
+  "Have experience in research lab, think tank, or data-driven organisations."
+]
+
+export const what_we_offer = [
+  "A chance to turn data into ideas that shape Africa's digital future.",
+  "Work alongside brilliant engineers, researchers,and storytellers.",
+  "Direct collaboration with the Founder and Head of Research.",
+  "Freedom to explore, learn, and publish your work.",
+  "Competitive compensation based on experience and potential.",
+  "A culture that values curiosity, integrity, and big thinking."
+]
+
+export const available_positions = [
+  {
+    id: "0",
+    title: "Research Analyst Intern",
+    overview: "We are looking for a sharp, curious, and analytical Research Associate (Data & Policy) to help us transform complex data into stories that matter. You will work at the intersection of data, research and policy - analysing datasets, uncovering insights, and crafting reports and publications that make sense of Africa's digital transformation. From dataset analysis to policy briefs, your work will help governments, researchers, and innovators see the bigger picture behind numbers.",
+    responsibilities: what_you_will_do,
+    qualifications: qualifications,
+    bonus_qualifications: bonus_qualifications,
+    work_period: "Full-time",
+    workmode: "Remote",
+    position: "Internship",
+    what_we_offer: what_we_offer
+  }
+]
+
 // export const REACT_PUBLIC_API_HOST = "http://localhost:8000"
 export const REACT_PUBLIC_API_HOST = "https://gpt.datawiseafrica.com"
 
