@@ -165,7 +165,7 @@ export const available_positions = [
     qualifications: qualifications,
     bonus_qualifications: bonus_qualifications,
     work_period: "Full-time",
-    workmode: "Remote",
+    workmode: "Hybrid",
     position: "Internship",
     what_we_offer: what_we_offer
   }
