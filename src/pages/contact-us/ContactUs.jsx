@@ -117,7 +117,7 @@ const ContactUs = () => {
                   Phone Number:
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base">
-                  +254 710 891 741
+                  +254 704 237 879
                 </p>
               </div>
             </div>

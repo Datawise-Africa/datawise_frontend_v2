@@ -44,7 +44,7 @@ const Footer = () => {
                     />
                   </svg>
                 </span>
-                +254 710 891 741
+                +254 704 237 879
               </p>
             </div>
             <div className="py-3">
