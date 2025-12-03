@@ -31,6 +31,7 @@ const JobDescription = () => {
   }, [slug, dispatch, navigate]);
 
   const pos = state.selectedPosition;
+  console.log("Selected Position:", pos);
 
   if (!pos) {
     return (
@@ -40,7 +41,7 @@ const JobDescription = () => {
     );
   }
 
-  const applyUrl = "https://airtable.com/appQCD9An8BnqG6J6/pagUSgqnzVrNeORKY/form";
+  const applyUrl = pos.link || "";
 
   return (
     <div className="container mx-auto pt-20 px-5 lg:px-16 xl:px-20">
@@ -59,7 +60,7 @@ const JobDescription = () => {
         <div className="mb-12">
           <h2 className="lora-font font-semibold text-[28px] text-[#26A37E] mb-4">Responsibilities</h2>
           <ul className="space-y-3">
-            {pos.responsibilities.map((r, i) => (
+            {pos.what_you_will_do.map((r, i) => (
               <li key={i} className="flex gap-3">
                 <img src={list_circle_icon} alt="" className="w-5 h-5 mt-0.5 flex-shrink-0" />
                 <span className="sora-font text-[#0F2542]">{r}</span>

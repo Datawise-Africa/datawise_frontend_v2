@@ -124,40 +124,51 @@ export const teamMembers = [
 ];
 
 export const what_you_will_do = [
-  "Analyse datasets produced by Datawise and partners to uncover patterns, insights, and stories.",
-  "Conduct desk and field research to contextualise data within Africa's policy and innovation landscape.",
-  "Write analytical reports, white papers, and policy briefs that communicate findings clearly and powerfully.",
-  "Contribute to thought leadership pieces, blogs, commentaries that shape public discourse on AI and data.",
-  "Collaborate with engineers, data scientists, and communications specialists to ensure our research is rigorous, relevant, and accessible.",
-  "Support proposal development and reporting for ongoing research and partnerships."
+  "Design and lead corporate communications strategies aligned with Datawise Africa's mission and goals.",
+  "Integrate cross-functional communications across digital content, events, brand management, storytelling and strategy.",
+  "Create and deploy compelling content across social media, websites, newsletters, and email campaigns.",
+  "Manage and evolve our brand identity to ensure consistency, clarity and impact across all platforms.",
+  "Run communications projects from product and dataset launches to event promotion and awareness campaigns.",
+  "Track and analyze performance to refine your approach and maximize engagement with target audiences."
 ]
 
 export const qualifications = [
-  "You have a background in Economics, Data Science, Public Policy, Development Studies, or related fields.",
-  "You can work comfortably with structured data (Excel, Google Sheets, or basic Python/R)",
-  "You're a strong writer - able to turn data into insights and insight into narrative.",
-  "You think critically, ask the right questions, and back your answers with evidence.",
-  "You are organised, self-driven, and can manage multiple projects in a dynamic environment.",
-  "You are passionate about Africa's future - and you believe in the power of data to shape it."
+  "You write clearly and creatively - and you understand how to tailor messaging for different platforms and audiences.",
+  "You know your way around Twitter/X, LinkedIn, Instagram, and other social media channels - and can manage content calendars and engagement.",
+  "You're familiar with basic design tools (Canva, Adobe, Figma) and have a good eye for visuals.",
+  "You're organized, self-driven, and excited about data, technology, and Africa's future.",
+  "Bonus: You've worked with or are curious about organizations in the AI, tech or research space.",
 ]
 
 export const bonus_qualifications = [
-  "Have published articles, reports or blogs.",
-  "Understand data governance, AI ethics, or digital policy in Africa.",
-  "Have experience in research lab, think tank, or data-driven organisations."
+  "Adaptable skill set",
+  "Dynamic skill set",
+  "Possess a keen passion for the field of technology",
+  "Excellent communication skills"
 ]
 
 export const what_we_offer = [
-  "A chance to turn data into ideas that shape Africa's digital future.",
-  "Work alongside brilliant engineers, researchers,and storytellers.",
-  "Freedom to explore, learn, and publish your work.",
-  "Competitive compensation based on experience and potential.",
-  "A culture that values curiosity, integrity, and big thinking."
+  "A front-row seat in shaping the communications of one of Africa's boldest data initiatives.",
+  "An environment that values clarity, bold thinking, and honest storytelling.",
+  "Potential for a long-term role based on performance and fit.",
+  "Working in a fast paced environment.",
+  "Monthly stipend plus career progression."
 ]
 
 
 
-export const available_positions = []
+export const available_positions = [
+  {
+    id: "0",
+    title: "Communication and Marketing Intern",
+    overview: "We're looking for a Communication and Marketing Intern with a background in Journalism, Corporate Communications, Public Relations and other relevant fields in Communication. The intern brings a unique blend of creativity and analytical thinking while working with a dynamic team of professionals. Then intern will be engaged for a period of 4 months starting January 2026, with a possibility of transition to a full time role based on performance.",
+    what_you_will_do: what_you_will_do,
+    qualifications: qualifications,
+    bonus_qualifications: bonus_qualifications,
+    what_we_offer: what_we_offer,
+    link: "https://airtable.com/appQCD9An8BnqG6J6/pag20Hx3LPoGgMhfQ/form"
+  }
+]
 
 // export const REACT_PUBLIC_API_HOST = "http://localhost:8000"
 export const REACT_PUBLIC_API_HOST = "https://gpt.datawiseafrica.com"
