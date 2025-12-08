@@ -123,35 +123,44 @@ export const teamMembers = [
   },
 ];
 
-export const what_you_will_do = [
-  "Design and lead corporate communications strategies aligned with Datawise Africa's mission and goals.",
-  "Integrate cross-functional communications across digital content, events, brand management, storytelling and strategy.",
-  "Create and deploy compelling content across social media, websites, newsletters, and email campaigns.",
-  "Manage and evolve our brand identity to ensure consistency, clarity and impact across all platforms.",
-  "Run communications projects from product and dataset launches to event promotion and awareness campaigns.",
-  "Track and analyze performance to refine your approach and maximize engagement with target audiences."
+export const fullstack_what_you_will_do = [
+  "Develop and maintain backend services and APIs using Django (Python).",
+  "Work with PostgreSQL databases – design schemas, write efficient queries, and optimize performance.",
+  "Containerize services using Docker and manage deployments.",
+  "Integrate third-party APIs and internal services securely.",
+  "Build responsive and performant frontend interfaces using React, Next.js, and Tailwind CSS.",
+  "Connect frontend components seamlessly with backend APIs.",
+  "Participate in code reviews, write clean & documented code, and follow best practices.",
+  "Collaborate with designers, developers, and product leads on new features from planning to deployment.",
+  "Use Git/GitHub for version control and collaborative workflows."
 ]
 
-export const qualifications = [
-  "You write clearly and creatively - and you understand how to tailor messaging for different platforms and audiences.",
-  "You know your way around Twitter/X, LinkedIn, Instagram, and other social media channels - and can manage content calendars and engagement.",
-  "You're familiar with basic design tools (Canva, Adobe, Figma) and have a good eye for visuals.",
-  "You're organized, self-driven, and excited about data, technology, and Africa's future.",
-  "Bonus: You've worked with or are curious about organizations in the AI, tech or research space.",
+export const fullstack_qualifications = [
+  "Strong proficiency in Python and hands-on experience with Django or Django REST Framework.",
+  "Solid understanding of PostgreSQL and relational database design.",
+  "Experience with React.js (hooks, context) and/or Next.js.",
+  "Proficiency in modern frontend tooling: HTML5, CSS3, JavaScript (ES6+), Tailwind CSS.",
+  "Familiarity with Docker and basic containerization concepts.",
+  "Experience building and consuming RESTful APIs.",
+  "Comfortable with Git and GitHub workflows (branching, PRs, code reviews).",
+  "Strong problem-solving skills and attention to detail.",
+  "Excellent communication and ability to work independently or in a team."
 ]
 
 export const bonus_qualifications = [
-  "Adaptable skill set",
-  "Dynamic skill set",
-  "Possess a keen passion for the field of technology",
-  "Excellent communication skills"
+  "Experience with TypeScript",
+  "Knowledge of testing frameworks (Jest, React Testing Library, PyTest)",
+  "Familiarity with CI/CD pipelines",
+  "Previous contribution to open-source projects or a strong GitHub portfolio",
+  "Understanding of security best practices (OWASP, authentication, etc.)",
+  "Experience with Redis, Celery, or other backend tools"
 ]
 
 export const what_we_offer = [
-  "A front-row seat in shaping the communications of one of Africa's boldest data initiatives.",
-  "An environment that values clarity, bold thinking, and honest storytelling.",
-  "Potential for a long-term role based on performance and fit.",
   "Working in a fast paced environment.",
+  "Collaborating with like minded individuals.",
+  "Opportunity to build and refine your skills.",
+  "Access to resources and tools for learning.",
   "Monthly stipend plus career progression."
 ]
 
@@ -160,13 +169,13 @@ export const what_we_offer = [
 export const available_positions = [
   {
     id: "0",
-    title: "Communication and Marketing Intern",
-    overview: "We're looking for a Communication and Marketing Intern with a background in Journalism, Corporate Communications, Public Relations and other relevant fields in Communication. The intern brings a unique blend of creativity and analytical thinking while working with a dynamic team of professionals. Then intern will be engaged for a period of 4 months starting January 2026, with a possibility of transition to a full time role based on performance.",
-    what_you_will_do: what_you_will_do,
-    qualifications: qualifications,
+    title: "Full-Stack Developer Intern",
+    overview: "We are seeking a motivated, self-driven, and talented Full-Stack Developer Intern to join our team. This role offers a unique opportunity to gain hands-on experience building modern web applications across both the frontend and backend. You will collaborate closely with our development team, contributing to real projects that support our mission. The internship runs for 4 months starting January 2026, with a strong possibility of transitioning to a full-time role based on performance.",
+    what_you_will_do: fullstack_what_you_will_do,
+    qualifications: fullstack_qualifications,
     bonus_qualifications: bonus_qualifications,
     what_we_offer: what_we_offer,
-    link: "https://airtable.com/appQCD9An8BnqG6J6/pag20Hx3LPoGgMhfQ/form"
+    link: "https://airtable.com/appQCD9An8BnqG6J6/pagkCIJO6pITiJI1U/form"
   }
 ]
 
