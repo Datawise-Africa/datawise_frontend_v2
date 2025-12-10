@@ -1,4 +1,20 @@
+import { generateSEOTags } from '@/utils/seo';
+import type { Route } from './+types/datalab';
+import { href } from 'react-router';
 
+export function meta(_args: Route.MetaArgs) {
+  return [
+    ...generateSEOTags({
+      title: 'Discover verified African datasets | Datalab Africa',
+      description:
+        'Search, filter, and download curated African datasets to accelerate analytics, machine learning, and policy projects while rewarding dataset creators.',
+      url: href('/datalab'),
+      image: '/d-lab-ico.png',
+      keywords:
+        'african datasets, data catalog, open data africa, data marketplace, datalab, africa, datasets, open data, data collaboration, data sharing, data governance',
+    }),
+  ];
+}
 export default function Datalab() {
   const handleExploreDatasetsClick = () => {
     if (typeof window !== 'undefined')
