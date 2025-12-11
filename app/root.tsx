@@ -8,6 +8,7 @@ import {
 } from 'react-router';
 
 import type { Route } from './+types/root';
+import NotFound from './components/errors/NotFound';
 import './app.css';
 
 export const links: Route.LinksFunction = () => [
@@ -63,7 +64,7 @@ export const links: Route.LinksFunction = () => [
   {
     rel: 'icon',
     type: 'image/svg+xml',
-    href: '/favicon.svg',
+    href: '/favicon.ico',
   },
 ];
 
@@ -112,11 +113,12 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details;
+    // Use our beautiful NotFound component for 404 errors
+    if (error.status === 404) {
+      return <NotFound />;
+    }
+    message = 'Error';
+    details = error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
@@ -134,3 +136,4 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
+
