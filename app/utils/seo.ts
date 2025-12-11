@@ -43,7 +43,7 @@ export function generateSEOTags(config: SEOConfig) {
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:image:alt', content: title },
-    { property: 'og:site_name', content: 'Felix Orinda - Portfolio' },
+    { property: 'og:site_name', content: 'Datawise Africa - Website' },
 
     // Twitter Card Tags
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -51,7 +51,7 @@ export function generateSEOTags(config: SEOConfig) {
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: fullImageUrl },
     { name: 'twitter:image:alt', content: title },
-    { name: 'twitter:creator', content: '@datawiseafrica' }, // Update with your Twitter handle if you have one
+    { name: 'twitter:creator', content: '@datawise_AFR' }, // Update with your Twitter handle if you have one
 
     // Additional SEO
     { name: 'author', content: 'Datawise Africa' },
