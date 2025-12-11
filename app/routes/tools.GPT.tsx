@@ -134,7 +134,7 @@ export default function ToolsGPT() {
     <div
       className="flex h-screen overflow-hidden"
       style={{
-        marginTop: `${navbarHeight}px`,
+        // marginTop: `${navbarHeight}px`,
         height: `calc(100vh - ${navbarHeight}px)`,
       }}
     >
