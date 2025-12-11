@@ -6,6 +6,7 @@ import { generateSEOTags } from '@/utils/seo';
 import { href } from 'react-router';
 import useGptApi from '@/hooks/use-gpt-api';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({

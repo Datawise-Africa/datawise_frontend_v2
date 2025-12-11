@@ -5,6 +5,7 @@ import HomeHeroSection from '@/components/homepage/home-hero-section';
 import HomeWhatWeDoSection from '@/components/homepage/home-what-we-do-section';
 import HomePartnersSection from '@/components/homepage/home-partners-section';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({

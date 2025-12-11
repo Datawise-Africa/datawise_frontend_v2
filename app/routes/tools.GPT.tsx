@@ -6,6 +6,7 @@ import { generateSEOTags } from '@/utils/seo';
 import { href } from 'react-router';
 import { AiOutlineSend } from 'react-icons/ai';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({

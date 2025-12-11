@@ -2,6 +2,7 @@ import { generateSEOTags } from '@/utils/seo';
 import type { Route } from './+types/datalab';
 import { href } from 'react-router';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({

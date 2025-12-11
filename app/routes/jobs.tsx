@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 
 export default function Jobs() {
   const navigate = useNavigate();
-  const { state, dispatch } = useJobCareerContext();
+  const { dispatch } = useJobCareerContext();
 
   const handleViewDetails = (position: JobCareerPositionType) => {
     const slug = slugify(position.title); // <-- generate slug

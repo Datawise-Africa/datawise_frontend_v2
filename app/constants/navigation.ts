@@ -1,3 +1,5 @@
+import type { TsFixMe } from "@/types/glob";
+
 export type NavigationItem = {
   id: string;
   title: string;
@@ -137,7 +139,7 @@ export type JobCareerPositionType = {
   bonus_qualifications: string[];
   what_we_offer: string[];
   link: string;
-} & Record<string, any>;
+} & Record<string, TsFixMe>;
 export const fullstack_what_you_will_do = [
   'Develop and maintain backend services and APIs using Django (Python).',
   'Work with PostgreSQL databases – design schemas, write efficient queries, and optimize performance.',

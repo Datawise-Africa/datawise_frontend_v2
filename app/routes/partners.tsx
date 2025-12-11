@@ -4,6 +4,7 @@ import type { Route } from './+types/partners';
 import { generateSEOTags } from '@/utils/seo';
 import { href } from 'react-router';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({

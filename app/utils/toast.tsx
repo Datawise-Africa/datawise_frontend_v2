@@ -1,8 +1,9 @@
 import { toast } from 'react-hot-toast';
 import { CheckCircle, XCircle, X } from 'lucide-react';
+import type { TsFixMe } from '@/types/glob';
 
 type ToastProps = {
-  t: any;
+  t: TsFixMe;
   type: 'success' | 'error';
   title: string;
   message: string;
