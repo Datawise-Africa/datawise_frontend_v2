@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+:root {
+  --font-sora: 'Sora', sans-serif;
+  --font-lora: 'Lora', serif;
+  --font-code: 'Source Code Pro', monospace;
+  --font-grotesk: 'Space Grotesk', sans-serif;
+  color-scheme: dark;
+}
+
+@theme {
+  /* Font Family */
+  --font-sora: 'Sora', sans-serif;
+  --font-lora: 'Lora', serif;
+  --font-code: 'Source Code Pro', monospace;
+  --font-grotesk: 'Space Grotesk', sans-serif;
+
+  /**
+   * Colors
+   */
+  --color-1: #ac6aff;
+  --color-2: #ffc876;
+  --color-3: #ff776f;
+  --color-4: #7adb78;
+  --color-5: #858dff;
+  --color-6: #ff98e2;
+  --color-7: #f7fdfa;
+  --stroke-1: #26242c;
+  --n-1: #ffffff;
+  --n-2: #e5e7eb;
+  --n-3: #0f2542;
+  --n-4: #26a37e;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  h1 {
+    font-weight: bold;
+    font-family: var(--font-sora);
+  }
+
+  h2 {
+    font-family: var(--font-sora);
+  }
+  h3 {
+    font-family: var(--font-sora);
+  }
+  p {
+    font-family: var(--font-sora);
+  }
+}
+html,
+body {
+  @apply font-sans bg-[#FFFFFF] text-[#0F2542] text-base;
+
+  /* @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  } */
+}
+
+/* Container for the slider */
+.hero-slider-container {
+  width: 100%;
+  height: 60vh;
+  background-color: #ffffff;
+  padding-right: 40px;
+}
+
+/* Slide content layout */
+.hero-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-slide-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.text-section {
+  max-width: 60%;
+}
+
+.text-section h1 {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: #2c3e50; /* Dark text color */
+}
+
+.text-section h1 .highlight {
+  color: #26a37e; /* Green highlight */
+}
+
+.text-section p {
+  font-size: 24px;
+  font-weight: 400;
+  font-family: var(--font-sora);
+  color: #6c757d; /* Subtle gray text */
+}
+
+/* Custom Dots Styling */
+.custom-dots-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -80px; /* Adjust position */
+}
+
+.custom-dot {
+  width: 20px; /* Default width for inactive dots */
+  height: 6px;
+  background-color: #d1d5db; /* Gray color */
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-dot.active {
+  width: 40px; /* Wider active dot */
+  background-color: #26a37e; /* Green color */
+}
+
+.lora-font {
+  font-family: 'Lora', serif;
+}
+
+.sore-font {
+  font-family: 'Sora', sans-serif;
+}
