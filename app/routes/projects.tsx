@@ -1,3 +1,22 @@
+import { generateSEOTags } from '@/utils/seo';
+import type { Route } from './+types/projects';
+import { href } from 'react-router';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function meta(_args: Route.MetaArgs) {
+  return [
+    ...generateSEOTags({
+      title: 'Datawise Africa - Projects',
+      description:
+        'Explore Datawise Africa’s innovative projects leveraging data and AI to tackle Africa’s challenges in economic, Tech and Infrastructure development.',
+      url: href('/projects'),
+      keywords:
+        'datawise, datalab, afyaken, eduken, data projects africa, ai for development, data infrastructure',
+    }),
+  ];
+}
 export default function Projects() {
   return (
     <div className="container mx-auto pt-24 md:pt-0 mt-10 md:mt-5 px-4 sm:px-6 py-8 sm:py-12 space-y-12">
@@ -13,27 +32,15 @@ export default function Projects() {
             challenges, from climate resilience to economic development.
           </p>
           <div className="mt-6 flex justify-center md:justify-start">
-            <button
+            <Link
+              to={href('/become-a-partner')}
               type="submit"
               className="flex items-center gap-2 bg-[#26A37E] text-white font-medium py-2 px-4 rounded-md hover:bg-[#1e8c68] transition duration-300"
               // onClick={navigate("/partners")}
             >
               Collaborate With Us
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5 ml-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
-                />
-              </svg>
-            </button>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
         <div className="flex justify-center mt-8 md:mt-0">

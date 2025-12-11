@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import type { Route } from './+types/partners';
 import { generateSEOTags } from '@/utils/seo';
 import { href } from 'react-router';
+import { partners } from '@/constants/partners';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
@@ -18,13 +19,7 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
-const partners = [
-  { name: 'Lacuna Fund', logo: '/assets/homepage/lacuna-fund-logo.png' },
-  { name: 'Eduonix', logo: '/assets/homepage/eduonix-logo.png' },
-  { name: 'Kaggle', logo: '/assets/homepage/Kaggle-logo.png' },
-  { name: 'Kodak', logo: '/assets/homepage/kodak-logo.png' },
-  { name: 'CREA-N', logo: '/assets/homepage/crea-n-logo.webp' },
-];
+
 export default function Partners() {
   // Create a ref for the form section
   const formRef = useRef<HTMLDivElement>(null);
@@ -134,7 +129,7 @@ export default function Partners() {
         <h1 className="text-3xl font-serif text-[#0F2542] mt-2">
           Collaborating for a Smarter Africa
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8 justify-items-center">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-6 mt-8 justify-items-center">
           {partners.map((partner, index) => (
             <img
               key={index}
