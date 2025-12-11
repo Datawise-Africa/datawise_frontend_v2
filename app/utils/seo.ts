@@ -13,7 +13,7 @@ const baseUrl =
     ? window.location.origin
     : process.env.PUBLIC_URL || 'https://datawiseafrica.com';
 
-const defaultImage = `${baseUrl}/datawise-logo-dark.png`; // Create a 1200x630px image and place it in /public
+const defaultImage = `${baseUrl}/assets/datawise-logo-dark.png`; // Create a 1200x630px image and place it in /public
 
 export function generateSEOTags(config: SEOConfig) {
   const {
