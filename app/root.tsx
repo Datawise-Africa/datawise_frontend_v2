@@ -1,0 +1,139 @@
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from 'react-router';
+
+import type { Route } from './+types/root';
+import NotFound from './components/errors/NotFound';
+import './app.css';
+
+export const links: Route.LinksFunction = () => [
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+  {
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossOrigin: 'anonymous',
+  },
+  {
+    rel: 'icon',
+    type: 'image/svg+xml',
+    href: '/Datawise Africa Icon Bright Background.svg',
+  },
+  {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Sora:wght@100..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap',
+  },
+  // Favicon links
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/apple-touch-icon.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/favicon-32x32.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/favicon-16x16.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '192x192',
+    href: '/android-chrome-192x192.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '512x512',
+    href: '/android-chrome-512x512.png',
+  },
+  {
+    rel: 'manifest',
+    href: '/site.webmanifest',
+  },
+  {
+    rel: 'icon',
+    type: 'image/svg+xml',
+    href: '/favicon.ico',
+  },
+];
+
+const ExternalScripts = (gtagId: string) => {
+  return {
+    __html: [
+      `window.dataLayer = window.dataLayer || [];`,
+      `function gtag(){dataLayer.push(arguments);}`,
+      `gtag('js', new Date());`,
+      `gtag('config', '${gtagId}');`,
+    ].join('\n'),
+  };
+};
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  const GTAG = 'G-TXYSDRC6YD';
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GTAG}`}
+        ></script>
+        <script dangerouslySetInnerHTML={ExternalScripts(GTAG)}></script>
+      </head>
+      <body>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function App() {
+  return <Outlet />;
+}
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  let message = 'Oops!';
+  let details = 'An unexpected error occurred.';
+  let stack: string | undefined;
+
+  if (isRouteErrorResponse(error)) {
+    // Use our beautiful NotFound component for 404 errors
+    if (error.status === 404) {
+      return <NotFound />;
+    }
+    message = 'Error';
+    details = error.statusText || details;
+  } else if (import.meta.env.DEV && error && error instanceof Error) {
+    details = error.message;
+    stack = error.stack;
+  }
+
+  return (
+    <main className="pt-16 p-4 container mx-auto">
+      <h1>{message}</h1>
+      <p>{details}</p>
+      {stack && (
+        <pre className="w-full p-4 overflow-x-auto">
+          <code>{stack}</code>
+        </pre>
+      )}
+    </main>
+  );
+}
+
