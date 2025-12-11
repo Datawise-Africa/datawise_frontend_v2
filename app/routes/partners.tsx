@@ -23,6 +23,7 @@ const partners = [
   { name: 'Eduonix', logo: '/assets/homepage/eduonix-logo.png' },
   { name: 'Kaggle', logo: '/assets/homepage/Kaggle-logo.png' },
   { name: 'Kodak', logo: '/assets/homepage/kodak-logo.png' },
+  { name: 'CREA-N', logo: '/assets/homepage/crea-n-logo.webp' },
 ];
 export default function Partners() {
   // Create a ref for the form section
