@@ -67,9 +67,9 @@ export default function AboutUs() {
         <h2 className="lora-font font-bold text-3xl sm:text-4xl">Our Values</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
           {[
-            '/assets/jobs/Integrity.png',
-            '/assets/jobs/Collaboration.png',
-            '/assets/jobs/Innovation.png',
+            '/assets/careers/Integrity.png',
+            '/assets/careers/Collaboration.png',
+            '/assets/careers/Innovation.png',
           ].map((value, index) => (
             <div key={index} className="p-4">
               <div className="flex justify-center">
@@ -107,7 +107,7 @@ export default function AboutUs() {
             We're always looking for talented individuals to join our team.
           </p>
           <a
-            href="/jobs"
+            href="/careers"
             className="mt-4 inline-flex items-center text-lg hover:underline"
           >
             View Open Roles <span className="ml-2">→</span>
