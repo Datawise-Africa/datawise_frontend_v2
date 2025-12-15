@@ -182,17 +182,17 @@ export const what_we_offer = [
 ];
 
 export const available_positions: JobCareerPositionType[] = [
-  {
-    id: '0',
-    title: 'Full-Stack Developer Intern',
-    overview:
-      'We are seeking a motivated, self-driven, and talented Full-Stack Developer Intern to join our team. This role offers a unique opportunity to gain hands-on experience building modern web applications across both the frontend and backend. You will collaborate closely with our development team, contributing to real projects that support our mission. The internship runs for 4 months starting January 2026, with a strong possibility of transitioning to a full-time role based on performance.',
-    what_you_will_do: fullstack_what_you_will_do,
-    qualifications: fullstack_qualifications,
-    bonus_qualifications: bonus_qualifications,
-    what_we_offer: what_we_offer,
-    link: 'https://airtable.com/appQCD9An8BnqG6J6/pagkCIJO6pITiJI1U/form',
-  },
+  // {
+  //   id: '0',
+  //   title: 'Full-Stack Developer Intern',
+  //   overview:
+  //     'We are seeking a motivated, self-driven, and talented Full-Stack Developer Intern to join our team. This role offers a unique opportunity to gain hands-on experience building modern web applications across both the frontend and backend. You will collaborate closely with our development team, contributing to real projects that support our mission. The internship runs for 4 months starting January 2026, with a strong possibility of transitioning to a full-time role based on performance.',
+  //   what_you_will_do: fullstack_what_you_will_do,
+  //   qualifications: fullstack_qualifications,
+  //   bonus_qualifications: bonus_qualifications,
+  //   what_we_offer: what_we_offer,
+  //   link: 'https://airtable.com/appQCD9An8BnqG6J6/pagkCIJO6pITiJI1U/form',
+  // },
 ];
 
 // export const REACT_PUBLIC_API_HOST = "http://localhost:8000"
@@ -204,7 +204,7 @@ export const REACT_PUBLIC_API_HOST = 'https://gpt.datawiseafrica.com';
 //   { path: "/datalab" },
 //   { path: "/about-us" },
 //   { path: "/contact-us" },
-//   { path: "/jobs" },
+//   { path: "/careers" },
 //   { path: "/become-a-partner" },
 //   { path: "/partners" }
 // ];

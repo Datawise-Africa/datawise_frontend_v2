@@ -4,7 +4,7 @@ import { slugify } from '@/utils/slugify';
 import  {  useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 
-export default function JobsJobDescription() {
+export default function CareerDescription() {
   const { slug } = useParams(); // e.g., "research-analyst-intern"
   const navigate = useNavigate();
   const { state, dispatch } = useJobCareerContext();
@@ -12,7 +12,7 @@ export default function JobsJobDescription() {
   // Load job from slug on mount
   useEffect(() => {
     if (!slug) {
-      navigate('/jobs', { replace: true });
+      navigate('/careers', { replace: true });
       return;
     }
 
@@ -21,7 +21,7 @@ export default function JobsJobDescription() {
     if (job) {
       dispatch({ type: 'SET_POSITION', payload: job });
     } else {
-      navigate('/jobs', { replace: true });
+      navigate('/careers', { replace: true });
     }
   }, [slug, dispatch, navigate]);
 

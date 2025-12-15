@@ -16,11 +16,11 @@ export default [
       route('GPT', 'routes/tools.GPT.tsx'),
       route('sheria-ai', 'routes/tools.sheria-ai.tsx'),
     ]),
-    route('job-description/:slug', 'routes/job-description.$slug.tsx'),
+    route('career-description/:slug', 'routes/career-description.$slug.tsx'),
 
     route('become-a-partner', 'routes/become-a-partner.tsx'),
     route('contact-us', 'routes/contact-us.tsx'),
-    route('jobs', 'routes/jobs.tsx'),
+    route('careers', 'routes/careers.tsx'),
     route('partners', 'routes/partners.tsx'),
     route('privacy-policy', 'routes/privacy-policy.tsx'),
     route('sitemap.xml', 'routes/sitemap.xml.ts'),
