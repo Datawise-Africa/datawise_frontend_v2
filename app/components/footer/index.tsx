@@ -114,8 +114,8 @@ export default function Footer() {
                 </Link>
               </div>
               <div className="flex flex-col space-y-2">
-                <Link to="/jobs" className="hover:text-white transition-colors">
-                  Jobs
+                <Link to="/careers" className="hover:text-white transition-colors">
+                  Careers
                 </Link>
                 <Link
                   to="https://medium.com/@datawiseafrica"

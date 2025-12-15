@@ -6,14 +6,14 @@ import { useJobCareerContext } from '@/context/career-context';
 import { slugify } from '@/utils/slugify';
 import { useNavigate } from 'react-router';
 
-export default function Jobs() {
+export default function Careers() {
   const navigate = useNavigate();
   const { dispatch } = useJobCareerContext();
 
   const handleViewDetails = (position: JobCareerPositionType) => {
     const slug = slugify(position.title); // <-- generate slug
     dispatch({ type: 'SET_POSITION', payload: position });
-    navigate(`/job-description/${slug}`); // <-- navigate with slug
+    navigate(`/career-description/${slug}`); // <-- navigate with slug
   };
 
   return (
@@ -58,8 +58,8 @@ export default function Jobs() {
         <div className="md:pt-20 lg:pt-0">
           <img
             className="w-full max-w-[845px] lg:h-[400.69px]"
-            src={'/assets/jobs/Jobs Hero.svg'}
-            alt="jobs hero"
+            src={'/assets/careers/Careers Hero.svg'}
+            alt="career hero"
           />
         </div>
       </section>
@@ -74,17 +74,17 @@ export default function Jobs() {
           <div className="grid grid-cols-1 md:grid-cols-3 pt-5 gap-5">
             {[
               {
-                img: '/assets/jobs/lucide_goal.png',
+                img: '/assets/careers/lucide_goal.png',
                 title: 'Impact-Driven Projects',
                 text: 'We focus on transformative data solutions…',
               },
               {
-                img: '/assets/jobs/hugeicons_ai-magic.png',
+                img: '/assets/careers/hugeicons_ai-magic.png',
                 title: 'Commitment to Innovation',
                 text: 'We value creativity and innovation…',
               },
               {
-                img: '/assets/jobs/fluent_people-community-24-regular.png',
+                img: '/assets/careers/fluent_people-community-24-regular.png',
                 title: 'Collaborative Growth',
                 text: 'We foster a collaborative environment…',
               },
