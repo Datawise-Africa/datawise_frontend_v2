@@ -102,7 +102,7 @@ export const teamMembers = [
   {
     id: '3',
     name: 'Winny C. Sigilai',
-    title: 'Software Engineer',
+    title: 'Data Engineer Lead',
     image: '/assets/teamMembers/winny.jpg',
     description: '',
     linkedin_url: 'https://www.linkedin.com/in/winny-sigilai-a64648222/',
@@ -131,7 +131,7 @@ export const teamMembers = [
   },{
     id: '6',
     name: 'Wawuda Osiemo',
-    title: 'Communications and Marketing Intern',
+    title: 'Communications and Marketing',
     image: '/assets/teamMembers/wawuda.webp',
     description: '',
     linkedin_url: 'https://www.linkedin.com/in/wawuda-osiemo-23375a20a/',
@@ -149,7 +149,7 @@ export const teamMembers = [
   },{
     id: '8',
     name: 'Mohammed Ghalib',
-    title: 'Full-Stack Developer Intern',
+    title: 'Software Developer',
     image: '/assets/teamMembers/mohammed.webp',
     description: '',
     linkedin_url: 'https://www.linkedin.com/in/mohammad-ghalib-8a18932b0/',
