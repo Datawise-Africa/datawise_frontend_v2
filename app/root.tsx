@@ -8,8 +8,11 @@ import {
 } from 'react-router';
 
 import type { Route } from './+types/root';
-import NotFound from './components/errors/NotFound';
 import './app.css';
+import { loadGTagScripts } from './lib/utils/add-google-tag';
+import { QueryProvider } from './lib/providers/query-provider';
+import { StoreProvider } from './lib/providers/store-provider';
+import { env } from './lib/env';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -19,68 +22,17 @@ export const links: Route.LinksFunction = () => [
     crossOrigin: 'anonymous',
   },
   {
-    rel: 'icon',
-    type: 'image/svg+xml',
-    href: '/Datawise Africa Icon Bright Background.svg',
-  },
-  {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Sora:wght@100..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Space+Grotesk:wght@300..700&display=swap',
-  },
-  // Favicon links
-  {
-    rel: 'apple-touch-icon',
-    sizes: '180x180',
-    href: '/apple-touch-icon.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '32x32',
-    href: '/favicon-32x32.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '16x16',
-    href: '/favicon-16x16.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '192x192',
-    href: '/android-chrome-192x192.png',
-  },
-  {
-    rel: 'icon',
-    type: 'image/png',
-    sizes: '512x512',
-    href: '/android-chrome-512x512.png',
-  },
-  {
-    rel: 'manifest',
-    href: '/site.webmanifest',
-  },
-  {
-    rel: 'icon',
-    type: 'image/svg+xml',
-    href: '/favicon.ico',
+    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
   },
 ];
 
-const ExternalScripts = (gtagId: string) => {
-  return {
-    __html: [
-      `window.dataLayer = window.dataLayer || [];`,
-      `function gtag(){dataLayer.push(arguments);}`,
-      `gtag('js', new Date());`,
-      `gtag('config', '${gtagId}');`,
-    ].join('\n'),
-  };
-};
-
 export function Layout({ children }: { children: React.ReactNode }) {
-  const GTAG = 'G-TXYSDRC6YD';
+  /**
+   * Google Analytics Tracking ID
+   * Replace 'G-XXXXXXXXXX' with your actual tracking ID or set it in the environment variable VITE_GTAG_ID
+   */
+  const GTAG = env.VITE_GTAG_ID;
   return (
     <html lang="en">
       <head>
@@ -88,13 +40,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GTAG}`}
-        ></script>
-        <script dangerouslySetInnerHTML={ExternalScripts(GTAG)}></script>
+        {GTAG && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GTAG}`}
+            ></script>
+            <script dangerouslySetInnerHTML={loadGTagScripts(GTAG)}></script>
+          </>
+        )}
       </head>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -104,7 +65,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <StoreProvider>
+      <QueryProvider>
+        <Outlet />
+      </QueryProvider>
+    </StoreProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -113,12 +80,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    // Use our beautiful NotFound component for 404 errors
-    if (error.status === 404) {
-      return <NotFound />;
-    }
-    message = 'Error';
-    details = error.statusText || details;
+    message = error.status === 404 ? '404' : 'Error';
+    details =
+      error.status === 404
+        ? 'The requested page could not be found.'
+        : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
@@ -136,4 +102,3 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     </main>
   );
 }
-
