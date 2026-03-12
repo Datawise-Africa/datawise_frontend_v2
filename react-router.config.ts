@@ -1,4 +1,5 @@
 import type { Config } from '@react-router/dev/config';
+import { href } from 'react-router';
 
 export default {
   // Config options...
@@ -6,12 +7,17 @@ export default {
   ssr: true,
   async prerender() {
     return [
-      '/',
-      '/about-us',
-      '/contact-us',
-      '/projects',
-      '/datalab',
-      '/partners',
+      href('/'),
+      href('/about-us'),
+      href('/about-us'),
+      href('/contact-us'),
+      href('/projects'),
+      href('/datalab'),
+      href('/partners'),
+      href('/careers'),
+      href('/become-a-partner'),
+      href('/privacy-policy'),
+      href('/services'),
     ];
   },
 } satisfies Config;

@@ -11,7 +11,6 @@ import {
   IconDatabase,
   IconBrain,
   IconChartBar,
-  IconCode,
   IconDeviceMobile,
   IconApi,
   IconClipboardList,
