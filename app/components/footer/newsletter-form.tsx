@@ -17,7 +17,6 @@ export default function NewsletterForm() {
 
   const onSubmit = async (data: NewsletterFormData) => {
     // TODO: wire up newsletter subscription API
-    console.log('Newsletter subscription:', data);
     form.reset();
   };
 
