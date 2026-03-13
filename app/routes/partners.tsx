@@ -1,11 +1,23 @@
-import PartnersForm from '@/components/partners/partners-form';
+import PartnersForm from '~/components/partners/partners-form';
+import {
+  FadeIn,
+  StaggerChildren,
+  StaggerItem,
+  PageTransition,
+} from '~/components/motion';
 import { useRef } from 'react';
 import type { Route } from './+types/partners';
-import { generateSEOTags } from '@/utils/seo';
+import { generateSEOTags } from '~/utils/seo';
 import { href } from 'react-router';
-import { partners } from '@/constants/partners';
+import { partners } from '~/constants/partners';
+import {
+  IconArrowDown,
+  IconDatabase,
+  IconBulb,
+  IconNetwork,
+} from '@tabler/icons-react';
+import { Button } from '~/components/ui/button';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
@@ -19,12 +31,36 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
+const whyPartnerCards = [
+  {
+    icon: IconDatabase,
+    title: 'Access Exclusive Data',
+    description:
+      'Gain insights from high-quality datasets to drive innovation and decision-making.',
+    accentClass: 'text-accent-orange',
+    accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
+  },
+  {
+    icon: IconBulb,
+    title: 'Collaborate on AI Solutions',
+    description:
+      'Work with leading experts to develop AI-driven solutions for real-world challenges.',
+    accentClass: 'text-accent-blue',
+    accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
+  },
+  {
+    icon: IconNetwork,
+    title: 'Expand Your Reach',
+    description:
+      'Connect with a growing network of innovators, researchers, and organizations.',
+    accentClass: 'text-accent-pink',
+    accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
+  },
+];
 
 export default function Partners() {
-  // Create a ref for the form section
   const formRef = useRef<HTMLDivElement>(null);
 
-  // Function to scroll to the form section
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({
       behavior: 'smooth',
@@ -33,118 +69,129 @@ export default function Partners() {
   };
 
   return (
-    <div className="container mx-auto pt-24 md:pt-0 w-full flex flex-col items-center p-6 mt-12 space-y-16">
+    <PageTransition>
       {/* Hero Section */}
-      <section className="w-full flex flex-col md:flex-row items-center justify-between bg-[#FFFFFF] px-4 sm:px-6 md:px-16 py-10 rounded-2xl gap-6 md:gap-12 lg:gap-16">
-        <div className="md:w-1/2 space-y-4 text-center md:text-left">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-            Partner With Us to{' '}
-            <span className="text-[#26A37E]">Drive Impact</span>
-          </h1>
-          <p className="text-base md:text-lg text-gray-600">
-            Together, we can harness the power of data and AI to shape Africa's
-            future.
-          </p>
-          <div className="flex justify-center md:justify-start">
-            <button
-              onClick={scrollToForm}
-              className="w-64px h-[41px] px-4 py-3 flex items-center gap-2 bg-[#26A37E] text-white font-medium rounded-lg hover:bg-[#1e8c68] transition-colors duration-300"
-            >
-              Become a Partner
-              <img
-                src={'/assets/datalab7.png'}
-                alt="Arrow Icon"
-                className="w-5 h-5"
-              />
-            </button>
-          </div>
-        </div>
-        <div className="md:w-1/2 flex justify-center">
-          <img
-            src={'/assets/PartnerHero.svg'}
-            alt="Partner With Us Hero"
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
-          />
-        </div>
-      </section>
-
-      {/* Why Partner With Us Section */}
-      <section className="w-full max-w-[90%] text-center space-y-8 px-8">
-        <h2 className="font-serif font-bold text-3xl sm:text-4xl leading-tight tracking-tight text-center text-[#0F2542]">
-          Why Partner With Us
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="w-full min-h-[200px] p-6 rounded-lg flex flex-col items-center text-center">
-            <img
-              src={'/assets/partner1.png'}
-              alt="Access Exclusive Data"
-              className="w-12 h-12"
-            />
-            <h4 className="text-lg font-semibold mt-4">
-              Access Exclusive Data
-            </h4>
-            <p className="mt-4">
-              Gain insights from high-quality datasets to drive innovation and
-              decision-making.
-            </p>
-          </div>
-          <div className="w-full min-h-[200px] p-6 rounded-lg flex flex-col items-center text-center">
-            <img
-              src={'/assets/partner2.png'}
-              alt="Collaborate on AI Solutions"
-              className="w-12 h-12"
-            />
-            <h4 className="text-lg font-semibold mt-4">
-              Collaborate on AI Solutions
-            </h4>
-            <p className="mt-4">
-              Work with leading experts to develop AI-driven solutions for
-              real-world challenges.
-            </p>
-          </div>
-          <div className="w-full min-h-[200px] p-6 rounded-lg flex flex-col items-center text-center">
-            <img
-              src={'/assets/partners3.png'}
-              alt="Expand Your Reach"
-              className="w-12 h-12"
-            />
-            <h4 className="text-lg font-semibold mt-4">Expand Your Reach</h4>
-            <p className="mt-4">
-              Connect with a growing network of innovators, researchers, and
-              organizations.
-            </p>
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <FadeIn direction="left">
+              <div className="space-y-6 text-center md:text-left">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-foreground">
+                  Partner With Us to{' '}
+                  <span className="text-primary">Drive Impact</span>
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+                  Together, we can harness the power of data and AI to shape
+                  Africa{'\u2019'}s future.
+                </p>
+                <div className="flex justify-center md:justify-start">
+                  <Button
+                    size="lg"
+                    className="h-auto px-6 py-3"
+                    onClick={scrollToForm}
+                  >
+                    Become a Partner
+                    <IconArrowDown className="ml-1 h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn direction="right">
+              <div className="flex justify-center">
+                <img
+                  src="/assets/PartnerHero.svg"
+                  alt="Partner With Us"
+                  className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+                  loading="lazy"
+                />
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="w-full max-w-7xl bg-[#F7FDFA] px-6 py-12 text-center">
-        <h3
-          className="text-[#26A37E] text-sm font-bold tracking-widest uppercase"
-          style={{ letterSpacing: '0.20em' }}
-        >
-          Our Partners
-        </h3>
-        <h1 className="text-3xl font-serif text-[#0F2542] mt-2">
-          Collaborating for a Smarter Africa
-        </h1>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-6 mt-8 justify-items-center">
-          {partners.map((partner, index) => (
-            <img
-              key={index}
-              src={partner.logo || '/placeholder.svg'}
-              alt={partner.name}
-              className="h-20 max-w-[180px] object-contain"
-            />
-          ))}
+      {/* Why Partner With Us */}
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                Benefits
+              </h3>
+              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
+                Why Partner With Us
+              </h2>
+            </div>
+          </FadeIn>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {whyPartnerCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <StaggerItem key={card.title}>
+                  <div className="flex flex-col items-center text-center bg-background dark:bg-background/50 rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+                    <div
+                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${card.accentBgClass} mb-5`}
+                    >
+                      <Icon className={`h-7 w-7 ${card.accentClass}`} />
+                    </div>
+                    <h4 className="text-lg font-semibold text-foreground mb-2">
+                      {card.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerChildren>
         </div>
       </section>
 
-      {/* Form Section - Adding ref here */}
-      <div ref={formRef} id="partner-form" className="w-full scroll-mt-16">
-        <PartnersForm />
-      </div>
-    </div>
+      {/* Partners Logos */}
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn direction="up">
+            <div className="text-center mb-10">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                Our Partners
+              </h3>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                Collaborating for a Smarter Africa
+              </h2>
+            </div>
+          </FadeIn>
+          <FadeIn direction="up" delay={0.2}>
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8 place-items-center max-w-4xl mx-auto">
+              {partners.map((partner, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-center p-4 rounded-xl bg-card border border-border hover:shadow-md transition-shadow duration-200 w-full h-24"
+                >
+                  <img
+                    src={partner.logo || '/placeholder.svg'}
+                    alt={partner.name}
+                    className="h-16 max-w-37.5 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <div ref={formRef} id="partner-form" className="scroll-mt-16">
+            <FadeIn direction="up">
+              <PartnersForm />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+    </PageTransition>
   );
 }

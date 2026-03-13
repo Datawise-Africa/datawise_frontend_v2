@@ -1,152 +1,275 @@
-import { generateSEOTags } from '@/utils/seo';
+import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/projects';
-import { href } from 'react-router';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router';
+import { href, Link } from 'react-router';
+import {
+  IconArrowRight,
+  IconBrain,
+  IconServer,
+  IconShieldCheck,
+  IconDatabase,
+  IconSchool,
+  IconHeartbeat,
+} from '@tabler/icons-react';
+import {
+  FadeIn,
+  StaggerChildren,
+  StaggerItem,
+  PageTransition,
+} from '~/components/motion';
+import { Button } from '~/components/ui/button';
+import type { FC } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
       title: 'Datawise Africa - Projects',
-      description:
-        'Explore Datawise Africa’s innovative projects leveraging data and AI to tackle Africa’s challenges in economic, Tech and Infrastructure development.',
+      description: `Explore Datawise Africa's innovative projects leveraging data and AI to tackle Africa's challenges in economic, Tech and Infrastructure development.`,
       url: href('/projects'),
       keywords:
         'datawise, datalab, afyaken, eduken, data projects africa, ai for development, data infrastructure',
     }),
   ];
 }
+
+const focusAreas: {
+  icon: FC<{ className?: string }>;
+  title: string;
+  description: string;
+  accentClass: string;
+  accentBgClass: string;
+}[] = [
+  {
+    icon: IconBrain,
+    title: 'AI for Development',
+    description:
+      'Leveraging AI to address social and economic challenges across the continent.',
+    accentClass: 'text-accent-blue',
+    accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
+  },
+  {
+    icon: IconServer,
+    title: 'Data Infrastructure',
+    description:
+      'Building sustainable and affordable compute solutions for African contexts.',
+    accentClass: 'text-accent-pink',
+    accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
+  },
+  {
+    icon: IconShieldCheck,
+    title: 'Ethical Data Practices',
+    description:
+      'Ensuring data collection and usage are transparent, ethical, and community-centered.',
+    accentClass: 'text-accent-orange',
+    accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
+  },
+];
+
+const featuredProjects: {
+  icon: FC<{ className?: string }>;
+  title: string;
+  description: string;
+  link?: string;
+  accentClass: string;
+  accentBgClass: string;
+}[] = [
+  {
+    icon: IconDatabase,
+    title: 'Datalab',
+    description:
+      'A platform that maintains transparency in data use while ensuring creator sovereignty. Discover datasets, upload your own, and collaborate with others.',
+    link: 'https://datalab.datawiseafrica.com',
+    accentClass: 'text-primary',
+    accentBgClass: 'bg-primary/10 dark:bg-primary/20',
+  },
+  {
+    icon: IconSchool,
+    title: 'Eduken',
+    description:
+      'A catalog of Kenyan institutions of higher learning, detailing names, locations, and courses offered \u2014 a resource for students, researchers, and policymakers.',
+    accentClass: 'text-accent-blue',
+    accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
+  },
+  {
+    icon: IconHeartbeat,
+    title: 'Afyaken',
+    description:
+      'An open-access dataset on Kenyan healthcare facilities, empowering policymakers, researchers, and innovators with data-driven insights to improve healthcare access.',
+    accentClass: 'text-accent-pink',
+    accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
+  },
+];
+
 export default function Projects() {
   return (
-    <div className="container mx-auto pt-24 md:pt-0 mt-10 md:mt-5 px-4 sm:px-6 py-8 sm:py-12 space-y-12">
+    <PageTransition>
       {/* Hero Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="mt-10 lg:mt-0 text-center md:text-left">
-          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight">
-            Driving Change Through
-            <span className="text-[#26A37E]"> Data Research</span>
-          </h1>
-          <p className="text-gray-800 mt-4 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed">
-            Our research initiatives focus on solving Africa's most pressing
-            challenges, from climate resilience to economic development.
-          </p>
-          <div className="mt-6 flex justify-center md:justify-start">
-            <Link
-              to={href('/become-a-partner')}
-              type="submit"
-              className="flex items-center gap-2 bg-[#26A37E] text-white font-medium py-2 px-4 rounded-md hover:bg-[#1e8c68] transition duration-300"
-              // onClick={navigate("/partners")}
-            >
-              Collaborate With Us
-              <ArrowRight size={16} />
-            </Link>
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <FadeIn direction="left">
+              <div className="text-center md:text-left space-y-6">
+                <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+                  Driving Change Through
+                  <span className="text-primary"> Data Research</span>
+                </h1>
+                <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
+                  Our research initiatives focus on solving Africa{'\u2019'}s
+                  most pressing challenges, from climate resilience to economic
+                  development.
+                </p>
+                <div className="flex justify-center md:justify-start">
+                  <Button asChild size="lg" className="h-auto px-6 py-3">
+                    <Link to={href('/partners')}>
+                      Collaborate With Us
+                      <IconArrowRight className="ml-1 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </FadeIn>
+            <FadeIn direction="right">
+              <div className="flex justify-center">
+                <img
+                  src="/assets/projects/Projects - Hero.svg"
+                  alt="Projects"
+                  className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+                  loading="lazy"
+                />
+              </div>
+            </FadeIn>
           </div>
-        </div>
-        <div className="flex justify-center mt-8 md:mt-0">
-          <img
-            src="/assets/projects/Projects - Hero.svg"
-            alt="Project Hero"
-            className="object-cover w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
-          />
         </div>
       </section>
 
       {/* Focus Areas Section */}
-      <section className="text-center mt-12">
-        <h2 className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl">
-          Focus Areas
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-          {[
-            {
-              img: '/assets/projects/Vector1.png',
-              title: 'AI for Development',
-              desc: 'Leveraging AI to address social and economic challenges',
-              bg: 'bg-sky-50 border-sky-200',
-            },
-            {
-              img: '/assets/projects/Vector2.png',
-              title: 'Data Infrastructure',
-              desc: 'Building sustainable and affordable compute solutions',
-              bg: 'bg-pink-50 border-pink-200',
-            },
-            {
-              img: '/assets/projects/Vector3.png',
-              title: 'Ethical Data Practices',
-              desc: 'Ensuring data collection and usage are transparent and ethical',
-              bg: 'bg-green-50 border-green-200',
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className={`p-5 sm:p-6 border rounded-md shadow-sm ${item.bg}`}
-            >
-              <div className="flex justify-center">
-                <img
-                  src={item.img || '/placeholder.svg'}
-                  alt={item.title}
-                  width={64}
-                  height={64}
-                />
-              </div>
-              <h3 className="font-bold text-lg sm:text-xl mt-4 text-gray-900">
-                {item.title}
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                What We Focus On
               </h3>
-              <p className="text-gray-700 mt-2 text-sm sm:text-base">
-                {item.desc}
-              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
+                Focus Areas
+              </h2>
             </div>
-          ))}
+          </FadeIn>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {focusAreas.map((area) => {
+              const Icon = area.icon;
+              return (
+                <StaggerItem key={area.title}>
+                  <div className="flex flex-col items-center text-center bg-background dark:bg-background/50 rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+                    <div
+                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${area.accentBgClass} mb-5`}
+                    >
+                      <Icon className={`h-7 w-7 ${area.accentClass}`} />
+                    </div>
+                    <h4 className="text-lg font-semibold text-foreground mb-2">
+                      {area.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {area.description}
+                    </p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerChildren>
         </div>
       </section>
 
       {/* Featured Projects Section */}
-      <section className="text-center mt-12">
-        <h2 className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl">
-          Featured Projects
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-          {[
-            {
-              img: '/assets/projects/Vector2.png',
-              title: 'Datalab',
-              desc: 'Datalab is a platform that maintains transparency in data use while ensuring creator sovereignty.It enable users discover datasets, upload datasets, and collaborate with others.',
-            },
-            {
-              img: '/assets/projects/Vector2.png',
-              title: 'Eduken',
-              desc: "Eduken catalogs Kenyan institutions of higher learning, detailing their names, location and courses offered. Serves as a valuable resource for students, researchers, policymakers and organizations seeking comprehensive information on Kenya's higher learning education landscape.",
-            },
-            {
-              img: '/assets/projects/Vector2.png',
-              title: 'Afyaken',
-              desc: 'AfyaKen is an open-access dataset on Kenyan healthcare facilities, providing key details and empowering policymakers, researchers, and innovators with data-driven insights to improve healthcare access and efficiency.',
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="p-5 sm:p-6 border rounded-md shadow-sm bg-white"
-            >
-              <div className="flex justify-center">
-                <img
-                  src={item.img || '/placeholder.svg'}
-                  alt={item.title}
-                  width={64}
-                  height={64}
-                />
-              </div>
-              <h3 className="font-bold text-lg sm:text-xl mt-4 text-gray-900">
-                {item.title}
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                Our Work
               </h3>
-              <p className="text-gray-700 mt-2 text-sm sm:text-base">
-                {item.desc}
-              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
+                Featured Projects
+              </h2>
             </div>
-          ))}
+          </FadeIn>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {featuredProjects.map((project) => {
+              const Icon = project.icon;
+              return (
+                <StaggerItem key={project.title}>
+                  <div className="group flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+                    <div
+                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${project.accentBgClass} mb-5 group-hover:bg-primary transition-colors duration-300`}
+                    >
+                      <Icon
+                        className={`h-7 w-7 ${project.accentClass} group-hover:text-white transition-colors duration-300`}
+                      />
+                    </div>
+                    <h4
+                      className={`text-xl font-bold mb-2 ${project.accentClass}`}
+                    >
+                      {project.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                      {project.description}
+                    </p>
+                    {project.link && (
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <Button
+                          asChild
+                          variant="ghost"
+                          className="p-0 h-auto text-sm font-semibold text-primary hover:bg-transparent hover:text-primary/80 group/btn"
+                        >
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Visit Project
+                            <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                          </a>
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerChildren>
         </div>
       </section>
-    </div>
+
+      {/* CTA Section */}
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn direction="up">
+            <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-8 md:justify-between">
+              <div className="text-center md:text-left">
+                <h3 className="text-3xl md:text-4xl font-bold">
+                  Have a project idea?
+                </h3>
+                <p className="mt-3 text-lg text-white/80 leading-relaxed">
+                  We{'\u2019'}re open to collaborations with researchers,
+                  organizations, and governments.
+                </p>
+              </div>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 h-auto py-3 dark:border-white/40 dark:bg-white/10 dark:hover:bg-white/20 shrink-0"
+              >
+                <Link to={href('/contact-us')}>
+                  Get In Touch
+                  <IconArrowRight className="ml-1 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+    </PageTransition>
   );
 }

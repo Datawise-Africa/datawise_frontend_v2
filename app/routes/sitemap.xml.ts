@@ -7,11 +7,7 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
   const { origin } = new URL(request.url);
   const sitemap = await generateRemixSitemap({
     domain: origin,
-    ignore: [
-      href('/privacy-policy'),
-      href('/.well-known/appspecific/com.chrome.devtools.json'),
-      href('/job-description/:slug',{slug:"*"}),
-    ],
+    ignore: [href('/.well-known/appspecific/com.chrome.devtools.json')],
     // https://github.com/forge-42/seo-tools/issues/8
     routes,
     sitemapData: async () => {

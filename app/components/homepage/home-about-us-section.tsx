@@ -1,26 +1,30 @@
+import { href, Link } from 'react-router';
+import { FadeIn } from '~/components/motion';
+import { Button } from '~/components/ui/button';
+
 export default function HomeAboutUsSection() {
   return (
-    <div className="w-full bg-[#F7FDFA] py-12">
+    <div className="w-full bg-section-green dark:bg-card py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <h3 className="text-lg font-semibold text-[#26A37E] uppercase tracking-wide mb-2">
-          ABOUT US
-        </h3>
-        <h1 className="text-3xl font-bold lora-font text-[#0F2542] mb-4">
-          Driving Africa's Data and AI Revolution
-        </h1>
-        <p className="text-[#0F2542] text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-          We are a research and development company conducting applied research
-          in Data and AI while building the critical infrastructure and tools to
-          connect the two. Our goal is to leverage Data to develop AI and other
-          tools that are relevant and appropriate for the communities we live in
-          while building research capacity and leadership in the continent.
-        </p>
-        <a
-          href="/about-us"
-          className="text-md font-semibold text-[#26A37E] tracking-normal hover:underline"
-        >
-          Learn More →
-        </a>
+        <FadeIn direction="up">
+          <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+            ABOUT US
+          </h3>
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            What We Do
+          </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
+            Datawise Africa builds the foundations for Africa{'\u2019'}s data
+            and AI ecosystem. We create high-quality datasets, develop practical
+            AI systems, and research sustainable compute infrastructure for the
+            continent. We work with governments, researchers, companies, and
+            civil society to make better decisions from data and to build AI
+            that is locally relevant, ethical, and impactful.
+          </p>
+          <Button asChild variant="link" className="text-md font-semibold">
+            <Link to={href('/about-us')}>Learn More →</Link>
+          </Button>
+        </FadeIn>
       </div>
     </div>
   );

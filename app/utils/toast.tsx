@@ -1,6 +1,6 @@
 import { toast } from 'react-hot-toast';
-import { CheckCircle, XCircle, X } from 'lucide-react';
-import type { TsFixMe } from '@/types/glob';
+import { IconCircleCheck, IconCircleX, IconX } from '@tabler/icons-react';
+import type { TsFixMe } from '~/types/glob';
 
 type ToastProps = {
   t: TsFixMe;
@@ -37,9 +37,9 @@ function CustomToast({ t, type, title, message }: ToastProps) {
         <div className="flex items-start">
           <div className="shrink-0">
             {isSuccess ? (
-              <CheckCircle className="h-6 w-6 text-green-400" />
+              <IconCircleCheck className="h-6 w-6 text-green-400" />
             ) : (
-              <XCircle className="h-6 w-6 text-red-400" />
+              <IconCircleX className="h-6 w-6 text-red-400" />
             )}
           </div>
           <div className="ml-3 flex-1">
@@ -51,9 +51,9 @@ function CustomToast({ t, type, title, message }: ToastProps) {
       <div className="flex border-l border-gray-200">
         <button
           onClick={() => toast.dismiss(t.id)}
-          className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-gray-400 hover:text-gray-500 focus:outline-none  focus:ring-indigo-500 transition-colors"
+          className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-indigo-500 transition-colors"
         >
-          <X className="h-4 w-4" />
+          <IconX className="h-4 w-4" />
         </button>
       </div>
     </div>
