@@ -3,8 +3,16 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { devtools } from '@tanstack/devtools-vite';
+import netlifyReactRouter from '@netlify/vite-plugin-react-router';
+
 export default defineConfig({
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), devtools()],
+  plugins: [
+    tailwindcss(),
+    reactRouter(),
+    tsconfigPaths(),
+    netlifyReactRouter(),
+    devtools(),
+  ],
   build: {
     sourcemap: false,
   },
