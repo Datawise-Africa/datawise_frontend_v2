@@ -11,10 +11,6 @@ export default {
       href('/about-us'),
       href('/contact-us'),
       href('/projects'),
-      href('/datalab'),
-      href('/partners'),
-      href('/careers'),
-      href('/become-a-partner'),
       href('/privacy-policy'),
       href('/services'),
     ];
