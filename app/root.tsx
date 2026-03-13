@@ -75,30 +75,65 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
+  let status = 500;
+  let title = 'Something went wrong';
+  let description = 'An unexpected error occurred. Please try again later.';
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details;
+    status = error.status;
+    if (error.status === 404) {
+      title = 'Page not found';
+      description =
+        'Sorry, we couldn\u2019t find the page you\u2019re looking for. It might have been moved or no longer exists.';
+    } else {
+      title = `Error ${error.status}`;
+      description = error.statusText || description;
+    }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
+    description = error.message;
     stack = error.stack;
   }
 
+  const is404 = status === 404;
+
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main className="min-h-screen flex items-center justify-center bg-background px-6">
+      <div className="max-w-lg w-full text-center">
+        <p
+          className="text-[8rem] sm:text-[10rem] font-bold leading-none tracking-tighter text-primary/15 select-none"
+          aria-hidden="true"
+        >
+          {status}
+        </p>
+        <h1 className="-mt-6 text-3xl sm:text-4xl font-bold text-foreground">
+          {title}
+        </h1>
+        <p className="mt-4 text-muted-foreground text-lg leading-relaxed">
+          {description}
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow hover:bg-primary/90 transition-colors"
+          >
+            {is404 ? 'Back to Home' : 'Try Again'}
+          </a>
+          {is404 && (
+            <a
+              href="/contact-us"
+              className="inline-flex items-center justify-center rounded-md border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors"
+            >
+              Contact Us
+            </a>
+          )}
+        </div>
+        {stack && (
+          <pre className="mt-8 w-full p-4 overflow-x-auto rounded-lg bg-muted text-left text-xs text-muted-foreground">
+            <code>{stack}</code>
+          </pre>
+        )}
+      </div>
     </main>
   );
 }
