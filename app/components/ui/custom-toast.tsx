@@ -1,5 +1,6 @@
 import { CheckCircle, Info, AlertTriangle, XCircle, X } from 'lucide-react';
 import type { Toast } from 'react-hot-toast';
+import { cn } from '~/lib/utils';
 
 interface CustomToastProps {
   toast: Toast;
@@ -57,22 +58,22 @@ export function CustomToast({
 
   return (
     <div
-      className={`${bgColor} ${borderColor} border-2 rounded-2xl shadow-lg p-4 flex items-start gap-3 min-w-87.5 max-w-md ${
+      className={cn(
+        'border-2 rounded-2xl shadow-lg p-4 flex items-start gap-3 min-w-87.5 max-w-md',
+        bgColor,
+        borderColor,
         toast.visible ? 'animate-enter' : 'animate-leave'
-      }`}
+      )}
     >
-      {/* Icon */}
-      <div className={`${iconBgColor} rounded-full p-2 shrink-0`}>
+      <div className={cn('rounded-full p-2 shrink-0', iconBgColor)}>
         <Icon className="w-5 h-5 text-white" />
       </div>
 
-      {/* Content */}
       <div className="flex-1 pt-0.5">
-        <h3 className={`font-bold ${textColor} text-base mb-0.5`}>{title}</h3>
+        <h3 className={cn('font-bold text-base mb-0.5', textColor)}>{title}</h3>
         <p className="text-gray-600 text-sm">{message}</p>
       </div>
 
-      {/* Close Button */}
       <button
         onClick={onDismiss}
         className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors"

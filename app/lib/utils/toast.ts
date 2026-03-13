@@ -1,85 +1,44 @@
+import { createElement } from 'react';
 import toast from 'react-hot-toast';
+
+type ToastType = 'success' | 'error' | 'info' | 'warning';
+
+const DURATION: Record<ToastType, number> = {
+  success: 3000,
+  error: 4000,
+  info: 4000,
+  warning: 4000,
+};
+
+function showCustomToast(type: ToastType, title: string, message?: string) {
+  import('~/components/ui/custom-toast').then(({ CustomToast }) => {
+    toast.custom(
+      (t) =>
+        createElement(CustomToast, {
+          toast: t,
+          title,
+          message: message || '',
+          type,
+          onDismiss: () => toast.dismiss(t.id),
+        }),
+      { duration: DURATION[type] }
+    );
+  });
+}
 
 /**
  * Toast utility functions with custom designs
  */
 
 export const toastUtils = {
-  /**
-   * Show success toast with custom design
-   */
-  success: (title: string, message?: string) => {
-    import('~/components/ui/custom-toast').then(({ CustomToast }) => {
-      toast.custom(
-        (t) =>
-          CustomToast({
-            toast: t,
-            title,
-            message: message || '',
-            type: 'success',
-            onDismiss: () => toast.dismiss(t.id),
-          }),
-        { duration: 3000 }
-      );
-    });
-  },
-
-  /**
-   * Show error toast with custom design
-   */
-  error: (title: string, message?: string) => {
-    import('~/components/ui/custom-toast').then(({ CustomToast }) => {
-      toast.custom(
-        (t) =>
-          CustomToast({
-            toast: t,
-            title,
-            message: message || '',
-            type: 'error',
-            onDismiss: () => toast.dismiss(t.id),
-          }),
-        { duration: 4000 }
-      );
-    });
-  },
-
-  /**
-   * Show info toast with custom design
-   */
-  info: (title: string, message?: string) => {
-    import('~/components/ui/custom-toast').then(({ CustomToast }) => {
-      toast.custom(
-        (t) =>
-          CustomToast({
-            toast: t,
-            title,
-            message: message || '',
-            type: 'info',
-            onDismiss: () => toast.dismiss(t.id),
-          }),
-        { duration: 4000 }
-      );
-    });
-  },
-
-  /**
-   * Show warning toast with custom design
-   */
-  warning: (title: string, message?: string) => {
-    import('~/components/ui/custom-toast').then(({ CustomToast }) => {
-      toast.custom(
-        (t) =>
-          CustomToast({
-            toast: t,
-            title,
-            message: message || '',
-            type: 'warning',
-            onDismiss: () => toast.dismiss(t.id),
-          }),
-        { duration: 4000 }
-      );
-    });
-  },
+  success: (title: string, message?: string) =>
+    showCustomToast('success', title, message),
+  error: (title: string, message?: string) =>
+    showCustomToast('error', title, message),
+  info: (title: string, message?: string) =>
+    showCustomToast('info', title, message),
+  warning: (title: string, message?: string) =>
+    showCustomToast('warning', title, message),
 
   /**
    * Show loading toast and return its ID
