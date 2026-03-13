@@ -7,13 +7,9 @@ afterEach(() => {
   cleanup();
 });
 
-// Mock environment variables
-vi.mock('import.meta', () => ({
-  env: {
-    VITE_API_BASE_URL: 'http://localhost:8080',
-    DEV: true,
-  },
-}));
+// Stub environment variables
+vi.stubEnv('VITE_API_BASE_URL', 'http://localhost:8080');
+vi.stubEnv('DEV', true);
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
