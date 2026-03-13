@@ -8,7 +8,7 @@ afterEach(() => {
 });
 
 // Stub environment variables
-vi.stubEnv('VITE_API_BASE_URL', 'http://localhost:8080');
+vi.stubEnv('VITE_API_URL', 'http://localhost:8080');
 vi.stubEnv('DEV', true);
 
 // Mock window.matchMedia

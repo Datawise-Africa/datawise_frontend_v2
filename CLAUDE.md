@@ -103,7 +103,7 @@ app/
 
 - Validated via Zod schema at `app/lib/env.ts`
 - All must be prefixed with `VITE_`
-- Required: `VITE_API_BASE_URL`
+- Required: `VITE_API_URL`
 - Optional: `VITE_GTAG_ID`, `VITE_SENTRY_DSN`, `VITE_APP_NAME`, `VITE_APP_VERSION`
 
 ### Linting & Formatting
