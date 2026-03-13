@@ -9,7 +9,6 @@ export default {
     return [
       href('/'),
       href('/about-us'),
-      href('/about-us'),
       href('/contact-us'),
       href('/projects'),
       href('/datalab'),
