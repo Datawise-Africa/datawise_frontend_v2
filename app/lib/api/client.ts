@@ -6,7 +6,7 @@ import { clearAuth } from '~/store/slices/auth-slice';
 const isDev = import.meta.env.DEV;
 
 export const apiClient = axios.create({
-  baseURL: env.VITE_API_BASE_URL,
+  baseURL: env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

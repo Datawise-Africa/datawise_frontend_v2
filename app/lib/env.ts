@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  VITE_API_BASE_URL: z.string().url(),
+  VITE_API_URL: z.string().url(),
   VITE_APP_NAME: z.string().default('Datawise Frontend'),
   VITE_APP_VERSION: z.string().default('1.0.0'),
   VITE_GTAG_ID: z.string().optional(),
@@ -17,7 +17,7 @@ export type Env = z.infer<typeof envSchema>;
 
 function parseEnv(): Env {
   const raw = {
-    VITE_API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
+    VITE_API_URL: import.meta.env.VITE_API_URL,
     VITE_APP_NAME: import.meta.env.VITE_APP_NAME,
     VITE_APP_VERSION: import.meta.env.VITE_APP_VERSION,
     VITE_GTAG_ID: import.meta.env.VITE_GTAG_ID,
