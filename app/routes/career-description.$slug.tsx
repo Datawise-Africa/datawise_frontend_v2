@@ -1,4 +1,4 @@
-import { available_positions } from '~/constants/navigation';
+import { available_positions } from '~/lib/data/careers';
 import { FadeIn, PageTransition } from '~/components/motion';
 import { useAppDispatch, useAppSelector } from '~/store';
 import { setPosition } from '~/store/slices/career-slice';

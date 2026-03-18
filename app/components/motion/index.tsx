@@ -1,5 +1,5 @@
 import { motion, type HTMLMotionProps, type Variants } from 'framer-motion';
-import type { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 // ─── Default transition presets ─────────────────────────────────────
 export const transitions = {

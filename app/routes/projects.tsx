@@ -65,6 +65,7 @@ const focusAreas: {
 ];
 
 const featuredProjects: {
+  slug: string;
   icon: FC<{ className?: string }>;
   title: string;
   description: string;
@@ -73,6 +74,7 @@ const featuredProjects: {
   accentBgClass: string;
 }[] = [
   {
+    slug: 'datalab',
     icon: IconDatabase,
     title: 'Datalab',
     description:
@@ -82,6 +84,7 @@ const featuredProjects: {
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
   },
   {
+    slug: 'eduken',
     icon: IconSchool,
     title: 'Eduken',
     description:
@@ -90,6 +93,7 @@ const featuredProjects: {
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
   },
   {
+    slug: 'afyaken',
     icon: IconHeartbeat,
     title: 'Afyaken',
     description:
@@ -198,8 +202,11 @@ export default function Projects() {
             {featuredProjects.map((project) => {
               const Icon = project.icon;
               return (
-                <StaggerItem key={project.title}>
-                  <div className="group flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+                <StaggerItem key={project.slug}>
+                  <div
+                    id={project.slug}
+                    className="group flex flex-col rounded-2xl border border-border bg-card p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full scroll-mt-24"
+                  >
                     <div
                       className={`flex items-center justify-center w-14 h-14 rounded-2xl ${project.accentBgClass} mb-5 group-hover:bg-primary transition-colors duration-300`}
                     >

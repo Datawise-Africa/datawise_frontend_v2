@@ -4,7 +4,7 @@ import {
   IconServer,
   IconArrowRight,
 } from '@tabler/icons-react';
-import { href, Link } from 'react-router';
+import { Link } from 'react-router';
 import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 import type { FC } from 'react';
@@ -19,34 +19,34 @@ const whatWeDoCards: {
   link: string;
 }[] = [
   {
-    title: 'Data',
+    title: 'Data Insights and Applied Research',
     description:
-      'Designing high-quality, specialised datasets that power AI development across Africa.',
+      'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. Developing AI-ready sector datasets, we translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
     image: '/assets/amico.png',
     icon: IconDatabase,
     accentClass: 'text-accent-orange',
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
-    link: '/services',
+    link: '/services#data',
   },
   {
-    title: 'Artificial Intelligence',
+    title: 'Development',
     description:
-      'Developing innovative AI models tailored to local realities and African contexts.',
+      'Designing and building AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     image: '/assets/AI.jpeg',
     icon: IconBrain,
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
-    link: '/services',
+    link: '/services#engineering',
   },
   {
     title: 'Infrastructure',
     description:
-      'Building sustainable compute and data infrastructure for the continent.',
+      'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligence tools, and operate AI systems in real-world environments. Our work includes storing data, and running and maintaining the systems that we develop and build.',
     image: '/assets/infrastructure.jpg',
     icon: IconServer,
     accentClass: 'text-accent-pink',
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
-    link: '/services',
+    link: '/services#infrastructure',
   },
 ];
 
@@ -59,11 +59,13 @@ export default function HomeWhatWeDoSection() {
             WHAT WE DO
           </h3>
           <h2 className="text-3xl sm:text-4xl font-bold text-center">
-            Solving Real Problems With Data and AI
+            From Research to Real-World Impact
           </h2>
           <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-            We create high-quality datasets, develop practical AI systems, and
-            research sustainable compute infrastructure for the continent.
+            At Datawise Africa, our research is directly translated to the
+            insights we develop and the systems we build. Our work follows a
+            full research-to-deployment pipeline, where we transform research
+            into usable data and intelligence systems.
           </p>
         </div>
       </FadeIn>
@@ -105,7 +107,7 @@ export default function HomeWhatWeDoSection() {
                       variant="ghost"
                       className="p-0 h-auto text-sm font-semibold text-primary hover:bg-transparent hover:text-primary/80 group/btn"
                     >
-                      <Link to={href(card.link as '/services')}>
+                      <Link to={card.link}>
                         Learn more
                         <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                       </Link>

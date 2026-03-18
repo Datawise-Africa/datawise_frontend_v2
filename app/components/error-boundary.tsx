@@ -1,5 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { AlertCircle } from 'lucide-react';
+import { IconAlertCircle as AlertCircle } from '@tabler/icons-react';
 import { Button } from './ui/button';
 import {
   Card,

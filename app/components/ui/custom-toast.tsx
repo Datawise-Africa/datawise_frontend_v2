@@ -1,4 +1,10 @@
-import { CheckCircle, Info, AlertTriangle, XCircle, X } from 'lucide-react';
+import {
+  IconCircleCheck as CheckCircle,
+  IconInfoCircle as Info,
+  IconAlertTriangle as AlertTriangle,
+  IconCircleX as XCircle,
+  IconX as X,
+} from '@tabler/icons-react';
 import type { Toast } from 'react-hot-toast';
 import { cn } from '~/lib/utils';
 
