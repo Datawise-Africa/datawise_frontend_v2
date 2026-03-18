@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
-import { Eye, EyeOff } from 'lucide-react';
+import { IconEye as Eye, IconEyeOff as EyeOff } from '@tabler/icons-react';
 import {
   FormControl,
   FormField,

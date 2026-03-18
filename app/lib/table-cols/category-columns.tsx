@@ -1,5 +1,9 @@
 import { Link } from 'react-router';
-import { Eye, Edit, Trash2 } from 'lucide-react';
+import {
+  IconEye as Eye,
+  IconEdit as Edit,
+  IconTrash as Trash2,
+} from '@tabler/icons-react';
 import type { ColumnDef } from '@tanstack/react-table';
 import type { Category } from '~/lib/schema';
 

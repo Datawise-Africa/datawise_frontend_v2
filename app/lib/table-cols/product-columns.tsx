@@ -1,5 +1,10 @@
 import { Link } from 'react-router';
-import { Eye, Edit, Trash2, DollarSign } from 'lucide-react';
+import {
+  IconEye as Eye,
+  IconEdit as Edit,
+  IconTrash as Trash2,
+  IconCurrencyDollar as DollarSign,
+} from '@tabler/icons-react';
 import type { ColumnDef } from '@tanstack/react-table';
 import type { Product } from '~/lib/schema';
 

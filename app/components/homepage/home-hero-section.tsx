@@ -32,14 +32,14 @@ export default function HomeHeroSection() {
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-6 lg:space-y-8">
             <FadeIn direction="up" delay={0}>
-              <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white drop-shadow-lg">
-                Powering Africa{'\u2019'}s AI Future
+              <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl text-white drop-shadow-lg">
+                Applied research and development for Africa&apos;s data and
+                intelligence systems
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
               <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
-                Building trusted datasets, practical AI systems, and sustainable
-                infrastructure for the continent.
+                Building and governing Africa&apos;s intelligence systems
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>

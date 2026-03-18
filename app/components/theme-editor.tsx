@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { Settings, X, RotateCcw, Sun, Moon } from 'lucide-react';
+import {
+  IconSettings as Settings,
+  IconX as X,
+  IconRotate as RotateCcw,
+  IconSun as Sun,
+  IconMoon as Moon,
+} from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
