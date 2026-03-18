@@ -1,4 +1,4 @@
-import { socials } from '~/constants/navigation';
+import { socials } from '~/lib/data/socials';
 import { href, Link } from 'react-router';
 import {
   IconBrandLinkedin,
@@ -9,7 +9,6 @@ import {
   IconMapPin,
 } from '@tabler/icons-react';
 import type { FC } from 'react';
-import NewsletterForm from './newsletter-form';
 
 const socialIcons: Record<string, FC<{ className?: string }>> = {
   LinkedIn: IconBrandLinkedin,
@@ -27,25 +26,22 @@ const contactDetails = [
 ];
 
 const companyLinks = [
-  [
-    { to: '/', label: 'Home' },
-    { to: '/datalab', label: 'Datalab' },
-    { to: '/about-us', label: 'About Us' },
-    { to: '/projects', label: 'Projects' },
-  ],
-  [
-    { to: '/careers', label: 'Careers' },
-    { to: '/contact-us', label: 'Contact Us' },
-    { to: '/privacy-policy', label: 'Privacy Policy' },
-  ],
+  { to: '/', label: 'Home' },
+  { to: '/about-us', label: 'About Us' },
+  { to: '/services', label: 'Services' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/datalab', label: 'Datalab' },
+  { to: '/careers', label: 'Careers' },
+  { to: '/contact-us', label: 'Contact Us' },
+  { to: '/privacy-policy', label: 'Privacy Policy' },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-navy text-gray-300 border-t border-white/10">
       <div className="container mx-auto px-5 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {/* Contact Info */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Logo & Tagline */}
           <div className="space-y-4">
             <Link to={href('/')} className="block w-48">
               <img
@@ -56,78 +52,74 @@ export default function Footer() {
                 height={20}
               />
             </Link>
-            {contactDetails.map((item) => {
-              const Icon = item.icon;
-              return (
-                <p
-                  key={item.text}
-                  className="flex items-start gap-3 text-gray-300 text-sm"
-                >
-                  <Icon className="h-5 w-5 text-white shrink-0 mt-0.5" />
-                  {item.text}
-                </p>
-              );
-            })}
+            <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
+              Research, build, and deploy reliable data and intelligence systems
+              for Africa.
+            </p>
+            <ul className="flex gap-3 pt-2">
+              {socials.map((item) => {
+                const Icon = socialIcons[item.name];
+                return (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
+                  >
+                    {Icon && <Icon className="h-4 w-4" />}
+                  </a>
+                );
+              })}
+            </ul>
           </div>
 
           {/* Company Links */}
           <div>
-            <h4 className="font-bold text-lg mb-4 text-white">Company</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+              Company
+            </h4>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-              {companyLinks.map((column, colIdx) => (
-                <div key={colIdx} className="flex flex-col space-y-2">
-                  {column.map((link) => (
-                    <Link
-                      key={link.to}
-                      to={link.to}
-                      className="text-sm text-gray-300 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
+              {companyLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm text-gray-300 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-lg mb-4 text-white">
-              Stay Connected
+            <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+              Contact
             </h4>
-            <p className="text-sm text-gray-300">
-              Get the latest updates on our research, projects, and
-              opportunities.
-            </p>
-            <NewsletterForm />
+            <div className="space-y-3">
+              {contactDetails.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <p
+                    key={item.text}
+                    className="flex items-start gap-3 text-gray-300 text-sm"
+                  >
+                    <Icon className="h-5 w-5 text-white shrink-0 mt-0.5" />
+                    {item.text}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </div>
 
         <hr className="border-white/10 my-8" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-400">
-            Datawise Africa &copy; {new Date().getFullYear()}. All rights
-            reserved.
-          </p>
-
-          <ul className="flex gap-4">
-            {socials.map((item) => {
-              const Icon = socialIcons[item.name];
-              return (
-                <a
-                  key={item.id}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
-                >
-                  {Icon && <Icon className="h-4 w-4" />}
-                </a>
-              );
-            })}
-          </ul>
-        </div>
+        <p className="text-sm text-gray-400 text-center">
+          Datawise Africa &copy; {new Date().getFullYear()}. All rights
+          reserved.
+        </p>
       </div>
     </footer>
   );

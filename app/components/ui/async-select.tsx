@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Check, ChevronsUpDown, X, Loader2 } from 'lucide-react';
+import {
+  IconCheck as Check,
+  IconSelector as ChevronsUpDown,
+  IconX as X,
+  IconLoader2 as Loader2,
+} from '@tabler/icons-react';
 import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import {

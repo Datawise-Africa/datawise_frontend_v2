@@ -1,7 +1,5 @@
-import {
-  available_positions,
-  type JobCareerPositionType,
-} from '~/constants/navigation';
+import { available_positions } from '~/lib/data/careers';
+import type { JobCareerPositionType } from '~/lib/types/careers';
 import {
   FadeIn,
   StaggerChildren,

@@ -8,12 +8,7 @@ import {
   IconHeartHandshake,
   IconUsersGroup,
 } from '@tabler/icons-react';
-import {
-  FadeIn,
-  StaggerChildren,
-  StaggerItem,
-  PageTransition,
-} from '~/components/motion';
+import { FadeIn, PageTransition } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
 export function meta(_args: Route.MetaArgs) {
@@ -34,7 +29,7 @@ const values = [
     icon: IconRocket,
     title: 'Excellence in Innovation',
     description:
-      'We pursue cutting-edge solutions with a commitment to high-quality research, data, and technology\u2014ensuring innovation is not just an idea, but a reality. We get things done with precision and efficiency.',
+      'We pursue cutting-edge solutions with a commitment to high-quality research, data, and technology, ensuring innovation is not just an idea, but a reality. We get things done with precision and efficiency.',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
   },
@@ -42,7 +37,7 @@ const values = [
     icon: IconHeartHandshake,
     title: 'Integrity and Impact',
     description:
-      'We believe in doing meaningful work, ethically. Our datasets, models, and infrastructure are built with responsibility and a deep focus on creating real, lasting change.',
+      'Our datasets, models, and infrastructure are built with responsibility and a deep focus on creating real, lasting change.',
     accentClass: 'text-accent-orange',
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
   },
@@ -50,7 +45,7 @@ const values = [
     icon: IconUsersGroup,
     title: 'Collaboration for Growth',
     description:
-      'We grow by lifting others. Whether through open data, community training, or partnerships, we believe in sharing knowledge and working together to build an inclusive ecosystem.',
+      'Whether through open data, community training, or partnerships, we believe in sharing knowledge and working together to build an inclusive ecosystem.',
     accentClass: 'text-accent-pink',
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
   },
@@ -61,70 +56,45 @@ export default function AboutUs() {
     <PageTransition>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <FadeIn direction="left">
-              <div className="text-center md:text-left space-y-6">
-                <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                  Powering Africa{'\u2019'}s AI Future
-                  <br />
-                  <span className="text-primary">with Trusted Data</span>
-                </h1>
-                <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
-                  Datawise Africa builds the foundations for Africa{'\u2019'}s
-                  data and AI ecosystem. We work with governments, researchers,
-                  companies, and civil society to make better decisions from
-                  data and to build AI that is locally relevant, ethical, and
-                  impactful.
-                </p>
-              </div>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div className="flex justify-center">
-                <img
-                  className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl"
-                  src="/assets/aboutus/aboutus.svg"
-                  alt="About Us"
-                  loading="lazy"
-                />
-              </div>
-            </FadeIn>
-          </div>
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+                Research. Build. <span className="text-primary">Deploy.</span>
+              </h1>
+              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed mt-6">
+                We research, build, and deploy reliable data and intelligence
+                systems that accelerate Africa&apos;s digital transformation.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
+      {/* Our Story Section */}
       <section className="bg-section-green dark:bg-card">
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto text-center">
-            <FadeIn direction="up" delay={0}>
-              <div className="border-b md:border-b-0 md:border-r border-border pb-8 md:pb-0 md:pr-12">
-                <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                  Our Mission
-                </h3>
-                <h2 className="text-3xl font-bold text-foreground mb-3">
-                  Mission
-                </h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  To design and manage reliable and ethical data and AI systems
-                  that accelerate Africa{'\u2019'}s digital transformation.
-                </p>
-              </div>
-            </FadeIn>
-            <FadeIn direction="up" delay={0.2}>
-              <div className="md:pl-12">
-                <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                  Our Vision
-                </h3>
-                <h2 className="text-3xl font-bold text-foreground mb-3">
-                  Vision
-                </h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  To enable Africa to build and govern its own intelligence
-                  systems, solving Africa{'\u2019'}s problems with African
-                  solutions.
-                </p>
-              </div>
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <FadeIn direction="up">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                Our Story
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Datawise Africa was formed in 2019 with a vision to create
+                African-centred data that encourages more intelligent and
+                informed decisions for the continent.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Data, if properly collected, governed, and used, can become a
+                strategic resource that informs policy, strengthens public
+                services, accelerates research, and supports sustainable
+                economic growth.
+              </p>
+              <p className="text-foreground text-lg leading-relaxed font-medium">
+                Datawise Africa exists to research, build, and deploy reliable
+                data and intelligence systems that accelerate Africa{'\u2019'}s
+                digital transformation.
+              </p>
             </FadeIn>
           </div>
         </div>
@@ -136,7 +106,7 @@ export default function AboutUs() {
           <FadeIn>
             <div className="text-center mb-12">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                What Drives Us
+                What We Believe
               </h3>
               <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
                 Our Values
@@ -144,28 +114,30 @@ export default function AboutUs() {
             </div>
           </FadeIn>
 
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {values.map((value) => {
-              const Icon = value.icon;
-              return (
-                <StaggerItem key={value.title}>
-                  <div className="flex flex-col items-center text-center bg-card rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+          <FadeIn direction="up">
+            <div className="max-w-3xl mx-auto space-y-6">
+              {values.map((value) => {
+                const Icon = value.icon;
+                return (
+                  <div key={value.title} className="flex items-start gap-4">
                     <div
-                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${value.accentBgClass} mb-5`}
+                      className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
                     >
-                      <Icon className={`h-7 w-7 ${value.accentClass}`} />
+                      <Icon className={`h-5 w-5 ${value.accentClass}`} />
                     </div>
-                    <h4 className="font-bold text-lg text-foreground mb-2">
-                      {value.title}
-                    </h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {value.description}
-                    </p>
+                    <div>
+                      <h4 className="font-bold text-lg text-foreground">
+                        {value.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed mt-1">
+                        {value.description}
+                      </p>
+                    </div>
                   </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerChildren>
+                );
+              })}
+            </div>
+          </FadeIn>
         </div>
       </section>
 

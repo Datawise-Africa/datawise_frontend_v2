@@ -1,4 +1,4 @@
-import { Loader2 } from 'lucide-react';
+import { IconLoader2 as Loader2 } from '@tabler/icons-react';
 import { useNavigation } from 'react-router';
 import { useEffect, useState } from 'react';
 

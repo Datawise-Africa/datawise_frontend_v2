@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { JobCareerPositionType } from '~/constants/navigation';
+import type { JobCareerPositionType } from '~/lib/types/careers';
 
 type CareerState = {
   selectedPosition: JobCareerPositionType | null;
