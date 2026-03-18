@@ -1,4 +1,7 @@
+import type { TsFixMe } from '~/types/glob';
+
 export type JobCareerPositionType = {
+  [key: string]: TsFixMe;
   id: string;
   title: string;
   overview: string;
