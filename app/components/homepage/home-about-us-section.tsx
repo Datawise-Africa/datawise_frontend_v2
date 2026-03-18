@@ -10,9 +10,6 @@ export default function HomeAboutUsSection() {
           <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
             ABOUT US
           </h3>
-          {/* <h2 className="text-3xl font-bold text-foreground mb-4">
-            What We Do
-          </h2> */}
           <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
             Datawise Africa is a research and development company building
             Africa&apos;s data and intelligence systems, from high-quality
