@@ -1,5 +1,5 @@
 import { generateSEOTags } from '~/utils/seo';
-import type { Route } from './+types/projects';
+import type { Route } from './+types/products';
 import { href, Link } from 'react-router';
 import {
   IconArrowRight,
@@ -22,11 +22,11 @@ import type { FC } from 'react';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Datawise Africa - Projects',
-      description: `Explore Datawise Africa's innovative projects leveraging data and AI to tackle Africa's challenges in economic, Tech and Infrastructure development.`,
-      url: href('/projects'),
+      title: 'Datawise Africa - Products',
+      description: `Explore Datawise Africa's innovative products leveraging data and AI to tackle Africa's challenges in economic, Tech and Infrastructure development.`,
+      url: href('/products'),
       keywords:
-        'datawise, datalab, afyaken, eduken, data projects africa, ai for development, data infrastructure',
+        'datawise, datalab, afyaken, eduken, data products africa, ai for development, data infrastructure',
     }),
   ];
 }

@@ -29,7 +29,7 @@ const companyLinks = [
   { to: '/', label: 'Home' },
   { to: '/about-us', label: 'About Us' },
   { to: '/services', label: 'Services' },
-  { to: '/projects', label: 'Projects' },
+  { to: '/products', label: 'Products' },
   { to: '/datalab', label: 'Datalab' },
   { to: '/careers', label: 'Careers' },
   { to: '/contact-us', label: 'Contact Us' },

@@ -196,6 +196,17 @@ export default function NavigationItemComponent({
                   </div>
                 )}
               </div>
+              {/* View all link */}
+              <div className="mt-6 pt-4 border-t border-white/10">
+                <NavLinkOrAnchor
+                  link={item}
+                  onClick={() => setDropdownOpen(false)}
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                >
+                  View all {item.title.toLowerCase()}
+                  <IconArrowRight className="h-4 w-4" />
+                </NavLinkOrAnchor>
+              </div>
             </div>
           </div>
         )}
