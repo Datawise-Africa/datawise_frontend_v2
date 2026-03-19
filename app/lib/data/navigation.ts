@@ -60,7 +60,7 @@ export const navigation: NavigationItem[] = [
   },
   {
     title: 'Products',
-    url: '/projects',
+    url: '/products',
     dropdownItems: [],
     megaMenu: {
       groups: [
@@ -79,12 +79,12 @@ export const navigation: NavigationItem[] = [
           items: [
             {
               title: 'Eduken',
-              url: '/projects#eduken',
+              url: '/products#eduken',
               description: 'Kenyan higher learning institutions catalog.',
             },
             {
               title: 'Afyaken',
-              url: '/projects#afyaken',
+              url: '/products#afyaken',
               description: 'Kenyan healthcare facilities data.',
             },
           ],
@@ -95,7 +95,7 @@ export const navigation: NavigationItem[] = [
           title: 'Data for Africa',
           description:
             'Open-access datasets and platforms for researchers, policymakers, and innovators.',
-          url: '/projects',
+          url: '/products',
         },
       ],
     },

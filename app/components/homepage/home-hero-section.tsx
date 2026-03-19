@@ -49,19 +49,19 @@ export default function HomeHeroSection() {
                   size="lg"
                   className="bg-primary hover:bg-primary-hover text-white font-semibold px-8 py-4 rounded-lg text-lg shadow-lg h-auto"
                 >
-                  <Link to={href('/about-us')}>
+                  <Link to={href('/services')}>
                     Discover Our Work
                     <IconArrowRight className="ml-1 h-5 w-5" />
                   </Link>
                 </Button>
-                <Button
+                {/* <Button
                   asChild
                   variant="outline"
                   size="lg"
                   className="border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-lg text-lg h-auto dark:border-white/40 dark:bg-white/10 dark:hover:bg-white/20"
                 >
                   <Link to={href('/datalab')}>Explore Datasets</Link>
-                </Button>
+                </Button> */}
               </div>
             </FadeIn>
           </div>
