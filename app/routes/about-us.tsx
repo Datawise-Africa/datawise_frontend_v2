@@ -1,126 +1,192 @@
-import AboutUsTeam from '@/components/about-us/about-us-team';
+import AboutUsTeam from '~/components/about-us/about-us-team';
 import type { Route } from './+types/about-us';
-import { generateSEOTags } from '@/utils/seo';
-import { href } from 'react-router';
+import { generateSEOTags } from '~/utils/seo';
+import { href, Link } from 'react-router';
+import {
+  IconArrowRight,
+  IconRocket,
+  IconHeartHandshake,
+  IconUsersGroup,
+} from '@tabler/icons-react';
+import { FadeIn, PageTransition } from '~/components/motion';
+import { Button } from '~/components/ui/button';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
       title: 'Datawise Africa - About Us',
       description:
-        'Learn about Datawise Africa, our mission to leverage data and AI for solving Africa’s challenges, and our commitment to innovation, integrity, and collaboration.',
+        'Datawise Africa builds the foundations for Africa\u2019s data and AI ecosystem. We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure.',
       url: href('/about-us'),
       keywords:
         'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, data infrastructure, machine learning Africa, data-driven impact',
     }),
   ];
 }
+
+const values = [
+  {
+    icon: IconRocket,
+    title: 'Excellence in Innovation',
+    description:
+      'We pursue cutting-edge solutions with a commitment to high-quality research, data, and technology, ensuring innovation is not just an idea, but a reality. We get things done with precision and efficiency.',
+    accentClass: 'text-accent-blue',
+    accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
+  },
+  {
+    icon: IconHeartHandshake,
+    title: 'Integrity and Impact',
+    description:
+      'Our datasets, models, and infrastructure are built with responsibility and a deep focus on creating real, lasting change.',
+    accentClass: 'text-accent-orange',
+    accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
+  },
+  {
+    icon: IconUsersGroup,
+    title: 'Collaboration for Growth',
+    description:
+      'Whether through open data, community training, or partnerships, we believe in sharing knowledge and working together to build an inclusive ecosystem.',
+    accentClass: 'text-accent-pink',
+    accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
+  },
+];
+
 export default function AboutUs() {
   return (
-    <div className="container mx-auto w-full flex flex-col items-center p-6 pt-24 md:pt-0 space-y-8">
+    <PageTransition>
       {/* Hero Section */}
-      <section className="pt-16 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-        <div className="px-6 md:px-0 text-center md:text-left">
-          <h1 className="lora-font font-bold mt-10 lg:mt-0 text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight">
-            Driving Impact Through
-            <br />
-            <span className="text-[#26A37E]">Data and Innovation</span>
-          </h1>
-          <p className="sora-font pt-6 text-gray-800 text-lg sm:text-xl leading-relaxed">
-            At Datawise Africa, we are committed to solving Africa’s most
-            pressing challenges by leveraging the power of data, AI, and
-            infrastructure.
-          </p>
-        </div>
-        <div className="flex justify-center">
-          <img
-            className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl"
-            src="/assets/aboutus/aboutus.svg"
-            alt="About Us"
-          />
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+                Research. Build. <span className="text-primary">Deploy.</span>
+              </h1>
+              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed mt-6">
+                We research, build, and deploy reliable data and intelligence
+                systems that accelerate Africa&apos;s digital transformation.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="w-full bg-[#F7FDFA] px-6 py-12 text-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0">
-            <h2 className="text-3xl font-bold text-gray-900">Mission</h2>
-            <p className="text-gray-700 mt-3 text-lg leading-relaxed">
-              To create data and AI systems that people trust and use to build
-              their world.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900">Vision</h2>
-            <p className="text-gray-700 mt-3 text-lg leading-relaxed">
-              To build the tools and systems that help us shape the future we
-              believe in.
-            </p>
+      {/* Our Story Section */}
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <FadeIn direction="up">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                Our Story
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Datawise Africa was formed in 2019 with a vision to create
+                African-centred data that encourages more intelligent and
+                informed decisions for the continent.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Data, if properly collected, governed, and used, can become a
+                strategic resource that informs policy, strengthens public
+                services, accelerates research, and supports sustainable
+                economic growth.
+              </p>
+              <p className="text-foreground text-lg leading-relaxed font-medium">
+                Datawise Africa exists to research, build, and deploy reliable
+                data and intelligence systems that accelerate Africa{'\u2019'}s
+                digital transformation.
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Our Values Section */}
-      <section className="w-full text-center">
-        <h2 className="lora-font font-bold text-3xl sm:text-4xl">Our Values</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
-          {[
-            '/assets/careers/Integrity.png',
-            '/assets/careers/Collaboration.png',
-            '/assets/careers/Innovation.png',
-          ].map((value, index) => (
-            <div key={index} className="p-4">
-              <div className="flex justify-center">
-                <img src={value} alt="Value Icon" width={64} height={64} />
-              </div>
-              <h3 className="sora-font font-bold text-lg sm:text-xl mt-3 text-gray-900">
-                {index === 0
-                  ? 'Excellence in Innovation'
-                  : index === 1
-                    ? 'Integrity and Impact'
-                    : 'Collaboration for Growth'}
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                What We Believe
               </h3>
-              <p className="sora-font text-gray-700 mt-2 text-base">
-                {index === 0
-                  ? 'We pursue cutting-edge solutions with a commitment to high-quality research, data, and technology—ensuring innovation is not just an idea, but a reality. We get things done with precision and efficiency.'
-                  : index === 1
-                    ? 'We believe in doing meaningful work, ethically. Our datasets, models, and infrastructure are built with responsibility and a deep focus on creating real, lasting change.'
-                    : 'We grow by lifting others.Whether through open data, community training, or partnerships, we believe in sharing knowledge and working together to build an inclusive ecosystem.'}
-              </p>
+              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
+                Our Values
+              </h2>
             </div>
-          ))}
+          </FadeIn>
+
+          <FadeIn direction="up">
+            <div className="max-w-3xl mx-auto space-y-6">
+              {values.map((value) => {
+                const Icon = value.icon;
+                return (
+                  <div key={value.title} className="flex items-start gap-4">
+                    <div
+                      className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
+                    >
+                      <Icon className={`h-5 w-5 ${value.accentClass}`} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg text-foreground">
+                        {value.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed mt-1">
+                        {value.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* Team Section */}
-      <AboutUsTeam />
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <AboutUsTeam />
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <div className="bg-[#26A37E] text-white p-8 rounded-2xl w-full mx-auto text-center md:text-left md:flex md:items-center">
-        <div className="md:w-1/2">
-          <h3 className="text-3xl font-bold">
-            Want to be part of our mission?
-          </h3>
-          <p className="mt-4 text-lg font-light">
-            We're always looking for talented individuals to join our team.
-          </p>
-          <a
-            href="/careers"
-            className="mt-4 inline-flex items-center text-lg hover:underline"
-          >
-            View Open Roles <span className="ml-2">→</span>
-          </a>
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+          <FadeIn direction="up">
+            <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+              <div className="md:w-1/2 text-center md:text-left">
+                <h3 className="text-3xl md:text-4xl font-bold">
+                  Want to be part of our mission?
+                </h3>
+                <p className="mt-4 text-lg text-white/80 leading-relaxed">
+                  We{'\u2019'}re always looking for talented individuals to join
+                  our team.
+                </p>
+                <div className="mt-6">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold dark:border-white/40 dark:bg-white/10 dark:hover:bg-white/20"
+                  >
+                    <Link to={href('/careers')}>
+                      View Open Roles
+                      <IconArrowRight className="ml-1 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="md:w-1/2 flex justify-center">
+                <img
+                  src="/assets/aboutus/ctajoin.svg"
+                  alt="Join our team"
+                  className="w-full max-w-sm"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </FadeIn>
         </div>
-        <div className="md:w-1/2 flex justify-center mt-6 md:mt-0">
-          <img
-            src="/assets/aboutus/ctajoin.svg"
-            alt="Collaboration"
-            className="w-full max-w-sm"
-          />
-        </div>
-      </div>
-    </div>
+      </section>
+    </PageTransition>
   );
 }

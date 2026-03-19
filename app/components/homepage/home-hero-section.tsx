@@ -1,10 +1,19 @@
-import { ArrowRight } from 'lucide-react';
+import { IconArrowRight } from '@tabler/icons-react';
 import { href, Link } from 'react-router';
+import { FadeIn } from '~/components/motion';
+import { Button } from '~/components/ui/button';
+
+// const impactStats = [
+//   { value: '10+', label: 'Datasets Created' },
+//   { value: '5+', label: 'Countries Reached' },
+//   { value: '20+', label: 'Research Partners' },
+//   { value: '50+', label: 'Researchers Supported' },
+// ];
 
 export default function HomeHeroSection() {
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden pt-24 md:pt-0 min-h-[90vh] bg-cover bg-center bg-no-repeat"
+      className="relative flex items-center justify-center overflow-hidden pt-24 md:pt-0 min-h-[60vh] lg:min-h-[70vh] bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage:
           "url('/115d86f6c670c9128d8eb6151d1221f54e24603a-dwise-2.jpg?w=1920&h=1080&fit=crop&crop=center')",
@@ -19,33 +28,58 @@ export default function HomeHeroSection() {
       </div>
 
       {/* Content */}
-      <div className="container z-10 mx-auto px-4 lg:px-8 py-12 lg:py-24 h-full">
+      <div className="container z-10 mx-auto px-4 lg:px-8 py-12 lg:py-16 h-full">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-6 lg:space-y-8">
-            <h1 className="text-4xl font-bold font-lora leading-tight tracking-tight sm:text-5xl lg:text-6xl text-white drop-shadow-lg">
-              Driving Africa's Data and AI Revolution
-            </h1>
-            <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
-              Applied Data and AI research for Africa, building tools,
-              infrastructure, and local research leadership.
-            </p>
-            <Link
-              to={href('/about-us')}
-              className="w-fit bg-emerald-600 hover:bg-emerald-700  text-white font-semibold px-8 py-4 rounded-lg flex items-center transition-colors duration-200 text-lg shadow-lg"
-            >
-              Learn More
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            <FadeIn direction="up" delay={0}>
+              <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl text-white drop-shadow-lg">
+                Applied research and development for Africa&apos;s data and
+                intelligence systems
+              </h1>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.2}>
+              <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
+                Building and governing Africa&apos;s intelligence systems
+              </p>
+            </FadeIn>
+            <FadeIn direction="up" delay={0.4}>
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary-hover text-white font-semibold px-8 py-4 rounded-lg text-lg shadow-lg h-auto"
+                >
+                  <Link to={href('/services')}>
+                    Discover Our Work
+                    <IconArrowRight className="ml-1 h-5 w-5" />
+                  </Link>
+                </Button>
+                {/* <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-lg text-lg h-auto dark:border-white/40 dark:bg-white/10 dark:hover:bg-white/20"
+                >
+                  <Link to={href('/datalab')}>Explore Datasets</Link>
+                </Button> */}
+              </div>
+            </FadeIn>
           </div>
 
-          {/* Isometric Illustration - Hidden on mobile */}
+          {/* Impact Stats - Hidden on mobile */}
           <div className="hidden lg:flex justify-center items-center">
-            {/* <img
-              src="/hero-svg-illustration.svg?w=600&h=500&fit=crop&crop=center"
-              alt="Data and AI illustration"
-              className="w-full h-auto max-w-lg xl:max-w-xl rounded-lg shadow-2xl"
-              priority
-            /> */}
+            {/* <StaggerChildren className="grid grid-cols-2 gap-6 w-full max-w-md">
+              {impactStats.map((stat) => (
+                <StaggerItem key={stat.label}>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
+                    <p className="text-4xl font-extrabold text-white">
+                      {stat.value}
+                    </p>
+                    <p className="text-sm text-teal-100 mt-1">{stat.label}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerChildren> */}
           </div>
         </div>
       </div>

@@ -1,75 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
-:root {
-  --font-sora: 'Sora', sans-serif;
-  --font-lora: 'Lora', serif;
-  --font-code: 'Source Code Pro', monospace;
-  --font-grotesk: 'Space Grotesk', sans-serif;
-  color-scheme: dark;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Font Family */
-  --font-sora: 'Sora', sans-serif;
-  --font-lora: 'Lora', serif;
-  --font-code: 'Source Code Pro', monospace;
-  --font-grotesk: 'Space Grotesk', sans-serif;
+  --font-sans:
+    'Nunito', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono:
+    'SUSE Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 
-  /**
-   * Colors
-   */
-  --color-1: #ac6aff;
-  --color-2: #ffc876;
-  --color-3: #ff776f;
-  --color-4: #7adb78;
-  --color-5: #858dff;
-  --color-6: #ff98e2;
-  --color-7: #f7fdfa;
-  --stroke-1: #26242c;
-  --n-1: #ffffff;
-  --n-2: #e5e7eb;
-  --n-3: #0f2542;
-  --n-4: #26a37e;
+  /* Project-specific colors (accessible via eg. bg-primary-hover, text-navy) */
+  --color-primary-hover: #1e8c68;
+  --color-primary-light: #b1e9d1;
+  --color-primary-bg: #e6f4f1;
+
+  --color-navy: #0f2542;
+  --color-navy-light: #1e3a5f;
+  --color-navy-lighter: #2d4b6a;
+
+  --color-gray-muted: #6c757d;
+  --color-gray-bg: #f6f6f6;
+  --color-dot-inactive: #d1d5db;
+
+  --color-accent-orange: #dd8823;
+  --color-accent-blue: #129fc8;
+  --color-accent-pink: #ee3481;
 }
 
 * {
   scroll-behavior: smooth;
 }
 
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.425rem;
+
+  /* Background & Foreground → white / navy */
+  --background: #ffffff;
+  --foreground: #0f2542;
+
+  /* Card → white / navy */
+  --card: #ffffff;
+  --card-foreground: #0f2542;
+
+  /* Popover → white / navy */
+  --popover: #ffffff;
+  --popover-foreground: #0f2542;
+
+  /* Primary → Datawise green */
+  --primary: #26a37e;
+  --primary-foreground: #ffffff;
+
+  /* Secondary → light green tint */
+  --secondary: #e6f4f1;
+  --secondary-foreground: #0f2542;
+
+  /* Muted → light gray */
+  --muted: #f6f6f6;
+  --muted-foreground: #6c757d;
+
+  /* Accent → soft green background */
+  --accent: #f7fdfa;
+  --accent-foreground: #0f2542;
+
+  /* Destructive → red */
+  --destructive: #dc2626;
+
+  /* Borders & Inputs */
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #26a37e;
+
+  /* Chart colors → project accents */
+  --chart-1: #26a37e;
+  --chart-2: #129fc8;
+  --chart-3: #dd8823;
+  --chart-4: #ee3481;
+  --chart-5: #1e3a5f;
+
+  /* Sidebar */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f2542;
+  --sidebar-primary: #26a37e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f7fdfa;
+  --sidebar-accent-foreground: #0f2542;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #26a37e;
+}
+
+.dark {
+  /* Background & Foreground */
+  --background: #0f2542;
+  --foreground: #f0f4f8;
+
+  /* Card */
+  --card: #1e3a5f;
+  --card-foreground: #f0f4f8;
+
+  /* Popover */
+  --popover: #1e3a5f;
+  --popover-foreground: #f0f4f8;
+
+  /* Primary → brighter green for dark mode */
+  --primary: #34d399;
+  --primary-foreground: #0f2542;
+
+  /* Secondary */
+  --secondary: #2d4b6a;
+  --secondary-foreground: #f0f4f8;
+
+  /* Muted */
+  --muted: #2d4b6a;
+  --muted-foreground: #94a3b8;
+
+  /* Accent */
+  --accent: #2d4b6a;
+  --accent-foreground: #f0f4f8;
+
+  /* Destructive */
+  --destructive: #ef4444;
+
+  /* Borders & Inputs */
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #34d399;
+
+  /* Chart colors */
+  --chart-1: #34d399;
+  --chart-2: #38bdf8;
+  --chart-3: #fbbf24;
+  --chart-4: #f472b6;
+  --chart-5: #818cf8;
+
+  /* Sidebar */
+  --sidebar: #1e3a5f;
+  --sidebar-foreground: #f0f4f8;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #0f2542;
+  --sidebar-accent: #2d4b6a;
+  --sidebar-accent-foreground: #f0f4f8;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #34d399;
+}
+
 @layer base {
   h1 {
-    font-weight: bold;
-    font-family: var(--font-sora);
+    font-weight: 800;
   }
-
   h2 {
-    font-family: var(--font-sora);
+    font-weight: 700;
   }
   h3 {
-    font-family: var(--font-sora);
+    font-weight: 700;
   }
-  p {
-    font-family: var(--font-sora);
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
-html,
-body {
-  @apply font-sans bg-[#FFFFFF] text-[#0F2542] text-base;
 
-  /* @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  } */
+/* Toast Animations */
+@keyframes toast-enter {
+  0% {
+    transform: translateX(calc(100% + 1rem));
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-/* Container for the slider */
+@keyframes toast-leave {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100% + 1rem));
+    opacity: 0;
+  }
+}
+
+.animate-enter {
+  animation: toast-enter 0.3s ease-out;
+}
+
+.animate-leave {
+  animation: toast-leave 0.2s ease-in forwards;
+}
+
+/* Hero Slider */
 .hero-slider-container {
   width: 100%;
   height: 60vh;
-  background-color: #ffffff;
+  background-color: var(--background);
   padding-right: 40px;
 }
 
-/* Slide content layout */
 .hero-slide {
   display: flex;
   justify-content: center;
@@ -83,51 +257,21 @@ body {
   padding: 0 5%;
 }
 
-.text-section {
-  max-width: 60%;
-}
-
-.text-section h1 {
-  font-size: 4.5rem;
-  font-weight: bold;
-  color: #2c3e50; /* Dark text color */
-}
-
-.text-section h1 .highlight {
-  color: #26a37e; /* Green highlight */
-}
-
-.text-section p {
-  font-size: 24px;
-  font-weight: 400;
-  font-family: var(--font-sora);
-  color: #6c757d; /* Subtle gray text */
-}
-
-/* Custom Dots Styling */
 .custom-dots-container {
   display: flex;
   justify-content: flex-start;
-  margin-top: -80px; /* Adjust position */
+  margin-top: -80px;
 }
 
 .custom-dot {
-  width: 20px; /* Default width for inactive dots */
+  width: 20px;
   height: 6px;
-  background-color: #d1d5db; /* Gray color */
+  background-color: var(--color-dot-inactive);
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
 
 .custom-dot.active {
-  width: 40px; /* Wider active dot */
-  background-color: #26a37e; /* Green color */
-}
-
-.lora-font {
-  font-family: 'Lora', serif;
-}
-
-.sore-font {
-  font-family: 'Sora', sans-serif;
+  width: 40px;
+  background-color: var(--primary);
 }

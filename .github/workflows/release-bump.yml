@@ -1,0 +1,158 @@
+name: Release Bump
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Version bump type'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      prerelease:
+        description: 'Pre-release tag (e.g., beta, rc). Leave empty for stable release.'
+        required: false
+        type: string
+      dry_run:
+        description: 'Dry run (do not push changes)'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    name: Bump Version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get current version
+        id: current
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version || '0.0.0'")
+          echo "version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Current version: $CURRENT_VERSION"
+
+      - name: Calculate next version
+        id: next
+        run: |
+          CURRENT="${{ steps.current.outputs.version }}"
+          BUMP="${{ inputs.bump_type }}"
+          PRERELEASE="${{ inputs.prerelease }}"
+
+          # Strip any existing pre-release suffix for calculation
+          BASE=$(echo "$CURRENT" | sed 's/-.*//')
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$BASE"
+
+          case "$BUMP" in
+            major)
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            patch)
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+
+          NEXT_VERSION="$MAJOR.$MINOR.$PATCH"
+          if [ -n "$PRERELEASE" ]; then
+            NEXT_VERSION="$NEXT_VERSION-$PRERELEASE"
+          fi
+
+          echo "version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Next version: $NEXT_VERSION"
+
+      - name: Update package.json version
+        run: |
+          node -e "
+            const fs = require('fs');
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            pkg.version = '${{ steps.next.outputs.version }}';
+            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+
+      - name: Generate changelog entry
+        id: changelog
+        run: |
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -n "$PREVIOUS_TAG" ]; then
+            COMMITS=$(git log "$PREVIOUS_TAG"..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges -20)
+          fi
+
+          {
+            echo "commits<<EOF"
+            echo "$COMMITS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Show changes (dry run)
+        if: inputs.dry_run
+        run: |
+          echo "=== DRY RUN ==="
+          echo "Bump: ${{ steps.current.outputs.version }} → ${{ steps.next.outputs.version }}"
+          echo ""
+          echo "=== Changes ==="
+          git diff package.json
+          echo ""
+          echo "=== Commits since last release ==="
+          echo "${{ steps.changelog.outputs.commits }}"
+          echo ""
+          echo "No changes pushed."
+
+      - name: Commit and tag
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git add package.json
+          git commit -m "chore(release): bump version to v${{ steps.next.outputs.version }}"
+          git tag -a "v${{ steps.next.outputs.version }}" -m "Release v${{ steps.next.outputs.version }}"
+
+      - name: Push changes
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git push origin ${{ github.ref_name }}
+          git push origin "v${{ steps.next.outputs.version }}"
+
+      - name: Create GitHub Release
+        if: ${{ !inputs.dry_run }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.next.outputs.version }}
+          name: v${{ steps.next.outputs.version }}
+          body: |
+            ## Release v${{ steps.next.outputs.version }}
+
+            **Bump type:** ${{ inputs.bump_type }}
+            **Previous version:** ${{ steps.current.outputs.version }}
+
+            ### Changes
+
+            ${{ steps.changelog.outputs.commits }}
+          prerelease: ${{ inputs.prerelease != '' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
