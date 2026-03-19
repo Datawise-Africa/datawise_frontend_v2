@@ -12,7 +12,7 @@ export default [
     index('routes/home.tsx'),
     route('about-us', 'routes/about-us.tsx'),
     route('services', 'routes/services.tsx'),
-    route('projects', 'routes/projects.tsx'),
+    route('products', 'routes/products.tsx'),
     route('datalab', 'routes/datalab.tsx'),
     // ...prefix('tools', [
     //   route('GPT', 'routes/tools.GPT.tsx'),

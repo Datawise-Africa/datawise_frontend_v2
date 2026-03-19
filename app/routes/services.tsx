@@ -39,8 +39,34 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
+const serviceImages: Record<string, string> = {
+  data: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+  engineering:
+    'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
+  ai: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+  infrastructure:
+    'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop',
+};
+
+function ServiceImage({ id, title }: { id: string; title: string }) {
+  const src = serviceImages[id];
+  return (
+    <div className="relative w-full max-w-md mx-auto">
+      <div className="overflow-hidden rounded-2xl shadow-lg">
+        <img
+          src={src}
+          alt={title}
+          className="w-full h-auto object-cover aspect-4/3"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  );
+}
+
 const serviceCategories: {
   id: string;
+  label: string;
   title: string;
   description: string;
   accentClass: string;
@@ -53,9 +79,10 @@ const serviceCategories: {
 }[] = [
   {
     id: 'data',
+    label: 'Data & Research',
     title: 'Data, Insights & Applied Research',
     description:
-      'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. We develop AI-ready sector datasets and translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
+      'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. Developing AI-ready sector datasets, we translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
     accentClass: 'text-accent-orange',
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
     capabilities: [
@@ -81,9 +108,10 @@ const serviceCategories: {
   },
   {
     id: 'engineering',
+    label: 'Software Engineering',
     title: 'Engineering',
     description:
-      'We design and build scalable software systems, from research prototypes to production-ready platforms tailored to your strategic needs.',
+      'Designing and building AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
     capabilities: [
@@ -115,6 +143,7 @@ const serviceCategories: {
   },
   {
     id: 'ai',
+    label: 'Artificial Intelligence',
     title: 'AI Services',
     description:
       'Our AI services focus on building practical, scalable AI systems that organizations can deploy in real-world environments.',
@@ -143,9 +172,10 @@ const serviceCategories: {
   },
   {
     id: 'infrastructure',
+    label: 'Infrastructure',
     title: 'Infrastructure Engineering',
     description:
-      'We design and manage cloud and compute infrastructure to support demanding workloads like AI systems, data platforms, and research.',
+      'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligence tools, and operate AI systems in real-world environments. Our work includes storing data, and running and maintaining the systems that we develop and build.',
     accentClass: 'text-primary',
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
     capabilities: [
@@ -196,66 +226,75 @@ export default function Services() {
       </section>
 
       {/* Service Categories */}
-      {serviceCategories.map((category, index) => (
-        <section
-          key={category.id}
-          id={category.id}
-          className={
-            index % 2 === 0 ? 'bg-section-green dark:bg-card' : 'bg-background'
-          }
-        >
-          <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-            <FadeIn direction="up">
-              <div className="max-w-4xl mb-12">
-                <h3
-                  className={`text-lg font-semibold uppercase tracking-wide mb-2 ${category.accentClass}`}
+      {serviceCategories.map((category, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <section
+            key={category.id}
+            id={category.id}
+            className={
+              isEven ? 'bg-section-green dark:bg-card' : 'bg-background'
+            }
+          >
+            <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+              {/* Alternating text + illustration */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+                <FadeIn
+                  direction={isEven ? 'left' : 'right'}
+                  className={!isEven ? 'lg:order-2' : ''}
                 >
-                  {category.id === 'data'
-                    ? 'Data & Research'
-                    : category.id === 'engineering'
-                      ? 'Software Engineering'
-                      : category.id === 'ai'
-                        ? 'Artificial Intelligence'
-                        : 'Infrastructure'}
-                </h3>
-                <h2 className="font-bold text-3xl sm:text-4xl text-foreground mb-4">
-                  {category.title}
-                </h2>
-                {category.description && (
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    {category.description}
-                  </p>
-                )}
+                  <h3
+                    className={`text-lg font-semibold uppercase tracking-wide mb-2 ${category.accentClass}`}
+                  >
+                    {category.label}
+                  </h3>
+                  <h2 className="font-bold text-3xl sm:text-4xl text-foreground mb-4">
+                    {category.title}
+                  </h2>
+                  {category.description && (
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {category.description}
+                    </p>
+                  )}
+                </FadeIn>
+                <FadeIn
+                  direction={isEven ? 'right' : 'left'}
+                  delay={0.2}
+                  className={!isEven ? 'lg:order-1' : ''}
+                >
+                  <ServiceImage id={category.id} title={category.title} />
+                </FadeIn>
               </div>
-            </FadeIn>
 
-            <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {category.capabilities.map((capability) => {
-                const Icon = capability.icon;
-                return (
-                  <StaggerItem key={capability.title}>
-                    <div className="group flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
-                      <div
-                        className={`flex items-center justify-center w-12 h-12 rounded-xl ${category.accentBgClass} mb-4 group-hover:bg-primary transition-colors duration-300`}
-                      >
-                        <Icon
-                          className={`h-6 w-6 ${category.accentClass} group-hover:text-white transition-colors duration-300`}
-                        />
+              {/* Capability cards */}
+              <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.capabilities.map((capability) => {
+                  const Icon = capability.icon;
+                  return (
+                    <StaggerItem key={capability.title}>
+                      <div className="group flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+                        <div
+                          className={`flex items-center justify-center w-12 h-12 rounded-xl ${category.accentBgClass} mb-4 group-hover:bg-primary transition-colors duration-300`}
+                        >
+                          <Icon
+                            className={`h-6 w-6 ${category.accentClass} group-hover:text-white transition-colors duration-300`}
+                          />
+                        </div>
+                        <h4 className="font-semibold text-lg text-foreground mb-2">
+                          {capability.title}
+                        </h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {capability.description}
+                        </p>
                       </div>
-                      <h4 className="font-semibold text-lg text-foreground mb-2">
-                        {capability.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {capability.description}
-                      </p>
-                    </div>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerChildren>
-          </div>
-        </section>
-      ))}
+                    </StaggerItem>
+                  );
+                })}
+              </StaggerChildren>
+            </div>
+          </section>
+        );
+      })}
 
       {/* CTA Section */}
       <section className="bg-background">
