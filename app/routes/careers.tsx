@@ -70,7 +70,7 @@ export default function Careers() {
       </section>
 
       {/* ---------- WHY US ---------- */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-10">
@@ -156,7 +156,7 @@ export default function Careers() {
       </section>
 
       {/* ---------- OPEN POSITIONS ---------- */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-10 scroll-mt-24" id="open-positions">

@@ -111,7 +111,7 @@ export default function Partners() {
       </section>
 
       {/* Why Partner With Us */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-12">
@@ -183,7 +183,7 @@ export default function Partners() {
       </section>
 
       {/* Form Section */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div ref={formRef} id="partner-form" className="scroll-mt-16">
             <FadeIn direction="up">

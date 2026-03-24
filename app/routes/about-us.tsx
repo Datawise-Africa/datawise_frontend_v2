@@ -74,7 +74,7 @@ export default function AboutUs() {
       </section>
 
       {/* Our Story & Values Section */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Our Story */}
@@ -143,7 +143,7 @@ export default function AboutUs() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-16">

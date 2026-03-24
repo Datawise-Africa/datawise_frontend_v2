@@ -25,9 +25,10 @@ export default function Home() {
     <div className=" overflow-hidden">
       <HomeHeroSection />
       <Separator />
-      <hr />
       <HomeAboutUsSection />
+      <Separator />
       <HomeWhatWeDoSection />
+      <Separator />
       <HomePartnersSection />
     </div>
   );

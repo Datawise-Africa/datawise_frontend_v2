@@ -218,7 +218,7 @@ export default function Projects() {
       </section>
 
       {/* Focus Areas Section */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-12">
@@ -257,7 +257,7 @@ export default function Projects() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-8 md:justify-between">
