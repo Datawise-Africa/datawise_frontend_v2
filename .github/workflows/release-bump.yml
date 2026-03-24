@@ -35,124 +35,72 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
       - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Get current version
-        id: current
+      - name: Run release script (dry run)
+        if: inputs.dry_run
         run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version || '0.0.0'")
-          echo "version=$CURRENT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Current version: $CURRENT_VERSION"
-
-      - name: Calculate next version
-        id: next
-        run: |
-          CURRENT="${{ steps.current.outputs.version }}"
-          BUMP="${{ inputs.bump_type }}"
-          PRERELEASE="${{ inputs.prerelease }}"
-
-          # Strip any existing pre-release suffix for calculation
-          BASE=$(echo "$CURRENT" | sed 's/-.*//')
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$BASE"
-
-          case "$BUMP" in
-            major)
-              MAJOR=$((MAJOR + 1))
-              MINOR=0
-              PATCH=0
-              ;;
-            minor)
-              MINOR=$((MINOR + 1))
-              PATCH=0
-              ;;
-            patch)
-              PATCH=$((PATCH + 1))
-              ;;
-          esac
-
-          NEXT_VERSION="$MAJOR.$MINOR.$PATCH"
-          if [ -n "$PRERELEASE" ]; then
-            NEXT_VERSION="$NEXT_VERSION-$PRERELEASE"
+          chmod +x scripts/release.sh
+          ARGS="${{ inputs.bump_type }} --dry-run"
+          if [ -n "${{ inputs.prerelease }}" ]; then
+            ARGS="${{ inputs.bump_type }} --prerelease ${{ inputs.prerelease }} --dry-run"
           fi
+          ./scripts/release.sh $ARGS
 
+      - name: Run release script
+        if: ${{ !inputs.dry_run }}
+        id: release
+        run: |
+          chmod +x scripts/release.sh
+          ARGS="${{ inputs.bump_type }}"
+          if [ -n "${{ inputs.prerelease }}" ]; then
+            ARGS="${{ inputs.bump_type }} --prerelease ${{ inputs.prerelease }}"
+          fi
+          ./scripts/release.sh $ARGS
+
+          # Read the version that was just tagged
+          NEXT_VERSION=$(git describe --tags --abbrev=0 | sed 's/^v//')
           echo "version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Next version: $NEXT_VERSION"
 
-      - name: Update package.json version
+      - name: Push changes
+        if: ${{ !inputs.dry_run }}
         run: |
-          node -e "
-            const fs = require('fs');
-            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-            pkg.version = '${{ steps.next.outputs.version }}';
-            fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
-          "
+          git push origin ${{ github.ref_name }}
+          git push origin "v${{ steps.release.outputs.version }}"
 
-      - name: Generate changelog entry
-        id: changelog
+      - name: Generate release body
+        if: ${{ !inputs.dry_run }}
+        id: body
         run: |
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 "v${{ steps.release.outputs.version }}^" 2>/dev/null || echo "")
           if [ -n "$PREVIOUS_TAG" ]; then
             COMMITS=$(git log "$PREVIOUS_TAG"..HEAD --pretty=format:"- %s (%h)" --no-merges)
           else
             COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges -20)
           fi
-
           {
             echo "commits<<EOF"
             echo "$COMMITS"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Show changes (dry run)
-        if: inputs.dry_run
-        run: |
-          echo "=== DRY RUN ==="
-          echo "Bump: ${{ steps.current.outputs.version }} → ${{ steps.next.outputs.version }}"
-          echo ""
-          echo "=== Changes ==="
-          git diff package.json
-          echo ""
-          echo "=== Commits since last release ==="
-          echo "${{ steps.changelog.outputs.commits }}"
-          echo ""
-          echo "No changes pushed."
-
-      - name: Commit and tag
-        if: ${{ !inputs.dry_run }}
-        run: |
-          git add package.json
-          git commit -m "chore(release): bump version to v${{ steps.next.outputs.version }}"
-          git tag -a "v${{ steps.next.outputs.version }}" -m "Release v${{ steps.next.outputs.version }}"
-
-      - name: Push changes
-        if: ${{ !inputs.dry_run }}
-        run: |
-          git push origin ${{ github.ref_name }}
-          git push origin "v${{ steps.next.outputs.version }}"
-
       - name: Create GitHub Release
         if: ${{ !inputs.dry_run }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.next.outputs.version }}
-          name: v${{ steps.next.outputs.version }}
+          tag_name: v${{ steps.release.outputs.version }}
+          name: v${{ steps.release.outputs.version }}
           body: |
-            ## Release v${{ steps.next.outputs.version }}
+            ## Release v${{ steps.release.outputs.version }}
 
             **Bump type:** ${{ inputs.bump_type }}
-            **Previous version:** ${{ steps.current.outputs.version }}
 
             ### Changes
 
-            ${{ steps.changelog.outputs.commits }}
+            ${{ steps.body.outputs.commits }}
           prerelease: ${{ inputs.prerelease != '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
