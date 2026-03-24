@@ -72,7 +72,7 @@ export default function Partners() {
     <PageTransition>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeIn direction="left">
               <div className="space-y-6 text-center md:text-left">
@@ -112,7 +112,7 @@ export default function Partners() {
 
       {/* Why Partner With Us */}
       <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-12">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
@@ -151,7 +151,7 @@ export default function Partners() {
 
       {/* Partners Logos */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="text-center mb-10">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
@@ -163,16 +163,16 @@ export default function Partners() {
             </div>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8 place-items-center max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
               {partners.map((partner, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-center p-4 rounded-xl bg-card border border-border hover:shadow-md transition-shadow duration-200 w-full h-24"
+                  className="flex items-center justify-center p-4 rounded-xl bg-background dark:bg-background/50 border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-24"
                 >
                   <img
                     src={partner.logo || '/placeholder.svg'}
                     alt={partner.name}
-                    className="h-16 max-w-37.5 object-contain"
+                    className="h-10 max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function Partners() {
 
       {/* Form Section */}
       <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div ref={formRef} id="partner-form" className="scroll-mt-16">
             <FadeIn direction="up">
               <PartnersForm />

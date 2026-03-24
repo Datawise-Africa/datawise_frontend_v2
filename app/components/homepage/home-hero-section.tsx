@@ -1,14 +1,14 @@
 import { IconArrowRight } from '@tabler/icons-react';
 import { href, Link } from 'react-router';
-import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
+import { FadeIn } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
-const impactStats = [
-  { value: '10+', label: 'Datasets Created' },
-  { value: '5+', label: 'Countries Reached' },
-  { value: '20+', label: 'Research Partners' },
-  { value: '50+', label: 'Researchers Supported' },
-];
+// const impactStats = [
+//   { value: '10+', label: 'Datasets Created' },
+//   { value: '5+', label: 'Countries Reached' },
+//   { value: '20+', label: 'Research Partners' },
+//   { value: '50+', label: 'Researchers Supported' },
+// ];
 
 export default function HomeHeroSection() {
   return (
@@ -34,12 +34,12 @@ export default function HomeHeroSection() {
             <FadeIn direction="up" delay={0}>
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl text-white drop-shadow-lg">
                 Applied research and development for Africa&apos;s data and
-                intelligence systems
+                intelligent systems
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
               <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
-                Building and governing Africa&apos;s intelligence systems
+                Building and governing Africa&apos;s intelligent systems
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>
@@ -68,7 +68,7 @@ export default function HomeHeroSection() {
 
           {/* Impact Stats - Hidden on mobile */}
           <div className="hidden lg:flex justify-center items-center">
-            <StaggerChildren className="grid grid-cols-2 gap-6 w-full max-w-md">
+            {/* <StaggerChildren className="grid grid-cols-2 gap-6 w-full max-w-md">
               {impactStats.map((stat) => (
                 <StaggerItem key={stat.label}>
                   <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 text-center">
@@ -79,7 +79,7 @@ export default function HomeHeroSection() {
                   </div>
                 </StaggerItem>
               ))}
-            </StaggerChildren>
+            </StaggerChildren> */}
           </div>
         </div>
       </div>

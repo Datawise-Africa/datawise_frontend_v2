@@ -9,7 +9,7 @@ export default function HomePartnersSection() {
     <>
       {/* Partners Logos */}
       <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="text-center mb-10">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
@@ -28,7 +28,7 @@ export default function HomePartnersSection() {
                   <img
                     src={partner.logo || '/placeholder.svg'}
                     alt={partner.name}
-                    className="h-14 max-w-full object-contain"
+                    className="h-10 max-w-full object-contain"
                     loading="lazy"
                   />
                 </div>
@@ -40,7 +40,7 @@ export default function HomePartnersSection() {
 
       {/* Partner With Us CTA */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-16">
               <div className="md:w-2/3 text-center md:text-left">

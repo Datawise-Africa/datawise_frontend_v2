@@ -52,7 +52,7 @@ const whatWeDoCards: {
 
 export default function HomeWhatWeDoSection() {
   return (
-    <div className="container mx-auto w-full px-4 py-20 lg:py-28 text-foreground">
+    <div className="container mx-auto w-full px-4 py-14 lg:py-20 text-foreground">
       <FadeIn direction="up">
         <div className="flex flex-col items-center mb-12 gap-4">
           <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
