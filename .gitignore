@@ -45,4 +45,4 @@ lerna-debug.log*
 *.temp
 .cache
 .netlify
-.playwright-mcp
+.playwright-mcp/
