@@ -59,13 +59,12 @@ export default function HomeWhatWeDoSection() {
             WHAT WE DO
           </h3>
           <h2 className="text-3xl sm:text-4xl font-bold text-center">
-            From Research to Real-World Impact
+            Our Services
           </h2>
           <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-            At Datawise Africa, our research is directly translated to the
-            insights we develop and the systems we build. Our work follows a
-            full research-to-deployment pipeline, where we transform research
-            into usable data and intelligence systems.
+            End-to-end data, AI, software, and infrastructure services designed
+            to help organizations make better decisions and build impactful
+            technology.
           </p>
         </div>
       </FadeIn>

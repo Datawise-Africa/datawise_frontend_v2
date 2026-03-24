@@ -84,20 +84,19 @@ export default function AboutUs() {
                   Our Story
                 </h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Datawise Africa was formed in 2019 with a vision to create
-                  African-centred data that encourages more intelligent and
-                  informed decisions for the continent.
+                  Founded in 2019, we set out to create African-centred data
+                  that supports more intelligent and informed decision-making
+                  across the continent.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Data, if properly collected, governed, and used, can become a
-                  strategic resource that informs policy, strengthens public
-                  services, accelerates research, and supports sustainable
-                  economic growth.
+                  Our work focuses on designing and managing reliable and
+                  ethical data and AI systems that accelerate Africa’s digital
+                  transformation.
                 </p>
-                <p className="text-foreground text-lg leading-relaxed font-medium">
-                  Datawise Africa exists to research, build, and deploy reliable
-                  data and intelligence systems that accelerate Africa{'\u2019'}
-                  s digital transformation.
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  At the same time, we are working toward a future where Africa
+                  can build a its own intelligence systems solving Africa’s
+                  problems with African solutions.
                 </p>
               </div>
             </FadeIn>

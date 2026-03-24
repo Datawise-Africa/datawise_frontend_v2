@@ -5,6 +5,7 @@ import HomeHeroSection from '~/components/homepage/home-hero-section';
 import HomeAboutUsSection from '~/components/homepage/home-about-us-section';
 import HomeWhatWeDoSection from '~/components/homepage/home-what-we-do-section';
 import HomePartnersSection from '~/components/homepage/home-partners-section';
+import { Separator } from '~/components/ui/separator';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -23,6 +24,8 @@ export default function Home() {
   return (
     <div className=" overflow-hidden">
       <HomeHeroSection />
+      <Separator />
+      <hr />
       <HomeAboutUsSection />
       <HomeWhatWeDoSection />
       <HomePartnersSection />

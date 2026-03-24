@@ -84,22 +84,24 @@ const featuredProjects: {
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
   },
   {
-    slug: 'eduken',
+    slug: 'sheria-ai',
     icon: IconSchool,
-    title: 'Eduken',
+    title: 'Sheria AI',
     description:
-      'A catalog of Kenyan institutions of higher learning, detailing names, locations, and courses offered \u2014 a resource for students, researchers, and policymakers.',
+      'Sheria AI is a Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
+    link: 'https://sheria.africa',
   },
   {
-    slug: 'afyaken',
+    slug: 'african-stack',
     icon: IconHeartbeat,
-    title: 'Afyaken',
+    title: 'African Stack',
     description:
-      'An open-access dataset on Kenyan healthcare facilities, empowering policymakers, researchers, and innovators with data-driven insights to improve healthcare access.',
+      'The African Stack is the home for Africa’s data and AI movement, sharing insights, ideas, and stories through articles, podcasts, and newsletters that connect innovation, policy, and real-world impact.',
     accentClass: 'text-accent-pink',
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
+    link: 'https://theafricanstack.com',
   },
 ];
 
@@ -107,7 +109,7 @@ export default function Projects() {
   return (
     <PageTransition>
       {/* Hero Section */}
-      <section className="bg-background">
+      {/* <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeIn direction="left">
@@ -143,58 +145,25 @@ export default function Projects() {
             </FadeIn>
           </div>
         </div>
-      </section>
-
-      {/* Focus Areas Section */}
-      <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                What We Focus On
-              </h3>
-              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
-                Focus Areas
-              </h2>
-            </div>
-          </FadeIn>
-
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {focusAreas.map((area) => {
-              const Icon = area.icon;
-              return (
-                <StaggerItem key={area.title}>
-                  <div className="flex flex-col items-center text-center bg-background dark:bg-background/50 rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
-                    <div
-                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${area.accentBgClass} mb-5`}
-                    >
-                      <Icon className={`h-7 w-7 ${area.accentClass}`} />
-                    </div>
-                    <h4 className="text-lg font-semibold text-foreground mb-2">
-                      {area.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {area.description}
-                    </p>
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </StaggerChildren>
-        </div>
-      </section>
-
+      </section> */}
       {/* Featured Projects Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
-            <div className="text-center mb-12">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                Our Work
-              </h3>
+            <div className="text-center mb-12 space-y-2">
+              {/* <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                Solutions
+              </h3> */}
               <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
-                Featured Projects
+                Our Products
               </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
+                We provide and build solutions that turn ideas into real-world
+                impact. From AI tools and data platforms to tech stacks and
+                knowledge hubs, our initiatives combine innovation and insight
+                to tackle real challenges. We transform information into
+                actionable insights that drive meaningful outcomes.
+              </p>
             </div>
           </FadeIn>
 
@@ -240,6 +209,45 @@ export default function Projects() {
                         </Button>
                       </div>
                     )}
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* Focus Areas Section */}
+      <section className="bg-section-green dark:bg-card">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+                What We Focus On
+              </h3>
+              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
+                Focus Areas
+              </h2>
+            </div>
+          </FadeIn>
+
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {focusAreas.map((area) => {
+              const Icon = area.icon;
+              return (
+                <StaggerItem key={area.title}>
+                  <div className="flex flex-col items-center text-center bg-background dark:bg-background/50 rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
+                    <div
+                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${area.accentBgClass} mb-5`}
+                    >
+                      <Icon className={`h-7 w-7 ${area.accentClass}`} />
+                    </div>
+                    <h4 className="text-lg font-semibold text-foreground mb-2">
+                      {area.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {area.description}
+                    </p>
                   </div>
                 </StaggerItem>
               );
