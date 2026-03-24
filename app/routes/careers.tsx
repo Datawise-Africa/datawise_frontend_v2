@@ -159,11 +159,11 @@ export default function Careers() {
       <section className="bg-section-green dark:bg-card">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn>
-            <div className="text-center mb-10" id="open-positions">
+            <div className="text-center mb-10 scroll-mt-24" id="open-positions">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
                 Opportunities
               </h3>
-              <h2 className="font-bold text-3xl sm:text-4xl text-foreground scroll-mt-24">
+              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
                 Open Positions
               </h2>
             </div>
