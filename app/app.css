@@ -28,6 +28,9 @@
   --color-accent-orange: #dd8823;
   --color-accent-blue: #129fc8;
   --color-accent-pink: #ee3481;
+
+  --color-section-green: #f0f9f5;
+  --color-section-green-dark: #1a3350;
 }
 
 * {

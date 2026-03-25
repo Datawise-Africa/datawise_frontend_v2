@@ -174,7 +174,7 @@ export default function Datalab() {
       </section>
 
       {/* Empower Section */}
-      <section className="bg-section-green dark:bg-card">
+      <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
           <FadeIn direction="up">
             <div className="text-center max-w-2xl mx-auto mb-12">

@@ -233,7 +233,9 @@ export default function Services() {
             key={category.id}
             id={category.id}
             className={
-              isEven ? 'bg-section-green dark:bg-card' : 'bg-background'
+              isEven
+                ? 'bg-section-green dark:bg-section-green-dark'
+                : 'bg-background'
             }
           >
             <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">

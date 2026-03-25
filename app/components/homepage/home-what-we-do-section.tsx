@@ -52,20 +52,19 @@ const whatWeDoCards: {
 
 export default function HomeWhatWeDoSection() {
   return (
-    <div className="container mx-auto w-full px-4 py-20 lg:py-28 text-foreground">
+    <div className="container mx-auto w-full px-4 py-14 lg:py-20 text-foreground">
       <FadeIn direction="up">
         <div className="flex flex-col items-center mb-12 gap-4">
           <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
             WHAT WE DO
           </h3>
           <h2 className="text-3xl sm:text-4xl font-bold text-center">
-            From Research to Real-World Impact
+            Our Services
           </h2>
           <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-            At Datawise Africa, our research is directly translated to the
-            insights we develop and the systems we build. Our work follows a
-            full research-to-deployment pipeline, where we transform research
-            into usable data and intelligence systems.
+            End-to-end data, AI, software, and infrastructure services designed
+            to help organizations make better decisions and build impactful
+            technology.
           </p>
         </div>
       </FadeIn>

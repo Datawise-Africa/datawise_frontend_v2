@@ -87,7 +87,7 @@ export default function ContactUs() {
     <PageTransition>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeIn direction="left">
               <div className="text-center md:text-left space-y-6">
@@ -117,8 +117,8 @@ export default function ContactUs() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+      <section className="bg-section-green dark:bg-section-green-dark">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div className="flex flex-col lg:flex-row items-stretch gap-8">
             {/* Contact Information */}
             <FadeIn direction="left" className="w-full lg:w-1/2">
@@ -176,7 +176,7 @@ export default function ContactUs() {
                   ) : (
                     <>
                       <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
-                        Send A Message
+                        Reach Out
                       </h3>
                       <CardTitle className="text-2xl">
                         Send Us a Message
