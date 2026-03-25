@@ -95,7 +95,7 @@ export default function AboutUs() {
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   At the same time, we are working toward a future where Africa
-                  can build a its own intelligence systems solving Africa’s
+                  can build a its own intelligent systems solving Africa’s
                   problems with African solutions.
                 </p>
               </div>

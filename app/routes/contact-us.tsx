@@ -92,8 +92,8 @@ export default function ContactUs() {
             <FadeIn direction="left">
               <div className="text-center md:text-left space-y-6">
                 <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                  We{'\u2019'}re Here to
-                  <span className="text-primary"> Help!</span>
+                  Get in
+                  <span className="text-primary"> Touch</span>
                 </h1>
                 <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
                   Have any questions, need support, or just want to learn more

@@ -41,7 +41,7 @@ const whatWeDoCards: {
   {
     title: 'Infrastructure',
     description:
-      'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligence tools, and operate AI systems in real-world environments. Our work includes storing data, and running and maintaining the systems that we develop and build.',
+      'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligent tools, and operate AI systems in real-world environments. Our work includes storing data, and running and maintaining the systems that we develop and build.',
     image: '/assets/infrastructure.jpg',
     icon: IconServer,
     accentClass: 'text-accent-pink',

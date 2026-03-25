@@ -53,7 +53,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Research, build, and deploy reliable data and intelligence systems
+              Research, build, and deploy reliable data and intelligent systems
               for Africa.
             </p>
             <ul className="flex gap-3 pt-2">

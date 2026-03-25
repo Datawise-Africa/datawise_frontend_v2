@@ -21,12 +21,12 @@ export default function HomeAboutUsSection() {
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
             Datawise Africa is a research and development company building
-            Africa&apos;s data and intelligence systems, from high-quality
+            Africa&apos;s data and intelligent systems, from high-quality
             datasets to AI models and compute infrastructure.
           </p>{' '}
           <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto ">
             We exist to research, build, and deploy reliable data and
-            intelligence systems that accelerate Africa{'\u2019'}s digital
+            intelligent systems that accelerate Africa{'\u2019'}s digital
             transformation.
           </p>
           <Button asChild variant="link" className="text-md font-semibold">

@@ -39,7 +39,7 @@ export default function HomeHeroSection() {
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
               <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
-                Building and governing Africa&apos;s intelligent systems
+                Building and advancing Africa&apos;s intelligent systems
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>
