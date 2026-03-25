@@ -56,14 +56,16 @@ export default function AboutUs() {
     <PageTransition>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-14">
           <FadeIn direction="up">
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                Research. Build. <span className="text-primary">Deploy.</span>
+                <span className="text-accent-blue">Research.</span>{' '}
+                <span className="text-accent-orange">Build.</span>{' '}
+                <span className="text-primary">Deploy.</span>
               </h1>
               <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed mt-6">
-                We research, build, and deploy reliable data and intelligence
+                We research, build, and deploy reliable data and intelligent
                 systems that accelerate Africa&apos;s digital transformation.
               </p>
             </div>
@@ -71,86 +73,78 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
+      {/* Our Story & Values Section */}
+      <section className="bg-section-green dark:bg-section-green-dark">
+        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Our Story */}
             <FadeIn direction="up">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                Our Story
-              </h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Datawise Africa was formed in 2019 with a vision to create
-                African-centred data that encourages more intelligent and
-                informed decisions for the continent.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Data, if properly collected, governed, and used, can become a
-                strategic resource that informs policy, strengthens public
-                services, accelerates research, and supports sustainable
-                economic growth.
-              </p>
-              <p className="text-foreground text-lg leading-relaxed font-medium">
-                Datawise Africa exists to research, build, and deploy reliable
-                data and intelligence systems that accelerate Africa{'\u2019'}s
-                digital transformation.
-              </p>
+              <div className="space-y-6">
+                <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+                  Our Story
+                </h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Founded in 2019, we set out to create African-centred data
+                  that supports more intelligent and informed decision-making
+                  across the continent.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Our work focuses on designing and managing reliable and
+                  ethical data and AI systems that accelerate Africa’s digital
+                  transformation.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  At the same time, we are working toward a future where Africa
+                  can build a its own intelligence systems solving Africa’s
+                  problems with African solutions.
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Our Values */}
+            <FadeIn direction="up" delay={0.2}>
+              <div className="space-y-6">
+                <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+                  Our Values
+                </h3>
+                <div className="space-y-6">
+                  {values.map((value) => {
+                    const Icon = value.icon;
+                    return (
+                      <div key={value.title} className="flex items-start gap-4">
+                        <div
+                          className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
+                        >
+                          <Icon className={`h-5 w-5 ${value.accentClass}`} />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg text-foreground">
+                            {value.title}
+                          </h4>
+                          <p className="text-muted-foreground text-sm leading-relaxed mt-1">
+                            {value.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* Our Values Section */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
-                What We Believe
-              </h3>
-              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
-                Our Values
-              </h2>
-            </div>
-          </FadeIn>
-
-          <FadeIn direction="up">
-            <div className="max-w-3xl mx-auto space-y-6">
-              {values.map((value) => {
-                const Icon = value.icon;
-                return (
-                  <div key={value.title} className="flex items-start gap-4">
-                    <div
-                      className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
-                    >
-                      <Icon className={`h-5 w-5 ${value.accentClass}`} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg text-foreground">
-                        {value.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed mt-1">
-                        {value.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* Team Section */}
-      <section className="bg-section-green dark:bg-card">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <AboutUsTeam />
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+      <section className="bg-section-green dark:bg-section-green-dark">
+        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-16">
               <div className="md:w-1/2 text-center md:text-left">

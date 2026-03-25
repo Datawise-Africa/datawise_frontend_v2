@@ -2,9 +2,11 @@
 set -euo pipefail
 
 # ─────────────────────────────────────────────
-# Release Bump Script
-# Bumps version in package.json, generates
-# release notes, commits, and tags.
+# Release Bump Script (language-agnostic)
+# Bumps version, generates categorized release
+# notes, commits, and tags.
+#
+# Supports: package.json, pyproject.toml, setup.cfg
 # ─────────────────────────────────────────────
 # Usage:
 #   ./scripts/release.sh patch
@@ -40,6 +42,11 @@ while [[ $# -gt 0 ]]; do
       echo "  patch|minor|major     Version bump type (required)"
       echo "  --prerelease <tag>    Pre-release tag (e.g., beta, rc)"
       echo "  --dry-run             Preview changes without committing or tagging"
+      echo ""
+      echo "Supported version files (searched in order):"
+      echo "  package.json          Node.js / JavaScript projects"
+      echo "  pyproject.toml        Python projects (PEP 621 / Poetry)"
+      echo "  setup.cfg             Python projects (setuptools)"
       exit 0
       ;;
     *)
@@ -70,13 +77,69 @@ fi
 
 # Get project root
 PROJECT_ROOT="$(git rev-parse --show-toplevel)"
-PACKAGE_JSON="$PROJECT_ROOT/package.json"
 CHANGELOG="$PROJECT_ROOT/CHANGELOG.md"
+
+# ─────────────────────────────────────────────
+# Detect version file
+# ─────────────────────────────────────────────
+VERSION_FILE=""
+VERSION_FILE_TYPE=""
+
+if [[ -f "$PROJECT_ROOT/package.json" ]]; then
+  VERSION_FILE="$PROJECT_ROOT/package.json"
+  VERSION_FILE_TYPE="package.json"
+elif [[ -f "$PROJECT_ROOT/pyproject.toml" ]]; then
+  VERSION_FILE="$PROJECT_ROOT/pyproject.toml"
+  VERSION_FILE_TYPE="pyproject.toml"
+elif [[ -f "$PROJECT_ROOT/setup.cfg" ]]; then
+  VERSION_FILE="$PROJECT_ROOT/setup.cfg"
+  VERSION_FILE_TYPE="setup.cfg"
+else
+  echo "Error: No supported version file found (package.json, pyproject.toml, setup.cfg)."
+  exit 1
+fi
+
+echo "Detected version file: $VERSION_FILE_TYPE"
+
+# ─────────────────────────────────────────────
+# Version file read/write helpers
+# ─────────────────────────────────────────────
+read_version() {
+  case "$VERSION_FILE_TYPE" in
+    package.json)
+      grep -oP '"version"\s*:\s*"\K[^"]+' "$VERSION_FILE" | head -1
+      ;;
+    pyproject.toml)
+      grep -oP '^version\s*=\s*"\K[^"]+' "$VERSION_FILE" | head -1
+      ;;
+    setup.cfg)
+      grep -oP '^version\s*=\s*\K\S+' "$VERSION_FILE" | head -1
+      ;;
+  esac
+}
+
+write_version() {
+  local new_version="$1"
+  case "$VERSION_FILE_TYPE" in
+    package.json)
+      sed -i "s/\"version\"\s*:\s*\"[^\"]*\"/\"version\": \"$new_version\"/" "$VERSION_FILE"
+      ;;
+    pyproject.toml)
+      sed -i "s/^version\s*=\s*\"[^\"]*\"/version = \"$new_version\"/" "$VERSION_FILE"
+      ;;
+    setup.cfg)
+      sed -i "s/^version\s*=\s*\S\+/version = $new_version/" "$VERSION_FILE"
+      ;;
+  esac
+}
 
 # ─────────────────────────────────────────────
 # 1. Read current version
 # ─────────────────────────────────────────────
-CURRENT_VERSION=$(node -p "require('$PACKAGE_JSON').version || '0.0.0'")
+CURRENT_VERSION=$(read_version)
+if [[ -z "$CURRENT_VERSION" ]]; then
+  CURRENT_VERSION="0.0.0"
+fi
 echo "Current version: v$CURRENT_VERSION"
 
 # ─────────────────────────────────────────────
@@ -169,10 +232,12 @@ RELEASE_NOTES=$(cat <<NOTES_EOF
 $(generate_section "Features" "feat(\(.+\))?")
 $(generate_section "Bug Fixes" "fix(\(.+\))?")
 $(generate_section "Documentation" "docs(\(.+\))?")
+$(generate_section "Style" "style(\(.+\))?")
 $(generate_section "Performance" "perf(\(.+\))?")
 $(generate_section "Refactoring" "refactor(\(.+\))?")
 $(generate_section "Tests" "test(\(.+\))?")
 $(generate_section "Build & CI" "(build|ci)(\(.+\))?")
+$(generate_section "Reverts" "revert(\(.+\))?")
 $(generate_section "Chores" "chore(\(.+\))?")
 $(generate_uncategorized)
 NOTES_EOF
@@ -200,15 +265,10 @@ if [[ "$DRY_RUN" == true ]]; then
 fi
 
 # ─────────────────────────────────────────────
-# 5. Update package.json
+# 5. Update version file
 # ─────────────────────────────────────────────
-node -e "
-  const fs = require('fs');
-  const pkg = JSON.parse(fs.readFileSync('$PACKAGE_JSON', 'utf8'));
-  pkg.version = '$NEXT_VERSION';
-  fs.writeFileSync('$PACKAGE_JSON', JSON.stringify(pkg, null, 2) + '\n');
-"
-echo "Updated package.json to v$NEXT_VERSION"
+write_version "$NEXT_VERSION"
+echo "Updated $VERSION_FILE_TYPE to v$NEXT_VERSION"
 
 # ─────────────────────────────────────────────
 # 6. Update CHANGELOG.md
@@ -238,7 +298,7 @@ echo "Updated CHANGELOG.md"
 # ─────────────────────────────────────────────
 # 7. Commit and tag
 # ─────────────────────────────────────────────
-git add "$PACKAGE_JSON" "$CHANGELOG"
+git add "$VERSION_FILE" "$CHANGELOG"
 git commit -m "chore(release): v$NEXT_VERSION"
 git tag -a "v$NEXT_VERSION" -m "Release v$NEXT_VERSION"
 
