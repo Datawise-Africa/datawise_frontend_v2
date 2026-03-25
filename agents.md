@@ -1,10 +1,10 @@
 # Agents
 
-This document describes the automated agents, workflows, and project conventions for the Datawise Frontend UI Service.
+This document describes the automated agents, workflows, and project conventions for the Datawise Frontend v2.
 
 ## Project Overview
 
-Datawise Africa frontend UI service — a React-based web application for product and category management with a landing page.
+Datawise Africa corporate website — a React-based web application for the company's services, products, tools, careers, partnerships, and contact pages.
 
 ## Tech Stack
 
@@ -17,19 +17,25 @@ Datawise Africa frontend UI service — a React-based web application for produc
 - **Animations**: Framer Motion
 - **API Client**: Axios
 - **Package Manager**: pnpm 9 (Node >= 20)
+- **Deployment**: Netlify (SSR)
 
 ## Commands
 
 ```bash
-pnpm dev          # Start dev server
-pnpm build        # Production build (react-router build)
-pnpm start        # Serve production build
-pnpm lint         # tsc --noEmit && eslint .
-pnpm lint:fix     # ESLint with --fix
-pnpm test         # Vitest (watch mode)
-pnpm test:run     # Vitest single run
-pnpm test:coverage # Vitest with coverage
-pnpm typecheck    # react-router typegen && tsc
+pnpm dev            # Start dev server
+pnpm build          # Production build (react-router build)
+pnpm start          # Serve production build
+pnpm lint           # react-router typegen && tsc --noEmit && eslint .
+pnpm lint:fix       # react-router typegen && eslint . --fix
+pnpm format         # Prettier --write .
+pnpm test           # Vitest (watch mode)
+pnpm test:run       # Vitest single run
+pnpm test:coverage  # Vitest with coverage
+pnpm typecheck      # react-router typegen && tsc
+pnpm release patch  # Bump patch version, changelog, commit, tag
+pnpm release minor  # Bump minor version
+pnpm release major  # Bump major version
+pnpm release:dry    # Dry run — preview without changes
 ```
 
 ## Project Structure
@@ -37,19 +43,34 @@ pnpm typecheck    # react-router typegen && tsc
 ```
 app/
   routes/              # File-based routing (React Router 7)
-    home/index.tsx     # Landing page
-    products/          # Products CRUD (index, $id, $id.edit, new)
-    categories/        # Categories CRUD (index, $id, $id.edit, new)
+    home.tsx           # Landing page
+    about-us.tsx       # About page
+    services.tsx       # Services page
+    products.tsx       # Products page
+    datalab.tsx        # Data lab page
+    careers.tsx        # Careers listing
+    career-description.$slug.tsx  # Career detail (dynamic)
+    partners.tsx       # Partners page
+    become-a-partner.tsx
+    contact-us.tsx     # Contact page
+    privacy-policy.tsx
+    sitemap.xml.ts     # Dynamic sitemap
   components/
     ui/                # shadcn/ui components (button, card, input, etc.)
-    root-layout.tsx    # App shell: nav, footer, theme editor, toaster
+    form-fields/       # Reusable form field wrappers
+    header/            # Site header/navigation
+    footer/            # Site footer
+    homepage/          # Homepage sections
+    about-us/          # About page components
+    partners/          # Partners page components
+    motion/            # Framer Motion animation wrappers
     theme-editor.tsx   # Floating gear button for live theme editing
     error-boundary.tsx
     loading-indicator.tsx
     data-table.tsx
   features/
-    products/          # Product queries, mutations, query-keys
-    categories/        # Category queries, mutations, query-keys
+    contact-us/        # Contact form queries, mutations, query-keys
+    partners/          # Partners queries, mutations, query-keys
   store/
     index.ts           # Redux store config with persist
     storage.ts         # SSR-safe storage adapter (noop on server)
@@ -57,7 +78,8 @@ app/
     slices/
       theme-slice.ts   # Dark mode, hue values, border radius, fonts
       auth-slice.ts    # Token, user, isAuthenticated
-      filter-slice.ts  # Keyed filter state: useAppFilter('products')
+      career-slice.ts  # Careers state
+      table-filters-slice.ts  # Table filter state
       modal-slice.ts   # Type-safe keyed modals: useAppModal<T>('key')
   lib/
     api/client.ts      # Axios instance with auth interceptor
@@ -66,7 +88,6 @@ app/
       store-provider.tsx  # Redux + PersistGate (SSR-safe)
       query-provider.tsx  # TanStack Query + DevTools (lazy, dev-only)
     utils/seo.ts       # SEO meta tag generation
-    table-cols.ts      # TanStack Table column definitions
   root.tsx             # App entry: StoreProvider > QueryProvider > Outlet
   app.css              # Tailwind + shadcn CSS variables
 ```
@@ -82,9 +103,8 @@ app/
 
 ### State Management
 
-- **Redux Toolkit** for global state (theme, auth, filters, modals)
+- **Redux Toolkit** for global state (theme, auth, careers, filters, modals)
 - **Persisted slices**: `theme` and `auth` (via redux-persist whitelist)
-- **Keyed filters**: `useAppFilter('products')` returns scoped filter state + dispatchers
 - **Keyed modals**: `useAppModal<T>('key')` returns `{ isOpen, data, open, close, toggle }`
   - Type-safe via `ModalRegistry` interface (declaration merging)
 - **Typed hooks**: use `useAppDispatch` and `useAppSelector` (not raw `useDispatch`)
@@ -151,21 +171,7 @@ app/
 | **Security Scan**   | Installs dependencies and runs a production build (`pnpm build`) to verify the project compiles without errors |
 | **PR Notification** | Sends a Slack notification to the `#code-reviews` channel with PR status, branch, and author details           |
 
-### 2. Dependency Review
-
-**File:** `.github/workflows/dependency-review.yml`
-**Trigger:** All pull requests
-
-Scans dependency changes introduced in a PR using GitHub's `dependency-review-action`. Fails if any new dependency has a vulnerability of **moderate** severity or higher.
-
-### 3. CodeQL Analysis
-
-**File:** `.github/workflows/codeql-analysis.yml`
-**Trigger:** Push to `main`/`dev`, pull requests to `main`/`dev`, and weekly schedule (Mondays at midnight)
-
-Performs static analysis on JavaScript/TypeScript code using GitHub CodeQL to detect security vulnerabilities and code quality issues.
-
-### 4. Release Bump
+### 2. Release Bump (CI)
 
 **File:** `.github/workflows/release-bump.yml`
 **Trigger:** Manual (`workflow_dispatch`)
@@ -178,21 +184,13 @@ Bumps the project version in `package.json`, creates a git tag, and publishes a 
 | **prerelease** | Optional pre-release tag (e.g., `beta`, `rc`). Empty for stable. |
 | **dry_run**    | If enabled, shows what would change without pushing or tagging.  |
 
-**Flow:**
-
-1. Reads current version from `package.json` (defaults to `0.0.0` if missing)
-2. Calculates the next version based on bump type and optional pre-release tag
-3. Updates `package.json` with the new version
-4. Generates a changelog from commits since the last tag
-5. Commits, tags, pushes, and creates a GitHub Release (skipped on dry run)
-
 ## Local Agents
 
 ### Pre-commit Hooks (Husky + lint-staged)
 
 **Config:** `.husky/pre-commit`
 
-Runs lint-staged on every commit to automatically lint and format staged files before they are committed. This ensures code quality standards are enforced locally before reaching CI.
+Runs lint-staged on every commit to automatically lint and format staged files before they are committed.
 
 ### Local Release Script
 
@@ -223,11 +221,207 @@ git push origin v<version>
 
 ## Agent Summary
 
-| Agent             | Scope                    | When               |
-| ----------------- | ------------------------ | ------------------ |
-| PR Validation     | Lint + Build             | PR to `main`/`dev` |
-| Dependency Review | Vulnerability scan       | All PRs            |
-| CodeQL Analysis   | Static security analysis | Push, PR, weekly   |
-| Release Bump (CI) | Version bump + release   | Manual dispatch    |
-| Release Script    | Local bump + changelog   | `pnpm release`     |
-| Husky pre-commit  | Lint staged files        | Every local commit |
+| Agent             | Scope                  | When               |
+| ----------------- | ---------------------- | ------------------ |
+| PR Validation     | Lint + Build           | PR to `main`/`dev` |
+| Release Bump (CI) | Version bump + release | Manual dispatch    |
+| Release Script    | Local bump + changelog | `pnpm release`     |
+| Husky pre-commit  | Lint staged files      | Every local commit |
+
+---
+
+## useEffectEvent for Effects with Latest Values
+
+Use `useEffectEvent` (React 19) when an effect needs to read the latest state/props without re-triggering. This replaces ref-based workarounds and avoids stale closures.
+
+**Why:** Prevents unnecessary effect re-runs while still reading fresh values. The callback always sees the latest render values, and the effect only re-synchronizes on its actual dependencies.
+
+**Pattern:**
+
+```ts
+const onDialogOpened = useEffectEvent((entity: Entity | null) => {
+  if (!entity) return; // early return offloads conditions from useEffect
+  form.reset({ name: entity.name });
+  setPreview(entity.image_url);
+});
+
+useEffect(() => {
+  if (isOpen && isEditing) {
+    onDialogOpened(entity); // pass data as args
+  }
+}, [isOpen, isEditing, entity]);
+```
+
+**Rules:**
+
+- Only call from inside `useEffect`, never during render
+- Do NOT add to dependency arrays
+- Use early returns inside the callback
+
+---
+
+## Styling — `cn()` Utility
+
+For conditional or merged class names, always use `cn()` from `~/lib/utils`:
+
+```ts
+import { cn } from '~/lib/utils';
+// Merge base classes with conditional and override classes
+cn('base-class', isActive && 'active-class', className);
+```
+
+Never use string concatenation or template literals for conditional Tailwind classes.
+
+---
+
+## Browser Automation with Playwright MCP
+
+The Playwright MCP server is configured in `.mcp.json` at project root:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "env": { "BROWSER": "chromium" }
+    }
+  }
+}
+```
+
+### Workflow
+
+1. **Navigate** — Use `browser_navigate` to open pages (`http://localhost:5173/...`)
+2. **Inspect** — Use `browser_snapshot` to get the page's accessibility tree (element refs, text, structure)
+3. **Interact** — Use `browser_click`, `browser_type`, `browser_fill_form` with element `ref` from snapshots
+4. **Screenshot** — Use `browser_take_screenshot` to capture visual state
+5. **Close** — Use `browser_close` to reset browser state if file chooser modals or other state gets stuck
+
+### Screenshot Convention
+
+Store screenshots in `.playwright-mcp/screenshots/` grouped by page:
+
+```
+.playwright-mcp/screenshots/
+├── landing/
+│   ├── mobile-375.png
+│   ├── tablet-768.png
+│   └── desktop-1440.png
+├── services/
+│   ├── mobile-375.png
+│   ├── tablet-768.png
+│   └── desktop-1440.png
+├── careers/
+│   ├── mobile-375.png
+│   ├── tablet-768.png
+│   └── desktop-1440.png
+└── <page-name>/
+    └── ...
+```
+
+### Responsive Testing Viewports
+
+| Device  | Width | Height |
+| ------- | ----- | ------ |
+| Mobile  | 375   | 812    |
+| Tablet  | 768   | 1024   |
+| Desktop | 1440  | 900    |
+
+Use `browser_resize` before taking screenshots at each viewport.
+
+### Known Limitations
+
+- **File chooser dialogs:** Clicking file upload buttons triggers native OS file pickers that queue up in Playwright. If stuck, use `browser_close` to reset and `browser_navigate` to re-open the page. The file upload works fine in real browsers.
+- **Snapshot vs Screenshot:** `browser_snapshot` returns the accessibility tree (needed to get element refs for interaction). `browser_take_screenshot` returns a visual image (for review only, can't interact based on it).
+
+---
+
+## Contribution Guide
+
+See `CONTRIBUTING.md` for the full guide. Key points below.
+
+### Commit Message Format
+
+Follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```
+<type>(<scope>): <subject>
+
+<body> (optional)
+
+<footer> (optional)
+```
+
+**Types:**
+
+| Type       | Description                                     | Example                                       |
+| ---------- | ----------------------------------------------- | --------------------------------------------- |
+| `feat`     | New feature                                     | `feat(careers): add career detail page`       |
+| `fix`      | Bug fix                                         | `fix(auth): resolve token refresh loop`       |
+| `docs`     | Documentation only                              | `docs: update API client usage in README`     |
+| `style`    | Formatting, missing semicolons (no code change) | `style: fix indentation in layout`            |
+| `refactor` | Code change that neither fixes nor adds         | `refactor(store): simplify auth slice logic`  |
+| `test`     | Adding or updating tests                        | `test(contact-us): add form validation tests` |
+| `chore`    | Build, tooling, CI, dependencies                | `chore: update eslint config`                 |
+| `perf`     | Performance improvement                         | `perf(homepage): lazy load hero images`       |
+| `ci`       | CI/CD configuration                             | `ci: add preview deploy workflow`             |
+| `revert`   | Revert a previous commit                        | `revert: revert feat(careers) commit abc1234` |
+
+**Scopes:** `homepage`, `about-us`, `services`, `products`, `datalab`, `careers`, `partners`, `contact-us`, `auth`, `ui`, `forms`, `store`, `api`, `routes`, `config`, `theme`, `motion`. Scope is optional but encouraged.
+
+**Subject rules:**
+
+- Lowercase, imperative mood, no period, max 72 characters
+- Good: `feat(careers): add career detail page`
+- Bad: `feat(careers): Added career detail page.`
+
+**Breaking changes:** Add `!` after type or `BREAKING CHANGE:` in footer:
+
+```
+feat(api)!: change pagination response format
+
+BREAKING CHANGE: PaginatedResponse now uses `items` instead of `data`
+```
+
+### Branch Naming
+
+Use the format: `<type>/<short-description>`
+
+```
+feat/career-detail-page
+fix/auth-redirect-loop
+chore/update-dependencies
+refactor/simplify-theme-slice
+```
+
+### PR Title
+
+Follow the same commit message format:
+
+```
+feat(careers): add career detail page
+fix(auth): resolve token refresh loop
+```
+
+### Pre-commit Hooks
+
+Husky + lint-staged runs automatically on staged files:
+
+- `*.{ts,tsx}`: ESLint with `--fix` + Prettier
+- `*.{json,md,css}`: Prettier
+
+If the hook fails, fix the issues. Do not bypass with `--no-verify`.
+
+### After Every Code Change
+
+```bash
+pnpm lint:fix && pnpm format
+```
+
+### Before Pushing
+
+```bash
+pnpm lint:fix && pnpm format && pnpm typecheck
+```

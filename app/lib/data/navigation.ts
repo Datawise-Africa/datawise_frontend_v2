@@ -78,14 +78,16 @@ export const navigation: NavigationItem[] = [
           heading: 'Datasets',
           items: [
             {
-              title: 'Eduken',
-              url: '/products#eduken',
-              description: 'Kenyan higher learning institutions catalog.',
+              title: 'Sheria AI',
+              url: '/products#sheria-ai',
+              description:
+                'Sheria AI is a Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
             },
             {
-              title: 'Afyaken',
-              url: '/products#afyaken',
-              description: 'Kenyan healthcare facilities data.',
+              title: 'African Stack',
+              url: '/products#african-stack',
+              description:
+                'The Nerve Center of Africa’s Data, AI & Infrastructure Evolution',
             },
           ],
         },

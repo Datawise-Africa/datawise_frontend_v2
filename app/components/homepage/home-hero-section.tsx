@@ -34,12 +34,12 @@ export default function HomeHeroSection() {
             <FadeIn direction="up" delay={0}>
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl text-white drop-shadow-lg">
                 Applied research and development for Africa&apos;s data and
-                intelligence systems
+                intelligent systems
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
               <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
-                Building and governing Africa&apos;s intelligence systems
+                Building and advancing Africa&apos;s intelligent systems
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>
