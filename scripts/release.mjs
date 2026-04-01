@@ -97,7 +97,9 @@ Examples:
 }
 
 if (!bumpType) {
-  error('Bump type is required (patch, minor, or major). Run with --help for usage.');
+  error(
+    'Bump type is required (patch, minor, or major). Run with --help for usage.'
+  );
 }
 
 // ─────────────────────────────────────────────
@@ -193,7 +195,6 @@ const SECTIONS = [
   { title: 'Chores', pattern: /^chore(\(.+\))?:\s*/i },
 ];
 
-
 const categorized = new Set();
 const sections = [];
 
@@ -217,7 +218,9 @@ if (uncategorized.length > 0) {
   }
 }
 
-const releaseNotes = [`## [v${nextVersion}] — ${today}`, ...sections].join('\n');
+const releaseNotes = [`## [v${nextVersion}] — ${today}`, ...sections].join(
+  '\n'
+);
 
 divider('Release Notes');
 log(releaseNotes);
@@ -252,7 +255,7 @@ if (existsSync(changelogPath)) {
 } else {
   writeFileSync(
     changelogPath,
-    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n${releaseNotes}\n`,
+    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n${releaseNotes}\n`
   );
 }
 log('Updated CHANGELOG.md');

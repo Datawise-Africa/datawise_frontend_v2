@@ -12,7 +12,7 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Datawise Africa | Empowering Africa through Data and AI',
       description:
-        "Datawise Africa is a research and development company committed to solving Africa's pressing challenges through data and AI innovation. We build trusted data systems, conduct applied research, and develop critical infrastructure while fostering local research leadership across Africa.",
+        "Datawise Africa is an R&D company solving Africa's challenges through data and AI — building trusted data systems and fostering local research leadership.",
       url: href('/'),
       keywords:
         'data science africa, artificial intelligence research, AI solutions, African technology, data infrastructure, machine learning, research and development, data analytics, AI innovation, African tech solutions, data systems, applied research',

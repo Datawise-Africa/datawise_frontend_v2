@@ -23,7 +23,7 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Datawise Africa - Partners',
       description:
-        'Join hands with Datawise Africa to leverage data and AI for transformative solutions across the continent. Explore partnership opportunities that drive innovation and impact.',
+        'Partner with Datawise Africa to leverage data and AI for transformative solutions. Explore opportunities that drive innovation across Africa.',
       url: href('/partners'),
       keywords:
         'legal assistant, Kenyan law, case insights, legal information, African tech solutions, data systems, applied research',

@@ -23,7 +23,8 @@ export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
       title: 'Datawise Africa - Products',
-      description: `Explore Datawise Africa's innovative products leveraging data and AI to tackle Africa's challenges in economic, Tech and Infrastructure development.`,
+      description:
+        "Explore Datawise Africa's data and AI products tackling Africa's challenges in economic, tech, and infrastructure development.",
       url: href('/products'),
       keywords:
         'datawise, datalab, afyaken, eduken, data products africa, ai for development, data infrastructure',

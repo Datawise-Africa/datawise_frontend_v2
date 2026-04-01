@@ -18,5 +18,6 @@ if [ -n "$PNPM_PATH" ]; then
   exit 0
 fi
 
+
 echo "Neither lint-staged nor pnpm is available. Please install one to use this pre-commit hook."
 exit 1

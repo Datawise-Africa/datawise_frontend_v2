@@ -22,8 +22,7 @@ export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
       title: 'Discover verified African datasets | Datalab Africa',
-      description:
-        'Search, filter, and download curated African datasets to accelerate analytics, machine learning, and policy projects while rewarding dataset creators.',
+      description: `DataLab is DataWise Africa's platform for hosting, managing, and publishing our data products.`,
       url: href('/datalab'),
       image: '/d-lab-ico.png',
       keywords:

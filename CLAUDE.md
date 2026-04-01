@@ -147,6 +147,45 @@ app/
 - Use `whileInView` with `viewport={{ once: true }}` for scroll triggers
 - Use `as const` on easing strings (e.g., `ease: 'easeOut' as const`)
 
+## SEO Meta Tag Guidelines
+
+All route pages use `generateSEOTags()` from `app/lib/utils/seo.ts` (aliased as `~/utils/seo`) to inject SEO meta tags (title, description, Open Graph, Twitter Card) via the `meta` export.
+
+### Meta Description Rules
+
+- **Keep descriptions under 155 characters** — Google truncates or replaces longer descriptions with auto-generated snippets from page content
+- **Use imperative, benefit-driven language** — describe what the page offers, not just what the company does
+- **Match visible page content** — Google is more likely to use your meta description if it closely reflects the actual text on the page
+- **No duplicate descriptions** — each route must have a unique description
+
+### Meta Title Rules
+
+- **Keep titles under 60 characters** — Google truncates longer titles
+- **Format**: `Page Name | Datawise Africa` or `Datawise Africa - Page Name`
+- **Include primary keyword** near the start of the title
+
+### Verifying SEO Tags
+
+- SSR renders all meta tags in the initial HTML response — verify with: `curl -s https://datawiseafrica.com | grep 'meta name="description"'`
+- After deploying changes, request re-indexing via **Google Search Console** (URL Inspection > Request Indexing)
+- Use `robots.txt` and `sitemap.xml` (both configured) to guide crawlers
+
+### `generateSEOTags()` Usage
+
+```ts
+export function meta(_args: Route.MetaArgs) {
+  return [
+    ...generateSEOTags({
+      title: 'Page Title | Datawise Africa', // < 60 chars
+      description: 'Concise page description under 155 characters.',
+      url: href('/page-path'),
+      keywords: 'comma, separated, keywords',
+      image: '/optional-image.png', // defaults to datawise logo
+    }),
+  ];
+}
+```
+
 ## Conventions
 
 - **Imports**: use `~/` alias for app-relative imports
