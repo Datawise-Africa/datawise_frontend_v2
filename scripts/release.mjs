@@ -97,7 +97,9 @@ Examples:
 }
 
 if (!bumpType) {
-  error('Bump type is required (patch, minor, or major). Run with --help for usage.');
+  error(
+    'Bump type is required (patch, minor, or major). Run with --help for usage.'
+  );
 }
 
 // ─────────────────────────────────────────────
@@ -191,18 +193,21 @@ const SECTIONS = [
   { title: 'Build & CI', pattern: /^(build|ci)(\(.+\))?:\s*/i },
   { title: 'Reverts', pattern: /^revert(\(.+\))?:\s*/i },
   { title: 'Chores', pattern: /^chore(\(.+\))?:\s*/i },
+  // Jira-ticket commits (e.g. "ENG-123: add gallery"). Keep the ticket id in
+  // the changelog line — it's the most useful part for traceability.
+  { title: 'Jira Tickets', pattern: /^(?=ENG-\d+[:\s])/, keepPrefix: true },
 ];
-
 
 const categorized = new Set();
 const sections = [];
 
-for (const { title, pattern } of SECTIONS) {
+for (const { title, pattern, keepPrefix } of SECTIONS) {
   const matching = commits.filter((c) => pattern.test(c));
   if (matching.length > 0) {
     sections.push(`\n### ${title}\n`);
     for (const commit of matching) {
-      sections.push(`- ${commit.replace(pattern, '')}`);
+      const line = keepPrefix ? commit : commit.replace(pattern, '');
+      sections.push(`- ${line}`);
       categorized.add(commit);
     }
   }
@@ -217,7 +222,9 @@ if (uncategorized.length > 0) {
   }
 }
 
-const releaseNotes = [`## [v${nextVersion}] — ${today}`, ...sections].join('\n');
+const releaseNotes = [`## [v${nextVersion}] — ${today}`, ...sections].join(
+  '\n'
+);
 
 divider('Release Notes');
 log(releaseNotes);
@@ -252,7 +259,7 @@ if (existsSync(changelogPath)) {
 } else {
   writeFileSync(
     changelogPath,
-    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n${releaseNotes}\n`,
+    `# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n${releaseNotes}\n`
   );
 }
 log('Updated CHANGELOG.md');
