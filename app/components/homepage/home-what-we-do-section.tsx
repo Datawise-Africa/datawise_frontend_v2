@@ -58,9 +58,7 @@ export default function HomeWhatWeDoSection() {
           <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
             WHAT WE DO
           </h3>
-          <h2 className="text-3xl sm:text-4xl font-bold text-center">
-            Our Services
-          </h2>
+
           <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto">
             End-to-end data, AI, software, and infrastructure services designed
             to help organizations make better decisions and build impactful
