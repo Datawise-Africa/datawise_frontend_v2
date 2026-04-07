@@ -207,13 +207,32 @@ generate_section() {
   fi
 }
 
+generate_jira_section() {
+  local commits
+
+  if [[ -n "$RANGE" ]]; then
+    commits=$(git log "$RANGE" --pretty=format:"%s (%h)" --no-merges | grep -E "^ENG-[0-9]+([: ])" || true)
+  else
+    commits=$(git log --pretty=format:"%s (%h)" --no-merges | grep -E "^ENG-[0-9]+([: ])" || true)
+  fi
+
+  if [[ -n "$commits" ]]; then
+    echo ""
+    echo "### Jira Tickets"
+    echo ""
+    while IFS= read -r line; do
+      echo "- $line"
+    done <<< "$commits"
+  fi
+}
+
 generate_uncategorized() {
   local commits
 
   if [[ -n "$RANGE" ]]; then
-    commits=$(git log "$RANGE" --pretty=format:"%s (%h)" --no-merges | grep -ivE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?:" || true)
+    commits=$(git log "$RANGE" --pretty=format:"%s (%h)" --no-merges | grep -ivE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?:" | grep -vE "^ENG-[0-9]+([: ])" || true)
   else
-    commits=$(git log --pretty=format:"%s (%h)" --no-merges | grep -ivE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?:" || true)
+    commits=$(git log --pretty=format:"%s (%h)" --no-merges | grep -ivE "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?:" | grep -vE "^ENG-[0-9]+([: ])" || true)
   fi
 
   if [[ -n "$commits" ]]; then
@@ -239,6 +258,7 @@ $(generate_section "Tests" "test(\(.+\))?")
 $(generate_section "Build & CI" "(build|ci)(\(.+\))?")
 $(generate_section "Reverts" "revert(\(.+\))?")
 $(generate_section "Chores" "chore(\(.+\))?")
+$(generate_jira_section)
 $(generate_uncategorized)
 NOTES_EOF
 )
