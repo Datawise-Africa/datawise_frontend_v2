@@ -31,7 +31,7 @@ const whatWeDoCards: {
   {
     title: 'Development',
     description:
-      'Designing and building AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
+      'We design and build AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     image: '/assets/AI.jpeg',
     icon: IconBrain,
     accentClass: 'text-accent-blue',
