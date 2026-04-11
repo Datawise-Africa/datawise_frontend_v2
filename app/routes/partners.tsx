@@ -163,20 +163,36 @@ export default function Partners() {
             </div>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
-              {partners.map((partner, index) => (
-                <div
-                  key={index}
-                  className="flex items-center justify-center p-4 rounded-xl bg-background dark:bg-background/50 border border-border hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-24"
-                >
-                  <img
-                    src={partner.logo || '/placeholder.svg'}
-                    alt={partner.name}
-                    className="h-10 max-w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+            <div className="relative overflow-hidden mask-[linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+              <div className="flex w-max animate-marquee gap-6">
+                {partners.map((partner) => (
+                  <div
+                    key={partner.name}
+                    className="shrink-0 flex items-center justify-center w-52 h-32 p-4 rounded-xl bg-background dark:bg-background/50 border border-border"
+                  >
+                    <img
+                      src={partner.logo || '/placeholder.svg'}
+                      alt={partner.name}
+                      className="h-20 max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+                {partners.map((partner) => (
+                  <div
+                    key={`${partner.name}-dup`}
+                    aria-hidden="true"
+                    className="shrink-0 flex items-center justify-center w-52 h-32 p-4 rounded-xl bg-background dark:bg-background/50 border border-border"
+                  >
+                    <img
+                      src={partner.logo || '/placeholder.svg'}
+                      alt=""
+                      className="h-20 max-w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </FadeIn>
         </div>
