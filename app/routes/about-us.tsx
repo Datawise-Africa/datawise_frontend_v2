@@ -65,8 +65,21 @@ export default function AboutUs() {
                 <span className="text-primary">Deploy.</span>
               </h1>
               <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed mt-6">
-                We research, build, and deploy reliable data and intelligent
-                systems that accelerate Africa&apos;s digital transformation.
+                Datawise Africa is a research and development company focused on
+                building the technical foundations for Africa’s data and
+                intelligent systems. Our work centres on parts of the stack that
+                are often overlooked but absolutely necessary: well structured
+                datasets, locally relevant AI models, and the compute
+                infrastructure needed to run them reliably. Much of what we do
+                is applied research, including building datasets, conducting
+                technical studies, and generating practical insights that help
+                close data gaps slowing progress in sectors such as law, health,
+                and agriculture. Through platforms like Datalab and our broader
+                engineering and data work, we turn raw information into usable
+                systems and evidence that others can build on. At its core, our
+                work is about making sure developers, institutions, and decision
+                makers have the basic tools needed to build technology that
+                works in their own contexts.
               </p>
             </div>
           </FadeIn>
