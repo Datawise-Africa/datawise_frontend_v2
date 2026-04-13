@@ -111,7 +111,7 @@ const serviceCategories: {
     label: 'Software Engineering',
     title: 'Engineering',
     description:
-      'Designing and building AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
+      'We design and build AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
     capabilities: [
