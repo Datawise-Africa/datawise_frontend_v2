@@ -55,31 +55,53 @@ export default function AboutUs() {
   return (
     <PageTransition>
       {/* Hero Section */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-14">
+      <section className="relative bg-background overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 -right-32 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-accent-blue/10 blur-3xl"
+        />
+
+        <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+            <div className="max-w-4xl">
+              <span className="inline-block text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                About Datawise Africa
+              </span>
+              <h1 className="mt-4 font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
                 <span className="text-accent-blue">Research.</span>{' '}
                 <span className="text-accent-orange">Build.</span>{' '}
                 <span className="text-primary">Deploy.</span>
               </h1>
-              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed mt-6">
+              <p className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl">
                 Datawise Africa is a research and development company focused on
-                building the technical foundations for Africa’s data and
-                intelligent systems. Our work centres on parts of the stack that
-                are often overlooked but absolutely necessary: well structured
-                datasets, locally relevant AI models, and the compute
-                infrastructure needed to run them reliably. Much of what we do
-                is applied research, including building datasets, conducting
-                technical studies, and generating practical insights that help
-                close data gaps slowing progress in sectors such as law, health,
-                and agriculture. Through platforms like Datalab and our broader
-                engineering and data work, we turn raw information into usable
-                systems and evidence that others can build on. At its core, our
-                work is about making sure developers, institutions, and decision
-                makers have the basic tools needed to build technology that
-                works in their own contexts.
+                building the technical foundations for Africa{'\u2019'}s data
+                and intelligent systems.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn direction="up" delay={0.15}>
+            <div className="mt-10 lg:mt-14 grid grid-cols-1 md:grid-cols-2 max-w-5xl border-t border-border pt-10 lg:pt-14">
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed md:pr-8 lg:pr-12 md:border-r md:border-border">
+                Our work centres on parts of the stack that are often overlooked
+                but absolutely necessary: well-structured datasets, locally
+                relevant AI models, and the compute infrastructure needed to run
+                them reliably. Much of what we do is applied research {'\u2014'}{' '}
+                building datasets, conducting technical studies, and generating
+                practical insights that help close data gaps in sectors such as
+                law, health, and agriculture.
+              </p>
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mt-8 md:mt-0 md:pl-8 lg:pl-12 pt-8 md:pt-0 border-t md:border-t-0 border-border">
+                Through platforms like Datalab and our broader engineering and
+                data work, we turn raw information into usable systems and
+                evidence that others can build on. At its core, our work is
+                about making sure developers, institutions, and decision makers
+                have the tools they need to build technology that works in their
+                own contexts.
               </p>
             </div>
           </FadeIn>
