@@ -4,6 +4,7 @@ import { href } from 'react-router';
 import HomeHeroSection from '~/components/homepage/home-hero-section';
 import HomeAboutUsSection from '~/components/homepage/home-about-us-section';
 import HomeWhatWeDoSection from '~/components/homepage/home-what-we-do-section';
+import HomeHowWeWork from '~/components/homepage/home-how-we-work';
 import HomePartnersSection from '~/components/homepage/home-partners-section';
 import { Separator } from '~/components/ui/separator';
 
@@ -28,6 +29,8 @@ export default function Home() {
       <HomeAboutUsSection />
       <Separator />
       <HomeWhatWeDoSection />
+      <Separator />
+      <HomeHowWeWork />
       <Separator />
       <HomePartnersSection />
     </div>
