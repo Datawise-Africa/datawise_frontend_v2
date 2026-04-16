@@ -19,7 +19,7 @@ const whatWeDoCards: {
   link: string;
 }[] = [
   {
-    title: 'Data Insights and Applied Research',
+    title: 'Data,Insights and Applied Research',
     description:
       'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. Developing AI-ready sector datasets, we translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
     image: '/assets/amico.png',
