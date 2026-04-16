@@ -36,14 +36,14 @@ const phases = [
 
 export default function HomeHowWeWork() {
   return (
-    <section className="bg-navy dark:bg-section-green-dark">
+    <section className="bg-section-green dark:bg-section-green-dark">
       <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
         <FadeIn direction="up">
           <div className="flex flex-col items-center mb-12 gap-4">
             <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
               How we work
             </h3>
-            <p className="text-lg text-white/70 text-center max-w-4xl mx-auto">
+            <p className="text-lg text-muted-foreground text-center max-w-4xl mx-auto">
               Every engagement moves through three phases: grounded in evidence,
               built for reality, and deployed to last.
             </p>
@@ -55,7 +55,7 @@ export default function HomeHowWeWork() {
             const Icon = phase.icon;
             return (
               <StaggerItem key={phase.number}>
-                <div className="relative flex flex-col h-full rounded-md bg-navy-light overflow-hidden shadow-lg">
+                <div className="relative flex flex-col h-full rounded-md bg-card border border-border overflow-hidden shadow-lg">
                   <div className={`h-1.5 w-full ${phase.borderTopClass}`} />
                   <div className="flex flex-col flex-1 p-8">
                     <div className="flex items-start justify-between mb-10">
@@ -67,7 +67,7 @@ export default function HomeHowWeWork() {
                       <div
                         className={`flex items-center justify-center w-12 h-12 rounded-full ${phase.accentBgClass}`}
                       >
-                        <Icon className="h-6 w-6 text-navy" />
+                        <Icon className="h-6 w-6 text-white" />
                       </div>
                     </div>
                     <h3
@@ -75,7 +75,7 @@ export default function HomeHowWeWork() {
                     >
                       {phase.title}
                     </h3>
-                    <p className="text-white/70 text-sm leading-relaxed">
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                       {phase.description}
                     </p>
                   </div>
