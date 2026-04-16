@@ -23,9 +23,7 @@ export default function AboutUsTeam() {
           <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
             Our Team
           </h3>
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            Meet the Minds Behind Datawise Africa
-          </h2>
+
           <p className="text-lg text-muted-foreground mt-4 max-w-xl mx-auto">
             A diverse team of researchers, engineers, and innovators united by a
             shared vision.

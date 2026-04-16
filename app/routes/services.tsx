@@ -87,7 +87,7 @@ const serviceCategories: {
     capabilities: [
       {
         icon: IconDatabase,
-        title: 'Data Infrastructure',
+        title: 'Data & Data Infrastructure',
         description:
           'We build AI-ready datasets and structured data systems that enable organizations to access reliable and well-organized information. We also offer custom data collection services, designed to meet unique and domain-specific needs.',
       },
@@ -202,9 +202,6 @@ export default function Services() {
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
           <FadeIn direction="up">
             <div className="text-center max-w-4xl mx-auto">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-3">
-                Services
-              </h3>
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
                 What We <span className="text-primary">Offer</span>
               </h1>

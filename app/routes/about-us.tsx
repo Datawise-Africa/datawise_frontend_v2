@@ -7,16 +7,8 @@ import {
   IconRocket,
   IconHeartHandshake,
   IconUsersGroup,
-  IconDatabase,
-  IconBrain,
-  IconServer,
 } from '@tabler/icons-react';
-import {
-  FadeIn,
-  PageTransition,
-  StaggerChildren,
-  StaggerItem,
-} from '~/components/motion';
+import { FadeIn, PageTransition } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
 export function meta(_args: Route.MetaArgs) {
@@ -59,27 +51,6 @@ const values = [
   },
 ];
 
-const pillars = [
-  {
-    title: 'Data Infrastructure',
-    description: 'Well-structured, AI-ready datasets and data systems.',
-    icon: IconDatabase,
-    accentClass: 'text-primary',
-  },
-  {
-    title: 'AI & Intelligent Systems',
-    description: 'Locally relevant models and machine learning pipelines.',
-    icon: IconBrain,
-    accentClass: 'text-primary',
-  },
-  {
-    title: 'Compute & Platforms',
-    description: 'Infrastructure and platforms that run reliably at scale.',
-    icon: IconServer,
-    accentClass: 'text-primary',
-  },
-];
-
 export default function AboutUs() {
   return (
     <PageTransition>
@@ -96,75 +67,33 @@ export default function AboutUs() {
 
         <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
-            <div className="flex flex-col items-center mb-10 gap-4">
+            <div className="flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
               <span className="text-lg font-semibold text-primary uppercase tracking-wide">
                 About Datawise Africa
               </span>
+              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
+                <span className="text-accent-blue">Research.</span>{' '}
+                <span className="text-accent-orange">Build.</span>{' '}
+                <span className="text-primary">Deploy.</span>
+              </h1>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                Datawise Africa is a research and development company focused on
+                building the technical foundations for Africa{'\u2019'}s data
+                and intelligent systems.
+              </p>
             </div>
           </FadeIn>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left — Research. Build. Deploy. */}
-            <FadeIn direction="up" delay={0.1}>
-              <div className="space-y-6">
-                <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground whitespace-nowrap">
-                  <span className="text-accent-blue">Research.</span>{' '}
-                  <span className="text-accent-orange">Build.</span>{' '}
-                  <span className="text-primary">Deploy.</span>
-                </h1>
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                  Datawise Africa is a research and development company focused
-                  on building the technical foundations for Africa{'\u2019'}s
-                  data and intelligent systems.
-                </p>
-              </div>
-            </FadeIn>
-
-            {/* Right — Our Values */}
-            <FadeIn direction="up" delay={0.2}>
-              <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
-                  Our Values
-                </h3>
-                <div className="space-y-5">
-                  {values.map((value) => {
-                    const Icon = value.icon;
-                    return (
-                      <div key={value.title} className="flex items-start gap-4">
-                        <div
-                          className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
-                        >
-                          <Icon className={`h-5 w-5 ${value.accentClass}`} />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-lg text-foreground">
-                            {value.title}
-                          </h4>
-                          <p className="text-muted-foreground text-sm leading-relaxed mt-1">
-                            {value.description}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </FadeIn>
-          </div>
         </div>
       </section>
 
-      {/* Who We Are — Pillar Cards Section */}
-      <section className="bg-section-green dark:bg-section-green-dark">
+      {/* Who We Are Section */}
+      <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
-            <div className="flex flex-col items-center mb-10 gap-3">
+            <div className="flex flex-col items-center mb-10">
               <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
                 Who we are
               </h3>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-center max-w-2xl">
-                Building Africa{'\u2019'}s data and AI foundations.
-              </h2>
             </div>
           </FadeIn>
 
@@ -191,29 +120,36 @@ export default function AboutUs() {
               </p>
             </FadeIn>
 
-            {/* Pillars — right column */}
-            <StaggerChildren className="flex flex-col gap-5">
-              {pillars.map((pillar) => {
-                const Icon = pillar.icon;
-                return (
-                  <StaggerItem key={pillar.title}>
-                    <div className="flex items-start gap-5 rounded-xl bg-card border border-border p-6">
-                      <div className="flex shrink-0 items-center justify-center w-12 h-12 rounded-lg bg-primary/15">
-                        <Icon className={`h-6 w-6 ${pillar.accentClass}`} />
+            {/* Our Values — right column */}
+            <FadeIn direction="up" delay={0.2}>
+              <div className="space-y-6">
+                <h3 className="text-lg font-semibold text-accent-blue uppercase tracking-wide">
+                  Our Values
+                </h3>
+                <div className="space-y-5">
+                  {values.map((value) => {
+                    const Icon = value.icon;
+                    return (
+                      <div key={value.title} className="flex items-start gap-4">
+                        <div
+                          className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
+                        >
+                          <Icon className={`h-5 w-5 ${value.accentClass}`} />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg text-foreground">
+                            {value.title}
+                          </h4>
+                          <p className="text-muted-foreground text-sm leading-relaxed mt-1">
+                            {value.description}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="text-base font-bold text-foreground mb-1">
-                          {pillar.title}
-                        </h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {pillar.description}
-                        </p>
-                      </div>
-                    </div>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerChildren>
+                    );
+                  })}
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>

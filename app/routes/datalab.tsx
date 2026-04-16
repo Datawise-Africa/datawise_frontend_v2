@@ -3,9 +3,10 @@ import type { Route } from './+types/datalab';
 import { href } from 'react-router';
 import {
   IconArrowRight,
-  IconSearch,
-  IconUpload,
-  IconUsers,
+  IconDatabase,
+  IconWorld,
+  IconFileStack,
+  IconUsersGroup,
   IconBulb,
   IconShieldCheck,
   IconAdjustments,
@@ -36,28 +37,36 @@ const DATALAB_URL = 'https://datalab.datawiseafrica.com';
 
 const exploreCards = [
   {
-    icon: IconSearch,
-    title: 'Discover Datasets',
+    icon: IconDatabase,
+    title: 'Centralized Data Hub',
     description:
-      'Access high-quality datasets across critical domains like agriculture, healthcare, and languages.',
+      'A single, well-organized platform that brings together datasets, dashboards, and reports for seamless discovery and access.',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
   },
   {
-    icon: IconUpload,
-    title: 'Upload Your Data',
+    icon: IconWorld,
+    title: 'African Data Catalog',
     description:
-      'Contribute to Africa\u2019s data ecosystem by sharing your datasets with the community.',
+      'A curated collection of structured, high-quality, documented datasets focused on African contexts and challenges.',
     accentClass: 'text-accent-pink',
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
   },
   {
-    icon: IconUsers,
-    title: 'Collaborate',
+    icon: IconFileStack,
+    title: 'Access, Creation & Publishing',
     description:
-      'Join a growing network of data enthusiasts, researchers, and innovators.',
+      'Users can discover existing data products, create their own datasets, and publish dashboards and reports on the platform.',
     accentClass: 'text-accent-orange',
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
+  },
+  {
+    icon: IconUsersGroup,
+    title: 'Empowerment for Impact',
+    description:
+      'Enables researchers, developers, policymakers, and partners to conduct research, drive policy analysis, and build AI solutions.',
+    accentClass: 'text-primary',
+    accentBgClass: 'bg-primary/10 dark:bg-primary/20',
   },
 ];
 
@@ -96,8 +105,8 @@ export default function Datalab() {
                   <span className="text-primary">Trusted Data</span>
                 </h1>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                  Datalab is a platform that maintains transparency in data use
-                  while ensuring creator sovereignty.
+                  Africa's platform for hosting, managing, and publishing data
+                  products.
                 </p>
                 <div className="flex justify-center md:justify-start">
                   <Button asChild size="lg" className="h-auto px-6 py-3">
@@ -147,7 +156,7 @@ export default function Datalab() {
               </div>
             </FadeIn>
 
-            <StaggerChildren className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <StaggerChildren className="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {exploreCards.map((card) => {
                 const Icon = card.icon;
                 return (
