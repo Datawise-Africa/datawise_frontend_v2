@@ -39,14 +39,10 @@ export default function HomeHowWeWork() {
     <section className="bg-section-green dark:bg-section-green-dark">
       <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
         <FadeIn direction="up">
-          <div className="flex flex-col items-center mb-12 gap-4">
+          <div className="flex flex-col items-center mb-12">
             <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
               How we work
             </h3>
-            <p className="text-lg text-muted-foreground text-center max-w-4xl mx-auto">
-              Every engagement moves through three phases: grounded in evidence,
-              built for reality, and deployed to last.
-            </p>
           </div>
         </FadeIn>
 

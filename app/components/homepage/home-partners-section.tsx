@@ -12,12 +12,9 @@ export default function HomePartnersSection() {
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="text-center mb-10">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
                 Our Partners
               </h3>
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                Collaborating for a Smarter Africa
-              </h2>
             </div>
           </FadeIn>
 
