@@ -89,7 +89,7 @@ const serviceCategories: {
         icon: IconDatabase,
         title: 'Data Infrastructure',
         description:
-          'We build AI-ready datasets and structured data systems that enable organizations to access reliable, well-organized information. Our datasets are documented, version-controlled, and built for reuse.',
+          'We build AI-ready datasets and structured data systems that enable organizations to access reliable and well-organized information. We also offer custom data collection services, designed to meet unique and domain-specific needs.',
       },
       {
         icon: IconChartBar,
