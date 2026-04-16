@@ -78,7 +78,7 @@ const serviceCategories: {
 }[] = [
   {
     id: 'data',
-    label: 'Data & Research',
+    label: 'Data, Insights & Applied Research',
     title: 'Data, Insights & Applied Research',
     description:
       'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. Developing AI-ready sector datasets, we translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
@@ -108,7 +108,7 @@ const serviceCategories: {
   {
     id: 'engineering',
     label: 'Software Engineering',
-    title: 'Engineering',
+    title: 'Software Engineering',
     description:
       'We design and build AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     accentClass: 'text-accent-blue',
@@ -137,7 +137,7 @@ const serviceCategories: {
   {
     id: 'ai',
     label: 'Artificial Intelligence',
-    title: 'AI Services',
+    title: 'Artificial Intelligence',
     description:
       'Our AI services focus on building practical, scalable AI systems that organizations can deploy in real-world environments integrating machine learning models into real applications and workflows.',
     accentClass: 'text-accent-pink',
@@ -166,7 +166,7 @@ const serviceCategories: {
   {
     id: 'infrastructure',
     label: 'Infrastructure',
-    title: 'Infrastructure Engineering',
+    title: 'Infrastructure',
     description:
       'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligence tools, and operate AI systems in real-world environments including storing, running, and maintaining the systems we develop and build.',
     accentClass: 'text-primary',
@@ -238,12 +238,7 @@ export default function Services() {
                   direction={isEven ? 'left' : 'right'}
                   className={!isEven ? 'lg:order-2' : ''}
                 >
-                  <h3
-                    className={`text-lg font-semibold uppercase tracking-wide mb-2 ${category.accentClass}`}
-                  >
-                    {category.label}
-                  </h3>
-                  <h2 className="font-bold text-3xl sm:text-4xl text-foreground mb-4">
+                  <h2 className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary mb-4">
                     {category.title}
                   </h2>
                   {category.description && (
