@@ -107,7 +107,7 @@ export default function AboutUs() {
             {/* Left — Research. Build. Deploy. */}
             <FadeIn direction="up" delay={0.1}>
               <div className="space-y-6">
-                <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
+                <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground whitespace-nowrap">
                   <span className="text-accent-blue">Research.</span>{' '}
                   <span className="text-accent-orange">Build.</span>{' '}
                   <span className="text-primary">Deploy.</span>
