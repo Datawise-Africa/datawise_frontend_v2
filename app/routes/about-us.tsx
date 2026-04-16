@@ -102,9 +102,9 @@ export default function AboutUs() {
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Through applied research, platforms like DataLab, and our
                   broader engineering work, we turn raw information into usable
-                  systems and evidence. The goal is simple: make sure
-                  developers, institutions, and decision-makers have the tools
-                  to build technology that actually works in African contexts.
+                  systems and evidence. The goal is to make sure developers,
+                  institutions, and decision-makers have the tools to build
+                  technology that actually works in African contexts.
                 </p>
               </div>
             </FadeIn>
