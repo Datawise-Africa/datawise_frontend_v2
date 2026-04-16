@@ -11,7 +11,8 @@ import { Separator } from '~/components/ui/separator';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Datawise Africa | Empowering Africa through Data and AI',
+      title:
+        "Datawise Africa | Building the technical foundations for Africa's data and intelligent systems",
       description:
         "Datawise Africa is a research and development company committed to solving Africa's pressing challenges through data and AI innovation. We build trusted data systems, conduct applied research, and develop critical infrastructure while fostering local research leadership across Africa.",
       url: href('/'),
