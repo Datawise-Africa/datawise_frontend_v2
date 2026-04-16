@@ -26,14 +26,14 @@ const pillars = [
 
 export default function HomeAboutUsSection() {
   return (
-    <section className="bg-navy dark:bg-section-green-dark">
+    <section className="bg-section-green dark:bg-section-green-dark">
       <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
         <FadeIn direction="up">
           <div className="flex flex-col items-center mb-10 gap-3">
             <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
               Who we are
             </h3>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center max-w-2xl">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-center max-w-2xl">
               Building Africa{'\u2019'}s data and AI foundations.
             </h2>
           </div>
@@ -42,18 +42,18 @@ export default function HomeAboutUsSection() {
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
           {/* Text — left column */}
           <FadeIn direction="up" delay={0.1} className="space-y-5">
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Datawise Africa is a research and development company focused on
               building the technical foundations for Africa{'\u2019'}s data and
               intelligent systems.
             </p>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Our work centres on parts of the stack that are often overlooked
               but absolutely necessary; well-structured datasets, locally
               relevant AI models, and the compute infrastructure needed to run
               them reliably.
             </p>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Through applied research, platforms like DataLab, and our broader
               engineering work, we turn raw information into usable systems and
               evidence. The goal is simple: make sure developers, institutions,
@@ -75,15 +75,15 @@ export default function HomeAboutUsSection() {
               const Icon = pillar.icon;
               return (
                 <StaggerItem key={pillar.title}>
-                  <div className="flex items-start gap-5 rounded-xl bg-navy-light p-6">
+                  <div className="flex items-start gap-5 rounded-xl bg-card border border-border p-6">
                     <div className="flex shrink-0 items-center justify-center w-12 h-12 rounded-lg bg-primary/15">
                       <Icon className={`h-6 w-6 ${pillar.accentClass}`} />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-white mb-1">
+                      <h4 className="text-base font-bold text-foreground mb-1">
                         {pillar.title}
                       </h4>
-                      <p className="text-sm text-white/60 leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {pillar.description}
                       </p>
                     </div>
