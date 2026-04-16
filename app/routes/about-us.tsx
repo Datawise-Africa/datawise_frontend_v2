@@ -67,63 +67,52 @@ export default function AboutUs() {
 
         <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
-            <div className="flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
-              <span className="text-lg font-semibold text-primary uppercase tracking-wide">
-                About Datawise Africa
-              </span>
+            <div className="flex flex-col items-center text-center">
               <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
                 <span className="text-accent-blue">Research.</span>{' '}
                 <span className="text-accent-orange">Build.</span>{' '}
                 <span className="text-primary">Deploy.</span>
               </h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                Datawise Africa is a research and development company focused on
-                building the technical foundations for Africa{'\u2019'}s data
-                and intelligent systems.
-              </p>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Who We Are Section */}
+      {/* Who We Are + Our Values Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn direction="up">
-            <div className="flex flex-col items-center mb-10">
-              <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
-                Who we are
-              </h3>
-            </div>
-          </FadeIn>
-
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
-            {/* Text — left column */}
-            <FadeIn direction="up" delay={0.1} className="space-y-5">
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Datawise Africa is a research and development company focused on
-                building the technical foundations for Africa{'\u2019'}s data
-                and intelligent systems.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Our work centres on parts of the stack that are often overlooked
-                but absolutely necessary; well-structured datasets, locally
-                relevant AI models, and the compute infrastructure needed to run
-                them reliably.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Through applied research, platforms like DataLab, and our
-                broader engineering work, we turn raw information into usable
-                systems and evidence. The goal is simple: make sure developers,
-                institutions, and decision-makers have the tools to build
-                technology that actually works in African contexts.
-              </p>
+            {/* Who We Are — left column */}
+            <FadeIn direction="up" delay={0.1}>
+              <div className="space-y-5">
+                <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+                  Who we are
+                </h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Datawise Africa is a research and development company focused
+                  on building the technical foundations for Africa{'\u2019'}s
+                  data and intelligent systems.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Our work centres on parts of the stack that are often
+                  overlooked but absolutely necessary; well-structured datasets,
+                  locally relevant AI models, and the compute infrastructure
+                  needed to run them reliably.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Through applied research, platforms like DataLab, and our
+                  broader engineering work, we turn raw information into usable
+                  systems and evidence. The goal is simple: make sure
+                  developers, institutions, and decision-makers have the tools
+                  to build technology that actually works in African contexts.
+                </p>
+              </div>
             </FadeIn>
 
             {/* Our Values — right column */}
             <FadeIn direction="up" delay={0.2}>
               <div className="space-y-6">
-                <h3 className="text-lg font-semibold text-accent-blue uppercase tracking-wide">
+                <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
                   Our Values
                 </h3>
                 <div className="space-y-5">
