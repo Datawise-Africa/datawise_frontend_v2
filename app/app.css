@@ -239,6 +239,30 @@
   animation: toast-leave 0.2s ease-in forwards;
 }
 
+/* Partner logos marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 /* Hero Slider */
 .hero-slider-container {
   width: 100%;

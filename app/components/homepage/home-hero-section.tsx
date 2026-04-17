@@ -3,13 +3,6 @@ import { href, Link } from 'react-router';
 import { FadeIn } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
-// const impactStats = [
-//   { value: '10+', label: 'Datasets Created' },
-//   { value: '5+', label: 'Countries Reached' },
-//   { value: '20+', label: 'Research Partners' },
-//   { value: '50+', label: 'Researchers Supported' },
-// ];
-
 export default function HomeHeroSection() {
   return (
     <section
@@ -38,8 +31,9 @@ export default function HomeHeroSection() {
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
-              <p className="text-lg text-teal-100 sm:text-xl lg:text-2xl leading-relaxed drop-shadow-md">
-                Building and advancing Africa&apos;s intelligent systems
+              <p className="text-lg text-teal-100 sm:text-xl lg:text-1xl leading-relaxed drop-shadow-md">
+                Building the technical foundations for Africa's data and
+                intelligent systems.
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>

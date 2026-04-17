@@ -27,12 +27,12 @@ export const teamMembersData = [
     twitter_url: '',
   },
   {
-    name: 'Winny Chelangat',
+    name: 'Winny C. Sigilai',
     title: 'Data and Insights Lead',
     image: '/assets/teamMembers/winny.webp',
     description:
       'For Winny, data becomes most powerful when it is transformed into evidence that drives real-world decisions. They lead the Data & Insights function, guiding the team in generating insights from complex datasets, producing structured reports, and synthesizing research into clear, actionable findings for partners and stakeholders. Winny has worked closely with our partners, leading impact assessments, data quality initiatives, evidence-based research, and data-driven strategy across projects focused on technology, development, and innovation in Africa. At Datawise Africa, Winny focuses on strengthening how data is translated into insight at both a technical and strategic level, ensuring that research outputs, datasets, and analyses meaningfully inform policy, platforms, and real-world impact.',
-    linkedin_url: 'https://www.linkedin.com/in/winny-sigilai-a64648222/',
+    linkedin_url: 'https://www.linkedin.com/in/winny-chelangat-s-a64648222/',
     twitter_url: '',
   },
   {

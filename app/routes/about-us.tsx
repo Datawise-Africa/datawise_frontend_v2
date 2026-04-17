@@ -55,59 +55,67 @@ export default function AboutUs() {
   return (
     <PageTransition>
       {/* Hero Section */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-10 lg:py-14">
+      <section className="relative bg-background overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-32 -right-32 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-accent-blue/10 blur-3xl"
+        />
+
+        <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
-            <div className="text-center max-w-3xl mx-auto">
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+            <div className="flex flex-col items-center text-center">
+              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
                 <span className="text-accent-blue">Research.</span>{' '}
                 <span className="text-accent-orange">Build.</span>{' '}
                 <span className="text-primary">Deploy.</span>
               </h1>
-              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed mt-6">
-                We research, build, and deploy reliable data and intelligent
-                systems that accelerate Africa&apos;s digital transformation.
-              </p>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Our Story & Values Section */}
-      <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Our Story */}
-            <FadeIn direction="up">
-              <div className="space-y-6">
+      {/* Who We Are + Our Values Section */}
+      <section className="bg-background">
+        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+          <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
+            {/* Who We Are — left column */}
+            <FadeIn direction="up" delay={0.1}>
+              <div className="space-y-5">
                 <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
-                  Our Story
+                  Who we are
                 </h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Founded in 2019, we set out to create African-centred data
-                  that supports more intelligent and informed decision-making
-                  across the continent.
+                  Datawise Africa is a research and development company focused
+                  on building the technical foundations for Africa{'\u2019'}s
+                  data and intelligent systems.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Our work focuses on designing and managing reliable and
-                  ethical data and AI systems that accelerate Africa’s digital
-                  transformation.
+                  Our work centres on parts of the stack that are often
+                  overlooked but absolutely necessary; well-structured datasets,
+                  locally relevant AI models, and the compute infrastructure
+                  needed to run them reliably.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  At the same time, we are working toward a future where Africa
-                  can build a its own intelligent systems solving Africa’s
-                  problems with African solutions.
+                  Through applied research, platforms like DataLab, and our
+                  broader engineering work, we turn raw information into usable
+                  systems and evidence. The goal is to make sure developers,
+                  institutions, and decision-makers have the tools to build
+                  technology that actually works in African contexts.
                 </p>
               </div>
             </FadeIn>
 
-            {/* Our Values */}
+            {/* Our Values — right column */}
             <FadeIn direction="up" delay={0.2}>
               <div className="space-y-6">
                 <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
                   Our Values
                 </h3>
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {values.map((value) => {
                     const Icon = value.icon;
                     return (
