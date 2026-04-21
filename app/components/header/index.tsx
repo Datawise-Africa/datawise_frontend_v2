@@ -29,11 +29,7 @@ export default function Header() {
   }, [isMobile]);
 
   const handleExploreDatasetsClick = () => {
-    window.open(
-      'https://datalab.datawiseafrica.com',
-      '_blank',
-      'noopener,noreferrer'
-    );
+    window.open('https://datalabafrica.com/', '_blank', 'noopener,noreferrer');
   };
 
   return (
