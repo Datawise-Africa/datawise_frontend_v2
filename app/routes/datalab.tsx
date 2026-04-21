@@ -33,7 +33,7 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
-const DATALAB_URL = 'https://datalab.datawiseafrica.com';
+const DATALAB_URL = 'https://datalabafrica.com/';
 
 const exploreCards = [
   {
