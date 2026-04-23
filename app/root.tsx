@@ -14,6 +14,62 @@ import { QueryProvider } from './lib/providers/query-provider';
 import { StoreProvider } from './lib/providers/store-provider';
 import { env } from './lib/env';
 
+const baseUrl = 'https://datawiseafrica.com';
+const seoStructuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Datawise Africa',
+    url: baseUrl,
+    logo: `${baseUrl}/assets/datawise-logo-dark.png`,
+    email: 'info@datawiseafrica.com',
+    telephone: '+254704237879',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Highway Heights, Marcus Garvey Rd, Kilimani',
+      addressLocality: 'Nairobi',
+      addressCountry: 'KE',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Datawise Africa',
+    url: baseUrl,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Primary Site Navigation',
+    itemListElement: [
+      {
+        '@type': 'SiteNavigationElement',
+        position: 1,
+        name: 'About Us',
+        url: `${baseUrl}/about-us`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 2,
+        name: 'Services',
+        url: `${baseUrl}/services`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 3,
+        name: 'Products',
+        url: `${baseUrl}/products`,
+      },
+      {
+        '@type': 'SiteNavigationElement',
+        position: 4,
+        name: 'Contact Us',
+        url: `${baseUrl}/contact-us`,
+      },
+    ],
+  },
+];
+
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
@@ -78,6 +134,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(seoStructuredData),
+          }}
+        />
         {GTAG && (
           <>
             <script

@@ -31,6 +31,15 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
+export const handle = {
+  sitemap: (domain: string, url: string) => ({
+    route: `${domain}${url}`,
+    changefreq: 'weekly',
+    priority: 0.9,
+    lastmod: new Date().toISOString(),
+  }),
+};
+
 const focusAreas: {
   icon: FC<{ className?: string }>;
   title: string;
