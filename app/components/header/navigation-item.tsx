@@ -105,7 +105,8 @@ export default function NavigationItemComponent({
 
   // Mega menu — desktop
   if (item.megaMenu && variant === 'desktop') {
-    const { groups, featured } = item.megaMenu;
+    const { groups: allGroups, featured } = item.megaMenu;
+    const groups = allGroups.filter((group) => group.items.length > 0);
     return (
       <div className="static" ref={dropdownRef}>
         <button
@@ -216,7 +217,9 @@ export default function NavigationItemComponent({
 
   // Mega menu — mobile
   if (item.megaMenu && variant === 'mobile') {
-    const { groups } = item.megaMenu;
+    const groups = item.megaMenu.groups.filter(
+      (group) => group.items.length > 0
+    );
     return (
       <div className="space-y-1">
         <button
