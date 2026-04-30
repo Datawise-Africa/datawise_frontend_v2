@@ -46,3 +46,4 @@ lerna-debug.log*
 .cache
 .netlify
 .playwright-mcp/
+.codex

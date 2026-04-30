@@ -28,14 +28,6 @@ export default function Header() {
     if (!isMobile) setMobileOpen(false);
   }, [isMobile]);
 
-  const handleExploreDatasetsClick = () => {
-    window.open(
-      'https://datalab.datawiseafrica.com',
-      '_blank',
-      'noopener,noreferrer'
-    );
-  };
-
   return (
     <nav className="bg-navy text-gray-light sticky top-0 left-0 z-50">
       <div
@@ -69,13 +61,13 @@ export default function Header() {
               </div>
 
               {/* Desktop CTA Button */}
-              <button
-                onClick={handleExploreDatasetsClick}
-                className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-2.5 font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+              <Link
+                to={href('/products')}
+                className="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-primary-hover hover:shadow-xl"
               >
-                Explore Datalab
+                Explore Products
                 <IconArrowRight className="h-5 w-5" />
-              </button>
+              </Link>
 
               {/* Desktop Theme Toggle */}
               <button
@@ -136,16 +128,14 @@ export default function Header() {
                   </nav>
 
                   {/* Mobile CTA Button */}
-                  <button
-                    onClick={() => {
-                      handleExploreDatasetsClick();
-                      setMobileOpen(false);
-                    }}
-                    className="flex items-center justify-center gap-2 w-full mt-6 bg-primary hover:bg-primary-hover text-white px-6 py-3 font-medium rounded-lg transition-colors duration-200 shadow-lg"
+                  <Link
+                    to={href('/products')}
+                    onClick={() => setMobileOpen(false)}
+                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-primary-hover"
                   >
-                    Explore Datalab
+                    Explore Products
                     <IconArrowRight className="h-5 w-5" />
-                  </button>
+                  </Link>
 
                   {/* Mobile Theme Toggle */}
                   <button

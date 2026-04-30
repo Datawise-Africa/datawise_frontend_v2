@@ -25,14 +25,17 @@ const contactDetails = [
   },
 ];
 
-const companyLinks = [
-  { to: '/', label: 'Home' },
+const primaryLinks = [
   { to: '/about-us', label: 'About Us' },
   { to: '/services', label: 'Services' },
   { to: '/products', label: 'Products' },
+  { to: '/contact-us', label: 'Contact Us' },
+];
+
+const secondaryLinks = [
+  { to: '/', label: 'Home' },
   { to: '/datalab', label: 'Datalab' },
   { to: '/careers', label: 'Careers' },
-  { to: '/contact-us', label: 'Contact Us' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
 ];
 
@@ -77,10 +80,24 @@ export default function Footer() {
           {/* Company Links */}
           <div>
             <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
-              Company
+              Top Pages
             </h4>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
-              {companyLinks.map((link) => (
+              {primaryLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm text-gray-300 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <h4 className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
+              More
+            </h4>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              {secondaryLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}

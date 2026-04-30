@@ -26,6 +26,7 @@ export default [
     route('privacy-policy', 'routes/privacy-policy.tsx'),
   ]),
   route('sitemap.xml', 'routes/sitemap.xml.ts'),
+  route('robots.txt', 'routes/robots.txt.ts'),
   route(
     '.well-known/appspecific/com.chrome.devtools.json',
     'routes/[.]well-known.appspecific.[com.chrome.devtools.json].ts'
