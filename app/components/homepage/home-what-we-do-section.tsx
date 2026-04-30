@@ -19,7 +19,7 @@ const whatWeDoCards: {
   link: string;
 }[] = [
   {
-    title: 'Data Insights and Applied Research',
+    title: 'Data, Insights and Applied Research',
     description:
       'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. Developing AI-ready sector datasets, we translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
     image: '/assets/amico.png',
@@ -31,7 +31,7 @@ const whatWeDoCards: {
   {
     title: 'Development',
     description:
-      'Designing and building AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
+      'We design and build AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     image: '/assets/AI.jpeg',
     icon: IconBrain,
     accentClass: 'text-accent-blue',
@@ -54,18 +54,10 @@ export default function HomeWhatWeDoSection() {
   return (
     <div className="container mx-auto w-full px-4 py-14 lg:py-20 text-foreground">
       <FadeIn direction="up">
-        <div className="flex flex-col items-center mb-12 gap-4">
+        <div className="flex flex-col items-center mb-12">
           <h3 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
             WHAT WE DO
           </h3>
-          <h2 className="text-3xl sm:text-4xl font-bold text-center">
-            Our Services
-          </h2>
-          <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-            End-to-end data, AI, software, and infrastructure services designed
-            to help organizations make better decisions and build impactful
-            technology.
-          </p>
         </div>
       </FadeIn>
 

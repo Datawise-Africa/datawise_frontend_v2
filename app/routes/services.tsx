@@ -12,11 +12,10 @@ import {
   IconBrain,
   IconChartBar,
   IconDeviceMobile,
-  IconApi,
   IconClipboardList,
   IconTool,
   IconRobot,
-  IconSparkles,
+  IconBulb,
   IconLanguage,
   IconCloud,
   IconServer,
@@ -38,6 +37,15 @@ export function meta(_args: Route.MetaArgs) {
     }),
   ];
 }
+
+export const handle = {
+  sitemap: (domain: string, url: string) => ({
+    route: `${domain}${url}`,
+    changefreq: 'weekly',
+    priority: 0.9,
+    lastmod: new Date().toISOString(),
+  }),
+};
 
 const serviceImages: Record<string, string> = {
   data: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
@@ -79,7 +87,7 @@ const serviceCategories: {
 }[] = [
   {
     id: 'data',
-    label: 'Data & Research',
+    label: 'Data, Insights & Applied Research',
     title: 'Data, Insights & Applied Research',
     description:
       'We operate at the intersection of high-quality data infrastructure, strategic intelligence, and applied research. Developing AI-ready sector datasets, we translate them into actionable insights, executive reports, dashboards, and decision-support tools.',
@@ -88,65 +96,59 @@ const serviceCategories: {
     capabilities: [
       {
         icon: IconDatabase,
-        title: 'Data Infrastructure',
+        title: 'Data & Data Infrastructure',
         description:
-          'We build AI-ready datasets and structured data systems that enable organizations to access reliable and well-organized information.',
+          'We build AI-ready datasets and structured data systems that enable organizations to access reliable and well-organized information. We also offer custom data collection services, designed to meet unique and domain-specific needs.',
       },
       {
         icon: IconChartBar,
         title: 'Strategic Intelligence',
         description:
-          'We transform complex datasets into actionable intelligence through executive reports, analytical briefs, and interactive dashboards.',
+          'We transform complex datasets into actionable intelligence through executive reports, analytical briefs, and interactive dashboards tailored to organizational decision-making needs.',
       },
       {
         icon: IconBrain,
         title: 'Applied Research',
         description:
-          'We conduct applied research on emerging technologies, sector challenges, and AI deployment opportunities within real-world environments.',
+          'We conduct applied research on emerging technologies, sector challenges, and AI deployment opportunities, generating practical insights that close the gap between data and real-world decisions.',
       },
     ],
   },
   {
     id: 'engineering',
     label: 'Software Engineering',
-    title: 'Engineering',
+    title: 'Software Engineering',
     description:
-      'Designing and building AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
+      'We design and build AI models, software systems, and infrastructure that translate research into working technology. This includes machine learning systems, edge AI solutions, and scalable digital platforms built for real-world use.',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
     capabilities: [
       {
         icon: IconDeviceMobile,
-        title: 'Custom Application Development',
+        title: 'Custom Application Development & APIs',
         description:
-          'We design and build web, mobile, and enterprise applications that solve specific operational challenges.',
-      },
-      {
-        icon: IconApi,
-        title: 'API Development & Integration',
-        description:
-          'We design and implement APIs that enable systems to exchange data seamlessly.',
+          'Web, mobile, and enterprise applications designed to solve specific operational and data challenges, powered by APIs that enable systems to exchange data seamlessly — connecting datasets, platforms, and third-party tools.',
       },
       {
         icon: IconClipboardList,
         title: 'Software Project Management',
         description:
-          'We manage projects using modern agile methodologies for efficient development cycles and continuous improvement.',
+          'Agile-led delivery with continuous improvement cycles, transparent tracking, and on-time execution.',
       },
       {
         icon: IconTool,
         title: 'Maintenance & Support',
         description:
-          'We provide long-term software support including monitoring, optimization, security updates, and bug fixes.',
+          'Long-term software support including monitoring, optimization, security updates, and bug resolution.',
       },
     ],
   },
   {
     id: 'ai',
     label: 'Artificial Intelligence',
-    title: 'AI Services',
+    title: 'Artificial Intelligence',
     description:
-      'Our AI services focus on building practical, scalable AI systems that organizations can deploy in real-world environments.',
+      'Our AI services focus on building practical, scalable AI systems that organizations can deploy in real-world environments integrating machine learning models into real applications and workflows.',
     accentClass: 'text-accent-pink',
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
     capabilities: [
@@ -154,28 +156,28 @@ const serviceCategories: {
         icon: IconRobot,
         title: 'AI Engineering',
         description:
-          'We design and deploy production-ready AI systems that integrate machine learning models into real applications and workflows.',
+          'We design and deploy production-ready AI systems that integrate machine learning models into real applications and organizational workflows not just demos.',
       },
       {
-        icon: IconSparkles,
+        icon: IconBulb,
         title: 'Generative AI Solutions',
         description:
-          'We build custom generative AI systems tailored to organizational workflows.',
+          'We build custom generative AI systems tailored to specific organizational needs from content generation to intelligent automation and workflow augmentation.',
       },
       {
         icon: IconLanguage,
         title: 'Natural Language Processing',
         description:
-          'We develop systems that allow machines to understand and analyze human language.',
+          'We develop NLP systems that allow machines to understand, classify, and analyze human language with a focus on African languages and local contexts.',
       },
     ],
   },
   {
     id: 'infrastructure',
     label: 'Infrastructure',
-    title: 'Infrastructure Engineering',
+    title: 'Infrastructure',
     description:
-      'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligence tools, and operate AI systems in real-world environments. Our work includes storing data, and running and maintaining the systems that we develop and build.',
+      'We design and manage cloud and compute infrastructure to enable organisations to integrate structured data, access intelligence tools, and operate AI systems in real-world environments including storing, running, and maintaining the systems we develop and build.',
     accentClass: 'text-primary',
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
     capabilities: [
@@ -183,19 +185,19 @@ const serviceCategories: {
         icon: IconCloud,
         title: 'Cloud Infrastructure & Architecture',
         description:
-          'We design and implement scalable cloud environments across leading cloud platforms.',
+          'We design and implement scalable cloud environments across leading platforms architected for data systems, AI workloads, and high-availability operations.',
       },
       {
         icon: IconServer,
         title: 'Compute Infrastructure',
         description:
-          'We design and manage compute infrastructure capable of supporting AI systems, data platforms, and research workloads.',
+          'We design and manage compute infrastructure capable of supporting AI systems, data platforms, and research workloads at the scale African organisations need.',
       },
       {
         icon: IconRefresh,
         title: 'DevOps & Continuous Delivery',
         description:
-          'We implement DevOps practices that enable faster and more reliable software delivery.',
+          'We implement DevOps practices that enable faster, more reliable software delivery with continuous integration, monitoring, and deployment pipelines.',
       },
     ],
   },
@@ -209,9 +211,6 @@ export default function Services() {
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
           <FadeIn direction="up">
             <div className="text-center max-w-4xl mx-auto">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-3">
-                Services
-              </h3>
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
                 What We <span className="text-primary">Offer</span>
               </h1>
@@ -245,12 +244,7 @@ export default function Services() {
                   direction={isEven ? 'left' : 'right'}
                   className={!isEven ? 'lg:order-2' : ''}
                 >
-                  <h3
-                    className={`text-lg font-semibold uppercase tracking-wide mb-2 ${category.accentClass}`}
-                  >
-                    {category.label}
-                  </h3>
-                  <h2 className="font-bold text-3xl sm:text-4xl text-foreground mb-4">
+                  <h2 className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-primary mb-4">
                     {category.title}
                   </h2>
                   {category.description && (

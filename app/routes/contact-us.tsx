@@ -32,6 +32,15 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
+export const handle = {
+  sitemap: (domain: string, url: string) => ({
+    route: `${domain}${url}`,
+    changefreq: 'monthly',
+    priority: 0.9,
+    lastmod: new Date().toISOString(),
+  }),
+};
+
 const contactInfo = [
   {
     icon: IconPhone,

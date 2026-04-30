@@ -13,6 +13,15 @@ import { useNavigate } from 'react-router';
 import { IconArrowRight } from '@tabler/icons-react';
 import { Button } from '~/components/ui/button';
 
+export const handle = {
+  sitemap: (domain: string, url: string) => ({
+    route: `${domain}${url}`,
+    changefreq: 'weekly',
+    priority: 0.5,
+    lastmod: new Date().toISOString(),
+  }),
+};
+
 export default function Careers() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
