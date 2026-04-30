@@ -83,48 +83,6 @@ export default function Home() {
     <div className=" overflow-hidden">
       <HomeHeroSection />
       <Separator />
-      <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <div className="mx-auto mb-10 max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-              Explore Datawise Africa
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Start with our core pages to understand who we are, what we offer,
-              what we build, and how to get in touch.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {primaryPageLinks.map((page) => {
-              const Icon = page.icon;
-              return (
-                <Card key={page.title} className="h-full">
-                  <CardHeader>
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{page.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex h-full flex-col">
-                    <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
-                      {page.description}
-                    </p>
-                    <Link
-                      to={page.to}
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80"
-                    >
-                      Visit page
-                      <IconArrowRight className="h-4 w-4" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-      <Separator />
       <HomeAboutUsSection />
       <Separator />
       <HomeWhatWeDoSection />
