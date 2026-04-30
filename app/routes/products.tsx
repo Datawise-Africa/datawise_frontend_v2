@@ -3,9 +3,6 @@ import type { Route } from './+types/products';
 import { href, Link } from 'react-router';
 import {
   IconArrowRight,
-  IconBrain,
-  IconServer,
-  IconShieldCheck,
   IconDatabase,
   IconSchool,
   IconHeartbeat,
@@ -42,39 +39,6 @@ export const handle = {
   }),
 };
 
-const focusAreas: {
-  icon: FC<{ className?: string }>;
-  title: string;
-  description: string;
-  accentClass: string;
-  accentBgClass: string;
-}[] = [
-  {
-    icon: IconBrain,
-    title: 'AI for Development',
-    description:
-      'Leveraging AI to address social and economic challenges across the continent.',
-    accentClass: 'text-accent-blue',
-    accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
-  },
-  {
-    icon: IconServer,
-    title: 'Data Infrastructure',
-    description:
-      'Building sustainable and affordable compute solutions for African contexts.',
-    accentClass: 'text-accent-pink',
-    accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
-  },
-  {
-    icon: IconShieldCheck,
-    title: 'Ethical Data Practices',
-    description:
-      'Ensuring data collection and usage are transparent, ethical, and community-centered.',
-    accentClass: 'text-accent-orange',
-    accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
-  },
-];
-
 const featuredProjects: {
   slug: string;
   icon: FC<{ className?: string }>;
@@ -89,7 +53,7 @@ const featuredProjects: {
     icon: IconDatabase,
     title: 'Datalab',
     description:
-      'A platform that maintains transparency in data use while ensuring creator sovereignty. Discover datasets, upload your own, and collaborate with others.',
+      'DataLab is a platform for hosting, managing, and publishing data products. It enables creators to create and upload datasets, while also supporting richer data products such as dashboards and reports that deliver actionable insights. Designed for accessibility and usability, DataLab helps users discover, share, and turn data into meaningful impact.',
     link: 'https://datalab.datawiseafrica.com',
     accentClass: 'text-primary',
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
@@ -99,7 +63,7 @@ const featuredProjects: {
     icon: IconSchool,
     title: 'Sheria AI',
     description:
-      'Sheria AI is a Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
+      'Sheria AI is a Kenyan legal intelligence platform designed for lawyers, researchers, and anyone navigating the legal system. It combines an AI-powered chatbot with advanced search and filtering to help users quickly find relevant court rulings, understand legal principles, and generate practical legal insights. ',
     accentClass: 'text-accent-blue',
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
     link: 'https://sheria.africa',
@@ -109,7 +73,7 @@ const featuredProjects: {
     icon: IconHeartbeat,
     title: 'African Stack',
     description:
-      'The African Stack is the home for Africa’s data and AI movement, sharing insights, ideas, and stories through articles, podcasts, and newsletters that connect innovation, policy, and real-world impact.',
+      'The African Stack covers the ideas, research, and technologies shaping the continent’s future. Through in-depth articles, podcast conversations, and monthly newsletter updates, we connect Africa’s next wave of change makers with the insights that matter.',
     accentClass: 'text-accent-pink',
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
     link: 'https://theafricanstack.com',
@@ -213,14 +177,6 @@ export default function Projects() {
             </div>
           </FadeIn>
 
-          <FadeIn>
-            <div className="text-center mb-8">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
-                Platforms Built
-              </h3>
-            </div>
-          </FadeIn>
-
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {featuredProjects.map((project) => {
               const Icon = project.icon;
@@ -256,8 +212,9 @@ export default function Projects() {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`Explore ${project.title}`}
                           >
-                            Visit Project
+                            Explore {project.title}
                             <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                           </a>
                         </Button>
@@ -280,7 +237,7 @@ export default function Projects() {
           <FadeIn>
             <div className="text-center mb-12 space-y-2">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
-                Datasets
+                Our Dataset
               </h3>
 
               <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
@@ -326,49 +283,13 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             aria-label={`View ${dataset.title} dataset on Datalab`}
                           >
-                            View Dataset
+                            View {dataset.title}
                             <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                           </a>
                         </Button>
                       </div>
                     </div>
                   </article>
-                </StaggerItem>
-              );
-            })}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* Focus Areas Section */}
-      <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="font-bold text-3xl sm:text-4xl text-foreground">
-                Focus Areas
-              </h2>
-            </div>
-          </FadeIn>
-
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {focusAreas.map((area) => {
-              const Icon = area.icon;
-              return (
-                <StaggerItem key={area.title}>
-                  <div className="flex flex-col items-center text-center bg-background dark:bg-background/50 rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
-                    <div
-                      className={`flex items-center justify-center w-14 h-14 rounded-2xl ${area.accentBgClass} mb-5`}
-                    >
-                      <Icon className={`h-7 w-7 ${area.accentClass}`} />
-                    </div>
-                    <h4 className="text-lg font-semibold text-foreground mb-2">
-                      {area.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {area.description}
-                    </p>
-                  </div>
                 </StaggerItem>
               );
             })}
