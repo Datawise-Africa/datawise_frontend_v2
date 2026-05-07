@@ -38,15 +38,6 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
-export const handle = {
-  sitemap: (domain: string, url: string) => ({
-    route: `${domain}${url}`,
-    changefreq: 'weekly',
-    priority: 0.9,
-    lastmod: new Date().toISOString(),
-  }),
-};
-
 const serviceImages: Record<string, string> = {
   data: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
   engineering:

@@ -1,9 +1,10 @@
 /**
  * Schema.org JSON-LD builders for Datawise Africa.
  */
+import { env } from '~/lib/env';
 
 const SITE_NAME = 'Datawise Africa';
-const SITE_URL = 'https://datawiseafrica.com';
+const SITE_URL = env.VITE_SITE_URL;
 const LOGO_URL = `${SITE_URL}/assets/datawise-logo-dark.png`;
 
 export function organizationSchema() {

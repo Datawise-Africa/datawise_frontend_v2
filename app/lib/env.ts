@@ -1,9 +1,10 @@
 import { z } from 'zod';
 
 const envSchema = z.object({
-  VITE_API_URL: z.string().url(),
+  VITE_API_URL: z.url(),
   VITE_APP_NAME: z.string().default('Datawise Frontend'),
   VITE_APP_VERSION: z.string().default('1.0.0'),
+  VITE_SITE_URL: z.url().default('https://datawiseafrica.com'),
   VITE_GTAG_ID: z.string().optional(),
   VITE_SENTRY_DSN: z.string().optional(),
   VITE_SENTRY_ENVIRONMENT: z.string().optional(),
@@ -20,6 +21,7 @@ function parseEnv(): Env {
     VITE_API_URL: import.meta.env.VITE_API_URL,
     VITE_APP_NAME: import.meta.env.VITE_APP_NAME,
     VITE_APP_VERSION: import.meta.env.VITE_APP_VERSION,
+    VITE_SITE_URL: import.meta.env.VITE_SITE_URL,
     VITE_GTAG_ID: import.meta.env.VITE_GTAG_ID,
     VITE_SENTRY_DSN: import.meta.env.VITE_SENTRY_DSN,
     VITE_SENTRY_ENVIRONMENT: import.meta.env.VITE_SENTRY_ENVIRONMENT,
