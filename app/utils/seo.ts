@@ -1,3 +1,5 @@
+import { env } from '~/lib/env';
+
 /**
  * Configuration object for SEO metadata generation.
  */
@@ -16,13 +18,9 @@ export interface SEOConfig {
 }
 
 const SITE_NAME = 'Datawise Africa';
-const SITE_DOMAIN = 'https://datawiseafrica.com';
 const TWITTER_HANDLE = '@datawise_AFR';
 
-const baseUrl =
-  typeof window !== 'undefined'
-    ? window.location.origin
-    : process.env.PUBLIC_URL || SITE_DOMAIN;
+const baseUrl = env.VITE_SITE_URL;
 
 const defaultImage = `${baseUrl}/assets/datawise-logo-dark.png`;
 

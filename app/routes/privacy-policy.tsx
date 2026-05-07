@@ -14,15 +14,6 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
-export const handle = {
-  sitemap: (domain: string, url: string) => ({
-    route: `${domain}${url}`,
-    changefreq: 'yearly',
-    priority: 0.2,
-    lastmod: new Date().toISOString(),
-  }),
-};
-
 const sections = [
   {
     title: '1. Acceptance of This Privacy Policy',

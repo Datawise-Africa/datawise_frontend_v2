@@ -33,15 +33,6 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
-export const handle = {
-  sitemap: (domain: string, url: string) => ({
-    route: `${domain}${url}`,
-    changefreq: 'monthly',
-    priority: 0.6,
-    lastmod: new Date().toISOString(),
-  }),
-};
-
 const DATALAB_URL = 'https://datalabafrica.com/';
 
 const exploreCards = [
