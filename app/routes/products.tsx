@@ -228,7 +228,7 @@ export default function Projects() {
           <FadeIn>
             <div className="text-center mb-12 space-y-2">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
-                Our Dataset
+                Our Datasets
               </h3>
 
               <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
