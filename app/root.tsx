@@ -14,7 +14,7 @@ import { QueryProvider } from './lib/providers/query-provider';
 import { StoreProvider } from './lib/providers/store-provider';
 import { env } from './lib/env';
 
-const baseUrl = 'https://datawiseafrica.com';
+const baseUrl = env.VITE_SITE_URL;
 const seoStructuredData = [
   {
     '@context': 'https://schema.org',
@@ -30,6 +30,7 @@ const seoStructuredData = [
       addressLocality: 'Nairobi',
       addressCountry: 'KE',
     },
+    sameAs: ['https://www.linkedin.com/company/datawise-africa'],
   },
   {
     '@context': 'https://schema.org',

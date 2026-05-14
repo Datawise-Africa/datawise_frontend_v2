@@ -1,6 +1,5 @@
 import type { Route } from './+types/home';
 import { generateSEOTags } from '~/utils/seo';
-import { organizationSchema, websiteSchema } from '~/utils/structured-data';
 import { href } from 'react-router';
 import { Link } from 'react-router';
 import HomeHeroSection from '~/components/homepage/home-hero-section';
@@ -29,19 +28,9 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/'),
       keywords:
         'data science africa, artificial intelligence research, AI solutions, African technology, data infrastructure, machine learning, research and development, data analytics, AI innovation, African tech solutions, data systems, applied research',
-      jsonLd: [organizationSchema(), websiteSchema()],
     }),
   ];
 }
-
-export const handle = {
-  sitemap: (domain: string, url: string) => ({
-    route: `${domain}${url}`,
-    changefreq: 'weekly',
-    priority: 1.0,
-    lastmod: new Date().toISOString(),
-  }),
-};
 
 const primaryPageLinks: {
   title: string;

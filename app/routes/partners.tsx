@@ -31,15 +31,6 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
-export const handle = {
-  sitemap: (domain: string, url: string) => ({
-    route: `${domain}${url}`,
-    changefreq: 'monthly',
-    priority: 0.5,
-    lastmod: new Date().toISOString(),
-  }),
-};
-
 const whyPartnerCards = [
   {
     icon: IconDatabase,
