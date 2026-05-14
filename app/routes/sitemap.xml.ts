@@ -17,15 +17,13 @@ interface SitemapRoute {
 
 const routes: SitemapRoute[] = [
   { path: '/', priority: 1.0, changefreq: 'daily' },
-  { path: '/about-us', priority: 0.8, changefreq: 'monthly' },
   { path: '/services', priority: 0.9, changefreq: 'weekly' },
   { path: '/products', priority: 0.9, changefreq: 'weekly' },
-  { path: '/datalab', priority: 0.9, changefreq: 'weekly' },
-  { path: '/careers', priority: 0.7, changefreq: 'weekly' },
+  { path: '/about-us', priority: 0.8, changefreq: 'monthly' },
   { path: '/partners', priority: 0.8, changefreq: 'monthly' },
   { path: '/become-a-partner', priority: 0.6, changefreq: 'monthly' },
+  { path: '/careers', priority: 0.7, changefreq: 'weekly' },
   { path: '/contact-us', priority: 0.6, changefreq: 'monthly' },
-  { path: '/privacy-policy', priority: 0.3, changefreq: 'yearly' },
 ];
 
 function escapeXml(s: string): string {
