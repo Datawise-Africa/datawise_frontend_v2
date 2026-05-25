@@ -28,6 +28,22 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/contact-us'),
       keywords:
         'contact Datawise Africa, data science inquiries, AI solutions support, African technology contact, data and AI innovation, research and development Africa',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        mainEntity: {
+          '@type': 'Organization',
+          name: 'Datawise Africa',
+          email: 'info@datawiseafrica.com',
+          telephone: '+254704237879',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Highway Heights, Marcus Garvey Rd, Kilimani',
+            addressLocality: 'Nairobi',
+            addressCountry: 'KE',
+          },
+        },
+      },
     }),
   ];
 }

@@ -20,6 +20,32 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/about-us'),
       keywords:
         'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, data infrastructure, machine learning Africa, data-driven impact',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        mainEntity: {
+          '@type': 'Organization',
+          name: 'Datawise Africa',
+          url: 'https://datawiseafrica.com',
+          description:
+            'Research and development company committed to solving Africa\u2019s pressing challenges through data and AI innovation.',
+          areaServed: 'Africa',
+          knowsAbout: [
+            'Data Science',
+            'Artificial Intelligence',
+            'Machine Learning',
+            'Natural Language Processing',
+            'Cloud Infrastructure',
+            'Software Engineering',
+          ],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Highway Heights, Marcus Garvey Rd, Kilimani',
+            addressLocality: 'Nairobi',
+            addressCountry: 'KE',
+          },
+        },
+      },
     }),
   ];
 }

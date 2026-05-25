@@ -1,3 +1,4 @@
+import { env } from '~/lib/env';
 import type { Route } from './+types/sitemap.xml';
 
 type ChangeFreq =
@@ -24,6 +25,7 @@ const routes: SitemapRoute[] = [
   { path: '/become-a-partner', priority: 0.6, changefreq: 'monthly' },
   { path: '/careers', priority: 0.7, changefreq: 'weekly' },
   { path: '/contact-us', priority: 0.6, changefreq: 'monthly' },
+  { path: '/privacy-policy', priority: 0.3, changefreq: 'yearly' },
 ];
 
 function escapeXml(s: string): string {
@@ -36,7 +38,7 @@ function escapeXml(s: string): string {
 }
 
 export const loader = ({ request }: Route.LoaderArgs) => {
-  const { origin } = new URL(request.url);
+  const origin = env.VITE_SITE_URL ?? new URL(request.url).origin;
   const lastmod = new Date().toISOString();
 
   const urls = routes

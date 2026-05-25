@@ -22,7 +22,7 @@ const TWITTER_HANDLE = '@datawise_AFR';
 
 const baseUrl = env.VITE_SITE_URL;
 
-const defaultImage = `${baseUrl}/assets/datawise-logo-dark.png`;
+const defaultImage = `${baseUrl}/assets/og-image.webp`;
 
 /**
  * Strip tracking query params and trailing slash for canonical URLs.
