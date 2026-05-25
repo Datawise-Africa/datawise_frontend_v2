@@ -3,8 +3,56 @@ import { FadeIn, PageTransition } from '~/components/motion';
 import { useAppDispatch, useAppSelector } from '~/store';
 import { setPosition } from '~/store/slices/career-slice';
 import { slugify } from '~/utils/slugify';
+import { generateSEOTags } from '~/utils/seo';
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
+import type { Route } from './+types/career-description.$slug';
+
+export function meta({ params }: Route.MetaArgs) {
+  const job = available_positions.find(
+    (pos) => slugify(pos.title) === params.slug
+  );
+
+  if (!job) {
+    return [
+      ...generateSEOTags({
+        title: 'Career Opportunity | Datawise Africa',
+        description:
+          'Explore career opportunities at Datawise Africa and join our team building data and AI solutions for the African continent.',
+        url: '/careers',
+      }),
+    ];
+  }
+
+  return [
+    ...generateSEOTags({
+      title: `${job.title} | Careers at Datawise Africa`,
+      description: job.overview.slice(0, 160),
+      url: `/career-description/${params.slug}`,
+      keywords:
+        'data science jobs africa, AI careers, machine learning jobs, datawise africa',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'JobPosting',
+        title: job.title,
+        description: job.overview,
+        hiringOrganization: {
+          '@type': 'Organization',
+          name: 'Datawise Africa',
+          sameAs: 'https://datawiseafrica.com',
+        },
+        jobLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Nairobi',
+            addressCountry: 'KE',
+          },
+        },
+      },
+    }),
+  ];
+}
 
 export default function CareerDescription() {
   const { slug } = useParams();

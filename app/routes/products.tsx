@@ -26,6 +26,43 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/products'),
       keywords:
         'datawise, datalab, afyaken, eduken, data products africa, ai for development, data infrastructure',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Datalab',
+          applicationCategory: 'DataApplication',
+          description:
+            'Open dataset discovery and collaboration platform for curated African datasets.',
+          operatingSystem: 'Web',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Sheria AI',
+          applicationCategory: 'LegalApplication',
+          description:
+            'Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
+          operatingSystem: 'Web',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Dataset',
+          name: 'Eduken',
+          description:
+            'Education dataset capturing learning outcomes and access across African contexts.',
+          creator: { '@type': 'Organization', name: 'Datawise Africa' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Dataset',
+          name: 'Afyaken',
+          description:
+            'Health dataset surfacing care delivery, outcomes, and public health signals across Kenya.',
+          creator: { '@type': 'Organization', name: 'Datawise Africa' },
+        },
+      ],
     }),
   ];
 }

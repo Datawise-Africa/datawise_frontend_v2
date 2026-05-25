@@ -34,6 +34,60 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/services'),
       keywords:
         'data services africa, AI services, software engineering africa, cloud infrastructure, applied research, NLP, generative AI, DevOps',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'Data & Research Services',
+          description:
+            'Data infrastructure, strategic intelligence, and applied research services for African contexts.',
+          areaServed: 'Africa',
+          serviceType: 'Data Science & Research',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'AI & Machine Learning Services',
+          description:
+            'AI engineering, generative AI, and natural language processing solutions.',
+          areaServed: 'Africa',
+          serviceType: 'Artificial Intelligence',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'Software Engineering Services',
+          description:
+            'Custom applications, API development, and technical project management.',
+          areaServed: 'Africa',
+          serviceType: 'Software Development',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'Cloud Infrastructure Services',
+          description:
+            'Cloud architecture, compute infrastructure, and DevOps & CI/CD pipelines.',
+          areaServed: 'Africa',
+          serviceType: 'Cloud Infrastructure',
+        },
+      ],
     }),
   ];
 }

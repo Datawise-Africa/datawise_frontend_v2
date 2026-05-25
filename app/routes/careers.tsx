@@ -9,9 +9,24 @@ import {
 import { useAppDispatch } from '~/store';
 import { setPosition } from '~/store/slices/career-slice';
 import { slugify } from '~/utils/slugify';
-import { useNavigate } from 'react-router';
+import { useNavigate, href } from 'react-router';
 import { IconArrowRight } from '@tabler/icons-react';
 import { Button } from '~/components/ui/button';
+import { generateSEOTags } from '~/utils/seo';
+import type { Route } from './+types/careers';
+
+export function meta(_args: Route.MetaArgs) {
+  return [
+    ...generateSEOTags({
+      title: 'Careers at Datawise Africa | Join Our Team',
+      description:
+        'Explore open positions at Datawise Africa. Join a team building data infrastructure, AI solutions, and research platforms that serve the African continent.',
+      url: href('/careers'),
+      keywords:
+        'data science jobs africa, AI careers, machine learning jobs, technology careers africa, datawise africa careers',
+    }),
+  ];
+}
 
 export default function Careers() {
   const navigate = useNavigate();

@@ -34,7 +34,7 @@ const primaryLinks = [
 
 const secondaryLinks = [
   { to: '/', label: 'Home' },
-  { to: '/datalab', label: 'Datalab' },
+  { to: '/partners', label: 'Partners' },
   { to: '/careers', label: 'Careers' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
 ];
