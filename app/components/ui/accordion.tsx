@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconChevronDown as ChevronDownIcon } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { Accordion as AccordionPrimitive } from 'radix-ui';
 
 import { cn } from '~/lib/utils';
@@ -39,7 +39,10 @@ function AccordionTrigger({
         {...props}
       >
         {children}
-        <ChevronDownIcon className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200" />
+        <Icon
+          icon="tabler:chevron-down"
+          className="pointer-events-none size-4 shrink-0 translate-y-0.5 text-muted-foreground transition-transform duration-200"
+        />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTeamMembers, type TeamMember } from '~/hooks/use-team-members';
-import { IconBrandLinkedin } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import {
   Dialog,
@@ -52,7 +52,7 @@ export default function AboutUsTeam() {
                     className="absolute bottom-1 right-1 flex items-center justify-center w-9 h-9 rounded-full bg-[#0A66C2] text-white shadow-md ring-2 ring-background hover:scale-110 transition-transform duration-200"
                     aria-label={`${member.name} on LinkedIn`}
                   >
-                    <IconBrandLinkedin className="h-4 w-4" />
+                    <Icon icon="tabler:brand-linkedin" className="h-4 w-4" />
                   </a>
                 )}
               </div>

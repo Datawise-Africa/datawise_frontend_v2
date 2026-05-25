@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
-import { IconEye as Eye, IconEyeOff as EyeOff } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import {
   FormControl,
   FormField,
@@ -55,11 +55,10 @@ export function FormPasswordField<TFieldValues extends FieldValues>({
                 onClick={() => setShowPassword(!showPassword)}
                 disabled={disabled}
               >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4 text-muted-foreground" />
-                ) : (
-                  <Eye className="h-4 w-4 text-muted-foreground" />
-                )}
+                <Icon
+                  icon={showPassword ? 'tabler:eye-off' : 'tabler:eye'}
+                  className="h-4 w-4 text-muted-foreground"
+                />
                 <span className="sr-only">
                   {showPassword ? 'Hide password' : 'Show password'}
                 </span>

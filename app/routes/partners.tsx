@@ -10,12 +10,7 @@ import type { Route } from './+types/partners';
 import { generateSEOTags } from '~/utils/seo';
 import { href } from 'react-router';
 import { partners } from '~/constants/partners';
-import {
-  IconArrowDown,
-  IconDatabase,
-  IconBulb,
-  IconNetwork,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
 
 export function meta(_args: Route.MetaArgs) {
@@ -33,7 +28,7 @@ export function meta(_args: Route.MetaArgs) {
 
 const whyPartnerCards = [
   {
-    icon: IconDatabase,
+    icon: 'tabler:database',
     title: 'Access Exclusive Data',
     description:
       'Gain insights from high-quality datasets to drive innovation and decision-making.',
@@ -41,7 +36,7 @@ const whyPartnerCards = [
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
   },
   {
-    icon: IconBulb,
+    icon: 'tabler:bulb',
     title: 'Collaborate on AI Solutions',
     description:
       'Work with leading experts to develop AI-driven solutions for real-world challenges.',
@@ -49,7 +44,7 @@ const whyPartnerCards = [
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
   },
   {
-    icon: IconNetwork,
+    icon: 'tabler:network',
     title: 'Expand Your Reach',
     description:
       'Connect with a growing network of innovators, researchers, and organizations.',
@@ -91,7 +86,7 @@ export default function Partners() {
                     onClick={scrollToForm}
                   >
                     Become a Partner
-                    <IconArrowDown className="ml-1 h-5 w-5" />
+                    <Icon icon="tabler:arrow-down" className="ml-1 h-5 w-5" />
                   </Button>
                 </div>
               </div>
@@ -126,14 +121,16 @@ export default function Partners() {
 
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {whyPartnerCards.map((card) => {
-              const Icon = card.icon;
               return (
                 <StaggerItem key={card.title}>
                   <div className="flex flex-col items-center text-center bg-background dark:bg-background/50 rounded-2xl border border-border p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
                     <div
                       className={`flex items-center justify-center w-14 h-14 rounded-2xl ${card.accentBgClass} mb-5`}
                     >
-                      <Icon className={`h-7 w-7 ${card.accentClass}`} />
+                      <Icon
+                        icon={card.icon}
+                        className={`h-7 w-7 ${card.accentClass}`}
+                      />
                     </div>
                     <h4 className="text-lg font-semibold text-foreground mb-2">
                       {card.title}

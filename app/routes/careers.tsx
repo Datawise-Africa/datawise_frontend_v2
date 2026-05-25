@@ -10,7 +10,7 @@ import { useAppDispatch } from '~/store';
 import { setPosition } from '~/store/slices/career-slice';
 import { slugify } from '~/utils/slugify';
 import { useNavigate, href } from 'react-router';
-import { IconArrowRight } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
 import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/careers';
@@ -65,7 +65,7 @@ export default function Careers() {
                     }
                   >
                     View Open Positions
-                    <IconArrowRight className="ml-1 h-5 w-5" />
+                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
                   </Button>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function Careers() {
                         className="mt-4 flex items-center gap-1 text-primary font-medium text-sm hover:underline"
                       >
                         View Details
-                        <IconArrowRight className="w-4 h-4" />
+                        <Icon icon="tabler:arrow-right" className="w-4 h-4" />
                       </button>
                     </div>
                   </StaggerItem>

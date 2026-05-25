@@ -2,7 +2,7 @@ import type { BecomePartnerFormData } from '~/schema/become-partner-schema';
 import { becomePartnerResolver } from '~/schema/become-partner-schema';
 import { useSubmitPartnerForm } from '~/features/partners';
 import { showToast } from '~/utils/toast';
-import { IconLoader2, IconSend } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { useForm } from 'react-hook-form';
 import { Form } from '~/components/ui/form';
 import { FormTextField, FormTextareaField } from '~/components/form-fields';
@@ -148,12 +148,15 @@ export default function PartnersForm() {
               >
                 {form.formState.isSubmitting ? (
                   <>
-                    <IconLoader2 className="animate-spin h-5 w-5 mr-2" />
+                    <Icon
+                      icon="tabler:loader-2"
+                      className="animate-spin h-5 w-5 mr-2"
+                    />
                     Submitting...
                   </>
                 ) : (
                   <>
-                    <IconSend className="h-5 w-5 mr-2" />
+                    <Icon icon="tabler:send" className="h-5 w-5 mr-2" />
                     Submit Application
                   </>
                 )}

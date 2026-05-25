@@ -1,5 +1,5 @@
 import { toast } from 'react-hot-toast';
-import { IconCircleCheck, IconCircleX, IconX } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import type { TsFixMe } from '~/types/glob';
 
 type ToastProps = {
@@ -36,11 +36,10 @@ function CustomToast({ t, type, title, message }: ToastProps) {
       <div className="flex-1 w-0 p-4">
         <div className="flex items-start">
           <div className="shrink-0">
-            {isSuccess ? (
-              <IconCircleCheck className="h-6 w-6 text-green-400" />
-            ) : (
-              <IconCircleX className="h-6 w-6 text-red-400" />
-            )}
+            <Icon
+              icon={isSuccess ? 'tabler:circle-check' : 'tabler:circle-x'}
+              className={`h-6 w-6 ${isSuccess ? 'text-green-400' : 'text-red-400'}`}
+            />
           </div>
           <div className="ml-3 flex-1">
             <p className="text-sm font-medium text-gray-900">{title}</p>
@@ -53,7 +52,7 @@ function CustomToast({ t, type, title, message }: ToastProps) {
           onClick={() => toast.dismiss(t.id)}
           className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-indigo-500 transition-colors"
         >
-          <IconX className="h-4 w-4" />
+          <Icon icon="tabler:x" className="h-4 w-4" />
         </button>
       </div>
     </div>

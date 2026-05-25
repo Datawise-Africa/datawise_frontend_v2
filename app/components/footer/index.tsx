@@ -1,26 +1,19 @@
 import { socials } from '~/lib/data/socials';
 import { href, Link } from 'react-router';
-import {
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconBrandX,
-  IconPhone,
-  IconMail,
-  IconMapPin,
-} from '@tabler/icons-react';
-import type { FC } from 'react';
+import { Icon } from '@iconify/react';
+import { OptimisticImage } from '~/components/ui/optimistic-image';
 
-const socialIcons: Record<string, FC<{ className?: string }>> = {
-  LinkedIn: IconBrandLinkedin,
-  Github: IconBrandGithub,
-  X: IconBrandX,
+const socialIcons: Record<string, string> = {
+  LinkedIn: 'tabler:brand-linkedin',
+  Github: 'tabler:brand-github',
+  X: 'tabler:brand-x',
 };
 
 const contactDetails = [
-  { icon: IconPhone, text: '+254 704 237 879' },
-  { icon: IconMail, text: 'info@datawiseafrica.com' },
+  { icon: 'tabler:phone', text: '+254 704 237 879' },
+  { icon: 'tabler:mail', text: 'info@datawiseafrica.com' },
   {
-    icon: IconMapPin,
+    icon: 'tabler:map-pin',
     text: 'Highway Heights, Marcus Garvey Rd, Kilimani, Nairobi, Kenya',
   },
 ];
@@ -47,7 +40,7 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="space-y-4">
             <Link to={href('/')} className="block w-48">
-              <img
+              <OptimisticImage
                 src="/assets/datawise-logo-dark.png"
                 alt="Datawise logo"
                 loading="lazy"
@@ -61,17 +54,19 @@ export default function Footer() {
             </p>
             <ul className="flex gap-3 pt-2">
               {socials.map((item) => {
-                const Icon = socialIcons[item.name];
+                const iconName = socialIcons[item.name];
                 return (
-                  <a
-                    key={item.name}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
-                  >
-                    {Icon && <Icon className="h-4 w-4" />}
-                  </a>
+                  <li key={item.name}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Datawise Africa on ${item.name}`}
+                      className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
+                    >
+                      {iconName && <Icon icon={iconName} className="h-4 w-4" />}
+                    </a>
+                  </li>
                 );
               })}
             </ul>
@@ -115,18 +110,18 @@ export default function Footer() {
               Contact
             </h4>
             <div className="space-y-3">
-              {contactDetails.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <p
-                    key={item.text}
-                    className="flex items-start gap-3 text-gray-300 text-sm"
-                  >
-                    <Icon className="h-5 w-5 text-white shrink-0 mt-0.5" />
-                    {item.text}
-                  </p>
-                );
-              })}
+              {contactDetails.map((item) => (
+                <p
+                  key={item.text}
+                  className="flex items-start gap-3 text-gray-300 text-sm"
+                >
+                  <Icon
+                    icon={item.icon}
+                    className="h-5 w-5 text-white shrink-0 mt-0.5"
+                  />
+                  {item.text}
+                </p>
+              ))}
             </div>
           </div>
         </div>

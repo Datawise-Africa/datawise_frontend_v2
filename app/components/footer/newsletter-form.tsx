@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { IconArrowRight } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import type { NewsletterFormData } from '~/schema/newsletter-schema';
 import { newsletterFormResolver } from '~/schema/newsletter-schema';
 import { Form } from '~/components/ui/form';
@@ -42,7 +42,7 @@ export default function NewsletterForm() {
           disabled={form.formState.isSubmitting}
         >
           Subscribe to Newsletter
-          <IconArrowRight className="h-5 w-5" />
+          <Icon icon="tabler:arrow-right" className="h-5 w-5" />
         </Button>
       </form>
     </Form>

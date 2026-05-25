@@ -2,13 +2,7 @@ import type { ContactUsFormData } from '~/schema/contact-us-schema';
 import { contactUsFormResolver } from '~/schema/contact-us-schema';
 import { useSubmitContactForm } from '~/features/contact-us';
 import { showToast } from '~/utils/toast';
-import {
-  IconLoader2,
-  IconSend,
-  IconPhone,
-  IconMail,
-  IconMapPin,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { useForm } from 'react-hook-form';
 import type { Route } from './+types/contact-us';
 import { generateSEOTags } from '~/utils/seo';
@@ -50,17 +44,17 @@ export function meta(_args: Route.MetaArgs) {
 
 const contactInfo = [
   {
-    icon: IconPhone,
+    icon: 'tabler:phone',
     label: 'Phone Number',
     value: '+254 704 237 879',
   },
   {
-    icon: IconMail,
+    icon: 'tabler:mail',
     label: 'Email Address',
     value: 'info@datawiseafrica.com',
   },
   {
-    icon: IconMapPin,
+    icon: 'tabler:map-pin',
     label: 'Office Location',
     value: 'Highway Heights, Marcus Garvey Rd, Kilimani, Nairobi, Kenya',
   },
@@ -152,14 +146,16 @@ export default function ContactUs() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {contactInfo.map((item) => {
-                    const Icon = item.icon;
                     return (
                       <div
                         key={item.label}
                         className="bg-muted p-4 rounded-xl flex items-start gap-4"
                       >
                         <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0">
-                          <Icon className="h-5 w-5 text-primary" />
+                          <Icon
+                            icon={item.icon}
+                            className="h-5 w-5 text-primary"
+                          />
                         </div>
                         <div>
                           <p className="text-sm font-semibold text-foreground">
@@ -257,12 +253,15 @@ export default function ContactUs() {
                       >
                         {form.formState.isSubmitting ? (
                           <>
-                            <IconLoader2 className="animate-spin h-5 w-5 mr-2" />
+                            <Icon
+                              icon="tabler:loader-2"
+                              className="animate-spin h-5 w-5 mr-2"
+                            />
                             Sending...
                           </>
                         ) : (
                           <>
-                            <IconSend className="h-5 w-5 mr-2" />
+                            <Icon icon="tabler:send" className="h-5 w-5 mr-2" />
                             Send Message
                           </>
                         )}

@@ -1,5 +1,5 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
-import { IconAlertCircle as AlertCircle } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { Button } from './ui/button';
 import {
   Card,
@@ -56,7 +56,7 @@ export class ErrorBoundary extends Component<Props, State> {
           <Card className="max-w-lg w-full">
             <CardHeader>
               <div className="flex items-center gap-2 text-red-600">
-                <AlertCircle className="h-6 w-6" />
+                <Icon icon="tabler:alert-circle" className="h-6 w-6" />
                 <CardTitle>Something went wrong</CardTitle>
               </div>
               <CardDescription>
