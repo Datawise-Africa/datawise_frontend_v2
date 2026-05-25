@@ -1,7 +1,7 @@
 import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/privacy-policy';
 import { href } from 'react-router';
-import { FadeIn, PageTransition } from '~/components/motion';
+import { FadeIn } from '~/components/motion';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -88,39 +88,37 @@ const sections = [
 
 export default function PrivacyPolicy() {
   return (
-    <PageTransition>
+    <>
       {/* Hero */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <FadeIn direction="up">
-            <div className="text-center max-w-3xl mx-auto">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-3">
-                Legal
-              </h3>
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                Privacy Policy
-              </h1>
-              <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-                Welcome, and thank you for your interest in{' '}
-                <strong className="text-foreground">Datawise Africa</strong> (
-                {'\u201C'}Datawise{'\u201D'}, {'\u201C'}we{'\u201D'}, or{' '}
-                {'\u201C'}us{'\u201D'}), and our website(s), products, services,
-                and applications (collectively, the {'\u201C'}Services
-                {'\u201D'}). This Privacy Policy is meant to help you understand
-                what information we collect, why we collect it, and how you can
-                update, manage, export, and delete your information.
-              </p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Effective Date: May 9, 2025 &middot; Questions?{' '}
-                <a
-                  href="mailto:info@datawiseafrica.com"
-                  className="text-primary hover:underline"
-                >
-                  info@datawiseafrica.com
-                </a>
-              </p>
-            </div>
-          </FadeIn>
+          <div className="text-center max-w-3xl mx-auto">
+            <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-3">
+              Legal
+            </h3>
+            <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+              Privacy Policy
+            </h1>
+            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
+              Welcome, and thank you for your interest in{' '}
+              <strong className="text-foreground">Datawise Africa</strong> (
+              &ldquo;Datawise&rdquo;, &ldquo;we&rdquo;, or &ldquo;us&rdquo;),
+              and our website(s), products, services, and applications
+              (collectively, the &ldquo;Services &rdquo;). This Privacy Policy
+              is meant to help you understand what information we collect, why
+              we collect it, and how you can update, manage, export, and delete
+              your information.
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Effective Date: May 9, 2025 &middot; Questions?{' '}
+              <a
+                href="mailto:info@datawiseafrica.com"
+                className="text-primary hover:underline"
+              >
+                info@datawiseafrica.com
+              </a>
+            </p>
+          </div>
         </div>
       </section>
 
@@ -190,6 +188,6 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

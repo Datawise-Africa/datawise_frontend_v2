@@ -1,17 +1,18 @@
 import type { ContactUsFormData } from '~/schema/contact-us-schema';
 import { contactUsFormResolver } from '~/schema/contact-us-schema';
-import { useSubmitContactForm } from '~/features/contact-us';
 import { showToast } from '~/utils/toast';
 import { Icon } from '@iconify/react';
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 import type { Route } from './+types/contact-us';
 import { generateSEOTags } from '~/utils/seo';
-import { href } from 'react-router';
-import { FadeIn, PageTransition } from '~/components/motion';
+import { href, useFetcher } from 'react-router';
+import { FadeIn } from '~/components/motion';
 import { Form } from '~/components/ui/form';
 import { FormTextField, FormTextareaField } from '~/components/form-fields';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import { env } from '~/lib/env';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -42,6 +43,23 @@ export function meta(_args: Route.MetaArgs) {
   ];
 }
 
+export async function action({ request }: Route.ActionArgs) {
+  try {
+    const data = await request.json();
+    const response = await fetch(`${env.VITE_API_URL}/users/general-inquiry/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      return { success: false, error: 'Submission failed' };
+    }
+    return { success: true };
+  } catch {
+    return { success: false, error: 'Network error' };
+  }
+}
+
 const contactInfo = [
   {
     icon: 'tabler:phone',
@@ -61,7 +79,9 @@ const contactInfo = [
 ];
 
 export default function ContactUs() {
-  const submitForm = useSubmitContactForm();
+  const fetcher = useFetcher<typeof action>();
+  const isSubmitting = fetcher.state === 'submitting';
+  const isSuccess = fetcher.data?.success === true;
 
   const form = useForm<ContactUsFormData>({
     resolver: contactUsFormResolver,
@@ -74,54 +94,53 @@ export default function ContactUs() {
     },
   });
 
-  const onSubmit = async (data: ContactUsFormData) => {
-    try {
-      await submitForm.mutateAsync(data);
+  useEffect(() => {
+    if (fetcher.data?.success) {
       showToast(
         'success',
         'Form Submitted',
         'Your inquiry has been submitted successfully.'
       );
       form.reset();
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } else if (fetcher.data && !fetcher.data.success) {
       showToast(
         'error',
         'Submission Failed',
         'There was an error submitting your form. Please try again later.'
       );
     }
+  }, [fetcher.data, form]);
+
+  const onSubmit = (data: ContactUsFormData) => {
+    fetcher.submit(data, { method: 'POST', encType: 'application/json' });
   };
 
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <FadeIn direction="left">
-              <div className="text-center md:text-left space-y-6">
-                <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                  Get in
-                  <span className="text-primary"> Touch</span>
-                </h1>
-                <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
-                  Have any questions, need support, or just want to learn more
-                  about Datawise Africa? Reach out{'\u2014'}we{'\u2019'}d love
-                  to hear from you.
-                </p>
-              </div>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div className="flex justify-center">
-                <img
-                  className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl"
-                  src="/assets/contactus/contactUs.svg"
-                  alt="Contact Us"
-                  loading="lazy"
-                />
-              </div>
-            </FadeIn>
+            <div className="text-center md:text-left space-y-6">
+              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+                Get in
+                <span className="text-primary"> Touch</span>
+              </h1>
+              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
+                Have any questions, need support, or just want to learn more
+                about Datawise Africa? Reach out&mdash;we&rsquo;d love to hear
+                from you.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <img
+                className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl aspect-576/400"
+                src="/assets/contactus/contactUs.svg"
+                alt="Contact Us"
+                width={576}
+                height={400}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -134,9 +153,9 @@ export default function ContactUs() {
             <FadeIn direction="left" className="w-full lg:w-1/2">
               <Card className="h-full">
                 <CardHeader>
-                  <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
+                  <p className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
                     Get In Touch
-                  </h3>
+                  </p>
                   <CardTitle className="text-2xl">
                     Contact Information
                   </CardTitle>
@@ -176,7 +195,7 @@ export default function ContactUs() {
             <FadeIn direction="right" className="w-full lg:w-1/2">
               <Card className="h-full">
                 <CardHeader>
-                  {submitForm.isSuccess ? (
+                  {isSuccess ? (
                     <div className="text-center bg-primary/10 dark:bg-primary/20 p-6 rounded-xl">
                       <CardTitle className="text-2xl text-primary">
                         Thank You!
@@ -187,9 +206,9 @@ export default function ContactUs() {
                     </div>
                   ) : (
                     <>
-                      <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
+                      <p className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
                         Reach Out
-                      </h3>
+                      </p>
                       <CardTitle className="text-2xl">
                         Send Us a Message
                       </CardTitle>
@@ -249,9 +268,9 @@ export default function ContactUs() {
                         type="submit"
                         className="w-full"
                         size="lg"
-                        disabled={form.formState.isSubmitting}
+                        disabled={isSubmitting}
                       >
-                        {form.formState.isSubmitting ? (
+                        {isSubmitting ? (
                           <>
                             <Icon
                               icon="tabler:loader-2"
@@ -274,6 +293,6 @@ export default function ContactUs() {
           </div>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

@@ -13,12 +13,12 @@ export default function HomeAboutUsSection() {
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Datawise Africa is a research and development company building
-              Africa{'\u2019'}s data and intelligent systems, from high-quality
+              Africa&rsquo;s data and intelligent systems, from high-quality
               datasets to AI models and compute infrastructure.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
               We exist to research, build, and deploy reliable data and
-              intelligent systems that accelerate Africa{'\u2019'}s digital
+              intelligent systems that accelerate Africa&rsquo;s digital
               transformation.
             </p>
             <Button
@@ -26,7 +26,7 @@ export default function HomeAboutUsSection() {
               variant="link"
               className="text-md font-semibold px-0 text-primary"
             >
-              <Link to={href('/about-us')}>Learn More {'\u2192'}</Link>
+              <Link to={href('/about-us')}>Learn More &rarr;</Link>
             </Button>
           </div>
         </FadeIn>

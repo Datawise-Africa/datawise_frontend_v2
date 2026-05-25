@@ -1,14 +1,10 @@
 import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/services';
 import { href, Link } from 'react-router';
-import {
-  FadeIn,
-  StaggerChildren,
-  StaggerItem,
-  PageTransition,
-} from '~/components/motion';
+import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
+import { OptimisticImage } from '~/components/ui/optimistic-image';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -91,11 +87,13 @@ function ServiceImage({ id, title }: { id: string; title: string }) {
   return (
     <div className="relative w-full max-w-md mx-auto">
       <div className="overflow-hidden rounded-2xl shadow-lg">
-        <img
+        <OptimisticImage
           src={src}
           alt={title}
           className="w-full h-auto object-cover aspect-4/3"
           loading="lazy"
+          width={800}
+          height={600}
         />
       </div>
     </div>
@@ -235,22 +233,20 @@ const serviceCategories: {
 
 export default function Services() {
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <FadeIn direction="up">
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                What We <span className="text-primary">Offer</span>
-              </h1>
-              <p className="mt-6 text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-                End-to-end data, AI, software, and infrastructure services
-                designed to help organizations make better decisions and build
-                impactful technology.
-              </p>
-            </div>
-          </FadeIn>
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+              What We <span className="text-primary">Offer</span>
+            </h1>
+            <p className="mt-6 text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
+              End-to-end data, AI, software, and infrastructure services
+              designed to help organizations make better decisions and build
+              impactful technology.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -306,9 +302,9 @@ export default function Services() {
                             className={`h-6 w-6 ${category.accentClass} group-hover:text-white transition-colors duration-300`}
                           />
                         </div>
-                        <h4 className="font-semibold text-lg text-foreground mb-2">
+                        <h3 className="font-semibold text-lg text-foreground mb-2">
                           {capability.title}
-                        </h4>
+                        </h3>
                         <p className="text-muted-foreground text-sm leading-relaxed">
                           {capability.description}
                         </p>
@@ -332,7 +328,7 @@ export default function Services() {
                   Ready to get started?
                 </h3>
                 <p className="mt-3 text-lg text-white/80 leading-relaxed">
-                  Let{'\u2019'}s discuss how we can support your goals.
+                  Let&rsquo;s discuss how we can support your goals.
                 </p>
               </div>
               <Button
@@ -350,6 +346,6 @@ export default function Services() {
           </FadeIn>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

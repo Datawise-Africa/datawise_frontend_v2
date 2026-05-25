@@ -22,7 +22,7 @@ export const teamMembersData = [
     title: 'Operations Lead',
     image: '/assets/teamMembers/dorothy.jpg',
     description:
-      'Dorothy believes operations is an integration of strategy, people, and execution. She enjoys turning ideas into systems, improving how teams collaborate, and ensuring that projects move smoothly from planning to impact. She has led planning and performance reviews, coordinated cross-functional projects, improved Datawise\u2019s internal workflows, and much more. At Datawise Africa, the operations allow Dorothy to support innovativeness by creating structure, clarity, and sustainable processes to support the mission.',
+      'Dorothy believes operations is an integration of strategy, people, and execution. She enjoys turning ideas into systems, improving how teams collaborate, and ensuring that projects move smoothly from planning to impact. She has led planning and performance reviews, coordinated cross-functional projects, improved Datawise’s internal workflows, and much more. At Datawise Africa, the operations allow Dorothy to support innovativeness by creating structure, clarity, and sustainable processes to support the mission.',
     linkedin_url: 'https://linkedin.com/in/dorothychepkonga',
     twitter_url: '',
   },

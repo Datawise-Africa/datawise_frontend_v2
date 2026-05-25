@@ -1,7 +1,9 @@
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { env } from '~/lib/env';
-import { store } from '~/store';
-import { clearAuth } from '~/store/slices/auth-slice';
+import {
+  getAuthToken,
+  clearAuthFromInterceptor,
+} from '~/contexts/auth-context';
 
 const isDev = import.meta.env.DEV;
 
@@ -13,7 +15,6 @@ export const apiClient = axios.create({
   timeout: 30000,
 });
 
-// Request interceptor
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     if (isDev) {
@@ -23,8 +24,7 @@ apiClient.interceptors.request.use(
       );
     }
 
-    // Add auth token from Redux store
-    const token = store.getState().auth.token;
+    const token = getAuthToken();
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -36,7 +36,6 @@ apiClient.interceptors.request.use(
   }
 );
 
-// Response interceptor
 apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError<{ message?: string; error?: string }>) => {
@@ -49,9 +48,8 @@ apiClient.interceptors.response.use(
       });
     }
 
-    // Clear auth state on 401
     if (error.response?.status === 401) {
-      store.dispatch(clearAuth());
+      clearAuthFromInterceptor();
     }
 
     return Promise.reject(error);

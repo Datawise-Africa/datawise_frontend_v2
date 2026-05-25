@@ -1,7 +1,6 @@
 import { socials } from '~/lib/data/socials';
 import { href, Link } from 'react-router';
 import { Icon } from '@iconify/react';
-import { OptimisticImage } from '~/components/ui/optimistic-image';
 
 const socialIcons: Record<string, string> = {
   LinkedIn: 'tabler:brand-linkedin',
@@ -40,7 +39,7 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="space-y-4">
             <Link to={href('/')} className="block w-48">
-              <OptimisticImage
+              <img
                 src="/assets/datawise-logo-dark.png"
                 alt="Datawise logo"
                 loading="lazy"
@@ -74,9 +73,9 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+            <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
               Top Pages
-            </h4>
+            </p>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
               {primaryLinks.map((link) => (
                 <Link
@@ -88,9 +87,9 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <h4 className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
+            <p className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
               More
-            </h4>
+            </p>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
               {secondaryLinks.map((link) => (
                 <Link
@@ -106,9 +105,9 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+            <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
               Contact
-            </h4>
+            </p>
             <div className="space-y-3">
               {contactDetails.map((item) => (
                 <p

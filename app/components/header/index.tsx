@@ -5,7 +5,6 @@ import { Icon } from '@iconify/react';
 import NavigationItemComponent from './navigation-item';
 import { useTheme } from '~/hooks/use-theme';
 import { useIsMobile } from '~/hooks/use-mobile';
-import { OptimisticImage } from '~/components/ui/optimistic-image';
 import {
   Sheet,
   SheetContent,
@@ -39,12 +38,13 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <Link to={href('/')} className="shrink-0 w-48">
-              <OptimisticImage
+              <img
                 src="/assets/datawise-logo-dark.png"
                 alt="Datawise logo"
                 width={180}
                 height={20}
                 className="h-12 w-auto md:h-16"
+                fetchPriority="high"
               />
             </Link>
 
@@ -117,7 +117,7 @@ export default function Header() {
                       onClick={() => setMobileOpen(false)}
                       className="block w-36"
                     >
-                      <OptimisticImage
+                      <img
                         src="/assets/datawise-logo-dark.png"
                         alt="Datawise logo"
                         width={144}

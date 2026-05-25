@@ -147,20 +147,3 @@ export function StaggerItem({
     </div>
   );
 }
-
-// ─── PageTransition ─────────────────────────────────────────────────
-type PageTransitionProps = HTMLAttributes<HTMLDivElement> & {
-  children: ReactNode;
-};
-
-export function PageTransition({
-  children,
-  className,
-  ...rest
-}: PageTransitionProps) {
-  return (
-    <div className={cn('animate-page-enter', className)} {...rest}>
-      {children}
-    </div>
-  );
-}
