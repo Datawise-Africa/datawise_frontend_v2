@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  IconCheck as Check,
-  IconSelector as ChevronsUpDown,
-  IconX as X,
-  IconLoader2 as Loader2,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 import {
@@ -292,7 +287,7 @@ export function AsyncSelect(props: AsyncSelectProps) {
                               );
                           }}
                         >
-                          <X className="h-3 w-3" />
+                          <Icon icon="tabler:x" className="h-3 w-3" />
                           <span className="sr-only">Remove {opt.label}</span>
                         </span>
                       )}
@@ -326,11 +321,14 @@ export function AsyncSelect(props: AsyncSelectProps) {
                       handleClear(e as unknown as React.MouseEvent);
                   }}
                 >
-                  <X className="h-4 w-4 opacity-50" />
+                  <Icon icon="tabler:x" className="h-4 w-4 opacity-50" />
                   <span className="sr-only">Clear selection</span>
                 </span>
               )}
-              <ChevronsUpDown className="h-4 w-4 shrink-0 opacity-50" />
+              <Icon
+                icon="tabler:selector"
+                className="h-4 w-4 shrink-0 opacity-50"
+              />
             </div>
           )}
         </Button>
@@ -350,7 +348,10 @@ export function AsyncSelect(props: AsyncSelectProps) {
               {isLoading && (
                 <CommandLoading>
                   <div className="flex items-center justify-center gap-2">
-                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <Icon
+                      icon="tabler:loader-2"
+                      className="h-4 w-4 animate-spin"
+                    />
                     {loadingText}
                   </div>
                 </CommandLoading>
@@ -373,7 +374,8 @@ export function AsyncSelect(props: AsyncSelectProps) {
                       disabled={option.disabled}
                       className="cursor-pointer"
                     >
-                      <Check
+                      <Icon
+                        icon="tabler:check"
                         className={cn(
                           'mr-2 h-4 w-4',
                           isSelected(option.value) ? 'opacity-100' : 'opacity-0'

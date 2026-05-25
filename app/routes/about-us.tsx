@@ -2,12 +2,7 @@ import AboutUsTeam from '~/components/about-us/about-us-team';
 import type { Route } from './+types/about-us';
 import { generateSEOTags } from '~/utils/seo';
 import { href, Link } from 'react-router';
-import {
-  IconArrowRight,
-  IconRocket,
-  IconHeartHandshake,
-  IconUsersGroup,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { FadeIn, PageTransition } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
@@ -52,7 +47,7 @@ export function meta(_args: Route.MetaArgs) {
 
 const values = [
   {
-    icon: IconRocket,
+    icon: 'tabler:rocket',
     title: 'Excellence in Innovation',
     description:
       'We pursue cutting-edge solutions with a commitment to high-quality research, data, and technology, ensuring innovation is not just an idea, but a reality. We get things done with precision and efficiency.',
@@ -60,7 +55,7 @@ const values = [
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
   },
   {
-    icon: IconHeartHandshake,
+    icon: 'tabler:heart-handshake',
     title: 'Integrity and Impact',
     description:
       'Our datasets, models, and infrastructure are built with responsibility and a deep focus on creating real, lasting change.',
@@ -68,7 +63,7 @@ const values = [
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
   },
   {
-    icon: IconUsersGroup,
+    icon: 'tabler:users-group',
     title: 'Collaboration for Growth',
     description:
       'Whether through open data, community training, or partnerships, we believe in sharing knowledge and working together to build an inclusive ecosystem.',
@@ -143,13 +138,15 @@ export default function AboutUs() {
                 </h3>
                 <div className="space-y-5">
                   {values.map((value) => {
-                    const Icon = value.icon;
                     return (
                       <div key={value.title} className="flex items-start gap-4">
                         <div
                           className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
                         >
-                          <Icon className={`h-5 w-5 ${value.accentClass}`} />
+                          <Icon
+                            icon={value.icon}
+                            className={`h-5 w-5 ${value.accentClass}`}
+                          />
                         </div>
                         <div>
                           <h4 className="font-bold text-lg text-foreground">
@@ -198,7 +195,10 @@ export default function AboutUs() {
                   >
                     <Link to={href('/careers')}>
                       View Open Roles
-                      <IconArrowRight className="ml-1 h-5 w-5" />
+                      <Icon
+                        icon="tabler:arrow-right"
+                        className="ml-1 h-5 w-5"
+                      />
                     </Link>
                   </Button>
                 </div>

@@ -1,4 +1,4 @@
-import { IconArrowRight } from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import { href, Link } from 'react-router';
 import { FadeIn } from '~/components/motion';
 import { Button } from '~/components/ui/button';
@@ -41,11 +41,11 @@ export default function HomeHeroSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-primary hover:bg-primary-hover text-white font-semibold px-8 py-4 rounded-lg text-lg shadow-lg h-auto"
+                  className="bg-[#1a7a5c] hover:bg-[#15644b] text-white font-semibold px-8 py-4 rounded-lg text-lg shadow-lg h-auto"
                 >
                   <Link to={href('/services')}>
                     Discover Our Work
-                    <IconArrowRight className="ml-1 h-5 w-5" />
+                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
                   </Link>
                 </Button>
                 {/* <Button

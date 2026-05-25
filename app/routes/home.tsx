@@ -8,6 +8,14 @@ import HomeHowWeWork from '~/components/homepage/home-how-we-work';
 import HomePartnersSection from '~/components/homepage/home-partners-section';
 import { Separator } from '~/components/ui/separator';
 
+export const links: Route.LinksFunction = () => [
+  {
+    rel: 'preload',
+    href: '/115d86f6c670c9128d8eb6151d1221f54e24603a-dwise-2.jpg?w=1920&h=1080&fit=crop&crop=center',
+    as: 'image',
+  },
+];
+
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({

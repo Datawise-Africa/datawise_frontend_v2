@@ -1,11 +1,7 @@
 import { type NavigationItem } from '~/lib/types/navigation';
 import { useState, useRef, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router';
-import {
-  IconChevronDown,
-  IconArrowRight,
-  IconExternalLink,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import type { ReactNode } from 'react';
 
 type NavigationItemProps = {
@@ -52,7 +48,12 @@ function NavLinkOrAnchor({
 
 /** Small external icon shown next to external links */
 function ExternalBadge() {
-  return <IconExternalLink className="inline h-3 w-3 ml-1 opacity-50" />;
+  return (
+    <Icon
+      icon="tabler:external-link"
+      className="inline h-3 w-3 ml-1 opacity-50"
+    />
+  );
 }
 
 export default function NavigationItemComponent({
@@ -120,7 +121,8 @@ export default function NavigationItemComponent({
           }`}
         >
           {item.title}
-          <IconChevronDown
+          <Icon
+            icon="tabler:chevron-down"
             className={`h-4 w-4 transition-transform duration-200 ${
               dropdownOpen ? 'rotate-180' : ''
             }`}
@@ -189,7 +191,10 @@ export default function NavigationItemComponent({
                             {card.description}
                           </p>
                           <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2 group-hover:gap-2 transition-all">
-                            <IconArrowRight className="h-3.5 w-3.5" />
+                            <Icon
+                              icon="tabler:arrow-right"
+                              className="h-3.5 w-3.5"
+                            />
                           </span>
                         </NavLinkOrAnchor>
                       ))}
@@ -205,7 +210,7 @@ export default function NavigationItemComponent({
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                 >
                   View all {item.title.toLowerCase()}
-                  <IconArrowRight className="h-4 w-4" />
+                  <Icon icon="tabler:arrow-right" className="h-4 w-4" />
                 </NavLinkOrAnchor>
               </div>
             </div>
@@ -231,7 +236,8 @@ export default function NavigationItemComponent({
           }`}
         >
           {item.title}
-          <IconChevronDown
+          <Icon
+            icon="tabler:chevron-down"
             className={`h-5 w-5 transition-transform duration-200 ${
               dropdownOpen ? 'rotate-180' : ''
             }`}
@@ -286,7 +292,8 @@ export default function NavigationItemComponent({
           }`}
         >
           {item.title}
-          <IconChevronDown
+          <Icon
+            icon="tabler:chevron-down"
             className={`h-4 w-4 transition-transform duration-200 ${
               dropdownOpen ? 'rotate-180' : ''
             }`}
@@ -331,7 +338,8 @@ export default function NavigationItemComponent({
           }`}
         >
           {item.title}
-          <IconChevronDown
+          <Icon
+            icon="tabler:chevron-down"
             className={`h-5 w-5 transition-transform duration-200 ${
               dropdownOpen ? 'rotate-180' : ''
             }`}

@@ -1,10 +1,4 @@
-import {
-  IconCircleCheck as CheckCircle,
-  IconInfoCircle as Info,
-  IconAlertTriangle as AlertTriangle,
-  IconCircleX as XCircle,
-  IconX as X,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import type { Toast } from 'react-hot-toast';
 import { cn } from '~/lib/utils';
 
@@ -25,28 +19,28 @@ export function CustomToast({
 }: CustomToastProps) {
   const config = {
     success: {
-      icon: CheckCircle,
+      icon: 'tabler:circle-check',
       bgColor: 'bg-green-50',
       borderColor: 'border-green-400',
       iconBgColor: 'bg-green-500',
       textColor: 'text-green-900',
     },
     info: {
-      icon: Info,
+      icon: 'tabler:info-circle',
       bgColor: 'bg-blue-50',
       borderColor: 'border-blue-400',
       iconBgColor: 'bg-blue-500',
       textColor: 'text-blue-900',
     },
     warning: {
-      icon: AlertTriangle,
+      icon: 'tabler:alert-triangle',
       bgColor: 'bg-yellow-50',
       borderColor: 'border-yellow-400',
       iconBgColor: 'bg-yellow-500',
       textColor: 'text-yellow-900',
     },
     error: {
-      icon: XCircle,
+      icon: 'tabler:circle-x',
       bgColor: 'bg-red-50',
       borderColor: 'border-red-400',
       iconBgColor: 'bg-red-500',
@@ -55,7 +49,7 @@ export function CustomToast({
   };
 
   const {
-    icon: Icon,
+    icon: iconName,
     bgColor,
     borderColor,
     iconBgColor,
@@ -72,7 +66,7 @@ export function CustomToast({
       )}
     >
       <div className={cn('rounded-full p-2 shrink-0', iconBgColor)}>
-        <Icon className="w-5 h-5 text-white" />
+        <Icon icon={iconName} className="w-5 h-5 text-white" />
       </div>
 
       <div className="flex-1 pt-0.5">
@@ -84,7 +78,7 @@ export function CustomToast({
         onClick={onDismiss}
         className="shrink-0 text-gray-400 hover:text-gray-600 transition-colors"
       >
-        <X className="w-5 h-5" />
+        <Icon icon="tabler:x" className="w-5 h-5" />
       </button>
     </div>
   );

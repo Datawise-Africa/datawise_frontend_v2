@@ -7,11 +7,7 @@ import {
   type SortingState,
 } from '@tanstack/react-table';
 import { useState } from 'react';
-import {
-  IconChevronDown as ChevronDown,
-  IconChevronUp as ChevronUp,
-  IconSelector as ChevronsUpDown,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -63,13 +59,16 @@ export function DataTable<TData, TValue>({
                         )}
                         {header.column.getCanSort() && (
                           <span className="text-muted-foreground">
-                            {header.column.getIsSorted() === 'asc' ? (
-                              <ChevronUp className="w-4 h-4" />
-                            ) : header.column.getIsSorted() === 'desc' ? (
-                              <ChevronDown className="w-4 h-4" />
-                            ) : (
-                              <ChevronsUpDown className="w-4 h-4" />
-                            )}
+                            <Icon
+                              icon={
+                                header.column.getIsSorted() === 'asc'
+                                  ? 'tabler:chevron-up'
+                                  : header.column.getIsSorted() === 'desc'
+                                    ? 'tabler:chevron-down'
+                                    : 'tabler:selector'
+                              }
+                              className="w-4 h-4"
+                            />
                           </span>
                         )}
                       </button>

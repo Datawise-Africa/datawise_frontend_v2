@@ -1,9 +1,5 @@
 import { Link } from 'react-router';
-import {
-  IconEye as Eye,
-  IconEdit as Edit,
-  IconTrash as Trash2,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import type { ColumnDef } from '@tanstack/react-table';
 import type { Category } from '~/lib/schema';
 
@@ -50,14 +46,14 @@ export const categoryColumns = (
           to={`/categories/${row.original.id}`}
           className="px-3 py-1 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 flex items-center gap-1"
         >
-          <Eye className="w-4 h-4" />
+          <Icon icon="tabler:eye" className="w-4 h-4" />
           View
         </Link>
         <Link
           to={`/categories/${row.original.id}/edit`}
           className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center gap-1"
         >
-          <Edit className="w-4 h-4" />
+          <Icon icon="tabler:edit" className="w-4 h-4" />
           Edit
         </Link>
         <button
@@ -65,7 +61,7 @@ export const categoryColumns = (
           className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 flex items-center gap-1"
           disabled={isDeleting}
         >
-          <Trash2 className="w-4 h-4" />
+          <Icon icon="tabler:trash" className="w-4 h-4" />
           Delete
         </button>
       </div>
