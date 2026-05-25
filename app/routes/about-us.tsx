@@ -3,7 +3,7 @@ import type { Route } from './+types/about-us';
 import { generateSEOTags } from '~/utils/seo';
 import { href, Link } from 'react-router';
 import { Icon } from '@iconify/react';
-import { FadeIn, PageTransition } from '~/components/motion';
+import { FadeIn } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
 export function meta(_args: Route.MetaArgs) {
@@ -11,7 +11,7 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Datawise Africa - About Us',
       description:
-        'Datawise Africa builds the foundations for Africa\u2019s data and AI ecosystem. We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure.',
+        'Datawise Africa builds the foundations for Africa’s data and AI ecosystem. We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure.',
       url: href('/about-us'),
       keywords:
         'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, data infrastructure, machine learning Africa, data-driven impact',
@@ -23,7 +23,7 @@ export function meta(_args: Route.MetaArgs) {
           name: 'Datawise Africa',
           url: 'https://datawiseafrica.com',
           description:
-            'Research and development company committed to solving Africa\u2019s pressing challenges through data and AI innovation.',
+            'Research and development company committed to solving Africa’s pressing challenges through data and AI innovation.',
           areaServed: 'Africa',
           knowsAbout: [
             'Data Science',
@@ -74,7 +74,7 @@ const values = [
 
 export default function AboutUs() {
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       <section className="relative bg-background overflow-hidden">
         <div
@@ -87,15 +87,13 @@ export default function AboutUs() {
         />
 
         <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn direction="up">
-            <div className="flex flex-col items-center text-center">
-              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
-                <span className="text-accent-blue">Research.</span>{' '}
-                <span className="text-accent-orange">Build.</span>{' '}
-                <span className="text-primary">Deploy.</span>
-              </h1>
-            </div>
-          </FadeIn>
+          <div className="flex flex-col items-center text-center">
+            <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
+              <span className="text-accent-blue">Research.</span>{' '}
+              <span className="text-accent-orange">Build.</span>{' '}
+              <span className="text-primary">Deploy.</span>
+            </h1>
+          </div>
         </div>
       </section>
 
@@ -111,8 +109,8 @@ export default function AboutUs() {
                 </h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Datawise Africa is a research and development company focused
-                  on building the technical foundations for Africa{'\u2019'}s
-                  data and intelligent systems.
+                  on building the technical foundations for Africa&rsquo;s data
+                  and intelligent systems.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Our work centres on parts of the stack that are often
@@ -183,7 +181,7 @@ export default function AboutUs() {
                   Want to be part of our mission?
                 </h3>
                 <p className="mt-4 text-lg text-white/80 leading-relaxed">
-                  We{'\u2019'}re always looking for talented individuals to join
+                  We&rsquo;re always looking for talented individuals to join
                   our team.
                 </p>
                 <div className="mt-6">
@@ -215,6 +213,6 @@ export default function AboutUs() {
           </FadeIn>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

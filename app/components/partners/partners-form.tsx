@@ -1,16 +1,22 @@
 import type { BecomePartnerFormData } from '~/schema/become-partner-schema';
 import { becomePartnerResolver } from '~/schema/become-partner-schema';
-import { useSubmitPartnerForm } from '~/features/partners';
 import { showToast } from '~/utils/toast';
 import { Icon } from '@iconify/react';
 import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 import { Form } from '~/components/ui/form';
 import { FormTextField, FormTextareaField } from '~/components/form-fields';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import type { useFetcher } from 'react-router';
 
-export default function PartnersForm() {
-  const submitForm = useSubmitPartnerForm();
+interface PartnersFormProps {
+  fetcher: ReturnType<typeof useFetcher<{ success: boolean; error?: string }>>;
+}
+
+export default function PartnersForm({ fetcher }: PartnersFormProps) {
+  const isSubmitting = fetcher.state === 'submitting';
+  const isSuccess = fetcher.data?.success === true;
 
   const form = useForm<BecomePartnerFormData>({
     resolver: becomePartnerResolver,
@@ -26,26 +32,28 @@ export default function PartnersForm() {
     },
   });
 
-  const onSubmit = async (data: BecomePartnerFormData) => {
-    try {
-      await submitForm.mutateAsync(data);
+  useEffect(() => {
+    if (fetcher.data?.success) {
       showToast(
         'success',
         'Form Submitted',
         'Your partnership interest has been submitted successfully.'
       );
       form.reset();
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } else if (fetcher.data && !fetcher.data.success) {
       showToast(
         'error',
         'Submission Failed',
         'There was an error submitting your form. Please try again later.'
       );
     }
+  }, [fetcher.data, form]);
+
+  const onSubmit = (data: BecomePartnerFormData) => {
+    fetcher.submit(data, { method: 'POST', encType: 'application/json' });
   };
 
-  if (submitForm.isSuccess) {
+  if (isSuccess) {
     return (
       <Card className="max-w-4xl mx-auto">
         <CardContent className="py-12">
@@ -144,9 +152,9 @@ export default function PartnersForm() {
                 type="submit"
                 size="lg"
                 className="w-full md:w-62.5"
-                disabled={form.formState.isSubmitting}
+                disabled={isSubmitting}
               >
-                {form.formState.isSubmitting ? (
+                {isSubmitting ? (
                   <>
                     <Icon
                       icon="tabler:loader-2"

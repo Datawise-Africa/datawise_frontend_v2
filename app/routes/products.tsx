@@ -2,12 +2,7 @@ import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/products';
 import { href, Link } from 'react-router';
 import { Icon } from '@iconify/react';
-import {
-  FadeIn,
-  StaggerChildren,
-  StaggerItem,
-  PageTransition,
-} from '~/components/motion';
+import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
 export function meta(_args: Route.MetaArgs) {
@@ -139,7 +134,7 @@ const datasets: {
 
 export default function Projects() {
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       {/* <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
@@ -151,7 +146,7 @@ export default function Projects() {
                   <span className="text-primary"> Data Research</span>
                 </h1>
                 <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
-                  Our research initiatives focus on solving Africa{'\u2019'}s
+                  Our research initiatives focus on solving Africa&rsquo;s
                   most pressing challenges, from climate resilience to economic
                   development.
                 </p>
@@ -181,21 +176,19 @@ export default function Projects() {
       {/* Featured Projects Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn>
-            <div className="text-center mb-12 space-y-2">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
-                Our Products
-              </h3>
+          <div className="text-center mb-12 space-y-2">
+            <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+              Our Products
+            </h3>
 
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-                We provide and build solutions that turn ideas into real-world
-                impact. From AI tools and data platforms to tech stacks and
-                knowledge hubs, our initiatives combine innovation and insight
-                to tackle real challenges. We transform information into
-                actionable insights that drive meaningful outcomes.
-              </p>
-            </div>
-          </FadeIn>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
+              We provide and build solutions that turn ideas into real-world
+              impact. From AI tools and data platforms to tech stacks and
+              knowledge hubs, our initiatives combine innovation and insight to
+              tackle real challenges. We transform information into actionable
+              insights that drive meaningful outcomes.
+            </p>
+          </div>
 
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {featuredProjects.map((project) => {
@@ -355,6 +348,6 @@ export default function Projects() {
           </FadeIn>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

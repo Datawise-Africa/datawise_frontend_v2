@@ -4,15 +4,7 @@ import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Slider } from './ui/slider';
 import { Switch } from './ui/switch';
-import { useAppDispatch, useAppSelector } from '~/store';
-import {
-  setPrimaryHue,
-  setSecondaryHue,
-  setTertiaryHue,
-  toggleDarkMode,
-  updateTheme,
-  resetTheme,
-} from '~/store/slices/theme-slice';
+import { useTheme } from '~/hooks/use-theme';
 
 function HuePreview({ hue, label }: { hue: number; label: string }) {
   return (
@@ -30,8 +22,12 @@ function HuePreview({ hue, label }: { hue: number; label: string }) {
 
 export function ThemeEditor() {
   const [open, setOpen] = useState(false);
-  const dispatch = useAppDispatch();
-  const theme = useAppSelector((state) => state.theme);
+  const {
+    state: theme,
+    toggle: toggleDark,
+    updateTheme,
+    resetTheme,
+  } = useTheme();
 
   return (
     <div className="fixed bottom-6 right-6 z-[100]">
@@ -46,7 +42,7 @@ export function ThemeEditor() {
                 variant="ghost"
                 size="icon"
                 className="h-7 w-7"
-                onClick={() => dispatch(resetTheme())}
+                onClick={() => resetTheme()}
                 title="Reset to defaults"
               >
                 <Icon icon="tabler:rotate" className="w-3.5 h-3.5" />
@@ -75,7 +71,7 @@ export function ThemeEditor() {
               </div>
               <Switch
                 checked={theme.darkMode}
-                onCheckedChange={() => dispatch(toggleDarkMode())}
+                onCheckedChange={() => toggleDark()}
               />
             </div>
 
@@ -87,7 +83,7 @@ export function ThemeEditor() {
               </div>
               <Slider
                 value={[theme.primaryHue]}
-                onValueChange={([v]) => dispatch(setPrimaryHue(v))}
+                onValueChange={([v]) => updateTheme({ primaryHue: v })}
                 min={0}
                 max={360}
                 step={1}
@@ -110,7 +106,7 @@ export function ThemeEditor() {
               </div>
               <Slider
                 value={[theme.secondaryHue]}
-                onValueChange={([v]) => dispatch(setSecondaryHue(v))}
+                onValueChange={([v]) => updateTheme({ secondaryHue: v })}
                 min={0}
                 max={360}
                 step={1}
@@ -133,7 +129,7 @@ export function ThemeEditor() {
               </div>
               <Slider
                 value={[theme.tertiaryHue]}
-                onValueChange={([v]) => dispatch(setTertiaryHue(v))}
+                onValueChange={([v]) => updateTheme({ tertiaryHue: v })}
                 min={0}
                 max={360}
                 step={1}
@@ -158,9 +154,7 @@ export function ThemeEditor() {
               </div>
               <Slider
                 value={[theme.borderRadius]}
-                onValueChange={([v]) =>
-                  dispatch(updateTheme({ borderRadius: v }))
-                }
+                onValueChange={([v]) => updateTheme({ borderRadius: v })}
                 min={0}
                 max={2}
                 step={0.125}

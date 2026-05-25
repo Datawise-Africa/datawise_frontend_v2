@@ -103,7 +103,7 @@
 
   /* Muted → light gray */
   --muted: #f6f6f6;
-  --muted-foreground: #6c757d;
+  --muted-foreground: #374151;
 
   /* Accent → soft green background */
   --accent: #f7fdfa;

@@ -69,8 +69,8 @@ export default function HomePartnersSection() {
                   Partner With Us
                 </h3>
                 <p className="mt-4 text-lg text-white/80 leading-relaxed">
-                  Looking to drive impact with data and AI in Africa? We
-                  {'\u2019'}re open to collaborations with researchers,
+                  Looking to drive impact with data and AI in Africa?
+                  We&rsquo;re open to collaborations with researchers,
                   policymakers, and businesses ready to shape the future
                   together.
                 </p>

@@ -1,7 +1,5 @@
 import { available_positions } from '~/lib/data/careers';
-import { FadeIn, PageTransition } from '~/components/motion';
-import { useAppDispatch, useAppSelector } from '~/store';
-import { setPosition } from '~/store/slices/career-slice';
+import { FadeIn } from '~/components/motion';
 import { slugify } from '~/utils/slugify';
 import { generateSEOTags } from '~/utils/seo';
 import { useEffect } from 'react';
@@ -57,24 +55,16 @@ export function meta({ params }: Route.MetaArgs) {
 export default function CareerDescription() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const pos = useAppSelector((state) => state.career.selectedPosition);
 
-  // Load job from slug on mount
+  const pos = slug
+    ? available_positions.find((p) => slugify(p.title) === slug)
+    : null;
+
   useEffect(() => {
-    if (!slug) {
-      navigate('/careers', { replace: true });
-      return;
-    }
-
-    const job = available_positions.find((pos) => slugify(pos.title) === slug);
-
-    if (job) {
-      dispatch(setPosition(job));
-    } else {
+    if (!pos) {
       navigate('/careers', { replace: true });
     }
-  }, [slug, dispatch, navigate]);
+  }, [pos, navigate]);
 
   if (!pos) {
     return (
@@ -87,14 +77,12 @@ export default function CareerDescription() {
   const applyUrl = pos.link || '';
 
   return (
-    <PageTransition>
+    <>
       <div className="container mx-auto pt-20 px-5 lg:px-16 xl:px-20">
         <section className="max-w-4xl mx-auto">
-          <FadeIn direction="up">
-            <h1 className="font-bold text-4xl leading-[110%] tracking-tight text-center mb-8">
-              {pos.title}
-            </h1>
-          </FadeIn>
+          <h1 className="font-bold text-4xl leading-[110%] tracking-tight text-center mb-8">
+            {pos.title}
+          </h1>
 
           {/* About the role */}
           <FadeIn direction="up" delay={0}>
@@ -220,6 +208,6 @@ export default function CareerDescription() {
           </FadeIn>
         </section>
       </div>
-    </PageTransition>
+    </>
   );
 }
