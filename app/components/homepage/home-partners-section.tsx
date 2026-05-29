@@ -2,7 +2,8 @@ import { partners } from '~/constants/partners';
 import { href, Link } from 'react-router';
 import { FadeIn } from '~/components/motion';
 import { Button } from '~/components/ui/button';
-import { IconArrowRight } from '@tabler/icons-react';
+import { OptimisticImage } from '~/components/ui/optimistic-image';
+import { Icon } from '@iconify/react';
 
 export default function HomePartnersSection() {
   return (
@@ -12,9 +13,9 @@ export default function HomePartnersSection() {
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="text-center mb-10">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+              <h2 className="text-lg font-semibold text-primary uppercase tracking-wide">
                 Our Partners
-              </h3>
+              </h2>
             </div>
           </FadeIn>
 
@@ -26,11 +27,13 @@ export default function HomePartnersSection() {
                     key={partner.name}
                     className="shrink-0 flex items-center justify-center w-52 h-32 p-4 rounded-xl bg-background dark:bg-background/50 border border-border"
                   >
-                    <img
+                    <OptimisticImage
                       src={partner.logo || '/placeholder.svg'}
                       alt={partner.name}
                       className="h-20 max-w-full object-contain"
                       loading="lazy"
+                      width={176}
+                      height={80}
                     />
                   </div>
                 ))}
@@ -40,11 +43,13 @@ export default function HomePartnersSection() {
                     aria-hidden="true"
                     className="shrink-0 flex items-center justify-center w-52 h-32 p-4 rounded-xl bg-background dark:bg-background/50 border border-border"
                   >
-                    <img
+                    <OptimisticImage
                       src={partner.logo || '/placeholder.svg'}
                       alt=""
                       className="h-20 max-w-full object-contain"
                       loading="lazy"
+                      width={176}
+                      height={80}
                     />
                   </div>
                 ))}
@@ -64,8 +69,8 @@ export default function HomePartnersSection() {
                   Partner With Us
                 </h3>
                 <p className="mt-4 text-lg text-white/80 leading-relaxed">
-                  Looking to drive impact with data and AI in Africa? We
-                  {'\u2019'}re open to collaborations with researchers,
+                  Looking to drive impact with data and AI in Africa?
+                  We&rsquo;re open to collaborations with researchers,
                   policymakers, and businesses ready to shape the future
                   together.
                 </p>
@@ -77,18 +82,23 @@ export default function HomePartnersSection() {
                     className="border-white/40 bg-white/10 hover:bg-white/20 text-white font-semibold dark:border-white/40 dark:bg-white/10 dark:hover:bg-white/20"
                   >
                     <Link to={href('/partners')}>
-                      Learn More
-                      <IconArrowRight className="ml-1 h-5 w-5" />
+                      Explore partnership opportunities
+                      <Icon
+                        icon="tabler:arrow-right"
+                        className="ml-1 h-5 w-5"
+                      />
                     </Link>
                   </Button>
                 </div>
               </div>
               <div className="md:w-1/3 flex justify-center">
-                <img
+                <OptimisticImage
                   src="/assets/aboutus/ctapartner.svg"
                   alt="Collaboration"
                   className="w-full max-w-xs object-contain"
                   loading="lazy"
+                  width={320}
+                  height={320}
                 />
               </div>
             </div>

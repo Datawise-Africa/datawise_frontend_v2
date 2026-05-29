@@ -2,13 +2,8 @@ import AboutUsTeam from '~/components/about-us/about-us-team';
 import type { Route } from './+types/about-us';
 import { generateSEOTags } from '~/utils/seo';
 import { href, Link } from 'react-router';
-import {
-  IconArrowRight,
-  IconRocket,
-  IconHeartHandshake,
-  IconUsersGroup,
-} from '@tabler/icons-react';
-import { FadeIn, PageTransition } from '~/components/motion';
+import { Icon } from '@iconify/react';
+import { FadeIn } from '~/components/motion';
 import { Button } from '~/components/ui/button';
 
 export function meta(_args: Route.MetaArgs) {
@@ -16,17 +11,43 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Datawise Africa - About Us',
       description:
-        'Datawise Africa builds the foundations for Africa\u2019s data and AI ecosystem. We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure.',
+        'Datawise Africa builds the foundations for Africa’s data and AI ecosystem. We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure.',
       url: href('/about-us'),
       keywords:
         'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, data infrastructure, machine learning Africa, data-driven impact',
+      jsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        mainEntity: {
+          '@type': 'Organization',
+          name: 'Datawise Africa',
+          url: 'https://datawiseafrica.com',
+          description:
+            'Research and development company committed to solving Africa’s pressing challenges through data and AI innovation.',
+          areaServed: 'Africa',
+          knowsAbout: [
+            'Data Science',
+            'Artificial Intelligence',
+            'Machine Learning',
+            'Natural Language Processing',
+            'Cloud Infrastructure',
+            'Software Engineering',
+          ],
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Highway Heights, Marcus Garvey Rd, Kilimani',
+            addressLocality: 'Nairobi',
+            addressCountry: 'KE',
+          },
+        },
+      },
     }),
   ];
 }
 
 const values = [
   {
-    icon: IconRocket,
+    icon: 'tabler:rocket',
     title: 'Excellence in Innovation',
     description:
       'We pursue cutting-edge solutions with a commitment to high-quality research, data, and technology, ensuring innovation is not just an idea, but a reality. We get things done with precision and efficiency.',
@@ -34,7 +55,7 @@ const values = [
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
   },
   {
-    icon: IconHeartHandshake,
+    icon: 'tabler:heart-handshake',
     title: 'Integrity and Impact',
     description:
       'Our datasets, models, and infrastructure are built with responsibility and a deep focus on creating real, lasting change.',
@@ -42,7 +63,7 @@ const values = [
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
   },
   {
-    icon: IconUsersGroup,
+    icon: 'tabler:users-group',
     title: 'Collaboration for Growth',
     description:
       'Whether through open data, community training, or partnerships, we believe in sharing knowledge and working together to build an inclusive ecosystem.',
@@ -53,7 +74,7 @@ const values = [
 
 export default function AboutUs() {
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       <section className="relative bg-background overflow-hidden">
         <div
@@ -66,15 +87,13 @@ export default function AboutUs() {
         />
 
         <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn direction="up">
-            <div className="flex flex-col items-center text-center">
-              <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
-                <span className="text-accent-blue">Research.</span>{' '}
-                <span className="text-accent-orange">Build.</span>{' '}
-                <span className="text-primary">Deploy.</span>
-              </h1>
-            </div>
-          </FadeIn>
+          <div className="flex flex-col items-center text-center">
+            <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
+              <span className="text-accent-blue">Research.</span>{' '}
+              <span className="text-accent-orange">Build.</span>{' '}
+              <span className="text-primary">Deploy.</span>
+            </h1>
+          </div>
         </div>
       </section>
 
@@ -90,8 +109,8 @@ export default function AboutUs() {
                 </h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Datawise Africa is a research and development company focused
-                  on building the technical foundations for Africa{'\u2019'}s
-                  data and intelligent systems.
+                  on building the technical foundations for Africa&rsquo;s data
+                  and intelligent systems.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Our work centres on parts of the stack that are often
@@ -117,13 +136,15 @@ export default function AboutUs() {
                 </h3>
                 <div className="space-y-5">
                   {values.map((value) => {
-                    const Icon = value.icon;
                     return (
                       <div key={value.title} className="flex items-start gap-4">
                         <div
                           className={`flex items-center justify-center w-10 h-10 rounded-xl ${value.accentBgClass} shrink-0 mt-0.5`}
                         >
-                          <Icon className={`h-5 w-5 ${value.accentClass}`} />
+                          <Icon
+                            icon={value.icon}
+                            className={`h-5 w-5 ${value.accentClass}`}
+                          />
                         </div>
                         <div>
                           <h4 className="font-bold text-lg text-foreground">
@@ -160,7 +181,7 @@ export default function AboutUs() {
                   Want to be part of our mission?
                 </h3>
                 <p className="mt-4 text-lg text-white/80 leading-relaxed">
-                  We{'\u2019'}re always looking for talented individuals to join
+                  We&rsquo;re always looking for talented individuals to join
                   our team.
                 </p>
                 <div className="mt-6">
@@ -172,7 +193,10 @@ export default function AboutUs() {
                   >
                     <Link to={href('/careers')}>
                       View Open Roles
-                      <IconArrowRight className="ml-1 h-5 w-5" />
+                      <Icon
+                        icon="tabler:arrow-right"
+                        className="ml-1 h-5 w-5"
+                      />
                     </Link>
                   </Button>
                 </div>
@@ -189,6 +213,6 @@ export default function AboutUs() {
           </FadeIn>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

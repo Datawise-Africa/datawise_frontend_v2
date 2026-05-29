@@ -1,22 +1,9 @@
 import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/products';
 import { href, Link } from 'react-router';
-import {
-  IconArrowRight,
-  IconDatabase,
-  IconSchool,
-  IconHeartbeat,
-  IconBuildingHospital,
-  IconScale,
-} from '@tabler/icons-react';
-import {
-  FadeIn,
-  StaggerChildren,
-  StaggerItem,
-  PageTransition,
-} from '~/components/motion';
+import { Icon } from '@iconify/react';
+import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { Button } from '~/components/ui/button';
-import type { FC } from 'react';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -26,13 +13,50 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/products'),
       keywords:
         'datawise, datalab, afyaken, eduken, data products africa, ai for development, data infrastructure',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Datalab',
+          applicationCategory: 'DataApplication',
+          description:
+            'Open dataset discovery and collaboration platform for curated African datasets.',
+          operatingSystem: 'Web',
+          offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Sheria AI',
+          applicationCategory: 'LegalApplication',
+          description:
+            'Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
+          operatingSystem: 'Web',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Dataset',
+          name: 'Eduken',
+          description:
+            'Education dataset capturing learning outcomes and access across African contexts.',
+          creator: { '@type': 'Organization', name: 'Datawise Africa' },
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Dataset',
+          name: 'Afyaken',
+          description:
+            'Health dataset surfacing care delivery, outcomes, and public health signals across Kenya.',
+          creator: { '@type': 'Organization', name: 'Datawise Africa' },
+        },
+      ],
     }),
   ];
 }
 
 const featuredProjects: {
   slug: string;
-  icon: FC<{ className?: string }>;
+  icon: string;
   title: string;
   description: string;
   link?: string;
@@ -41,7 +65,7 @@ const featuredProjects: {
 }[] = [
   {
     slug: 'datalab',
-    icon: IconDatabase,
+    icon: 'tabler:database',
     title: 'Datalab',
     description:
       'DataLab is a platform for hosting, managing, and publishing data products. It enables creators to create and upload datasets, while also supporting richer data products such as dashboards and reports that deliver actionable insights. Designed for accessibility and usability, DataLab helps users discover, share, and turn data into meaningful impact.',
@@ -51,7 +75,7 @@ const featuredProjects: {
   },
   {
     slug: 'sheria-ai',
-    icon: IconSchool,
+    icon: 'tabler:school',
     title: 'Sheria AI',
     description:
       'Sheria AI is a Kenyan legal intelligence platform designed for lawyers, researchers, and anyone navigating the legal system. It combines an AI-powered chatbot with advanced search and filtering to help users quickly find relevant court rulings, understand legal principles, and generate practical legal insights. ',
@@ -61,7 +85,7 @@ const featuredProjects: {
   },
   {
     slug: 'african-stack',
-    icon: IconHeartbeat,
+    icon: 'tabler:heartbeat',
     title: 'African Stack',
     description:
       'The African Stack covers the ideas, research, and technologies shaping the continent’s future. Through in-depth articles, podcast conversations, and monthly newsletter updates, we connect Africa’s next wave of change makers with the insights that matter.',
@@ -73,7 +97,7 @@ const featuredProjects: {
 
 const datasets: {
   slug: string;
-  icon: FC<{ className?: string }>;
+  icon: string;
   category: string;
   title: string;
   description: string;
@@ -81,7 +105,7 @@ const datasets: {
 }[] = [
   {
     slug: 'eduken',
-    icon: IconSchool,
+    icon: 'tabler:school',
     category: 'Education',
     title: 'Eduken',
     description:
@@ -90,7 +114,7 @@ const datasets: {
   },
   {
     slug: 'afyaken',
-    icon: IconBuildingHospital,
+    icon: 'tabler:building-hospital',
     category: 'Health',
     title: 'Afyaken',
     description:
@@ -99,7 +123,7 @@ const datasets: {
   },
   {
     slug: 'sheria-corpus',
-    icon: IconScale,
+    icon: 'tabler:scale',
     category: 'Legal',
     title: 'Sheria Corpus',
     description:
@@ -110,7 +134,7 @@ const datasets: {
 
 export default function Projects() {
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       {/* <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
@@ -122,7 +146,7 @@ export default function Projects() {
                   <span className="text-primary"> Data Research</span>
                 </h1>
                 <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
-                  Our research initiatives focus on solving Africa{'\u2019'}s
+                  Our research initiatives focus on solving Africa&rsquo;s
                   most pressing challenges, from climate resilience to economic
                   development.
                 </p>
@@ -130,7 +154,7 @@ export default function Projects() {
                   <Button asChild size="lg" className="h-auto px-6 py-3">
                     <Link to={href('/partners')}>
                       Collaborate With Us
-                      <IconArrowRight className="ml-1 h-5 w-5" />
+                      <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
                     </Link>
                   </Button>
                 </div>
@@ -152,25 +176,22 @@ export default function Projects() {
       {/* Featured Projects Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
-          <FadeIn>
-            <div className="text-center mb-12 space-y-2">
-              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
-                Our Products
-              </h3>
+          <div className="text-center mb-12 space-y-2">
+            <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+              Our Products
+            </h3>
 
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
-                We provide and build solutions that turn ideas into real-world
-                impact. From AI tools and data platforms to tech stacks and
-                knowledge hubs, our initiatives combine innovation and insight
-                to tackle real challenges. We transform information into
-                actionable insights that drive meaningful outcomes.
-              </p>
-            </div>
-          </FadeIn>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
+              We provide and build solutions that turn ideas into real-world
+              impact. From AI tools and data platforms to tech stacks and
+              knowledge hubs, our initiatives combine innovation and insight to
+              tackle real challenges. We transform information into actionable
+              insights that drive meaningful outcomes.
+            </p>
+          </div>
 
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {featuredProjects.map((project) => {
-              const Icon = project.icon;
               return (
                 <StaggerItem key={project.slug}>
                   <div
@@ -181,6 +202,7 @@ export default function Projects() {
                       className={`flex items-center justify-center w-14 h-14 rounded-2xl ${project.accentBgClass} mb-5 group-hover:bg-primary transition-colors duration-300`}
                     >
                       <Icon
+                        icon={project.icon}
                         className={`h-7 w-7 ${project.accentClass} group-hover:text-white transition-colors duration-300`}
                       />
                     </div>
@@ -206,7 +228,10 @@ export default function Projects() {
                             aria-label={`Explore ${project.title}`}
                           >
                             Explore {project.title}
-                            <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                            <Icon
+                              icon="tabler:arrow-right"
+                              className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                            />
                           </a>
                         </Button>
                       </div>
@@ -240,7 +265,6 @@ export default function Projects() {
 
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
             {datasets.map((dataset) => {
-              const Icon = dataset.icon;
               return (
                 <StaggerItem key={dataset.slug}>
                   <article
@@ -250,7 +274,10 @@ export default function Projects() {
                     <div
                       className={`flex items-center gap-3 px-6 py-4 ${dataset.headerBgClass}`}
                     >
-                      <Icon className="h-7 w-7 text-white shrink-0" />
+                      <Icon
+                        icon={dataset.icon}
+                        className="h-7 w-7 text-white shrink-0"
+                      />
                       <span className="text-sm font-semibold uppercase tracking-wider text-white">
                         {dataset.category}
                       </span>
@@ -275,7 +302,10 @@ export default function Projects() {
                             aria-label={`View ${dataset.title} dataset on Datalab`}
                           >
                             View {dataset.title}
-                            <IconArrowRight className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                            <Icon
+                              icon="tabler:arrow-right"
+                              className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                            />
                           </a>
                         </Button>
                       </div>
@@ -311,13 +341,13 @@ export default function Projects() {
               >
                 <Link to={href('/contact-us')}>
                   Get In Touch
-                  <IconArrowRight className="ml-1 h-5 w-5" />
+                  <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
                 </Link>
               </Button>
             </div>
           </FadeIn>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

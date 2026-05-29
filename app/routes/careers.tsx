@@ -1,70 +1,64 @@
 import { available_positions } from '~/lib/data/careers';
-import type { JobCareerPositionType } from '~/lib/types/careers';
-import {
-  FadeIn,
-  StaggerChildren,
-  StaggerItem,
-  PageTransition,
-} from '~/components/motion';
-import { useAppDispatch } from '~/store';
-import { setPosition } from '~/store/slices/career-slice';
+import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { slugify } from '~/utils/slugify';
-import { useNavigate } from 'react-router';
-import { IconArrowRight } from '@tabler/icons-react';
+import { Link, href } from 'react-router';
+import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
+import { generateSEOTags } from '~/utils/seo';
+import type { Route } from './+types/careers';
+
+export function meta(_args: Route.MetaArgs) {
+  return [
+    ...generateSEOTags({
+      title: 'Careers at Datawise Africa | Join Our Team',
+      description:
+        'Explore open positions at Datawise Africa. Join a team building data infrastructure, AI solutions, and research platforms that serve the African continent.',
+      url: href('/careers'),
+      keywords:
+        'data science jobs africa, AI careers, machine learning jobs, technology careers africa, datawise africa careers',
+    }),
+  ];
+}
 
 export default function Careers() {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
-  const handleViewDetails = (position: JobCareerPositionType) => {
-    const slug = slugify(position.title);
-    dispatch(setPosition(position));
-    navigate(`/career-description/${slug}`);
-  };
-
   return (
-    <PageTransition>
+    <>
       {/* ---------- HERO ---------- */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <FadeIn direction="left">
-              <div className="text-center md:text-left space-y-6">
-                <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                  Shape Africa{'\u2019'}s Future <br />
-                  <span className="text-primary">Through Data</span>
-                </h1>
-                <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
-                  Join a passionate team leveraging data to drive impactful
-                  decisions in health, education, and governance.
-                </p>
-                <div className="flex justify-center md:justify-start">
-                  <Button
-                    size="lg"
-                    className="h-auto px-6 py-3"
-                    onClick={() =>
-                      document
-                        .getElementById('open-positions')
-                        ?.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  >
-                    View Open Positions
-                    <IconArrowRight className="ml-1 h-5 w-5" />
-                  </Button>
-                </div>
+            <div className="text-center md:text-left space-y-6">
+              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+                Shape Africa&rsquo;s Future <br />
+                <span className="text-primary">Through Data</span>
+              </h1>
+              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
+                Join a passionate team leveraging data to drive impactful
+                decisions in health, education, and governance.
+              </p>
+              <div className="flex justify-center md:justify-start">
+                <Button
+                  size="lg"
+                  className="h-auto px-6 py-3"
+                  onClick={() =>
+                    document
+                      .getElementById('open-positions')
+                      ?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                >
+                  View Open Positions
+                  <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
+                </Button>
               </div>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div className="flex justify-center">
-                <img
-                  className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
-                  src={'/assets/careers/Careers Hero.svg'}
-                  alt="career hero"
-                  loading="lazy"
-                />
-              </div>
-            </FadeIn>
+            </div>
+            <div className="flex justify-center">
+              <img
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+                src={'/assets/careers/Careers Hero.svg'}
+                alt="career hero"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -88,17 +82,17 @@ export default function Careers() {
               {
                 img: '/assets/careers/lucide_goal.png',
                 title: 'Impact-Driven Projects',
-                text: 'We focus on transformative data solutions\u2026',
+                text: 'We focus on transformative data solutions…',
               },
               {
                 img: '/assets/careers/hugeicons_ai-magic.png',
                 title: 'Commitment to Innovation',
-                text: 'We value creativity and innovation\u2026',
+                text: 'We value creativity and innovation…',
               },
               {
                 img: '/assets/careers/fluent_people-community-24-regular.png',
                 title: 'Collaborative Growth',
-                text: 'We foster a collaborative environment\u2026',
+                text: 'We foster a collaborative environment…',
               },
             ].map((c, i) => (
               <StaggerItem key={i}>
@@ -203,13 +197,13 @@ export default function Careers() {
                         {pos.overview}
                       </p>
 
-                      <button
-                        onClick={() => handleViewDetails(pos)}
+                      <Link
+                        to={`/career-description/${slugify(pos.title)}`}
                         className="mt-4 flex items-center gap-1 text-primary font-medium text-sm hover:underline"
                       >
                         View Details
-                        <IconArrowRight className="w-4 h-4" />
-                      </button>
+                        <Icon icon="tabler:arrow-right" className="w-4 h-4" />
+                      </Link>
                     </div>
                   </StaggerItem>
                 );
@@ -218,6 +212,6 @@ export default function Careers() {
           )}
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

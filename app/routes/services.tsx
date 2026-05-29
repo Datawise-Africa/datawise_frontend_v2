@@ -1,29 +1,10 @@
 import { generateSEOTags } from '~/utils/seo';
 import type { Route } from './+types/services';
 import { href, Link } from 'react-router';
-import {
-  FadeIn,
-  StaggerChildren,
-  StaggerItem,
-  PageTransition,
-} from '~/components/motion';
-import {
-  IconDatabase,
-  IconBrain,
-  IconChartBar,
-  IconDeviceMobile,
-  IconClipboardList,
-  IconTool,
-  IconRobot,
-  IconBulb,
-  IconLanguage,
-  IconCloud,
-  IconServer,
-  IconRefresh,
-  IconArrowRight,
-} from '@tabler/icons-react';
+import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
+import { Icon } from '@iconify/react';
 import { Button } from '~/components/ui/button';
-import type { FC } from 'react';
+import { OptimisticImage } from '~/components/ui/optimistic-image';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -34,6 +15,60 @@ export function meta(_args: Route.MetaArgs) {
       url: href('/services'),
       keywords:
         'data services africa, AI services, software engineering africa, cloud infrastructure, applied research, NLP, generative AI, DevOps',
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'Data & Research Services',
+          description:
+            'Data infrastructure, strategic intelligence, and applied research services for African contexts.',
+          areaServed: 'Africa',
+          serviceType: 'Data Science & Research',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'AI & Machine Learning Services',
+          description:
+            'AI engineering, generative AI, and natural language processing solutions.',
+          areaServed: 'Africa',
+          serviceType: 'Artificial Intelligence',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'Software Engineering Services',
+          description:
+            'Custom applications, API development, and technical project management.',
+          areaServed: 'Africa',
+          serviceType: 'Software Development',
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          provider: {
+            '@type': 'Organization',
+            name: 'Datawise Africa',
+          },
+          name: 'Cloud Infrastructure Services',
+          description:
+            'Cloud architecture, compute infrastructure, and DevOps & CI/CD pipelines.',
+          areaServed: 'Africa',
+          serviceType: 'Cloud Infrastructure',
+        },
+      ],
     }),
   ];
 }
@@ -52,11 +87,13 @@ function ServiceImage({ id, title }: { id: string; title: string }) {
   return (
     <div className="relative w-full max-w-md mx-auto">
       <div className="overflow-hidden rounded-2xl shadow-lg">
-        <img
+        <OptimisticImage
           src={src}
           alt={title}
           className="w-full h-auto object-cover aspect-4/3"
           loading="lazy"
+          width={800}
+          height={600}
         />
       </div>
     </div>
@@ -71,7 +108,7 @@ const serviceCategories: {
   accentClass: string;
   accentBgClass: string;
   capabilities: {
-    icon: FC<{ className?: string }>;
+    icon: string;
     title: string;
     description: string;
   }[];
@@ -86,19 +123,19 @@ const serviceCategories: {
     accentBgClass: 'bg-accent-orange/10 dark:bg-accent-orange/20',
     capabilities: [
       {
-        icon: IconDatabase,
+        icon: 'tabler:database',
         title: 'Data & Data Infrastructure',
         description:
           'We build AI-ready datasets and structured data systems that enable organizations to access reliable and well-organized information. We also offer custom data collection services, designed to meet unique and domain-specific needs.',
       },
       {
-        icon: IconChartBar,
+        icon: 'tabler:chart-bar',
         title: 'Strategic Intelligence',
         description:
           'We transform complex datasets into actionable intelligence through executive reports, analytical briefs, and interactive dashboards tailored to organizational decision-making needs.',
       },
       {
-        icon: IconBrain,
+        icon: 'tabler:brain',
         title: 'Applied Research',
         description:
           'We conduct applied research on emerging technologies, sector challenges, and AI deployment opportunities, generating practical insights that close the gap between data and real-world decisions.',
@@ -115,19 +152,19 @@ const serviceCategories: {
     accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
     capabilities: [
       {
-        icon: IconDeviceMobile,
+        icon: 'tabler:device-mobile',
         title: 'Custom Application Development & APIs',
         description:
           'Web, mobile, and enterprise applications designed to solve specific operational and data challenges, powered by APIs that enable systems to exchange data seamlessly — connecting datasets, platforms, and third-party tools.',
       },
       {
-        icon: IconClipboardList,
+        icon: 'tabler:clipboard-list',
         title: 'Software Project Management',
         description:
           'Agile-led delivery with continuous improvement cycles, transparent tracking, and on-time execution.',
       },
       {
-        icon: IconTool,
+        icon: 'tabler:tool',
         title: 'Maintenance & Support',
         description:
           'Long-term software support including monitoring, optimization, security updates, and bug resolution.',
@@ -144,19 +181,19 @@ const serviceCategories: {
     accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
     capabilities: [
       {
-        icon: IconRobot,
+        icon: 'tabler:robot',
         title: 'AI Engineering',
         description:
           'We design and deploy production-ready AI systems that integrate machine learning models into real applications and organizational workflows not just demos.',
       },
       {
-        icon: IconBulb,
+        icon: 'tabler:bulb',
         title: 'Generative AI Solutions',
         description:
           'We build custom generative AI systems tailored to specific organizational needs from content generation to intelligent automation and workflow augmentation.',
       },
       {
-        icon: IconLanguage,
+        icon: 'tabler:language',
         title: 'Natural Language Processing',
         description:
           'We develop NLP systems that allow machines to understand, classify, and analyze human language with a focus on African languages and local contexts.',
@@ -173,19 +210,19 @@ const serviceCategories: {
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
     capabilities: [
       {
-        icon: IconCloud,
+        icon: 'tabler:cloud',
         title: 'Cloud Infrastructure & Architecture',
         description:
           'We design and implement scalable cloud environments across leading platforms architected for data systems, AI workloads, and high-availability operations.',
       },
       {
-        icon: IconServer,
+        icon: 'tabler:server',
         title: 'Compute Infrastructure',
         description:
           'We design and manage compute infrastructure capable of supporting AI systems, data platforms, and research workloads at the scale African organisations need.',
       },
       {
-        icon: IconRefresh,
+        icon: 'tabler:refresh',
         title: 'DevOps & Continuous Delivery',
         description:
           'We implement DevOps practices that enable faster, more reliable software delivery with continuous integration, monitoring, and deployment pipelines.',
@@ -196,22 +233,20 @@ const serviceCategories: {
 
 export default function Services() {
   return (
-    <PageTransition>
+    <>
       {/* Hero Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
-          <FadeIn direction="up">
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                What We <span className="text-primary">Offer</span>
-              </h1>
-              <p className="mt-6 text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
-                End-to-end data, AI, software, and infrastructure services
-                designed to help organizations make better decisions and build
-                impactful technology.
-              </p>
-            </div>
-          </FadeIn>
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
+              What We <span className="text-primary">Offer</span>
+            </h1>
+            <p className="mt-6 text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto">
+              End-to-end data, AI, software, and infrastructure services
+              designed to help organizations make better decisions and build
+              impactful technology.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -256,7 +291,6 @@ export default function Services() {
               {/* Capability cards */}
               <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.capabilities.map((capability) => {
-                  const Icon = capability.icon;
                   return (
                     <StaggerItem key={capability.title}>
                       <div className="group flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 h-full">
@@ -264,12 +298,13 @@ export default function Services() {
                           className={`flex items-center justify-center w-12 h-12 rounded-xl ${category.accentBgClass} mb-4 group-hover:bg-primary transition-colors duration-300`}
                         >
                           <Icon
+                            icon={capability.icon}
                             className={`h-6 w-6 ${category.accentClass} group-hover:text-white transition-colors duration-300`}
                           />
                         </div>
-                        <h4 className="font-semibold text-lg text-foreground mb-2">
+                        <h3 className="font-semibold text-lg text-foreground mb-2">
                           {capability.title}
-                        </h4>
+                        </h3>
                         <p className="text-muted-foreground text-sm leading-relaxed">
                           {capability.description}
                         </p>
@@ -293,7 +328,7 @@ export default function Services() {
                   Ready to get started?
                 </h3>
                 <p className="mt-3 text-lg text-white/80 leading-relaxed">
-                  Let{'\u2019'}s discuss how we can support your goals.
+                  Let&rsquo;s discuss how we can support your goals.
                 </p>
               </div>
               <Button
@@ -304,13 +339,13 @@ export default function Services() {
               >
                 <Link to={href('/contact-us')}>
                   Contact Us
-                  <IconArrowRight className="ml-1 h-5 w-5" />
+                  <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
                 </Link>
               </Button>
             </div>
           </FadeIn>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

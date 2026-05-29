@@ -1,26 +1,18 @@
 import { socials } from '~/lib/data/socials';
 import { href, Link } from 'react-router';
-import {
-  IconBrandLinkedin,
-  IconBrandGithub,
-  IconBrandX,
-  IconPhone,
-  IconMail,
-  IconMapPin,
-} from '@tabler/icons-react';
-import type { FC } from 'react';
+import { Icon } from '@iconify/react';
 
-const socialIcons: Record<string, FC<{ className?: string }>> = {
-  LinkedIn: IconBrandLinkedin,
-  Github: IconBrandGithub,
-  X: IconBrandX,
+const socialIcons: Record<string, string> = {
+  LinkedIn: 'tabler:brand-linkedin',
+  Github: 'tabler:brand-github',
+  X: 'tabler:brand-x',
 };
 
 const contactDetails = [
-  { icon: IconPhone, text: '+254 704 237 879' },
-  { icon: IconMail, text: 'info@datawiseafrica.com' },
+  { icon: 'tabler:phone', text: '+254 704 237 879' },
+  { icon: 'tabler:mail', text: 'info@datawiseafrica.com' },
   {
-    icon: IconMapPin,
+    icon: 'tabler:map-pin',
     text: 'Highway Heights, Marcus Garvey Rd, Kilimani, Nairobi, Kenya',
   },
 ];
@@ -34,7 +26,7 @@ const primaryLinks = [
 
 const secondaryLinks = [
   { to: '/', label: 'Home' },
-  { to: '/datalab', label: 'Datalab' },
+  { to: '/partners', label: 'Partners' },
   { to: '/careers', label: 'Careers' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
 ];
@@ -61,17 +53,19 @@ export default function Footer() {
             </p>
             <ul className="flex gap-3 pt-2">
               {socials.map((item) => {
-                const Icon = socialIcons[item.name];
+                const iconName = socialIcons[item.name];
                 return (
-                  <a
-                    key={item.name}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
-                  >
-                    {Icon && <Icon className="h-4 w-4" />}
-                  </a>
+                  <li key={item.name}>
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Datawise Africa on ${item.name}`}
+                      className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
+                    >
+                      {iconName && <Icon icon={iconName} className="h-4 w-4" />}
+                    </a>
+                  </li>
                 );
               })}
             </ul>
@@ -79,9 +73,9 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+            <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
               Top Pages
-            </h4>
+            </p>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
               {primaryLinks.map((link) => (
                 <Link
@@ -93,9 +87,9 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-            <h4 className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
+            <p className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
               More
-            </h4>
+            </p>
             <div className="grid grid-cols-2 gap-x-6 gap-y-2">
               {secondaryLinks.map((link) => (
                 <Link
@@ -111,22 +105,22 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+            <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
               Contact
-            </h4>
+            </p>
             <div className="space-y-3">
-              {contactDetails.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <p
-                    key={item.text}
-                    className="flex items-start gap-3 text-gray-300 text-sm"
-                  >
-                    <Icon className="h-5 w-5 text-white shrink-0 mt-0.5" />
-                    {item.text}
-                  </p>
-                );
-              })}
+              {contactDetails.map((item) => (
+                <p
+                  key={item.text}
+                  className="flex items-start gap-3 text-gray-300 text-sm"
+                >
+                  <Icon
+                    icon={item.icon}
+                    className="h-5 w-5 text-white shrink-0 mt-0.5"
+                  />
+                  {item.text}
+                </p>
+              ))}
             </div>
           </div>
         </div>

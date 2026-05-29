@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import '@fontsource-variable/sora';
+@import '@fontsource-variable/lora';
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -6,11 +7,10 @@
 
 @theme {
   --font-sans:
-    'Nunito', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Sora Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-mono:
-    'SUSE Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  --font-serif:
+    'Lora Variable', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 
   /* Project-specific colors (accessible via eg. bg-primary-hover, text-navy) */
   --color-primary-hover: #1e8c68;
@@ -103,7 +103,7 @@
 
   /* Muted → light gray */
   --muted: #f6f6f6;
-  --muted-foreground: #6c757d;
+  --muted-foreground: #374151;
 
   /* Accent → soft green background */
   --accent: #f7fdfa;
@@ -259,6 +259,45 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Page enter animation */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-page-enter {
+  animation: page-enter 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+/* Theme editor panel */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-panel-in {
+  animation: panel-in 0.2s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-enter,
+  .animate-panel-in {
     animation: none;
   }
 }

@@ -13,7 +13,7 @@ export default [
     route('about-us', 'routes/about-us.tsx'),
     route('services', 'routes/services.tsx'),
     route('products', 'routes/products.tsx'),
-    route('datalab', 'routes/datalab.tsx'),
+    // datalab is hosted externally at datalab.datawiseafrica.com
     // ...prefix('tools', [
     //   route('GPT', 'routes/tools.GPT.tsx'),
     //   route('sheria-ai', 'routes/tools.sheria-ai.tsx'),
@@ -27,6 +27,8 @@ export default [
   ]),
   route('sitemap.xml', 'routes/sitemap.xml.ts'),
   route('robots.txt', 'routes/robots.txt.ts'),
+  route('llms.txt', 'routes/llms.txt.ts'),
+  route('llms-full.txt', 'routes/llms-full.txt.ts'),
   route(
     '.well-known/appspecific/com.chrome.devtools.json',
     'routes/[.]well-known.appspecific.[com.chrome.devtools.json].ts'

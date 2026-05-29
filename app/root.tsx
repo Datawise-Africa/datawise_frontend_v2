@@ -10,8 +10,8 @@ import {
 import type { Route } from './+types/root';
 import './app.css';
 import { loadGTagScripts } from './lib/utils/add-google-tag';
-import { QueryProvider } from './lib/providers/query-provider';
-import { StoreProvider } from './lib/providers/store-provider';
+import { ThemeProvider } from './contexts/theme-context';
+import { AuthProvider } from './contexts/auth-context';
 import { env } from './lib/env';
 
 const baseUrl = env.VITE_SITE_URL;
@@ -72,15 +72,9 @@ const seoStructuredData = [
 ];
 
 export const links: Route.LinksFunction = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
     rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
+    href: 'https://api.iconify.design',
   },
   {
     rel: 'apple-touch-icon',
@@ -129,7 +123,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
    */
   const GTAG = env.VITE_GTAG_ID;
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -151,7 +145,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </>
         )}
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.classList.add('dark')}}catch(e){}})()`,
@@ -167,11 +161,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <StoreProvider>
-      <QueryProvider>
+    <ThemeProvider>
+      <AuthProvider>
         <Outlet />
-      </QueryProvider>
-    </StoreProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
@@ -186,7 +180,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     if (error.status === 404) {
       title = 'Page not found';
       description =
-        'Sorry, we couldn\u2019t find the page you\u2019re looking for. It might have been moved or no longer exists.';
+        'Sorry, we couldn’t find the page you’re looking for. It might have been moved or no longer exists.';
     } else {
       title = `Error ${error.status}`;
       description = error.statusText || description;

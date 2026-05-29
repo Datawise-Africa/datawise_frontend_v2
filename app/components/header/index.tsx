@@ -1,12 +1,7 @@
 import { navigation } from '~/lib/data/navigation';
 import { useState, useEffect } from 'react';
 import { href, Link } from 'react-router';
-import {
-  IconArrowRight,
-  IconMenu2,
-  IconSun,
-  IconMoon,
-} from '@tabler/icons-react';
+import { Icon } from '@iconify/react';
 import NavigationItemComponent from './navigation-item';
 import { useTheme } from '~/hooks/use-theme';
 import { useIsMobile } from '~/hooks/use-mobile';
@@ -20,8 +15,13 @@ import {
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { darkMode, toggle: toggleTheme } = useTheme();
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Auto-close sheet when switching to desktop
   useEffect(() => {
@@ -41,10 +41,10 @@ export default function Header() {
               <img
                 src="/assets/datawise-logo-dark.png"
                 alt="Datawise logo"
-                loading="lazy"
                 width={180}
                 height={20}
                 className="h-12 w-auto md:h-16"
+                fetchPriority="high"
               />
             </Link>
 
@@ -66,7 +66,7 @@ export default function Header() {
                 className="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-primary-hover hover:shadow-xl"
               >
                 Explore Products
-                <IconArrowRight className="h-5 w-5" />
+                <Icon icon="tabler:arrow-right" className="h-5 w-5" />
               </Link>
 
               {/* Desktop Theme Toggle */}
@@ -74,13 +74,22 @@ export default function Header() {
                 onClick={toggleTheme}
                 className="ml-3 inline-flex items-center justify-center rounded-lg p-2 text-gray-300 hover:bg-navy-light/50 hover:text-white transition-colors duration-200"
                 aria-label={
-                  darkMode ? 'Switch to light mode' : 'Switch to dark mode'
+                  mounted
+                    ? darkMode
+                      ? 'Switch to light mode'
+                      : 'Switch to dark mode'
+                    : 'Toggle theme'
                 }
+                suppressHydrationWarning
               >
-                {darkMode ? (
-                  <IconSun className="h-5 w-5" />
+                {mounted ? (
+                  darkMode ? (
+                    <Icon icon="tabler:sun" className="h-5 w-5" />
+                  ) : (
+                    <Icon icon="tabler:moon" className="h-5 w-5" />
+                  )
                 ) : (
-                  <IconMoon className="h-5 w-5" />
+                  <Icon icon="tabler:sun" className="h-5 w-5" />
                 )}
               </button>
             </div>
@@ -90,7 +99,11 @@ export default function Header() {
               <SheetTrigger asChild>
                 <button className="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-navy-light/50 hover:text-white focus:outline-none transition-colors duration-200">
                   <span className="sr-only">Open main menu</span>
-                  <IconMenu2 className="h-6 w-6" aria-hidden="true" />
+                  <Icon
+                    icon="tabler:menu-2"
+                    className="h-6 w-6"
+                    aria-hidden="true"
+                  />
                 </button>
               </SheetTrigger>
               <SheetContent
@@ -134,23 +147,31 @@ export default function Header() {
                     className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-primary-hover"
                   >
                     Explore Products
-                    <IconArrowRight className="h-5 w-5" />
+                    <Icon icon="tabler:arrow-right" className="h-5 w-5" />
                   </Link>
 
                   {/* Mobile Theme Toggle */}
                   <button
                     onClick={toggleTheme}
                     className="flex items-center justify-center gap-2 w-full mt-2 px-6 py-3 rounded-lg text-gray-300 hover:bg-navy-light/50 hover:text-white transition-colors duration-200"
+                    suppressHydrationWarning
                   >
-                    {darkMode ? (
-                      <>
-                        <IconSun className="h-5 w-5" />
-                        Light Mode
-                      </>
+                    {mounted ? (
+                      darkMode ? (
+                        <>
+                          <Icon icon="tabler:sun" className="h-5 w-5" />
+                          Light Mode
+                        </>
+                      ) : (
+                        <>
+                          <Icon icon="tabler:moon" className="h-5 w-5" />
+                          Dark Mode
+                        </>
+                      )
                     ) : (
                       <>
-                        <IconMoon className="h-5 w-5" />
-                        Dark Mode
+                        <Icon icon="tabler:sun" className="h-5 w-5" />
+                        Toggle Theme
                       </>
                     )}
                   </button>
