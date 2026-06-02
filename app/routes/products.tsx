@@ -69,7 +69,7 @@ const featuredProjects: {
     title: 'Datalab',
     description:
       'DataLab is a platform for hosting, managing, and publishing data products. It enables creators to create and upload datasets, while also supporting richer data products such as dashboards and reports that deliver actionable insights. Designed for accessibility and usability, DataLab helps users discover, share, and turn data into meaningful impact.',
-    link: 'https://datalab.datawiseafrica.com',
+    link: 'https://datalabafrica.com',
     accentClass: 'text-primary',
     accentBgClass: 'bg-primary/10 dark:bg-primary/20',
   },
