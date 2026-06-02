@@ -13,7 +13,7 @@ export default [
     route('about-us', 'routes/about-us.tsx'),
     route('services', 'routes/services.tsx'),
     route('products', 'routes/products.tsx'),
-    // datalab is hosted externally at datalab.datawiseafrica.com
+    // datalab is hosted externally at datalabafrica.com
     // ...prefix('tools', [
     //   route('GPT', 'routes/tools.GPT.tsx'),
     //   route('sheria-ai', 'routes/tools.sheria-ai.tsx'),
