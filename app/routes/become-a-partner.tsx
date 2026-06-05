@@ -9,7 +9,7 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Become a Partner | Datawise Africa',
       description:
-        'Partner with Datawise Africa to drive data and AI innovation across the continent. Submit your partnership application and collaborate with us on research, infrastructure, and technology projects.',
+        'Apply to partner with Datawise Africa — collaborate on AI, data, and digital infrastructure projects driving impact across the continent.',
       url: href('/become-a-partner'),
       keywords:
         'datawise africa partnership, data science partnership, AI collaboration africa, technology partnerships',

@@ -9,9 +9,9 @@ import { OptimisticImage } from '~/components/ui/optimistic-image';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Services - Datawise Africa',
+      title: 'Services | Datawise Africa',
       description:
-        'Datawise Africa offers data infrastructure, AI engineering, software development, and cloud infrastructure services tailored to African contexts.',
+        "From data platforms and applied research to AI engineering and cloud — services that build Africa's AI, data, and digital infrastructure.",
       url: href('/services'),
       keywords:
         'data services africa, AI services, software engineering africa, cloud infrastructure, applied research, NLP, generative AI, DevOps',

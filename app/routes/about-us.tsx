@@ -9,9 +9,9 @@ import { Button } from '~/components/ui/button';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Datawise Africa - About Us',
+      title: 'About Us | Datawise Africa',
       description:
-        'Datawise Africa builds the foundations for Africa’s data and AI ecosystem. We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure.',
+        'Meet Datawise Africa — the mission, values, and team behind our work in AI, data systems, and digital infrastructure across Africa.',
       url: href('/about-us'),
       keywords:
         'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, data infrastructure, machine learning Africa, data-driven impact',

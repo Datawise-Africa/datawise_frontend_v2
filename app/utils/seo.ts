@@ -76,6 +76,14 @@ export function generateSEOTags(config: SEOConfig) {
   const fullUrl = canonicalize(rawUrl);
   const fullImageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`;
 
+  const imageExtension = fullImageUrl.split('.').pop()?.toLowerCase();
+  const imageMimeType =
+    imageExtension === 'webp'
+      ? 'image/webp'
+      : imageExtension === 'jpg' || imageExtension === 'jpeg'
+        ? 'image/jpeg'
+        : 'image/png';
+
   const envNoIndex =
     typeof import.meta !== 'undefined' &&
     Boolean(
@@ -105,7 +113,7 @@ export function generateSEOTags(config: SEOConfig) {
     { property: 'og:url', content: fullUrl },
     { property: 'og:image', content: fullImageUrl },
     { property: 'og:image:secure_url', content: fullImageUrl },
-    { property: 'og:image:type', content: 'image/png' },
+    { property: 'og:image:type', content: imageMimeType },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:image:alt', content: title },
