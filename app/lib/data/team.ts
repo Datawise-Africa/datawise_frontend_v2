@@ -1,7 +1,7 @@
 export const teamMembersData = [
   {
     name: 'Dr. Albert Kahira',
-    title: 'Director and Head of research to just Director.',
+    title: 'Director',
     image: '/assets/teamMembers/albert-kahira.webp',
     description:
       'Albert started out in computer science and research, and over time became interested in how data and computation can be used to solve real problems, especially in underrepresented contexts. He has worked on data, AI, and compute infrastructure for Africa, development of large-scale African datasets in areas such as language, governance, agriculture, and health. He also played an advisory role to Lacuna Fund on data quality, dataset design, and impact evaluation. The gap in access to high-quality African data is what pushed him deeper into data, AI, and infrastructure, and eventually into building Datawise Africa.',
