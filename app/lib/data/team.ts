@@ -1,8 +1,8 @@
 export const teamMembersData = [
   {
     name: 'Dr. Albert Kahira',
-    title: 'Director & Head of Research',
-    image: '/assets/teamMembers/albert-kahira.jpeg',
+    title: 'Director and Head of research to just Director.',
+    image: '/assets/teamMembers/albert-kahira.webp',
     description:
       'Albert started out in computer science and research, and over time became interested in how data and computation can be used to solve real problems, especially in underrepresented contexts. He has worked on data, AI, and compute infrastructure for Africa, development of large-scale African datasets in areas such as language, governance, agriculture, and health. He also played an advisory role to Lacuna Fund on data quality, dataset design, and impact evaluation. The gap in access to high-quality African data is what pushed him deeper into data, AI, and infrastructure, and eventually into building Datawise Africa.',
     linkedin_url: 'https://www.linkedin.com/in/albertkahira',
@@ -20,7 +20,7 @@ export const teamMembersData = [
   {
     name: 'Dorothy Chepkonga',
     title: 'Operations Lead',
-    image: '/assets/teamMembers/dorothy.jpg',
+    image: '/assets/teamMembers/dorothy.webp',
     description:
       'Dorothy believes operations is an integration of strategy, people, and execution. She enjoys turning ideas into systems, improving how teams collaborate, and ensuring that projects move smoothly from planning to impact. She has led planning and performance reviews, coordinated cross-functional projects, improved Datawise’s internal workflows, and much more. At Datawise Africa, the operations allow Dorothy to support innovativeness by creating structure, clarity, and sustainable processes to support the mission.',
     linkedin_url: 'https://linkedin.com/in/dorothychepkonga',
@@ -65,7 +65,7 @@ export const teamMembersData = [
   {
     name: 'Felix Orinda',
     title: 'Software Engineer',
-    image: '/assets/teamMembers/forinda.jpg',
+    image: '/assets/teamMembers/forinda.webp',
     description:
       "Felix is the mind behind Web Dev Insights and has been instrumental in shaping the UI and UX implementation for key Datawise products, including The African Stack, Datalab, Maisha Registry, and the Datawise website. He has also collaborated on a number of internal tool projects, bringing a keen eye for detail and a passion for building intuitive, high-quality user experiences that power Datawise's digital presence.",
     linkedin_url: 'https://www.linkedin.com/in/felixorinda/',

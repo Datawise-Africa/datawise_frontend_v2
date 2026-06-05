@@ -12,12 +12,12 @@ import { Button } from '~/components/ui/button';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Datawise Africa - Partners',
+      title: 'Partners | Datawise Africa',
       description:
-        'Join hands with Datawise Africa to leverage data and AI for transformative solutions across the continent. Explore partnership opportunities that drive innovation and impact.',
+        'Datawise Africa partners with organizations to expand data access, co-develop AI, and strengthen digital infrastructure across Africa. Explore who we work with.',
       url: href('/partners'),
       keywords:
-        'legal assistant, Kenyan law, case insights, legal information, African tech solutions, data systems, applied research',
+        'datawise africa partners, data sharing partnerships, AI collaboration africa, research partnerships, technology alliances africa',
     }),
   ];
 }

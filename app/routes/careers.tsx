@@ -12,7 +12,7 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Careers at Datawise Africa | Join Our Team',
       description:
-        'Explore open positions at Datawise Africa. Join a team building data infrastructure, AI solutions, and research platforms that serve the African continent.',
+        'Explore open positions at Datawise Africa. Join the team building AI, data, and digital infrastructure for the African continent.',
       url: href('/careers'),
       keywords:
         'data science jobs africa, AI careers, machine learning jobs, technology careers africa, datawise africa careers',

@@ -6,6 +6,13 @@ import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import type { Route } from './+types/career-description.$slug';
 
+/** Truncate to maxLength at a word boundary, appending an ellipsis if cut. */
+function truncateDescription(text: string, maxLength = 157) {
+  if (text.length <= maxLength) return text;
+  const cut = text.slice(0, maxLength);
+  return `${cut.slice(0, cut.lastIndexOf(' '))}…`;
+}
+
 export function meta({ params }: Route.MetaArgs) {
   const job = available_positions.find(
     (pos) => slugify(pos.title) === params.slug
@@ -16,7 +23,7 @@ export function meta({ params }: Route.MetaArgs) {
       ...generateSEOTags({
         title: 'Career Opportunity | Datawise Africa',
         description:
-          'Explore career opportunities at Datawise Africa and join our team building data and AI solutions for the African continent.',
+          'Explore career opportunities at Datawise Africa and join the team building AI, data, and digital infrastructure for Africa.',
         url: '/careers',
       }),
     ];
@@ -25,7 +32,7 @@ export function meta({ params }: Route.MetaArgs) {
   return [
     ...generateSEOTags({
       title: `${job.title} | Careers at Datawise Africa`,
-      description: job.overview.slice(0, 160),
+      description: truncateDescription(job.overview),
       url: `/career-description/${params.slug}`,
       keywords:
         'data science jobs africa, AI careers, machine learning jobs, datawise africa',
