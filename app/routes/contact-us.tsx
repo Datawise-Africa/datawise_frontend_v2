@@ -17,9 +17,9 @@ import { env } from '~/lib/env';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Datawise Africa - Contact Us',
+      title: 'Contact Us | Datawise Africa',
       description:
-        'Get in touch with Datawise Africa for inquiries, support, or to learn more about our data and AI solutions driving innovation across Africa.',
+        'Get in touch with Datawise Africa for inquiries, support, or partnerships in AI, data, and digital infrastructure across Africa.',
       url: href('/contact-us'),
       keywords:
         'contact Datawise Africa, data science inquiries, AI solutions support, African technology contact, data and AI innovation, research and development Africa',

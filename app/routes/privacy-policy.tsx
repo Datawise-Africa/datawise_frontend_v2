@@ -6,7 +6,7 @@ import { FadeIn } from '~/components/motion';
 export function meta(_args: Route.MetaArgs) {
   return [
     ...generateSEOTags({
-      title: 'Datawise Africa - Privacy Policy',
+      title: 'Privacy Policy | Datawise Africa',
       description:
         'Read the Datawise Africa Privacy Policy to understand how we collect, use, and protect your personal information.',
       url: href('/privacy-policy'),
