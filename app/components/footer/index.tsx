@@ -61,9 +61,9 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Datawise Africa on ${item.name}`}
-                      className="flex items-center justify-center w-9 h-9 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
+                      className="flex items-center justify-center w-11 h-11 bg-white/10 rounded-full transition-colors hover:bg-primary text-gray-300 hover:text-white"
                     >
-                      {iconName && <Icon icon={iconName} className="h-4 w-4" />}
+                      {iconName && <Icon icon={iconName} className="h-5 w-5" />}
                     </a>
                   </li>
                 );
@@ -76,12 +76,12 @@ export default function Footer() {
             <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
               Top Pages
             </p>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
               {primaryLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-sm text-gray-300 hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 text-sm text-gray-300 hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -90,12 +90,12 @@ export default function Footer() {
             <p className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
               More
             </p>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
               {secondaryLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-sm text-gray-300 hover:text-white transition-colors"
+                  className="inline-flex items-center min-h-11 text-sm text-gray-300 hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>

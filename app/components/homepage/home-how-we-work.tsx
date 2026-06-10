@@ -37,7 +37,7 @@ const phases = [
 export default function HomeHowWeWork() {
   return (
     <section className="bg-section-green dark:bg-section-green-dark">
-      <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+      <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
         <FadeIn direction="up">
           <div className="flex flex-col items-center mb-12">
             <h2 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">

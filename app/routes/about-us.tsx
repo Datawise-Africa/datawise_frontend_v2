@@ -86,7 +86,7 @@ export default function AboutUs() {
           className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-accent-blue/10 blur-3xl"
         />
 
-        <div className="container relative mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container relative mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="flex flex-col items-center text-center">
             <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-foreground">
               <span className="text-accent-blue">Research.</span>{' '}
@@ -99,7 +99,7 @@ export default function AboutUs() {
 
       {/* Who We Are + Our Values Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-start">
             {/* Who We Are — left column */}
             <FadeIn direction="up" delay={0.1}>
@@ -166,14 +166,14 @@ export default function AboutUs() {
 
       {/* Team Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+        <div className="container mx-auto px-5 lg:px-8 py-12 lg:py-16">
           <AboutUsTeam />
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-16">
+        <div className="container mx-auto px-5 lg:px-8 py-12 lg:py-16">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-16">
               <div className="md:w-1/2 text-center md:text-left">
