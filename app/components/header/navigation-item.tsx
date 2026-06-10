@@ -1,6 +1,6 @@
 import { type NavigationItem } from '~/lib/types/navigation';
 import { useState, useRef, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { Icon } from '@iconify/react';
 import type { ReactNode } from 'react';
 
@@ -62,8 +62,24 @@ export default function NavigationItemComponent({
   onNavigate,
 }: NavigationItemProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Desktop parent trigger: navigate to the item's own page AND reveal its
+   * dropdown. External urls open in a new tab without toggling the menu.
+   */
+  const handleParentClick = () => {
+    if (item.url) {
+      if (item.external) {
+        window.open(item.url, '_blank', 'noopener,noreferrer');
+        return;
+      }
+      navigate(item.url);
+    }
+    setDropdownOpen(true);
+  };
 
   // Close dropdown on outside click (desktop)
   useEffect(() => {
@@ -111,7 +127,8 @@ export default function NavigationItemComponent({
     return (
       <div className="static" ref={dropdownRef}>
         <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
+          onClick={handleParentClick}
+          aria-expanded={dropdownOpen}
           className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-200 border-b-2 ${
             dropdownOpen
               ? 'text-white border-primary'
@@ -284,7 +301,8 @@ export default function NavigationItemComponent({
     return (
       <div className="relative" ref={dropdownRef}>
         <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
+          onClick={handleParentClick}
+          aria-expanded={dropdownOpen}
           className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
             isParentActive
               ? 'text-white bg-navy-light/50'

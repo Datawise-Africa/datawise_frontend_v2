@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/button';
 export default function HomeAboutUsSection() {
   return (
     <section className="bg-section-green dark:bg-section-green-dark">
-      <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+      <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
         <FadeIn direction="up">
           <div className="flex flex-col items-center text-center gap-6 max-w-3xl mx-auto">
             <h2 className="text-lg font-semibold text-primary uppercase tracking-wide">

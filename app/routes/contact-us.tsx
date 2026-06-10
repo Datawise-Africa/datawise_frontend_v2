@@ -119,7 +119,7 @@ export default function ContactUs() {
     <>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="text-center md:text-left space-y-6">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
@@ -147,7 +147,7 @@ export default function ContactUs() {
 
       {/* Contact Section */}
       <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="flex flex-col lg:flex-row items-stretch gap-8">
             {/* Contact Information */}
             <FadeIn direction="left" className="w-full lg:w-1/2">

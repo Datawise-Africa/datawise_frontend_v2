@@ -91,7 +91,7 @@ export default function PrivacyPolicy() {
     <>
       {/* Hero */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-5 lg:px-8 py-20 lg:py-28">
           <div className="text-center max-w-3xl mx-auto">
             <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-3">
               Legal
@@ -124,7 +124,7 @@ export default function PrivacyPolicy() {
 
       {/* Content */}
       <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-5 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto space-y-12">
             {sections.map((section) => (
               <FadeIn key={section.title} direction="up">

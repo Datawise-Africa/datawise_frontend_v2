@@ -84,7 +84,7 @@ export default function Partners() {
     <>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="space-y-6 text-center md:text-left">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-foreground">
@@ -120,7 +120,7 @@ export default function Partners() {
 
       {/* Why Partner With Us */}
       <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-12">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
@@ -161,7 +161,7 @@ export default function Partners() {
 
       {/* Partners Logos */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="text-center mb-10">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide mb-2">
@@ -210,7 +210,7 @@ export default function Partners() {
 
       {/* Form Section */}
       <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div ref={formRef} id="partner-form" className="scroll-mt-16">
             <FadeIn direction="up">
               <PartnersForm fetcher={fetcher} />

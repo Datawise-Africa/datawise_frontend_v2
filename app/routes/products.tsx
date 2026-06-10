@@ -138,7 +138,7 @@ export default function Projects() {
     <>
       {/* Hero Section */}
       {/* <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeIn direction="left">
               <div className="text-center md:text-left space-y-6">
@@ -176,7 +176,7 @@ export default function Projects() {
       </section> */}
       {/* Featured Projects Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <div className="text-center mb-12 space-y-2">
             <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
               Our Products
@@ -191,7 +191,7 @@ export default function Projects() {
             </p>
           </div>
 
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredProjects.map((project) => {
               return (
                 <StaggerItem key={project.slug}>
@@ -250,7 +250,7 @@ export default function Projects() {
         id="datasets"
         className="bg-section-green dark:bg-section-green-dark scroll-mt-24"
       >
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <FadeIn>
             <div className="text-center mb-12 space-y-2">
               <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
@@ -264,7 +264,7 @@ export default function Projects() {
             </div>
           </FadeIn>
 
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {datasets.map((dataset) => {
               return (
                 <StaggerItem key={dataset.slug}>
@@ -321,7 +321,7 @@ export default function Projects() {
 
       {/* CTA Section */}
       <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-4 lg:px-8 py-14 lg:py-20">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-8 md:justify-between">
               <div className="text-center md:text-left">

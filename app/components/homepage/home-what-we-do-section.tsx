@@ -47,7 +47,7 @@ const whatWeDoCards: {
 
 export default function HomeWhatWeDoSection() {
   return (
-    <div className="container mx-auto w-full px-4 py-14 lg:py-20 text-foreground">
+    <div className="container mx-auto w-full px-5 lg:px-8 py-14 lg:py-20 text-foreground">
       <FadeIn direction="up">
         <div className="flex flex-col items-center mb-12">
           <h2 className="text-lg font-semibold text-primary text-center uppercase tracking-wide">
@@ -96,11 +96,14 @@ export default function HomeWhatWeDoSection() {
                     variant="ghost"
                     className="p-0 h-auto text-sm font-semibold text-primary hover:bg-transparent hover:text-primary/80 group/btn"
                   >
-                    <Link to={card.link}>
-                      Learn more about {card.title}
+                    <Link
+                      to={card.link}
+                      aria-label={`Learn more about ${card.title}`}
+                    >
+                      Learn more
                       <Icon
                         icon="tabler:arrow-right"
-                        className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                        className="ml-1 h-4 w-4 shrink-0 transition-transform group-hover/btn:translate-x-1"
                       />
                     </Link>
                   </Button>

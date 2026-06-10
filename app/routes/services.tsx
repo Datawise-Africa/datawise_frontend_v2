@@ -236,7 +236,7 @@ export default function Services() {
     <>
       {/* Hero Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-5 lg:px-8 py-20 lg:py-28">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
               What We <span className="text-primary">Offer</span>
@@ -263,7 +263,7 @@ export default function Services() {
                 : 'bg-background'
             }
           >
-            <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+            <div className="container mx-auto px-5 lg:px-8 py-20 lg:py-28">
               {/* Alternating text + illustration */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
                 <FadeIn
@@ -320,7 +320,7 @@ export default function Services() {
 
       {/* CTA Section */}
       <section className="bg-background">
-        <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-28">
+        <div className="container mx-auto px-5 lg:px-8 py-20 lg:py-28">
           <FadeIn direction="up">
             <div className="bg-primary text-white rounded-2xl p-10 sm:p-14 flex flex-col md:flex-row items-center gap-8 md:justify-between">
               <div className="text-center md:text-left">
