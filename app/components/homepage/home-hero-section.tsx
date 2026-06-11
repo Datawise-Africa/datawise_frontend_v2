@@ -21,7 +21,7 @@ export default function HomeHeroSection() {
       </div>
 
       {/* Content */}
-      <div className="container z-10 mx-auto px-4 lg:px-8 py-12 lg:py-16 h-full">
+      <div className="container z-10 mx-auto px-5 lg:px-8 py-12 lg:py-16 h-full">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-6 lg:space-y-8">
             <FadeIn direction="up" delay={0}>
