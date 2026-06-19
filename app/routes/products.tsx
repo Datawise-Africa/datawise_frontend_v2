@@ -34,22 +34,22 @@ export function meta(_args: Route.MetaArgs) {
             'Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
           operatingSystem: 'Web',
         },
-        {
-          '@context': 'https://schema.org',
-          '@type': 'Dataset',
-          name: 'Eduken',
-          description:
-            'Education dataset capturing learning outcomes and access across African contexts.',
-          creator: { '@type': 'Organization', name: 'Datawise Africa' },
-        },
-        {
-          '@context': 'https://schema.org',
-          '@type': 'Dataset',
-          name: 'Afyaken',
-          description:
-            'Health dataset surfacing care delivery, outcomes, and public health signals across Kenya.',
-          creator: { '@type': 'Organization', name: 'Datawise Africa' },
-        },
+        // {
+        //   '@context': 'https://schema.org',
+        //   '@type': 'Dataset',
+        //   name: 'Eduken',
+        //   description:
+        //     'Education dataset capturing learning outcomes and access across African contexts.',
+        //   creator: { '@type': 'Organization', name: 'Datawise Africa' },
+        // },
+        // {
+        //   '@context': 'https://schema.org',
+        //   '@type': 'Dataset',
+        //   name: 'Afyaken',
+        //   description:
+        //     'Health dataset surfacing care delivery, outcomes, and public health signals across Kenya.',
+        //   creator: { '@type': 'Organization', name: 'Datawise Africa' },
+        // },
       ],
     }),
   ];
