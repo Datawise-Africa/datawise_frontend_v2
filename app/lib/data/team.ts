@@ -55,7 +55,7 @@ export const teamMembersData = [
   },
   {
     name: 'Wawuda Osiemo',
-    title: 'Marketing and Communications',
+    title: 'Marketing and Communications Lead',
     image: '/assets/teamMembers/wawuda.webp',
     description:
       "Wawuda has experience in social media, marketing, and communications, with a background in journalism. Her work reflects a passion for shaping how Datawise is seen and understood, helping the company grow its presence and influence. She enjoys writing, storytelling, and building meaningful relationships that strengthen both Datawise and its community. Wawuda also serves as the voice behind Datawise's podcast, The African Stack, where she helps share the stories behind Africa's growing technology ecosystem and innovation.",
