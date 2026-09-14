@@ -45,11 +45,11 @@ export const available_positions: JobCareerPositionType[] = [
   {
     id: 'communications-marketing-intern',
     title: 'Communications & Marketing Intern',
-    work_period: 'Internship',
+    work_period: 'Full-time Internship (4 months)',
     position: 'Nairobi, Kenya',
     workmode: 'Hybrid (Remote & In-office)',
     overview:
-      'We are looking for a creative, proactive, and curious Communications & Marketing Intern to support Datawise Africa’s communications, digital presence, storytelling, and marketing activities. The ideal candidate is a strong communicator who can turn ideas, projects, research, and technical work into engaging content for different audiences. You should be comfortable working across written, visual, social, and increasingly audio/video content. Recent graduates and students nearing completion of their studies are encouraged to apply.',
+      'We are looking for a creative, proactive, and curious Communications & Marketing Intern to support Datawise Africa’s communications, digital presence, storytelling, and marketing activities. The ideal candidate is a strong communicator who can turn ideas, projects, research, and technical work into engaging content for different audiences. You should be comfortable working across written, visual, social, and increasingly audio/video content. This is a full-time internship running for 4 months, with a possible 2-month extension and the possibility of being absorbed into the role once the internship is complete. Recent graduates and students nearing completion of their studies are encouraged to apply.',
     what_you_will_do: [
       'Develop engaging content for social media, websites, newsletters, campaigns, and other communication channels.',
       'Support the management and growth of Datawise Africa’s social media and digital presence.',
@@ -85,6 +85,7 @@ export const available_positions: JobCareerPositionType[] = [
       'Exposure to projects involving AI, data, technology, and innovation across Africa.',
       'Mentorship and opportunities to develop your professional portfolio.',
       'A monthly internship stipend.',
+      'A 4-month full-time internship, with a possible 2-month extension and the opportunity to be absorbed into the role afterwards.',
     ],
     link: 'https://airtable.com/appQCD9An8BnqG6J6/pag20Hx3LPoGgMhfQ/form',
   },
