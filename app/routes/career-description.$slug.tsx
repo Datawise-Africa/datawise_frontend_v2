@@ -87,9 +87,22 @@ export default function CareerDescription() {
     <>
       <div className="container mx-auto pt-20 px-5 lg:px-16 xl:px-20">
         <section className="max-w-4xl mx-auto">
-          <h1 className="font-bold text-4xl leading-[110%] tracking-tight text-center mb-8">
+          <h1 className="font-bold text-4xl leading-[110%] tracking-tight text-center mb-4">
             {pos.title}
           </h1>
+
+          <ul className="flex flex-wrap justify-center gap-2 mb-8">
+            {[pos.work_period, pos.position, pos.workmode]
+              .filter(Boolean)
+              .map((tag) => (
+                <li
+                  key={tag}
+                  className="bg-primary/10 dark:bg-primary/20 text-primary text-sm px-3 py-1 rounded"
+                >
+                  {tag}
+                </li>
+              ))}
+          </ul>
 
           {/* About the role */}
           <FadeIn direction="up" delay={0}>
@@ -190,19 +203,21 @@ export default function CareerDescription() {
           {/* Apply Button */}
           <FadeIn direction="up" delay={0.5}>
             <div className="flex justify-center">
-              <button
-                onClick={() =>
-                  window.open(applyUrl, '_blank', 'noopener,noreferrer')
-                }
-                className="bg-primary text-white font-medium py-6 px-20 rounded-md hover:bg-primary-hover transition flex items-center gap-2 mb-5"
+              <a
+                href={applyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-white font-medium py-6 px-20 rounded-md hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition flex items-center gap-2 mb-5"
               >
                 Apply Now
+                <span className="sr-only">(opens in a new tab)</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   className="w-5 h-5"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -210,7 +225,7 @@ export default function CareerDescription() {
                     d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                   />
                 </svg>
-              </button>
+              </a>
             </div>
           </FadeIn>
         </section>
