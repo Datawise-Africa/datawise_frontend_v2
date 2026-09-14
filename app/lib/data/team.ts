@@ -20,6 +20,7 @@ export const teamMembersData = [
   {
     name: 'Dorothy Chepkonga',
     title: 'Operations Lead',
+    former: true,
     image: '/assets/teamMembers/dorothy.webp',
     description:
       'Dorothy believes operations is an integration of strategy, people, and execution. She enjoys turning ideas into systems, improving how teams collaborate, and ensuring that projects move smoothly from planning to impact. She has led planning and performance reviews, coordinated cross-functional projects, improved Datawise’s internal workflows, and much more. At Datawise Africa, the operations allow Dorothy to support innovativeness by creating structure, clarity, and sustainable processes to support the mission.',
