@@ -1,4 +1,5 @@
 import type { JobCareerPositionType } from '~/lib/types/careers';
+import { slugify } from '~/utils/slugify';
 
 export const fullstack_what_you_will_do = [
   'Develop and maintain backend services and APIs using Django (Python).',
@@ -41,7 +42,12 @@ export const what_we_offer = [
   'Monthly stipend plus career progression.',
 ];
 
-export const available_positions: JobCareerPositionType[] = [
+/**
+ * Every position we have ever posted. Entries are kept here permanently so the
+ * record (and their `/career-description/:slug` pages) survives; whether a
+ * position is advertised is decided by its `deadline`, not by deleting it.
+ */
+export const all_positions: JobCareerPositionType[] = [
   {
     id: 'communications-marketing-intern',
     title: 'Communications & Marketing Intern',
@@ -87,8 +93,68 @@ export const available_positions: JobCareerPositionType[] = [
       'A monthly internship stipend.',
       'A 4-month full-time internship, with a possible 2-month extension and the opportunity to be absorbed into the role afterwards.',
     ],
+    deadline: '2026-09-23',
     link: 'https://airtable.com/appQCD9An8BnqG6J6/pag20Hx3LPoGgMhfQ/form',
   },
 ];
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+const MONTHS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/**
+ * A position is open until the end of its deadline day (UTC). A position with
+ * no deadline — or an unparseable one — is treated as open.
+ */
+export function isPositionOpen(
+  position: JobCareerPositionType,
+  now: Date = new Date()
+): boolean {
+  if (!position.deadline) return true;
+  const deadline = new Date(position.deadline);
+  if (Number.isNaN(deadline.getTime())) return true;
+  return now.getTime() < deadline.getTime() + DAY_MS;
+}
+
+/** Positions still accepting applications — what the careers page advertises. */
+export function getOpenPositions(
+  now: Date = new Date()
+): JobCareerPositionType[] {
+  return all_positions.filter((position) => isPositionOpen(position, now));
+}
+
+/** Look a position up by its title slug, open or closed. */
+export function getPositionBySlug(
+  slug: string
+): JobCareerPositionType | undefined {
+  return all_positions.find((position) => slugify(position.title) === slug);
+}
+
+/** Stable `23 Sep 2026` formatting — identical on the server and the client. */
+export function formatDeadline(deadline: Date | string): string {
+  const date = new Date(deadline);
+  if (Number.isNaN(date.getTime())) return '';
+  return `${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+}
+
+/** ISO date (`YYYY-MM-DD`) for JobPosting structured data. */
+export function toISODate(deadline: Date | string): string {
+  const date = new Date(deadline);
+  if (Number.isNaN(date.getTime())) return '';
+  return date.toISOString().slice(0, 10);
+}
 
 export const REACT_PUBLIC_API_HOST = 'https://gpt.datawiseafrica.com';
