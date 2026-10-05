@@ -1,9 +1,12 @@
-import { available_positions } from '~/lib/data/careers';
+import {
+  formatDeadline,
+  getPositionBySlug,
+  isPositionOpen,
+  toISODate,
+} from '~/lib/data/careers';
 import { FadeIn } from '~/components/motion';
-import { slugify } from '~/utils/slugify';
 import { generateSEOTags } from '~/utils/seo';
-import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { redirect } from 'react-router';
 import type { Route } from './+types/career-description.$slug';
 
 /** Truncate to maxLength at a word boundary, appending an ellipsis if cut. */
@@ -13,12 +16,25 @@ function truncateDescription(text: string, maxLength = 157) {
   return `${cut.slice(0, cut.lastIndexOf(' '))}…`;
 }
 
-export function meta({ params }: Route.MetaArgs) {
-  const job = available_positions.find(
-    (pos) => slugify(pos.title) === params.slug
-  );
+/**
+ * Closed positions stay in the data file for the record, but they are not
+ * publicly reachable: an expired (or unknown) slug is redirected to /careers
+ * on the server, so a direct link never renders the posting.
+ */
+export function loader({ params }: Route.LoaderArgs) {
+  const job = getPositionBySlug(params.slug);
 
-  if (!job) {
+  if (!job || !isPositionOpen(job)) {
+    throw redirect('/careers');
+  }
+
+  return { job };
+}
+
+export function meta({ params }: Route.MetaArgs) {
+  const job = getPositionBySlug(params.slug);
+
+  if (!job || !isPositionOpen(job)) {
     return [
       ...generateSEOTags({
         title: 'Career Opportunity | Datawise Africa',
@@ -46,6 +62,7 @@ export function meta({ params }: Route.MetaArgs) {
           name: 'Datawise Africa',
           sameAs: 'https://datawiseafrica.com',
         },
+        ...(job.deadline ? { validThrough: toISODate(job.deadline) } : {}),
         jobLocation: {
           '@type': 'Place',
           address: {
@@ -59,28 +76,10 @@ export function meta({ params }: Route.MetaArgs) {
   ];
 }
 
-export default function CareerDescription() {
-  const { slug } = useParams();
-  const navigate = useNavigate();
-
-  const pos = slug
-    ? available_positions.find((p) => slugify(p.title) === slug)
-    : null;
-
-  useEffect(() => {
-    if (!pos) {
-      navigate('/careers', { replace: true });
-    }
-  }, [pos, navigate]);
-
-  if (!pos) {
-    return (
-      <div className="container mx-auto py-20 text-center">
-        <p>Loading job details...</p>
-      </div>
-    );
-  }
-
+export default function CareerDescription({
+  loaderData,
+}: Route.ComponentProps) {
+  const pos = loaderData.job;
   const applyUrl = pos.link || '';
 
   return (
@@ -102,6 +101,11 @@ export default function CareerDescription() {
                   {tag}
                 </li>
               ))}
+            {pos.deadline && (
+              <li className="bg-muted text-muted-foreground text-sm px-3 py-1 rounded">
+                Apply by {formatDeadline(pos.deadline)}
+              </li>
+            )}
           </ul>
 
           {/* About the role */}
