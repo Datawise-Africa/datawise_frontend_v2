@@ -1,4 +1,4 @@
-import { available_positions } from '~/lib/data/careers';
+import { formatDeadline, getOpenPositions } from '~/lib/data/careers';
 import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { slugify } from '~/utils/slugify';
 import { Link, href } from 'react-router';
@@ -21,6 +21,8 @@ export function meta(_args: Route.MetaArgs) {
 }
 
 export default function Careers() {
+  const open_positions = getOpenPositions();
+
   return (
     <>
       {/* ---------- HERO ---------- */}
@@ -163,7 +165,7 @@ export default function Careers() {
             </div>
           </FadeIn>
 
-          {available_positions.length === 0 ? (
+          {open_positions.length === 0 ? (
             <FadeIn direction="up">
               <div className="text-center max-w-md mx-auto py-8">
                 <p className="text-muted-foreground text-lg">
@@ -173,7 +175,7 @@ export default function Careers() {
             </FadeIn>
           ) : (
             <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {available_positions.map((pos) => {
+              {open_positions.map((pos) => {
                 return (
                   <StaggerItem key={pos.id}>
                     <div className="border border-border bg-background dark:bg-background/50 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full">
@@ -191,6 +193,11 @@ export default function Careers() {
                         <span className="bg-primary/10 dark:bg-primary/20 text-primary text-xs px-2 py-1 rounded">
                           {pos.workmode}
                         </span>
+                        {pos.deadline && (
+                          <span className="bg-muted text-muted-foreground text-xs px-2 py-1 rounded">
+                            Apply by {formatDeadline(pos.deadline)}
+                          </span>
+                        )}
                       </div>
 
                       <p className="mt-3 text-muted-foreground text-sm leading-relaxed line-clamp-3">
