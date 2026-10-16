@@ -1,4 +1,14 @@
-export const teamMembersData = [
+type TeamMember = {
+  name: string;
+  title: string;
+  former?: boolean;
+  image: string;
+  description: string;
+  linkedin_url: string;
+  twitter_url: string;
+};
+
+export const teamMembersData: TeamMember[] = [
   {
     name: 'Dr. Albert Kahira',
     title: 'Director',
@@ -62,6 +72,7 @@ export const teamMembersData = [
       "Wawuda has experience in social media, marketing, and communications, with a background in journalism. Her work reflects a passion for shaping how Datawise is seen and understood, helping the company grow its presence and influence. She enjoys writing, storytelling, and building meaningful relationships that strengthen both Datawise and its community. Wawuda also serves as the voice behind Datawise's podcast, The African Stack, where she helps share the stories behind Africa's growing technology ecosystem and innovation.",
     linkedin_url: 'https://www.linkedin.com/in/wawuda-osiemo-23375a20a/',
     twitter_url: '',
+    former: true,
   },
   {
     name: 'Felix Orinda',
@@ -71,5 +82,14 @@ export const teamMembersData = [
       "Felix is the mind behind Web Dev Insights and has been instrumental in shaping the UI and UX implementation for key Datawise products, including The African Stack, Datalab, Maisha Registry, and the Datawise website. He has also collaborated on a number of internal tool projects, bringing a keen eye for detail and a passion for building intuitive, high-quality user experiences that power Datawise's digital presence.",
     linkedin_url: 'https://www.linkedin.com/in/felixorinda/',
     twitter_url: 'https://x.com/felix_orinda',
+  },
+  {
+    name: 'Kevin Kahira',
+    title: 'Software Engineer',
+    image: '/assets/teamMembers/kevin.webp',
+    description:
+      "Kevin is a talented software engineer contributing to the development and maintenance of Datawise's key products. He brings a strong focus on building efficient, scalable, and user-friendly solutions, ensuring that Datawise's digital presence remains robust and innovative.",
+    linkedin_url: '#',
+    twitter_url: '#',
   },
 ];

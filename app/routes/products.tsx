@@ -4,6 +4,7 @@ import { href, Link } from 'react-router';
 import { Icon } from '@iconify/react';
 import { FadeIn, StaggerChildren, StaggerItem } from '~/components/motion';
 import { Button } from '~/components/ui/button';
+import { datasets, featuredProjects, publications } from '~/lib/data/products';
 
 export function meta(_args: Route.MetaArgs) {
   return [
@@ -54,84 +55,6 @@ export function meta(_args: Route.MetaArgs) {
     }),
   ];
 }
-
-const featuredProjects: {
-  slug: string;
-  icon: string;
-  title: string;
-  description: string;
-  link?: string;
-  accentClass: string;
-  accentBgClass: string;
-}[] = [
-  {
-    slug: 'datalab',
-    icon: 'tabler:database',
-    title: 'Datalab',
-    description:
-      'DataLab is a platform for hosting, managing, and publishing data products. It enables creators to create and upload datasets, while also supporting richer data products such as dashboards and reports that deliver actionable insights. Designed for accessibility and usability, DataLab helps users discover, share, and turn data into meaningful impact.',
-    link: 'https://datalabafrica.com',
-    accentClass: 'text-primary',
-    accentBgClass: 'bg-primary/10 dark:bg-primary/20',
-  },
-  {
-    slug: 'sheria-ai',
-    icon: 'tabler:school',
-    title: 'Sheria AI',
-    description:
-      'Sheria AI is a Kenyan legal intelligence platform designed for lawyers, researchers, and anyone navigating the legal system. It combines an AI-powered chatbot with advanced search and filtering to help users quickly find relevant court rulings, understand legal principles, and generate practical legal insights. ',
-    accentClass: 'text-accent-blue',
-    accentBgClass: 'bg-accent-blue/10 dark:bg-accent-blue/20',
-    link: 'https://sheria.africa',
-  },
-  {
-    slug: 'african-stack',
-    icon: 'tabler:heartbeat',
-    title: 'African Stack',
-    description:
-      'The African Stack covers the ideas, research, and technologies shaping the continent’s future. Through in-depth articles, podcast conversations, and monthly newsletter updates, we connect Africa’s next wave of change makers with the insights that matter.',
-    accentClass: 'text-accent-pink',
-    accentBgClass: 'bg-accent-pink/10 dark:bg-accent-pink/20',
-    link: 'https://theafricanstack.com',
-  },
-];
-
-const datasets: {
-  slug: string;
-  icon: string;
-  category: string;
-  title: string;
-  description: string;
-  headerBgClass: string;
-}[] = [
-  {
-    slug: 'eduken',
-    icon: 'tabler:school',
-    category: 'Education',
-    title: 'Eduken',
-    description:
-      'A dataset of institutions of higher learning, course programmes, and facilities that support academic growth in Kenya. Built to support education research, planning, and policy.',
-    headerBgClass: 'bg-teal-600 dark:bg-teal-700',
-  },
-  {
-    slug: 'afyaken',
-    icon: 'tabler:building-hospital',
-    category: 'Health',
-    title: 'Afyaken',
-    description:
-      'A comprehensive health facilities dataset covering Level 4 and 5 hospitals across Kenya, mapping hospital distribution, ownership, and capacity across the country.',
-    headerBgClass: 'bg-emerald-700 dark:bg-emerald-800',
-  },
-  {
-    slug: 'sheria-corpus',
-    icon: 'tabler:scale',
-    category: 'Legal',
-    title: 'Sheria Corpus',
-    description:
-      'A curated legal dataset of landmark rulings from Kenya’s judiciary. Structured and annotated to enhance transparency, accessibility, and innovation in legal research and AI.',
-    headerBgClass: 'bg-yellow-700 dark:bg-yellow-800',
-  },
-];
 
 export default function Projects() {
   return (
@@ -315,6 +238,80 @@ export default function Projects() {
                 </StaggerItem>
               );
             })}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* Publications Section */}
+      <section id="publications" className="bg-background scroll-mt-24">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
+          <FadeIn>
+            <div className="text-center mb-12 space-y-2">
+              <h3 className="text-lg font-semibold text-primary uppercase tracking-wide">
+                Publications
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6 max-w-3xl mx-auto">
+                Research on the state of AI-ready data across Africa.
+              </p>
+            </div>
+          </FadeIn>
+
+          <StaggerChildren className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+            {publications.map((publication) => (
+              <StaggerItem key={publication.slug}>
+                <article
+                  id={publication.slug}
+                  className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-8 shadow-sm h-full scroll-mt-24"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 shrink-0">
+                      <Icon
+                        icon={publication.icon}
+                        className="h-6 w-6 text-primary"
+                      />
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Abstract
+                      </span>
+                      <h4 className="text-xl font-bold text-foreground">
+                        {publication.title}
+                      </h4>
+                    </div>
+                  </div>
+                  {publication.abstract.map((paragraph) => (
+                    <p
+                      key={paragraph.slice(0, 32)}
+                      className="text-sm sm:text-base text-muted-foreground leading-relaxed"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                  {publication.link && (
+                    <div className="mt-auto pt-4 border-t border-border">
+                      <Button
+                        asChild
+                        variant="ghost"
+                        className="p-0 h-auto text-sm font-semibold text-primary hover:bg-transparent hover:text-primary/80 group/btn"
+                      >
+                        <a
+                          href={publication.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Read ${publication.title}`}
+                        >
+                          Read report
+                          <Icon
+                            icon="tabler:arrow-right"
+                            className="ml-1 h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                          />
+                        </a>
+                      </Button>
+                    </div>
+                  )}
+                </article>
+              </StaggerItem>
+            ))}
           </StaggerChildren>
         </div>
       </section>
