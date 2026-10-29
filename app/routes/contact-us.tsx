@@ -63,18 +63,21 @@ export async function action({ request }: Route.ActionArgs) {
 const contactInfo = [
   {
     icon: 'tabler:phone',
-    label: 'Phone Number',
+    label: 'Phone',
     value: '+254 704 237 879',
+    href: 'tel:+254704237879',
   },
   {
     icon: 'tabler:mail',
-    label: 'Email Address',
+    label: 'Email',
     value: 'info@datawiseafrica.com',
+    href: 'mailto:info@datawiseafrica.com',
   },
   {
     icon: 'tabler:map-pin',
-    label: 'Office Location',
+    label: 'Office',
     value: 'Highway Heights, Marcus Garvey Rd, Kilimani, Nairobi, Kenya',
+    href: 'https://www.google.com/maps/search/?api=1&query=Highway+Heights+Marcus+Garvey+Rd+Kilimani+Nairobi',
   },
 ];
 
@@ -116,183 +119,151 @@ export default function ContactUs() {
   };
 
   return (
-    <>
-      {/* Hero Section */}
-      <section className="bg-background">
-        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div className="text-center md:text-left space-y-6">
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground">
-                Get in
-                <span className="text-primary"> Touch</span>
+    <section className="bg-background lg:flex lg:items-center lg:min-h-[calc(100svh-5rem)]">
+      <div className="container mx-auto px-5 lg:px-8 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16">
+        {/* Intro + contact details */}
+        <FadeIn>
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <span className="text-sm font-semibold text-primary uppercase tracking-wide">
+                Contact
+              </span>
+              <h1 className="font-bold text-4xl sm:text-5xl leading-tight tracking-tight text-foreground">
+                Get in <span className="text-primary">Touch</span>
               </h1>
-              <p className="text-muted-foreground text-lg sm:text-xl leading-relaxed max-w-lg">
+              <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
                 Have any questions, need support, or just want to learn more
                 about Datawise Africa? Reach out&mdash;we&rsquo;d love to hear
                 from you.
               </p>
             </div>
-            <div className="flex justify-center">
-              <img
-                className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl aspect-576/400"
-                src="/assets/contactus/contactUs.svg"
-                alt="Contact Us"
-                width={576}
-                height={400}
-              />
-            </div>
+            <ul className="divide-y divide-border border-y border-border">
+              {contactInfo.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={
+                      item.href.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
+                    className="group flex items-start gap-4 py-5"
+                  >
+                    <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 dark:bg-primary/20 shrink-0">
+                      <Icon icon={item.icon} className="h-5 w-5 text-primary" />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        {item.label}
+                      </span>
+                      <span className="block mt-1 text-foreground group-hover:text-primary transition-colors">
+                        {item.value}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+        </FadeIn>
 
-      {/* Contact Section */}
-      <section className="bg-section-green dark:bg-section-green-dark">
-        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
-          <div className="flex flex-col lg:flex-row items-stretch gap-8">
-            {/* Contact Information */}
-            <FadeIn direction="left" className="w-full lg:w-1/2">
-              <Card className="h-full">
-                <CardHeader>
-                  <p className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
-                    Get In Touch
-                  </p>
-                  <CardTitle className="text-2xl">
-                    Contact Information
+        {/* Contact Form */}
+        <FadeIn direction="up">
+          <Card className="h-full">
+            <CardHeader>
+              {isSuccess ? (
+                <div className="text-center bg-primary/10 dark:bg-primary/20 p-6 rounded-xl">
+                  <CardTitle className="text-2xl text-primary">
+                    Thank You!
                   </CardTitle>
-                  <p className="text-muted-foreground">
-                    For inquiries, feedback, or assistance, reach us at:
+                  <p className="text-muted-foreground mt-2">
+                    Your message has been sent successfully.
                   </p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {contactInfo.map((item) => {
-                    return (
-                      <div
-                        key={item.label}
-                        className="bg-muted p-4 rounded-xl flex items-start gap-4"
-                      >
-                        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0">
-                          <Icon
-                            icon={item.icon}
-                            className="h-5 w-5 text-primary"
-                          />
-                        </div>
-                        <div>
-                          <p className="text-sm font-semibold text-foreground">
-                            {item.label}
-                          </p>
-                          <p className="text-muted-foreground text-sm mt-0.5">
-                            {item.value}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </CardContent>
-              </Card>
-            </FadeIn>
+                </div>
+              ) : (
+                <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+              )}
+            </CardHeader>
+            <CardContent>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-4"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <FormTextField
+                      control={form.control}
+                      name="first_name"
+                      label="First name"
+                      placeholder="Jane"
+                      autoComplete="given-name"
+                      required
+                    />
+                    <FormTextField
+                      control={form.control}
+                      name="last_name"
+                      label="Last name"
+                      placeholder="Doe"
+                      autoComplete="family-name"
+                      required
+                    />
+                  </div>
 
-            {/* Contact Form */}
-            <FadeIn direction="right" className="w-full lg:w-1/2">
-              <Card className="h-full">
-                <CardHeader>
-                  {isSuccess ? (
-                    <div className="text-center bg-primary/10 dark:bg-primary/20 p-6 rounded-xl">
-                      <CardTitle className="text-2xl text-primary">
-                        Thank You!
-                      </CardTitle>
-                      <p className="text-muted-foreground mt-2">
-                        Your message has been sent successfully.
-                      </p>
-                    </div>
-                  ) : (
-                    <>
-                      <p className="text-lg font-semibold text-primary uppercase tracking-wide mb-1">
-                        Reach Out
-                      </p>
-                      <CardTitle className="text-2xl">
-                        Send Us a Message
-                      </CardTitle>
-                    </>
-                  )}
-                </CardHeader>
-                <CardContent>
-                  <Form {...form}>
-                    <form
-                      onSubmit={form.handleSubmit(onSubmit)}
-                      className="space-y-4"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <FormTextField
-                          control={form.control}
-                          name="first_name"
-                          label="First Name"
-                          placeholder="First Name"
-                          required
+                  <FormTextField
+                    control={form.control}
+                    name="email"
+                    label="Email"
+                    placeholder="jane@company.com"
+                    autoComplete="email"
+                    type="email"
+                    required
+                  />
+
+                  <FormTextField
+                    control={form.control}
+                    name="subject"
+                    label="Subject"
+                    placeholder="What’s this about?"
+                    required
+                  />
+
+                  <FormTextareaField
+                    control={form.control}
+                    name="message"
+                    label="Message"
+                    placeholder="Tell us a little about your project or question"
+                    rows={6}
+                    required
+                  />
+
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    size="lg"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Icon
+                          icon="tabler:loader-2"
+                          className="animate-spin h-5 w-5 mr-2"
                         />
-                        <FormTextField
-                          control={form.control}
-                          name="last_name"
-                          label="Last Name"
-                          placeholder="Last Name"
-                          required
-                        />
-                      </div>
-
-                      <FormTextField
-                        control={form.control}
-                        name="email"
-                        label="Email Address"
-                        placeholder="Email Address"
-                        type="email"
-                        required
-                      />
-
-                      <FormTextField
-                        control={form.control}
-                        name="subject"
-                        label="Your Subject"
-                        placeholder="Your subject"
-                        required
-                      />
-
-                      <FormTextareaField
-                        control={form.control}
-                        name="message"
-                        label="Message"
-                        placeholder="Input your message here"
-                        rows={4}
-                        required
-                      />
-
-                      <Button
-                        type="submit"
-                        className="w-full"
-                        size="lg"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Icon
-                              icon="tabler:loader-2"
-                              className="animate-spin h-5 w-5 mr-2"
-                            />
-                            Sending...
-                          </>
-                        ) : (
-                          <>
-                            <Icon icon="tabler:send" className="h-5 w-5 mr-2" />
-                            Send Message
-                          </>
-                        )}
-                      </Button>
-                    </form>
-                  </Form>
-                </CardContent>
-              </Card>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-    </>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Icon icon="tabler:send" className="h-5 w-5 mr-2" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        </FadeIn>
+      </div>
+    </section>
   );
 }

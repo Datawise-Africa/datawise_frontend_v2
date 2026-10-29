@@ -7,14 +7,21 @@ import { useTheme } from '~/hooks/use-theme';
 import { useIsMobile } from '~/hooks/use-mobile';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '~/components/ui/sheet';
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpenState] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const setMobileOpen = (open: boolean) => {
+    setMobileOpenState(open);
+    if (!open) setMobileExpanded(null);
+  };
   const [mounted, setMounted] = useState(false);
   const { darkMode, toggle: toggleTheme } = useTheme();
   const isMobile = useIsMobile();
@@ -35,7 +42,7 @@ export default function Header() {
         className="sticky top-0 left-0 w-full z-50 backdrop-blur-sm bg-navy/90 transition-colors duration-200 h-20 border-b border-white/10"
       >
         <div className="container mx-auto px-5 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to={href('/')} className="shrink-0 w-48">
               <img
@@ -63,7 +70,7 @@ export default function Header() {
               {/* Desktop CTA Button */}
               <Link
                 to={href('/products')}
-                className="flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-primary-hover hover:shadow-xl"
+                className="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 py-2.5 font-medium text-white shadow-lg transition-colors duration-200 hover:bg-primary-hover hover:shadow-xl"
               >
                 Explore Products
                 <Icon icon="tabler:arrow-right" className="h-5 w-5" />
@@ -109,8 +116,9 @@ export default function Header() {
               <SheetContent
                 side="right"
                 className="w-80 bg-navy border-navy-light/50 p-0 overflow-y-auto"
+                showCloseButton={false}
               >
-                <SheetHeader className="px-5 pt-5 pb-4 border-b border-white/10">
+                <SheetHeader className="flex-row items-center justify-between px-5 py-4 border-b border-white/10">
                   <SheetTitle>
                     <Link
                       to={href('/')}
@@ -126,6 +134,17 @@ export default function Header() {
                       />
                     </Link>
                   </SheetTitle>
+                  <SheetDescription className="sr-only">
+                    Site navigation
+                  </SheetDescription>
+                  <SheetClose className="inline-flex items-center justify-center size-11 -mr-2 rounded-lg text-gray-300 hover:bg-navy-light/50 hover:text-white transition-colors">
+                    <Icon
+                      icon="tabler:x"
+                      className="h-6 w-6"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">Close menu</span>
+                  </SheetClose>
                 </SheetHeader>
 
                 <div className="flex flex-col px-3 py-4">
@@ -136,6 +155,10 @@ export default function Header() {
                         item={item}
                         variant="mobile"
                         onNavigate={() => setMobileOpen(false)}
+                        expanded={mobileExpanded === item.title}
+                        onExpandedChange={(open) =>
+                          setMobileExpanded(open ? item.title : null)
+                        }
                       />
                     ))}
                   </nav>

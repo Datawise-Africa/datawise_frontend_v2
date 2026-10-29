@@ -15,6 +15,7 @@ interface FormTextFieldProps<TFieldValues extends FieldValues> {
   placeholder?: string;
   required?: boolean;
   disabled?: boolean;
+  autoComplete?: string;
   type?:
     | 'text'
     | 'email'
@@ -32,6 +33,7 @@ export function FormTextField<TFieldValues extends FieldValues>({
   placeholder,
   required = false,
   disabled = false,
+  autoComplete,
   type = 'text',
 }: FormTextFieldProps<TFieldValues>) {
   return (
@@ -48,6 +50,7 @@ export function FormTextField<TFieldValues extends FieldValues>({
               type={type}
               placeholder={placeholder}
               disabled={disabled}
+              autoComplete={autoComplete}
               {...field}
             />
           </FormControl>
