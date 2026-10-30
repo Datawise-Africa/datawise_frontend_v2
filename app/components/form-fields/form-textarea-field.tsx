@@ -41,6 +41,8 @@ export function FormTextareaField<TFieldValues extends FieldValues>({
               placeholder={placeholder}
               disabled={disabled}
               rows={rows}
+              // field-sizing-content ignores rows; keep it as the minimum height
+              style={{ minHeight: `calc(${rows}lh + 1rem)` }}
               {...field}
             />
           </FormControl>

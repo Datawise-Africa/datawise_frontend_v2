@@ -2,15 +2,18 @@ export type DropdownItem = {
   title: string;
   url: string;
   description?: string;
+  icon?: string;
   external?: boolean;
 };
 
 export type MegaMenuGroup = {
   heading: string;
   items: DropdownItem[];
+  seeAll?: DropdownItem;
 };
 
 export type MegaMenuFeatured = {
+  eyebrow?: string;
   title: string;
   description: string;
   url: string;

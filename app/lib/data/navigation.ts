@@ -70,19 +70,20 @@ export const navigation: NavigationItem[] = [
             {
               title: 'Datalab',
               url: '/products#datalab',
+              icon: 'tabler:database',
               description: 'Open dataset discovery and collaboration.',
-            },
-            {
-              title: 'African Stack',
-              url: '/products#african-stack',
-              description:
-                'The Nerve Center of Africa’s Data, AI & Infrastructure Evolution',
             },
             {
               title: 'Sheria AI',
               url: '/products#sheria-ai',
-              description:
-                'Sheria AI is a Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',
+              icon: 'tabler:scale',
+              description: 'Kenyan legal research with an AI assistant.',
+            },
+            {
+              title: 'African Stack',
+              url: '/products#african-stack',
+              icon: 'tabler:stack-2',
+              description: "Insights on Africa's data, AI & infrastructure.",
             },
           ],
         },
@@ -92,30 +93,59 @@ export const navigation: NavigationItem[] = [
             {
               title: 'Eduken',
               url: '/products#eduken',
-              description:
-                'Education dataset capturing learning outcomes and access across African contexts.',
+              icon: 'tabler:school',
+              description: 'Higher learning institutions and programmes.',
             },
             {
               title: 'Afyaken',
               url: '/products#afyaken',
-              description:
-                'Health dataset surfacing care delivery, outcomes, and public health signals.',
+              icon: 'tabler:building-hospital',
+              description: 'Level 4 and 5 hospitals across Kenya.',
             },
             {
               title: 'Sheria Corpus',
               url: '/products#sheria-corpus',
-              description:
-                'Legal corpus of Kenyan court rulings, statutes, and regulatory texts.',
+              icon: 'tabler:file-text',
+              description: 'Annotated landmark rulings from Kenyan courts.',
             },
           ],
+          seeAll: {
+            title: 'Browse on Datalab',
+            url: 'https://datalabafrica.com',
+            external: true,
+          },
+        },
+        {
+          heading: 'Publications',
+          items: [
+            {
+              title: "Africa's Data Landscape",
+              url: '/products#africa-data-landscape',
+              icon: 'tabler:chart-pie',
+              description: 'Dataset availability and AI readiness in Africa.',
+            },
+            {
+              title: 'AI Readiness Gap Analysis',
+              url: '/products#ai-readiness-frameworks-gap-analysis',
+              icon: 'tabler:zoom-scan',
+              description: 'Six AI-ready data frameworks, African lens.',
+            },
+          ],
+          seeAll: {
+            title: 'See all reports',
+            url: 'https://africadatalab.org/research/reports',
+            external: true,
+          },
         },
       ],
       featured: [
         {
-          title: 'Data for Africa',
+          eyebrow: 'New report',
+          title: "Africa's Data Landscape: A Foundation for AI Readiness",
           description:
-            'Open-access datasets and platforms for researchers, policymakers, and innovators.',
-          url: '/products',
+            'Why data availability alone is insufficient for AI readiness across the continent.',
+          url: 'https://africadatalab.org/research/reports',
+          external: true,
         },
       ],
     },
