@@ -12,14 +12,16 @@ export default function HomeAboutUsSection() {
               Who we are
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Datawise Africa is a research and development company building
-              Africa&rsquo;s data and intelligent systems, from high-quality
-              datasets to AI models and compute infrastructure.
+              We are a research and development company that helps businesses,
+              governments and other organizations make better decisions and
+              build stronger systems through data, AI and infrastructure. We
+              combine rigorous research, engineering and a deep understanding of
+              Africa and the Global South.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              We exist to research, build, and deploy reliable data and
-              intelligent systems that accelerate Africa&rsquo;s digital
-              transformation.
+              Our research gives policymakers and leaders the evidence they need
+              to act, while our engineering turns that evidence into systems
+              that work.
             </p>
             <Button
               asChild

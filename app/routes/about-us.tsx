@@ -11,10 +11,10 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'About Us | Datawise Africa',
       description:
-        'Meet Datawise Africa — the mission, values, and team behind our work in AI, data systems, and digital infrastructure across Africa.',
+        'Meet the Datawise Africa team: researchers and engineers turning evidence into data, AI, and infrastructure systems across Africa and the Global South.',
       url: href('/about-us'),
       keywords:
-        'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, data infrastructure, machine learning Africa, data-driven impact',
+        'about Datawise Africa, data science africa, AI innovation, African technology, data and AI solutions, research and development Africa, policy research, data infrastructure, machine learning Africa, Global South, data-driven impact',
       jsonLd: {
         '@context': 'https://schema.org',
         '@type': 'AboutPage',
@@ -23,9 +23,10 @@ export function meta(_args: Route.MetaArgs) {
           name: 'Datawise Africa',
           url: 'https://datawiseafrica.com',
           description:
-            'Research and development company committed to solving Africa’s pressing challenges through data and AI innovation.',
-          areaServed: 'Africa',
+            'Research and development company helping businesses, governments, and organizations make better decisions and build stronger systems through data, AI, and infrastructure.',
+          areaServed: ['Africa', 'Global South'],
           knowsAbout: [
+            'Policy Research',
             'Data Science',
             'Artificial Intelligence',
             'Machine Learning',
@@ -108,22 +109,32 @@ export default function AboutUs() {
                   Who we are
                 </h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Datawise Africa is a research and development company focused
-                  on building the technical foundations for Africa&rsquo;s data
-                  and intelligent systems.
+                  We work where data, AI, and decision making meet. Good
+                  decisions need good evidence, and good evidence needs strong
+                  data systems behind it. Datawise Africa works on both.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Our work centres on parts of the stack that are often
-                  overlooked but absolutely necessary; well-structured datasets,
-                  locally relevant AI models, and the compute infrastructure
-                  needed to run them reliably.
+                  Our research team takes on complex questions for businesses,
+                  governments, and international organizations. We speak with
+                  the people closest to the problem, study cases across
+                  countries, and analyze the policies that shape each sector.
+                  This work gives policymakers and leaders clear evidence they
+                  can use to set strategy, guide investments, and design
+                  programs.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Through applied research, platforms like DataLab, and our
-                  broader engineering work, we turn raw information into usable
-                  systems and evidence. The goal is to make sure developers,
-                  institutions, and decision-makers have the tools to build
-                  technology that actually works in African contexts.
+                  Our engineering team builds the systems that put this evidence
+                  to work. We design data platforms, software, and AI models,
+                  along with the infrastructure that runs them. These include
+                  our own products such as DataLab, a platform for finding and
+                  using African data, and SheriaLab, which makes legal
+                  information easier to access.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  Our team brings together researchers, data scientists, and
+                  software engineers. Together we work with partners across
+                  Africa and the Global South in areas such as health, research
+                  systems, mobile technology, law, and African languages.
                 </p>
               </div>
             </FadeIn>

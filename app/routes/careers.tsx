@@ -165,6 +165,47 @@ export default function Careers() {
             </div>
           </FadeIn>
 
+          <FadeIn direction="up">
+            <div className="max-w-5xl mx-auto mb-8 overflow-hidden rounded-2xl bg-navy text-white shadow-sm">
+              <div className="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
+                <div className="space-y-3">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-200">
+                    <Icon icon="tabler:school" className="h-4 w-4" />
+                    Students &amp; graduates
+                  </span>
+                  <h3 className="font-bold text-2xl">
+                    Student Associate Programme
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed max-w-xl">
+                    Six months of hands-on experience, a named supervisor and
+                    mentorship across data, AI, research, communications and
+                    operations.
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs text-gray-200">
+                    {['6 months', '2 stages', '5 tracks'].map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-md bg-white/10 px-2 py-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-auto px-6 py-3 w-full md:w-auto"
+                >
+                  <Link to={href('/student-associate-programme')}>
+                    Learn more
+                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </FadeIn>
+
           {open_positions.length === 0 ? (
             <FadeIn direction="up">
               <div className="text-center max-w-md mx-auto py-8">

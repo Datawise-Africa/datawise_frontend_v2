@@ -21,10 +21,10 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Datawise Africa | AI, Data and Digital Infrastructure',
       description:
-        "R&D company building the technical foundations for Africa's data and intelligent systems — trusted datasets, applied research, and critical infrastructure.",
+        'R&D company helping businesses, governments and organizations make better decisions through data, AI and infrastructure across Africa and the Global South.',
       url: href('/'),
       keywords:
-        'data science africa, artificial intelligence research, AI solutions, African technology, data infrastructure, machine learning, research and development, data analytics, AI innovation, African tech solutions, data systems, applied research',
+        'data science africa, artificial intelligence research, AI solutions, African technology, data infrastructure, machine learning, research and development, data analytics, AI innovation, African tech solutions, data systems, applied research, policy research, evidence-based decision making, Global South',
     }),
   ];
 }
