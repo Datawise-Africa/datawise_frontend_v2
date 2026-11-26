@@ -36,6 +36,7 @@ Datawise Africa is a research and development company that helps businesses, gov
 - [Products](${origin}/products): Platforms and datasets we are building
 - [Datalab](https://datalabafrica.com): Curated African dataset discovery platform
 - [Careers](${origin}/careers): Open positions and job opportunities
+- [Student Associate Programme](${origin}/student-associate-programme): Six-month programme (Jan–Jun 2027) for university students and recent graduates
 - [Partners](${origin}/partners): Our partnership network
 - [Become a Partner](${origin}/become-a-partner): Partnership application form
 - [Contact Us](${origin}/contact-us): Reach out for partnerships, projects, and inquiries

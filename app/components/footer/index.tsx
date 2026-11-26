@@ -28,6 +28,7 @@ const secondaryLinks = [
   { to: '/', label: 'Home' },
   { to: '/partners', label: 'Partners' },
   { to: '/careers', label: 'Careers' },
+  { to: '/student-associate-programme', label: 'Student Associate Programme' },
   { to: '/privacy-policy', label: 'Privacy Policy' },
 ];
 
