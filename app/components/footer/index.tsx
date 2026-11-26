@@ -31,13 +31,18 @@ const secondaryLinks = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
 ];
 
+const linkGroups = [
+  { title: 'Top Pages', links: primaryLinks },
+  { title: 'More', links: secondaryLinks },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-navy text-gray-300 border-t border-white/10">
       <div className="container mx-auto px-5 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-10">
           {/* Logo & Tagline */}
-          <div className="space-y-4">
+          <div className="col-span-2 lg:col-span-1 space-y-4">
             <Link to={href('/')} className="block w-48">
               <img
                 src="/assets/datawise-logo-dark.png"
@@ -71,40 +76,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company Links */}
-          <div>
-            <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
-              Top Pages
-            </p>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
-              {primaryLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="inline-flex items-center min-h-11 text-sm text-gray-300 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+          {/* Link groups */}
+          {linkGroups.map((group) => (
+            <div key={group.title}>
+              <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
+                {group.title}
+              </p>
+              <ul className="flex flex-col gap-y-1 md:gap-y-3">
+                {group.links.map((link) => (
+                  <li key={link.to}>
+                    <Link
+                      to={link.to}
+                      className="inline-flex items-center min-h-11 md:min-h-5 text-sm text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="mt-6 font-bold text-sm uppercase tracking-wide mb-4 text-white">
-              More
-            </p>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
-              {secondaryLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className="inline-flex items-center min-h-11 text-sm text-gray-300 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
+          ))}
 
           {/* Contact Info */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <p className="font-bold text-sm uppercase tracking-wide mb-4 text-white">
               Contact
             </p>

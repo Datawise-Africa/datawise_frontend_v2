@@ -26,14 +26,14 @@ export default function HomeHeroSection() {
           <div className="space-y-6 lg:space-y-8">
             <FadeIn direction="up" delay={0}>
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-5xl text-white drop-shadow-lg">
-                Applied research and development for Africa&apos;s data and
-                intelligent systems
+                Research and engineering for better decisions
               </h1>
             </FadeIn>
             <FadeIn direction="up" delay={0.2}>
               <p className="text-lg text-teal-100 sm:text-xl lg:text-1xl leading-relaxed drop-shadow-md">
-                Building the technical foundations for Africa's data and
-                intelligent systems.
+                We help businesses, governments and organizations across Africa
+                and the Global South act on evidence through data, AI and
+                infrastructure.
               </p>
             </FadeIn>
             <FadeIn direction="up" delay={0.4}>

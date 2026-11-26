@@ -74,8 +74,8 @@ export const navigation: NavigationItem[] = [
               description: 'Open dataset discovery and collaboration.',
             },
             {
-              title: 'Sheria AI',
-              url: '/products#sheria-ai',
+              title: 'SheriaLab',
+              url: '/products#sherialab',
               icon: 'tabler:scale',
               description: 'Kenyan legal research with an AI assistant.',
             },
