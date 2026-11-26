@@ -22,6 +22,8 @@ const seoStructuredData = [
     name: 'Datawise Africa',
     url: baseUrl,
     logo: `${baseUrl}/assets/datawise-logo-dark.png`,
+    description:
+      'Research and development company helping businesses, governments, and organizations make better decisions and build stronger systems through data, AI, and infrastructure.',
     email: 'info@datawiseafrica.com',
     telephone: '+254704237879',
     address: {

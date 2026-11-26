@@ -29,7 +29,8 @@ export function meta(_args: Route.MetaArgs) {
         {
           '@context': 'https://schema.org',
           '@type': 'SoftwareApplication',
-          name: 'Sheria AI',
+          name: 'SheriaLab',
+          url: 'https://sherialab.com',
           applicationCategory: 'LegalApplication',
           description:
             'Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering.',

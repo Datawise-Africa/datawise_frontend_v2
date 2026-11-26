@@ -55,6 +55,13 @@ export const navigation: NavigationItem[] = [
             'From data collection and research to AI deployment and infrastructure.',
           url: '/services',
         },
+        {
+          eyebrow: 'New programme',
+          title: 'Student Associate Programme',
+          description:
+            'Six months of hands-on experience and mentorship for students and recent graduates.',
+          url: '/student-associate-programme',
+        },
       ],
     },
   },
@@ -74,8 +81,8 @@ export const navigation: NavigationItem[] = [
               description: 'Open dataset discovery and collaboration.',
             },
             {
-              title: 'Sheria AI',
-              url: '/products#sheria-ai',
+              title: 'SheriaLab',
+              url: '/products#sherialab',
               icon: 'tabler:scale',
               description: 'Kenyan legal research with an AI assistant.',
             },

@@ -18,7 +18,9 @@ LinkedIn: https://www.linkedin.com/company/datawise-africa
 
 ## About Datawise Africa
 
-Datawise Africa is a research and development company committed to solving Africa's pressing challenges through data and AI innovation. Based in Nairobi, Kenya, we build trusted data systems, conduct applied research, and develop critical infrastructure while fostering local research leadership across the continent.
+Datawise Africa is a research and development company that helps businesses, governments, and other organizations make better decisions and build stronger systems through data, AI, and infrastructure. Based in Nairobi, Kenya, we combine rigorous research, engineering, and a deep understanding of Africa and the Global South. Our research gives policymakers and leaders the evidence they need to act, while our engineering turns that evidence into systems that work.
+
+Our research team takes on complex questions for businesses, governments, and international organizations — speaking with the people closest to the problem, studying cases across countries, and analyzing the policies that shape each sector. Our engineering team designs data platforms, software, and AI models, along with the infrastructure that runs them. We work with partners across Africa and the Global South in health, research systems, mobile technology, law, and African languages.
 
 We create high-quality datasets, develop practical AI systems, and research sustainable compute infrastructure. Our work spans across data science, machine learning, natural language processing, software engineering, and cloud infrastructure — all tailored to African contexts and challenges.
 
@@ -64,7 +66,7 @@ Open dataset discovery and collaboration platform. Search, filter, and download 
 **African Stack** — ${origin}/products
 The nerve center of Africa's data, AI & infrastructure evolution. A comprehensive platform tracking and connecting the continent's technology ecosystem.
 
-**Sheria AI** — ${origin}/products
+**SheriaLab** — https://sherialab.com
 A Kenyan legal platform providing court rulings, legal insights, and an AI chatbot with advanced search and filtering. Designed for legal professionals, researchers, and citizens seeking accessible legal information.
 
 ### Datasets
@@ -76,7 +78,7 @@ Education dataset capturing learning outcomes and access across African contexts
 Health dataset surfacing care delivery, outcomes, and public health signals. Includes hospital data, disease prevalence, treatment outcomes, and healthcare infrastructure metrics across Kenya.
 
 **Sheria Corpus**
-Legal corpus of Kenyan court rulings, statutes, and regulatory texts. A comprehensive collection of legal documents powering the Sheria AI platform.
+Legal corpus of Kenyan court rulings, statutes, and regulatory texts. A comprehensive collection of legal documents powering the SheriaLab platform.
 
 ---
 
@@ -85,6 +87,12 @@ Legal corpus of Kenyan court rulings, statutes, and regulatory texts. A comprehe
 Datawise Africa is always looking for talented individuals passionate about data, AI, and African development. Open positions span data science, machine learning engineering, software development, research, and operations.
 
 Visit ${origin}/careers for current openings.
+
+### Student Associate Programme
+
+A six-month pilot (January – June 2027) giving university students and recent graduates practical industry experience, professional mentorship and growing responsibility. Stage 1 (Months 1–3) is an industrial attachment with a named supervisor and work plan. Selected participants progress to Stage 2 (Months 4–6) as Student Associates, contributing about 20 hours a week. Tracks: Data & Analytics, Research & Intelligence, Engineering & AI, Communications & Strategy, and Business & Operations. Final-year and penultimate-year students and graduates within 12–18 months of graduation are prioritised. Applications opening soon.
+
+Details: ${origin}/student-associate-programme
 
 ---
 

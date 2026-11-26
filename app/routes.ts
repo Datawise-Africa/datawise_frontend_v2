@@ -22,6 +22,10 @@ export default [
     route('become-a-partner', 'routes/become-a-partner.tsx'),
     route('contact-us', 'routes/contact-us.tsx'),
     route('careers', 'routes/careers.tsx'),
+    route(
+      'student-associate-programme',
+      'routes/student-associate-programme.tsx'
+    ),
     route('partners', 'routes/partners.tsx'),
     route('privacy-policy', 'routes/privacy-policy.tsx'),
   ]),

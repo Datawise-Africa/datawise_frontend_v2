@@ -14,12 +14,12 @@ export const featuredProjects: {
     link: 'https://datalabafrica.com',
   },
   {
-    slug: 'sheria-ai',
+    slug: 'sherialab',
     icon: 'tabler:scale',
-    title: 'Sheria AI',
+    title: 'SheriaLab',
     description:
-      'Sheria AI is a Kenyan legal intelligence platform designed for lawyers, researchers, and anyone navigating the legal system. It combines an AI-powered chatbot with advanced search and filtering to help users quickly find relevant court rulings, understand legal principles, and generate practical legal insights. ',
-    link: 'https://sheria.africa',
+      'SheriaLab is a Kenyan legal intelligence platform designed for lawyers, researchers, and anyone navigating the legal system. It combines an AI-powered chatbot with advanced search and filtering to help users quickly find relevant court rulings, understand legal principles, and generate practical legal insights. ',
+    link: 'https://sherialab.com',
   },
   {
     slug: 'african-stack',

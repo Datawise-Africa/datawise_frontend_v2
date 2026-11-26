@@ -23,7 +23,7 @@ export const teamMembersData: TeamMember[] = [
     title: 'Engineering Lead',
     image: '/assets/teamMembers/brian.webp',
     description:
-      'Brian is deeply motivated by building solutions that transform ideas into real-world impact. What began as curiosity about how technology works quickly evolved into a commitment to understanding how systems are designed, optimised, and deployed to solve complex problems. He works in AI and machine learning, using data to build intelligent systems that can learn, adapt, and support better decision-making. Some of his projects include our Datalab platform, Sheria AI, and Maisha Registry, just to name a few. For Brian, this field sits at the intersection of creativity and logic, and it gives him the tools to create technology that is not only functional but meaningful.',
+      'Brian is deeply motivated by building solutions that transform ideas into real-world impact. What began as curiosity about how technology works quickly evolved into a commitment to understanding how systems are designed, optimised, and deployed to solve complex problems. He works in AI and machine learning, using data to build intelligent systems that can learn, adapt, and support better decision-making. Some of his projects include our Datalab platform, SheriaLab, and Maisha Registry, just to name a few. For Brian, this field sits at the intersection of creativity and logic, and it gives him the tools to create technology that is not only functional but meaningful.',
     linkedin_url: 'https://www.linkedin.com/in/brian-odhiambo-6b036b181',
     twitter_url: 'https://x.com/__Obrian',
   },
@@ -60,7 +60,7 @@ export const teamMembersData: TeamMember[] = [
     title: 'Software Engineer',
     image: '/assets/teamMembers/mohammed.webp',
     description:
-      'Mohammed works across backend, frontend, and chatbot development. He enjoys the idea of building scalable, intelligent solutions that address real-world problems and make a meaningful impact. His projects have been Sheria AI and CREAN, contributing to their development and assisting with both backend and frontend development.',
+      'Mohammed works across backend, frontend, and chatbot development. He enjoys the idea of building scalable, intelligent solutions that address real-world problems and make a meaningful impact. His projects have been SheriaLab and CREAN, contributing to their development and assisting with both backend and frontend development.',
     linkedin_url: 'https://www.linkedin.com/in/mohammad-ghalib-8a18932b0/',
     twitter_url: '',
   },
