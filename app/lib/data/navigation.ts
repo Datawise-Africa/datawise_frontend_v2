@@ -59,7 +59,7 @@ export const navigation: NavigationItem[] = [
           eyebrow: 'New programme',
           title: 'Student Associate Programme',
           description:
-            'Six months of hands-on experience and mentorship for students and recent graduates.',
+            'Nine months of hands-on experience and mentorship for students and recent graduates.',
           url: '/student-associate-programme',
         },
       ],

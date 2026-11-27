@@ -17,7 +17,7 @@ export function meta(_args: Route.MetaArgs) {
     ...generateSEOTags({
       title: 'Student Associate Programme | Datawise Africa',
       description:
-        'A six-month programme (Jan–Jun 2027) giving university students and recent graduates hands-on experience and mentorship in data, AI, research and more.',
+        'A nine-month programme for university students and recent graduates: hands-on experience and mentorship in research, engineering and AI, and communications.',
       url: href('/student-associate-programme'),
       keywords:
         'student associate programme, industrial attachment Kenya, internship Nairobi, graduate programme Africa, data science internship, AI internship Africa, research internship, Datawise Africa',
@@ -26,15 +26,13 @@ export function meta(_args: Route.MetaArgs) {
         '@type': 'EducationalOccupationalProgram',
         name: 'Datawise Africa Student Associate Programme',
         description:
-          'A structured pathway for university students and recent graduates to gain practical industry experience, professional mentorship and progressive responsibility.',
+          'Build skills. Gain experience. Do meaningful work. A nine-month programme for university students and recent graduates at Datawise Africa.',
         provider: {
           '@type': 'Organization',
           name: 'Datawise Africa',
           url: 'https://datawiseafrica.com',
         },
-        startDate: '2027-01',
-        endDate: '2027-06',
-        timeToComplete: 'P6M',
+        timeToComplete: 'P9M',
         programPrerequisites:
           'Enrolled in or recently completed a relevant academic programme',
       },
@@ -44,22 +42,37 @@ export function meta(_args: Route.MetaArgs) {
 
 const stages = [
   {
-    label: 'Stage 1 · Months 1–3',
+    label: 'Stage 1 · First 3 months',
     title: 'Industrial Attachment',
-    text: 'You join a department with a named supervisor and a clear work plan. We check in with you at the end of each month. At the end of Month 3, your supervisor recommends whether you move to Stage 2.',
+    text: 'Gain practical experience in an assigned department, working under the guidance of a supervisor and contributing to defined projects and responsibilities.',
     dot: 'bg-primary',
   },
   {
-    label: 'Stage 2 · Months 4–6',
-    title: 'Student Associate',
-    text: 'Selected participants take on a bigger role with clear deliverables and about 20 hours of work a week. Places in Stage 2 are competitive and depend on performance and team capacity.',
+    label: 'Stage 2 · Next 6 months',
+    title: 'Student Associate Engagement',
+    text: 'Selected participants may progress to a more substantive, part-time role of about 20 hours a week, with clearer responsibilities and deliverables. Progression is competitive and based on performance, organisational needs and available opportunities.',
     dot: 'bg-accent-blue',
   },
+];
+
+const areas = [
   {
-    label: 'After the pilot',
-    title: 'Longer engagements',
-    text: 'Student Associate roles of up to 12 months may be introduced once the pilot has been reviewed. Strong performers may be considered for future openings.',
-    dot: 'bg-accent-orange',
+    icon: 'tabler:microscope',
+    title: 'Research & Intelligence',
+    text: 'Support applied research, evidence synthesis, research mapping, data collection and intelligence generation.',
+    accent: 'text-primary bg-primary/10 dark:bg-primary/20',
+  },
+  {
+    icon: 'tabler:code',
+    title: 'Engineering & AI',
+    text: 'Support software development, data engineering and AI, including product design, UX/UI, web design and development, and prototyping digital tools.',
+    accent: 'text-accent-blue bg-accent-blue/10 dark:bg-accent-blue/20',
+  },
+  {
+    icon: 'tabler:speakerphone',
+    title: 'Communication & Digital Marketing',
+    text: 'Support content creation, digital marketing, social media management, branding, stakeholder communication and engaging communication materials.',
+    accent: 'text-accent-pink bg-accent-pink/10 dark:bg-accent-pink/20',
   },
 ];
 
@@ -67,146 +80,95 @@ const targetGroups = [
   {
     icon: 'tabler:school',
     title: 'University students',
-    text: 'Seeking an industrial attachment. Final-year and penultimate-year students get priority.',
+    text: 'Seeking industrial attachment, with priority for final-year and penultimate-year students.',
   },
   {
     icon: 'tabler:certificate',
     title: 'Recent graduates',
-    text: 'Within 12–18 months of graduating, with a relevant academic background.',
+    text: 'Within 12–18 months of completing their studies.',
   },
   {
-    icon: 'tabler:rocket',
-    title: 'Emerging professionals',
-    text: 'Looking for structured exposure to data, AI, research and the other areas we work in.',
-  },
-];
-
-const eligibility = [
-  'Be enrolled in, or have recently completed, a relevant academic programme',
-  'Show interest in data, research, technology, AI, communications, business operations or a related field',
-  'Be willing to learn, take ownership and contribute to team goals',
-  'Have foundational communication, organisational and problem-solving skills',
-  'Be available for the full programme period',
-  'Follow Datawise professional conduct, confidentiality and information security requirements',
-];
-
-const tracks = [
-  {
-    icon: 'tabler:chart-bar',
-    title: 'Data & Analytics',
-    text: 'Data management, analytics, BI and visualisation',
-    accent: 'text-accent-orange bg-accent-orange/10 dark:bg-accent-orange/20',
-  },
-  {
-    icon: 'tabler:microscope',
-    title: 'Research & Intelligence',
-    text: 'Applied research, evidence synthesis, research mapping',
-    accent: 'text-primary bg-primary/10 dark:bg-primary/20',
-  },
-  {
-    icon: 'tabler:code',
-    title: 'Engineering & AI',
-    text: 'Software development, data engineering, AI research and support',
-    accent: 'text-accent-blue bg-accent-blue/10 dark:bg-accent-blue/20',
-  },
-  {
-    icon: 'tabler:speakerphone',
-    title: 'Communications & Strategy',
-    text: 'Digital communications, content, design, strategic communications',
-    accent: 'text-accent-pink bg-accent-pink/10 dark:bg-accent-pink/20',
-  },
-  {
-    icon: 'tabler:briefcase',
-    title: 'Business & Operations',
-    text: 'Business development, project coordination, operational support',
-    accent: 'text-accent-orange bg-accent-orange/10 dark:bg-accent-orange/20',
+    icon: 'tabler:bulb',
+    title: 'Curious minds',
+    text: 'With a relevant academic background and an interest in data, research, technology, AI, communications or business operations.',
   },
 ];
 
 const benefits = [
   {
-    icon: 'tabler:user-check',
-    title: 'A named supervisor',
-    text: 'Someone who sets your work plan, reviews your work and gives regular feedback.',
+    icon: 'tabler:briefcase-2',
+    title: 'Real projects',
+    text: 'Practical experience working on real organisational projects.',
   },
   {
-    icon: 'tabler:map-2',
-    title: 'Structured onboarding',
-    text: 'Our organisation, products, ways of working, and how we protect data.',
+    icon: 'tabler:user-check',
+    title: 'Supervision & mentorship',
+    text: 'Professional supervision and mentorship throughout the programme.',
   },
   {
     icon: 'tabler:users-group',
-    title: 'Mentorship & exposure',
-    text: 'Career conversations, cross-team work and knowledge-sharing sessions.',
+    title: 'Multidisciplinary teams',
+    text: 'Exposure to multidisciplinary teams and working environments.',
   },
   {
-    icon: 'tabler:books',
-    title: 'Learning sessions',
-    text: 'Data analytics and AI, research methods, data governance, product practice and project management.',
+    icon: 'tabler:chart-arrows-vertical',
+    title: 'Skills that grow',
+    text: 'Opportunities to develop technical, analytical and professional skills.',
   },
   {
-    icon: 'tabler:briefcase-2',
-    title: 'Real work for your portfolio',
-    text: 'Deliverables that contribute to live projects, with learning goals set in your work plan.',
-  },
-  {
-    icon: 'tabler:award',
-    title: 'Certificate on completion',
-    text: 'A participation or attachment certificate where applicable.',
+    icon: 'tabler:world',
+    title: 'Work that matters',
+    text: 'Contribute to research, products and initiatives addressing African data and technology challenges.',
   },
 ];
 
 const selectionSteps = [
   {
+    title: 'Choose your area',
+    text: 'Pick the area that fits your academic background, skills and interests.',
+  },
+  {
     title: 'Apply',
-    text: 'Send your application through the Datawise website. We check that it is complete.',
+    text: 'When the programme is recruiting, roles are listed under our open positions. Apply through the listing.',
   },
   {
     title: 'Screening & shortlisting',
-    text: 'We review applications against the requirements for each placement.',
+    text: 'We review every application. Only shortlisted applicants will be contacted.',
   },
   {
     title: 'Interview or assessment',
-    text: 'Shortlisted applicants have an interview, a practical task, or both.',
-  },
-  {
-    title: 'Offer & onboarding',
-    text: 'Selected applicants receive written terms and start with onboarding.',
+    text: 'Shortlisted applicants have an interview, a practical assessment, or both, depending on the placement.',
   },
 ];
 
 const documents = [
   'An updated CV',
-  'A short statement of interest',
-  'Academic transcripts or other relevant documents',
-  'A portfolio or work samples, where relevant',
-  'University attachment documents, where your university requires them',
+  'A short statement of interest covering your preferred area and why you are applying',
+  'Academic transcripts or relevant academic documents',
+  'A portfolio or samples of previous work, where applicable',
+  'University industrial attachment documents, where required',
 ];
 
 const faqs = [
   {
-    q: 'Is the programme paid?',
-    a: 'Any stipend, allowance or support (such as transport, equipment or connectivity) is confirmed before recruitment and set out in your engagement documents.',
-  },
-  {
-    q: 'Will I work in the office or remotely?',
-    a: 'It depends on the placement. Each role is office-based, hybrid or remote, and this is stated in your engagement terms.',
-  },
-  {
-    q: 'How many hours will I work?',
-    a: 'During the attachment stage, your schedule is agreed to fit around your university requirements. In the Student Associate stage, expect about 20 hours a week, with flexibility for academic commitments.',
+    q: 'How long is the programme?',
+    a: 'Nine months: a 3-month industrial attachment, followed by a possible 6-month part-time Student Associate engagement of about 20 hours a week.',
   },
   {
     q: 'Does everyone move on to Stage 2?',
-    a: 'No. Progression depends on your performance, your supervisor’s recommendation, and whether a suitable role and team capacity are available.',
+    a: 'No. Progression is competitive and depends on your performance, organisational needs and available opportunities.',
+  },
+  {
+    q: 'Can I apply to more than one area?',
+    a: 'Choose the area that best matches your academic background, skills and interests, and name it in your statement of interest.',
+  },
+  {
+    q: 'Will I hear back if I am not shortlisted?',
+    a: 'Only shortlisted applicants will be contacted.',
   },
   {
     q: 'Does the programme lead to a job?',
     a: 'Taking part does not guarantee employment. Strong performers may be considered for future opportunities when there is a need and an open role.',
-  },
-  {
-    q: 'Can I choose my track?',
-    a: 'You can tell us which track interests you. Participants are placed only in approved placements, each with its own technical and academic requirements.',
   },
 ];
 
@@ -233,6 +195,17 @@ function SectionHeading({
   );
 }
 
+function OpenPositionsLink({ className }: { className?: string }) {
+  return (
+    <Button asChild size="lg" className={cn('h-auto px-6 py-3', className)}>
+      <Link to={`${href('/careers')}#open-positions`}>
+        View open positions
+        <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
+      </Link>
+    </Button>
+  );
+}
+
 export default function StudentAssociateProgramme() {
   return (
     <>
@@ -244,16 +217,20 @@ export default function StudentAssociateProgramme() {
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight">
                 Student Associate Programme
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                A structured pathway for university students and recent
-                graduates to gain practical industry experience, professional
-                mentorship and growing responsibility at Datawise Africa.
+              <p className="text-xl sm:text-2xl font-semibold text-teal-300">
+                Build skills. Gain experience. Do meaningful work.
+              </p>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Work alongside experienced professionals, contribute to real
+                projects and gain exposure to an organisation building
+                Africa&rsquo;s data and intelligent systems. Open to university
+                students and recent graduates.
               </p>
               <div className="flex flex-wrap justify-center gap-3 text-sm">
                 {[
-                  { icon: 'tabler:calendar', text: '6 months' },
+                  { icon: 'tabler:calendar', text: '9 months' },
                   { icon: 'tabler:stairs-up', text: '2 stages' },
-                  { icon: 'tabler:layout-grid', text: '5 tracks' },
+                  { icon: 'tabler:layout-grid', text: '3 areas' },
                 ].map((item) => (
                   <span
                     key={item.text}
@@ -265,19 +242,14 @@ export default function StudentAssociateProgramme() {
                 ))}
               </div>
               <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <Button asChild size="lg" className="h-auto px-6 py-3">
-                  <Link to={`${href('/careers')}#open-positions`}>
-                    View open positions
-                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
-                  </Link>
-                </Button>
+                <OpenPositionsLink />
                 <Button
                   asChild
                   variant="link"
                   className="text-white px-0 h-auto"
                 >
-                  <a href="#eligibility">
-                    Check if you&rsquo;re eligible
+                  <a href="#areas">
+                    Explore the areas
                     <Icon icon="tabler:arrow-down" className="ml-1 h-4 w-4" />
                   </a>
                 </Button>
@@ -287,14 +259,14 @@ export default function StudentAssociateProgramme() {
         </div>
       </section>
 
-      {/* ---------- HOW IT WORKS ---------- */}
+      {/* ---------- STRUCTURE ---------- */}
       <section className="bg-background">
         <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
           <SectionHeading
-            eyebrow="How it works"
-            title="A two-stage programme"
+            eyebrow="Programme structure"
+            title="Nine months, two stages"
           />
-          <StaggerChildren className="relative grid gap-10 md:grid-cols-3 md:gap-8 max-w-5xl mx-auto">
+          <StaggerChildren className="relative grid gap-10 md:grid-cols-2 md:gap-12 max-w-4xl mx-auto">
             <div
               aria-hidden
               className="hidden md:block absolute top-1.5 left-0 right-0 h-px bg-border"
@@ -324,17 +296,54 @@ export default function StudentAssociateProgramme() {
         </div>
       </section>
 
-      {/* ---------- WHO IT'S FOR ---------- */}
+      {/* ---------- AREAS ---------- */}
       <section
-        id="eligibility"
+        id="areas"
         className="bg-section-green dark:bg-section-green-dark scroll-mt-24"
       >
         <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
-          <SectionHeading eyebrow="Who it's for" title="Is this for you?" />
+          <SectionHeading
+            eyebrow="Areas of engagement"
+            title="Where you could work"
+            className="mb-4"
+          />
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-10">
+            Participants are placed in one of three areas, depending on their
+            academic background, skills and interests.
+          </p>
+          <StaggerChildren className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+            {areas.map((area) => (
+              <StaggerItem key={area.title}>
+                <div className="h-full flex flex-col rounded-2xl border border-border bg-background dark:bg-background/50 p-6 shadow-sm">
+                  <div
+                    className={cn(
+                      'flex h-11 w-11 items-center justify-center rounded-xl',
+                      area.accent
+                    )}
+                  >
+                    <Icon icon={area.icon} className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 font-bold text-lg text-foreground">
+                    {area.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                    {area.text}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* ---------- WHO SHOULD APPLY ---------- */}
+      <section className="bg-background">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
+          <SectionHeading eyebrow="Who should apply" title="Is this for you?" />
           <StaggerChildren className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
             {targetGroups.map((group) => (
               <StaggerItem key={group.title}>
-                <div className="h-full rounded-2xl border border-border bg-background dark:bg-background/50 p-6 shadow-sm">
+                <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-sm">
                   <Icon icon={group.icon} className="h-7 w-7 text-primary" />
                   <h3 className="mt-3 font-bold text-lg text-foreground">
                     {group.title}
@@ -346,73 +355,19 @@ export default function StudentAssociateProgramme() {
               </StaggerItem>
             ))}
           </StaggerChildren>
-
           <FadeIn direction="up">
-            <div className="mt-10 max-w-5xl mx-auto rounded-2xl border border-border bg-background dark:bg-background/50 p-6 lg:p-8">
-              <h3 className="font-bold text-lg text-foreground">
-                To apply, you should:
-              </h3>
-              <ul className="mt-4 grid gap-3 md:grid-cols-2">
-                {eligibility.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-muted-foreground"
-                  >
-                    <Icon
-                      icon="tabler:circle-check"
-                      className="h-5 w-5 shrink-0 text-primary"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 text-sm text-muted-foreground">
-                Each placement may have its own technical or academic
-                requirements. We select on merit and actively welcome applicants
-                from a wide range of institutions, backgrounds, genders and
-                regions.
-              </p>
-            </div>
+            <p className="mt-8 text-center text-muted-foreground max-w-2xl mx-auto">
+              We look for curiosity, initiative, a willingness to learn, strong
+              communication skills and the ability to work collaboratively.
+            </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* ---------- TRACKS ---------- */}
-      <section className="bg-background">
-        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
-          <SectionHeading eyebrow="Tracks" title="Where you could work" />
-          <StaggerChildren className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-            {tracks.map((track) => (
-              <StaggerItem key={track.title}>
-                <div className="h-full rounded-2xl border border-border bg-card p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  <div
-                    className={cn(
-                      'flex h-11 w-11 items-center justify-center rounded-xl',
-                      track.accent
-                    )}
-                  >
-                    <Icon icon={track.icon} className="h-6 w-6" />
-                  </div>
-                  <h3 className="mt-4 font-bold text-lg text-foreground">
-                    {track.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                    {track.text}
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
-
-      {/* ---------- WHAT YOU GET ---------- */}
+      {/* ---------- WHAT YOU WILL GAIN ---------- */}
       <section className="bg-section-green dark:bg-section-green-dark">
         <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
-          <SectionHeading
-            eyebrow="What you get"
-            title="Support at every step"
-          />
+          <SectionHeading eyebrow="What you will gain" title="Grow with us" />
           <StaggerChildren className="grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {benefits.map((benefit) => (
               <StaggerItem key={benefit.title}>
@@ -438,13 +393,10 @@ export default function StudentAssociateProgramme() {
         </div>
       </section>
 
-      {/* ---------- SELECTION ---------- */}
-      <section className="bg-background">
+      {/* ---------- HOW TO APPLY ---------- */}
+      <section id="apply" className="bg-background scroll-mt-24">
         <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
-          <SectionHeading
-            eyebrow="Selection"
-            title="How we select participants"
-          />
+          <SectionHeading eyebrow="How to apply" title="Your application" />
           <StaggerChildren className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-5xl mx-auto">
             {selectionSteps.map((step, idx) => (
               <StaggerItem key={step.title}>
@@ -464,39 +416,24 @@ export default function StudentAssociateProgramme() {
           </StaggerChildren>
 
           <FadeIn direction="up">
-            <div className="mt-10 max-w-5xl mx-auto grid gap-8 md:grid-cols-2">
-              <div>
-                <h3 className="font-bold text-lg text-foreground">
-                  What to prepare
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {documents.map((doc) => (
-                    <li
-                      key={doc}
-                      className="flex items-start gap-3 text-sm text-muted-foreground"
-                    >
-                      <Icon
-                        icon="tabler:file-check"
-                        className="h-5 w-5 shrink-0 text-primary"
-                      />
-                      {doc}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 text-sm text-muted-foreground">
-                  Technical roles may ask for more.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg text-foreground">
-                  What we look for
-                </h3>
-                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  A relevant academic background, problem-solving and analytical
-                  ability, practical skills, clear communication, genuine
-                  interest in our work, and a willingness to learn and adapt.
-                </p>
-              </div>
+            <div className="mt-10 max-w-5xl mx-auto rounded-2xl border border-border p-6 lg:p-8">
+              <h3 className="font-bold text-lg text-foreground">
+                What to prepare
+              </h3>
+              <ul className="mt-4 grid gap-3 md:grid-cols-2">
+                {documents.map((doc) => (
+                  <li
+                    key={doc}
+                    className="flex items-start gap-3 text-sm text-muted-foreground"
+                  >
+                    <Icon
+                      icon="tabler:file-check"
+                      className="h-5 w-5 shrink-0 text-primary"
+                    />
+                    {doc}
+                  </li>
+                ))}
+              </ul>
             </div>
           </FadeIn>
         </div>
@@ -534,20 +471,18 @@ export default function StudentAssociateProgramme() {
             <div className="rounded-3xl bg-navy px-6 py-10 lg:px-12 lg:py-14 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="space-y-2 max-w-xl">
                 <h2 className="font-bold text-2xl sm:text-3xl">
-                  Ready to take the first step?
+                  Ready to apply?
                 </h2>
                 <p className="text-gray-300">
-                  Programme roles are listed with our open positions. Pick a
-                  track that fits you and apply.
+                  Applications go through screening, shortlisting and an
+                  interview or practical assessment. Only shortlisted applicants
+                  will be contacted. Progression to the Student Associate stage
+                  is not guaranteed and depends on performance and
+                  organisational capacity.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild size="lg" className="h-auto px-6 py-3">
-                  <Link to={`${href('/careers')}#open-positions`}>
-                    View open positions
-                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
-                  </Link>
-                </Button>
+              <div className="flex flex-wrap gap-3 shrink-0">
+                <OpenPositionsLink />
                 <Button
                   asChild
                   size="lg"
