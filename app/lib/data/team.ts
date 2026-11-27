@@ -89,7 +89,7 @@ export const teamMembersData: TeamMember[] = [
     image: '/assets/teamMembers/kevin.webp',
     description:
       "Kevin is a talented software engineer contributing to the development and maintenance of Datawise's key products. He brings a strong focus on building efficient, scalable, and user-friendly solutions, ensuring that Datawise's digital presence remains robust and innovative.",
-    linkedin_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/kevin-kahira-b021b1209',
     twitter_url: '#',
   },
 ];

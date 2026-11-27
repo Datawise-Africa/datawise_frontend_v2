@@ -257,17 +257,17 @@ export default function Careers() {
                   {
                     icon: 'tabler:school',
                     title: 'Industrial Attachment',
-                    text: 'Months 1–3: placement, supervisor and work plan',
+                    text: 'First 3 months: placement with a supervisor',
                   },
                   {
                     icon: 'tabler:stairs-up',
                     title: 'Student Associate',
-                    text: 'Selected participants take on a bigger, part-time role',
+                    text: 'Next 6 months: selected participants move to a part-time role',
                   },
                   {
                     icon: 'tabler:layout-grid',
-                    title: '5 tracks',
-                    text: 'Data, research, engineering & AI, communications, operations',
+                    title: '3 areas',
+                    text: 'Research & intelligence, engineering & AI, communication & digital marketing',
                   },
                 ].map((item) => (
                   <li

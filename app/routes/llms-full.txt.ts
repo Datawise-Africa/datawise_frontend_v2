@@ -90,7 +90,7 @@ Visit ${origin}/careers for current openings.
 
 ### Student Associate Programme
 
-A six-month pilot (January – June 2027) giving university students and recent graduates practical industry experience, professional mentorship and growing responsibility. Stage 1 (Months 1–3) is an industrial attachment with a named supervisor and work plan. Selected participants progress to Stage 2 (Months 4–6) as Student Associates, contributing about 20 hours a week. Tracks: Data & Analytics, Research & Intelligence, Engineering & AI, Communications & Strategy, and Business & Operations. Final-year and penultimate-year students and graduates within 12–18 months of graduation are prioritised. Programme roles are listed at ${origin}/careers.
+Build skills. Gain experience. Do meaningful work. A nine-month programme giving university students and recent graduates practical experience, supervision and mentorship. Stage 1 (first 3 months) is an industrial attachment in an assigned department under a supervisor. Selected participants may progress to Stage 2 (next 6 months), a part-time Student Associate engagement of about 20 hours a week. Areas: Research & Intelligence, Engineering & AI (including product and web design), and Communication & Digital Marketing. Final-year and penultimate-year students and graduates within 12–18 months of graduation are prioritised. Programme roles are listed at ${origin}/careers.
 
 Details: ${origin}/student-associate-programme
 
