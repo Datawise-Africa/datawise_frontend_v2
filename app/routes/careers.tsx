@@ -55,10 +55,11 @@ export default function Careers() {
             </div>
             <div className="flex justify-center">
               <img
-                className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+                className="w-full h-auto max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
                 src={'/assets/careers/Careers Hero.svg'}
                 alt="career hero"
-                loading="lazy"
+                width={645}
+                height={437}
               />
             </div>
           </div>
@@ -165,47 +166,6 @@ export default function Careers() {
             </div>
           </FadeIn>
 
-          <FadeIn direction="up">
-            <div className="max-w-5xl mx-auto mb-8 overflow-hidden rounded-2xl bg-navy text-white shadow-sm">
-              <div className="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-center">
-                <div className="space-y-3">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-200">
-                    <Icon icon="tabler:school" className="h-4 w-4" />
-                    Students &amp; graduates
-                  </span>
-                  <h3 className="font-bold text-2xl">
-                    Student Associate Programme
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed max-w-xl">
-                    Six months of hands-on experience, a named supervisor and
-                    mentorship across data, AI, research, communications and
-                    operations.
-                  </p>
-                  <div className="flex flex-wrap gap-2 text-xs text-gray-200">
-                    {['6 months', '2 stages', '5 tracks'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md bg-white/10 px-2 py-1"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <Button
-                  asChild
-                  size="lg"
-                  className="h-auto px-6 py-3 w-full md:w-auto"
-                >
-                  <Link to={href('/student-associate-programme')}>
-                    Learn more
-                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </FadeIn>
-
           {open_positions.length === 0 ? (
             <FadeIn direction="up">
               <div className="text-center max-w-md mx-auto py-8">
@@ -220,20 +180,27 @@ export default function Careers() {
                 return (
                   <StaggerItem key={pos.id}>
                     <div className="border border-border bg-background dark:bg-background/50 p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full">
+                      {pos.programme && (
+                        <span className="mb-2 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-primary">
+                          <Icon icon="tabler:school" className="h-4 w-4" />
+                          Student Associate Programme
+                        </span>
+                      )}
                       <h3 className="font-semibold text-xl text-foreground">
                         {pos.title}
                       </h3>
 
                       <div className="flex flex-wrap gap-2 mt-2">
-                        <span className="bg-primary/10 dark:bg-primary/20 text-primary text-xs px-2 py-1 rounded">
-                          {pos.work_period}
-                        </span>
-                        <span className="bg-primary/10 dark:bg-primary/20 text-primary text-xs px-2 py-1 rounded">
-                          {pos.position}
-                        </span>
-                        <span className="bg-primary/10 dark:bg-primary/20 text-primary text-xs px-2 py-1 rounded">
-                          {pos.workmode}
-                        </span>
+                        {[pos.work_period, pos.position, pos.workmode]
+                          .filter(Boolean)
+                          .map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-primary/10 dark:bg-primary/20 text-primary text-xs px-2 py-1 rounded"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                         {pos.deadline && (
                           <span className="bg-muted text-muted-foreground text-xs px-2 py-1 rounded">
                             Apply by {formatDeadline(pos.deadline)}
@@ -258,6 +225,70 @@ export default function Careers() {
               })}
             </StaggerChildren>
           )}
+        </div>
+      </section>
+      {/* ---------- STUDENT ASSOCIATE PROGRAMME ---------- */}
+      <section className="bg-background">
+        <div className="container mx-auto px-5 lg:px-8 py-14 lg:py-20">
+          <FadeIn direction="up">
+            <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center max-w-5xl mx-auto rounded-3xl bg-navy text-white p-6 sm:p-10">
+              <div className="space-y-5">
+                <h3 className="text-lg font-semibold text-teal-300 uppercase tracking-wide">
+                  Early careers
+                </h3>
+                <h2 className="font-bold text-3xl sm:text-4xl">
+                  Student Associate Programme
+                </h2>
+                <p className="text-gray-300 leading-relaxed">
+                  Our structured pathway for university students and recent
+                  graduates. Start with an industrial attachment, then grow into
+                  a Student Associate role with a named supervisor, mentorship
+                  and real deliverables.
+                </p>
+                <Button asChild size="lg" className="h-auto px-6 py-3">
+                  <Link to={href('/student-associate-programme')}>
+                    How the programme works
+                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
+              <ul className="grid gap-3">
+                {[
+                  {
+                    icon: 'tabler:school',
+                    title: 'Industrial Attachment',
+                    text: 'Months 1–3: placement, supervisor and work plan',
+                  },
+                  {
+                    icon: 'tabler:stairs-up',
+                    title: 'Student Associate',
+                    text: 'Selected participants take on a bigger, part-time role',
+                  },
+                  {
+                    icon: 'tabler:layout-grid',
+                    title: '5 tracks',
+                    text: 'Data, research, engineering & AI, communications, operations',
+                  },
+                ].map((item) => (
+                  <li
+                    key={item.title}
+                    className="flex items-start gap-4 rounded-xl bg-white/5 border border-white/10 p-4"
+                  >
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/20">
+                      <Icon
+                        icon={item.icon}
+                        className="h-5 w-5 text-teal-300"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-semibold">{item.title}</p>
+                      <p className="text-sm text-gray-300">{item.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </>

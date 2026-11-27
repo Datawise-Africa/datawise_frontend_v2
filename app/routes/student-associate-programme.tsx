@@ -240,7 +240,7 @@ export default function StudentAssociateProgramme() {
       <section className="bg-navy text-white">
         <div className="container mx-auto px-5 lg:px-8 py-16 lg:py-24">
           <FadeIn direction="up">
-            <div className="max-w-3xl space-y-6">
+            <div className="max-w-3xl mx-auto text-center space-y-6">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight tracking-tight">
                 Student Associate Programme
               </h1>
@@ -249,7 +249,7 @@ export default function StudentAssociateProgramme() {
                 graduates to gain practical industry experience, professional
                 mentorship and growing responsibility at Datawise Africa.
               </p>
-              <div className="flex flex-wrap gap-3 text-sm">
+              <div className="flex flex-wrap justify-center gap-3 text-sm">
                 {[
                   { icon: 'tabler:calendar', text: '6 months' },
                   { icon: 'tabler:stairs-up', text: '2 stages' },
@@ -264,11 +264,13 @@ export default function StudentAssociateProgramme() {
                   </span>
                 ))}
               </div>
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <span className="inline-flex items-center gap-2 rounded-lg bg-primary/20 px-5 py-3 font-semibold text-teal-100">
-                  <Icon icon="tabler:clock" className="h-5 w-5" />
-                  Applications opening soon
-                </span>
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <Button asChild size="lg" className="h-auto px-6 py-3">
+                  <Link to={`${href('/careers')}#open-positions`}>
+                    View open positions
+                    <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
+                  </Link>
+                </Button>
                 <Button
                   asChild
                   variant="link"
@@ -532,17 +534,17 @@ export default function StudentAssociateProgramme() {
             <div className="rounded-3xl bg-navy px-6 py-10 lg:px-12 lg:py-14 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="space-y-2 max-w-xl">
                 <h2 className="font-bold text-2xl sm:text-3xl">
-                  Applications open soon
+                  Ready to take the first step?
                 </h2>
                 <p className="text-gray-300">
-                  Have a question about the programme, or are you a university
-                  interested in partnering with us? Get in touch.
+                  Programme roles are listed with our open positions. Pick a
+                  track that fits you and apply.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg" className="h-auto px-6 py-3">
-                  <Link to={href('/contact-us')}>
-                    Contact us
+                  <Link to={`${href('/careers')}#open-positions`}>
+                    View open positions
                     <Icon icon="tabler:arrow-right" className="ml-1 h-5 w-5" />
                   </Link>
                 </Button>
@@ -552,7 +554,7 @@ export default function StudentAssociateProgramme() {
                   variant="outline"
                   className="h-auto px-6 py-3 bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
                 >
-                  <Link to={href('/careers')}>View open roles</Link>
+                  <Link to={href('/contact-us')}>Ask a question</Link>
                 </Button>
               </div>
             </div>
